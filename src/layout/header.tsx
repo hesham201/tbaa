@@ -13,11 +13,7 @@ const Header = () => {
   // const [isHoveredOne, setIsHoveredOne] = useState(false);
   const [openMenu, setOpenMenu] = useState(false);
   const [dropdown, setDropdown] = useState<null | number>(null);
-  const splitMenuInner = new SplitType("#menu-inner", {
-    types: "words,chars",
-  });
 
-  const splitClose = new SplitType("#close", { types: "words,chars" });
   function dropdownOpen(index: number) {
     const tl: GSAPTimeline = gsap.timeline();
     tl.to("#main-nav", {
@@ -139,6 +135,11 @@ const Header = () => {
     });
   }
   function hoveredOpenOne() {
+    const splitMenuInner = new SplitType("#menu-inner", {
+      types: "words,chars",
+    });
+
+    const splitClose = new SplitType("#close", { types: "words,chars" });
     gsap.to(splitClose.chars, {
       yPercent: -100,
       top: 0,
@@ -153,6 +154,11 @@ const Header = () => {
     // setIsHoveredOne(true);
   }
   function hoveredCloseOne() {
+    const splitMenuInner = new SplitType("#menu-inner", {
+      types: "words,chars",
+    });
+
+    const splitClose = new SplitType("#close", { types: "words,chars" });
     gsap.to(splitClose.chars, {
       yPercent: 100,
       bottom: 0,
