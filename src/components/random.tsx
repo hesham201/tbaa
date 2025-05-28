@@ -7,7 +7,7 @@ import { useRef } from "react";
 import ScrollTrigger from "gsap/dist/ScrollTrigger";
 gsap.registerPlugin(ScrollTrigger);
 const Random = () => {
-  console.log(document.querySelector("[data-scroll-container]"));
+  // console.log(document.querySelector("[data-scroll-container]"));
   const galleryRef = useRef<HTMLDivElement>(null);
   useEffect(() => {
     const timeout = setTimeout(() => {
