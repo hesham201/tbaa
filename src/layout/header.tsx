@@ -67,18 +67,27 @@ const Header = () => {
   function openMenuFunct() {
     setOpenMenu(true);
     setIsHovered(false);
+    gsap.set("#overlay", {
+      clipPath: "ellipse(50% 50% at 50% 50%)",
+      yPercent: 0,
+      opacity: 0,
+    });
     const tl: GSAPTimeline = gsap.timeline();
     // gsap.set("#main-menu-nav", { opacity: 0, y: 100 });
     // gsap.set(".nav-items", { stagger: 0.1, opacity: 0, y: -10 });
     tl.to("#menu", {
       yPercent: -100,
     });
-    tl.to("#overlay", {
-      clipPath: "ellipse(0% 0% at 50% 50%)",
-      yPercent: -200,
-      duration: 1,
-      opacity: 1,
-    });
+    tl.to(
+      "#overlay",
+      {
+        clipPath: "ellipse(50% 50% at 50% 50%)",
+        yPercent: -200,
+        duration: 1,
+        opacity: 1,
+      },
+      "<+0.2"
+    );
     tl.to("#menu", {
       //   yPercent: -100,
       zIndex: 1000,
@@ -98,22 +107,42 @@ const Header = () => {
   }
   function CloseMenuFunct() {
     setOpenMenu(false);
+    // gsap.set("#overlay", {
+    //   yPercent: -200,
+    // });
     const tl: GSAPTimeline = gsap.timeline();
     tl.to(".nav-items", {
       stagger: 0.1,
       opacity: 0,
       y: -10,
-      duration: 0.2,
+      duration: 1,
     });
     tl.to("#main-menu-nav", {
       opacity: 0,
       y: 100,
+      duration: 0.5,
     });
-    tl.to("#overlay", {
-      clipPath: "ellipse(0% 0% at 50% 50%)",
-      duration: 2,
-      ease: "power2.inOut",
-    });
+    tl.fromTo(
+      "#overlay",
+      1.5,
+      { yPercent: -200, opacity: 1 },
+      {
+        clipPath: "ellipse(50% 50% at 50% 50%)",
+        yPercent: 0,
+        opacity: 0,
+        ease: "power4.out",
+      },
+      "<+0.2"
+    );
+    // tl.from(
+    //   "#overlay",
+    //   {
+    //     clipPath: "ellipse(50% 50% at 50% 50%)",
+    //     duration: 4,
+    //     yPercent: -200,
+    //   },
+    //   ">"
+    // );
     // tl.to("#menu", {
     //   //   yPercent: -100,
     //   zIndex: 1000,
@@ -271,47 +300,48 @@ const Header = () => {
         }`}
       >
         <nav className="h-full relative">
-          <div
-            className="flex justify-between absolute top-0 w-full"
-            id="main-menu-nav"
-          >
-            <Link href={"/"}>
-              <Image
-                src={"/logo.png"}
-                className="w-[200px] h-auto"
-                width={300}
-                height={300}
-                alt="image"
-              />
-            </Link>
-            <button
-              className="flex gap-2 cursor-pointer items-center"
-              onMouseEnter={hoveredOpenOne}
-              onMouseLeave={hoveredCloseOne}
-              onClick={CloseMenuFunct}
-            >
-              <div className="h-[30px] w-[20px] text-black  relative">
-                {/* first line  */}
-                <div
-                  className={`h-full w-[2px] absolute top-0 right-[9px] rotate-45 bg-black transition-all duration-300 `}
-                ></div>
-                {/* Third line  */}
-                <div
-                  className={`h-full w-[2px] -rotate-45 bottom-0 left-[9px] absolute bg-black transition-all duration-300 `}
-                ></div>
-              </div>
-              <div className="relative text-lg overflow-hidden">
-                <p className={`relative text-black`} id="menu-inner">
-                  Menu
-                </p>
-                <p
-                  id="close"
-                  className={`absolute bottom-0 translate-y-full duration-300`}
+          <div className="absolute top-0 w-full" id="main-menu-nav">
+            <Container>
+              <div className="flex justify-between">
+                <Link href={"/"}>
+                  <Image
+                    src={"/logo.png"}
+                    className="w-[200px] h-auto"
+                    width={300}
+                    height={300}
+                    alt="image"
+                  />
+                </Link>
+                <button
+                  className="flex gap-2 cursor-pointer items-center"
+                  onMouseEnter={hoveredOpenOne}
+                  onMouseLeave={hoveredCloseOne}
+                  onClick={CloseMenuFunct}
                 >
-                  Close
-                </p>
+                  <div className="h-[30px] w-[20px] text-black  relative">
+                    {/* first line  */}
+                    <div
+                      className={`h-full w-[2px] absolute top-0 right-[9px] rotate-45 bg-black transition-all duration-300 `}
+                    ></div>
+                    {/* Third line  */}
+                    <div
+                      className={`h-full w-[2px] -rotate-45 bottom-0 left-[9px] absolute bg-black transition-all duration-300 `}
+                    ></div>
+                  </div>
+                  <div className="relative text-lg overflow-hidden">
+                    <p className={`relative text-black`} id="menu-inner">
+                      Menu <span className="invisible">ff</span>
+                    </p>
+                    <p
+                      id="close"
+                      className={`absolute bottom-0 translate-y-full duration-300`}
+                    >
+                      Close
+                    </p>
+                  </div>
+                </button>
               </div>
-            </button>
+            </Container>
           </div>
           <Container className="h-full">
             <div className="h-full flex flex-row items-center justify-between">
@@ -331,6 +361,7 @@ const Header = () => {
                         <Link
                           className="text-3xl transition-all duration-300 tracking-normal origin-top-left hover:tracking-wider hover:skew-[1deg] inline-block"
                           href={nav.link}
+                          onClick={CloseMenuFunct}
                         >
                           <span className="text-lg">0{index + 1}</span>{" "}
                           {nav.name}
@@ -352,6 +383,7 @@ const Header = () => {
                         <Link
                           className="text-3xl text-nowrap cursor-pointer transition-all duration-300 tracking-normal origin-top-left hover:tracking-wider hover:skew-1 inline-block"
                           href={nav.link}
+                          onClick={CloseMenuFunct}
                         >
                           <span className="text-lg">0{index + 1}</span>{" "}
                           {nav.name}

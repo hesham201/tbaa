@@ -24,3 +24,17 @@ export interface IRegularNavItem extends INavItemBase {
 
 // Final navigation type (union of both)
 export type INavItem = ISimpleDropdownItem | IRegularNavItem;
+// useEffect(() => {
+//   let scroll: any; // eslint-disable-line
+
+//   (async () => {
+//     const LocomotiveScroll = (await import("locomotive-scroll")).default;
+
+//     if (scrollRef.current) {
+//       scroll = new LocomotiveScroll({
+//         el: scrollRef.current,
+//         smooth: true,
+//       });
+//     }
+//   })();
+// }, []);

@@ -1,12 +1,56 @@
+"use client";
 import Image from "next/image";
-
+import { useGSAP } from "@gsap/react";
+import gsap from "gsap";
+import { useRef } from "react";
+import ScrollTrigger from "gsap/dist/ScrollTrigger";
+gsap.registerPlugin(ScrollTrigger);
 export default function Home() {
+  const galleryRef = useRef<HTMLDivElement>(null);
+  useGSAP(
+    () => {
+      const tl: GSAPTimeline = gsap.timeline({
+        scrollTrigger: {
+          trigger: ".hmm",
+          markers: true,
+          start: "top 90%",
+          scroller: "[data-scroll-container]",
+          end: "top 40%",
+        },
+      });
+      tl.to(".hmm", {
+        height: "2px",
+      });
+      tl.to(".hmm", {
+        width: "100%",
+      });
+      tl.to(".hmm", {
+        height: "100%",
+      });
+    },
+    { scope: galleryRef }
+  );
+
   return (
     <div className="grid ">
       <main className="">
         <div className="bg-white text-white h-[100vh]">hi</div>
         <div className="bg-black  text-white h-[100vh]">by</div>
-        <div className="bg-black  text-white h-[100vh]"></div>
+        <div className="bg-black  text-white h-[100vh]">
+          <div className="w-[80%] h-[80%] m-auto" ref={galleryRef}>
+            <div className="w-0 h-0 relative hmm">
+              <Image
+                src={"/p1.jpg"}
+                data-scroll
+                data-scroll-speed="5"
+                alt="image"
+                width={400}
+                height={400}
+                className="absolute inset-0 w-full h-full object-cover"
+              />
+            </div>
+          </div>
+        </div>
       </main>
       <footer className="row-start-3 flex gap-[24px] flex-wrap items-center justify-center">
         <a
