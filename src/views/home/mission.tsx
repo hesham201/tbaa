@@ -64,7 +64,7 @@ const Mission = () => {
           </HeadingTwo>
         </div>
         {WELCOME_TO.data.map((item) => (
-          <div className="grid grid-cols-2 gap-5" key={item.headingTwo}>
+          <div className="flex flex-row gap-5" key={item.headingTwo}>
             <div>
               <h3 className="text-4xl">
                 <span
