@@ -1,1 +1,60 @@
 @import "tailwindcss";
+
+@font-face {
+  font-family: "Outfit Heading";
+  src: url("/fonts/static/Outfit-SemiBold.ttf") format("truetype");
+  font-weight: 600;
+  font-style: normal;
+
+}
+
+@font-face {
+  font-family: "Outfit";
+  src: url("/fonts/static/Outfit-Regular.ttf") format("truetype");
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Outfit smallH";
+  src: url("/fonts/static/Outfit-Medium.ttf") format("truetype");
+  font-weight: 500;
+  font-style: normal;
+}
+
+@theme {
+  --color-primary: #987F51;
+  --color-secondary: #031A37;
+  --color-tertiary: #031A37;
+  --color-light-dark: #585858;
+  --color-light-primary: #f5f0eb;
+  --color-dark: #181818;
+  --font-headings: "Outfit Heading";
+  --font-smallh: "Outfit smallH";
+  --font-para: "Outfit";
+  --animate-nav: opacity-nav .3s linear forwards;
+
+  @keyframes opacity-nav {
+    0% {
+      opacity: 0;
+      transform: translateY(20px)
+    }
+
+    100% {
+      opacity: 1;
+      transform: translateY(0)
+    }
+
+  }
+}
+
+body {
+  font-family: 'Outfit', sans-serif;
+  font-weight: 400;
+}
+
+.text-outline {
+  -webkit-text-fill-color: transparent;
+  -webkit-text-stroke-color: black;
+  -webkit-text-stroke-width: 1px;
+}

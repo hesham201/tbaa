@@ -1,5 +1,5 @@
 "use client";
-import { useGSAP } from "@gsap/react";
+// import { useGSAP } from "@gsap/react";
 import { useRef, useState } from "react";
 import gsap from "gsap";
 import SplitType from "split-type";
@@ -215,77 +215,78 @@ const Header = () => {
     });
     setDropdown(null);
   }
-  useGSAP(
-    () => {
-      const split = new SplitType("#myText", { types: "words,chars" });
+  // useGSAP(
+  //   () => {
+  //     const split = new SplitType("#myText", { types: "words,chars" });
 
-      gsap.from(split.chars, {
-        y: 20,
-        opacity: 0,
-        stagger: 0.05,
-      });
-    },
-    { scope: galleryRef }
-  );
+  //     gsap.from(split.chars, {
+  //       y: 20,
+  //       opacity: 0,
+  //       stagger: 0.05,
+  //     });
+  //   },
+  //   { scope: galleryRef }
+  // );
   return (
     <>
       <header ref={galleryRef}>
-        <div className="flex justify-between items-center">
-          <Link href={"/"}>
-            <Image
-              src={"/logo.png"}
-              className="w-[200px] h-[80px] object-contain"
-              width={300}
-              height={300}
-              alt="image"
-            />
-          </Link>
-          <button
-            className="flex gap-2 cursor-pointer items-center"
-            onMouseEnter={hoveredOpen}
-            onMouseLeave={hoveredClose}
-            onClick={openMenuFunct}
-          >
-            <div className="h-[20px] w-[30px]  relative">
-              {/* first line  */}
-              <div
-                className={`w-1/2 absolute top-0 h-[2px] bg-black transition-all duration-300 ${
-                  isHovered
-                    ? "top-1/2 -translate-y-1/2 w-[8px] h-[8px] rounded-full"
-                    : ""
-                }`}
-              ></div>
-              {/* second line  */}
-              <div
-                className={`w-full  h-[2px] top-1/2 -translate-y-1/2 absolute bg-black transition-all duration-300 ${
-                  isHovered
-                    ? "!w-[8px] h-[8px] rounded-full left-1/2 -translate-1/2"
-                    : ""
-                }`}
-              ></div>
-              {/* Third line  */}
-              <div
-                className={`w-1/2 h-[2px] bottom-0 right-0 absolute bg-black transition-all duration-300 ${
-                  isHovered
-                    ? "w-[8px] h-[8px] rounded-full top-1/2 -translate-y-1/2"
-                    : ""
-                }`}
-              ></div>
-            </div>
-            <div className="relative text-lg overflow-hidden">
-              <p className={`relative`} id="menu">
-                Menu
-              </p>
-              <p
-                id="open"
-                className={`absolute bottom-0 translate-y-full duration-300`}
-              >
-                Open
-              </p>
-            </div>
-          </button>
-        </div>
-        <h1 id="myText">Split and Animate This Text!</h1>
+        <Container>
+          <div className="flex justify-between items-center">
+            <Link href={"/"}>
+              <Image
+                src={"/logo.png"}
+                className="w-[200px] h-[80px] object-contain"
+                width={300}
+                height={300}
+                alt="image"
+              />
+            </Link>
+            <button
+              className="flex gap-2 cursor-pointer items-center"
+              onMouseEnter={hoveredOpen}
+              onMouseLeave={hoveredClose}
+              onClick={openMenuFunct}
+            >
+              <div className="h-[20px] w-[30px]  relative">
+                {/* first line  */}
+                <div
+                  className={`w-1/2 absolute top-0 h-[2px] bg-black transition-all duration-300 ${
+                    isHovered
+                      ? "top-1/2 -translate-y-1/2 w-[6px] h-[6px] rounded-full"
+                      : ""
+                  }`}
+                ></div>
+                {/* second line  */}
+                <div
+                  className={`w-full  h-[2px] top-1/2 -translate-y-1/2 absolute bg-black transition-all duration-300 ${
+                    isHovered
+                      ? "!w-[6px] h-[6px] rounded-full left-1/2 -translate-1/2"
+                      : ""
+                  }`}
+                ></div>
+                {/* Third line  */}
+                <div
+                  className={`w-1/2 h-[2px] bottom-0 right-0 absolute bg-black transition-all duration-300 ${
+                    isHovered
+                      ? "w-[6px] h-[6px] rounded-full top-1/2 -translate-y-1/2"
+                      : ""
+                  }`}
+                ></div>
+              </div>
+              <div className="relative text-lg overflow-hidden">
+                <p className={`relative`} id="menu">
+                  Menu<span className="invisible">ff</span>
+                </p>
+                <p
+                  id="open"
+                  className={`absolute left-0 bottom-0 translate-y-full duration-300`}
+                >
+                  Open
+                </p>
+              </div>
+            </button>
+          </div>
+        </Container>
       </header>
       {/* click on  menu starts  */}
       <div
