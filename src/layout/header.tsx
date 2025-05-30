@@ -15,20 +15,24 @@ const Header = () => {
   const [dropdown, setDropdown] = useState<null | number>(null);
 
   function dropdownOpen(index: number) {
+    setDropdown(index);
     const tl: GSAPTimeline = gsap.timeline();
-    tl.to("#main-nav", {
+    tl.to("#main-nav li", {
       opacity: 0,
       duration: 1,
-      visibility: "hidden",
+      stagger: 0.1,
     });
 
-    tl.to("#dropdown-nav", {
-      y: 10,
-      opacity: 1,
-      duration: 1,
-    });
-
-    setDropdown(index);
+    tl.to(
+      "#dropdown-nav li",
+      {
+        // y: 10,
+        opacity: 0,
+        duration: 1,
+        stagger: 0.1,
+      },
+      ">+2"
+    );
   }
   function hoveredOpen() {
     const split = new SplitType("#menu", { types: "words,chars" });
@@ -67,33 +71,36 @@ const Header = () => {
   function openMenuFunct() {
     setOpenMenu(true);
     setIsHovered(false);
+    setDropdown(null);
     gsap.set("#overlay", {
-      clipPath: "ellipse(50% 50% at 50% 50%)",
+      // clipPath: "ellipse(50% 50% at 50% 50%)",
       yPercent: 0,
-      opacity: 0,
+      // opacity: 0,
     });
     const tl: GSAPTimeline = gsap.timeline();
     // gsap.set("#main-menu-nav", { opacity: 0, y: 100 });
     // gsap.set(".nav-items", { stagger: 0.1, opacity: 0, y: -10 });
-    tl.to("#menu", {
-      yPercent: -100,
-    });
+    // tl.to("#menu", {});
     tl.to(
       "#overlay",
       {
-        clipPath: "ellipse(50% 50% at 50% 50%)",
+        // clipPath: "ellipse(50% 50% at 50% 50%)",
         yPercent: -200,
-        duration: 1,
+        duration: 2,
         opacity: 1,
       },
       "<+0.2"
     );
-    tl.to("#menu", {
-      //   yPercent: -100,
-      zIndex: 1000,
-      height: "100%",
-      bottom: "100%",
-    });
+    tl.to(
+      "#menu",
+      {
+        yPercent: -100,
+        zIndex: 1000,
+        height: "100%",
+        bottom: "100%",
+      },
+      "-=1"
+    );
     tl.from("#main-menu-nav", {
       opacity: 0,
       y: 100,
@@ -124,13 +131,11 @@ const Header = () => {
     });
     tl.fromTo(
       "#overlay",
-      1.5,
-      { yPercent: -200, opacity: 1 },
+      { yPercent: -200 },
       {
-        clipPath: "ellipse(50% 50% at 50% 50%)",
         yPercent: 0,
-        opacity: 0,
         ease: "power4.out",
+        duration: 1.5, // ← Moved here
       },
       "<+0.2"
     );
@@ -153,7 +158,8 @@ const Header = () => {
     //   yPercent: 100,
     // });
     tl.to("#menu", {
-      yPercent: 100,
+      yPercent: 200,
+      duration: 2,
       onComplete: () => {
         // Optional reset values
         gsap.set("#menu", { clearProps: "all" });
@@ -202,18 +208,22 @@ const Header = () => {
     // setIsHoveredOne(false);
   }
   function backMainMenu() {
-    gsap.to("#dropdown-nav", {
+    setDropdown(null);
+    gsap.to("#dropdown-nav li", {
       opacity: 0,
+      visibility: "hidden",
+      stagger: 0.1,
     });
-    gsap.to("#main-nav", {
+    gsap.to("#main-nav li", {
       opacity: 1,
+      stagger: 0.1,
+      visibility: "visible",
       onComplete: () => {
         // Optional reset values
-        gsap.set("#dropdown-nav", { clearProps: "all" });
-        gsap.set("#main-nav", { clearProps: "all" });
+        gsap.set("#dropdown-nav li", { clearProps: "all" });
+        gsap.set("#main-nav li", { clearProps: "all" });
       },
     });
-    setDropdown(null);
   }
   // useGSAP(
   //   () => {
@@ -242,7 +252,7 @@ const Header = () => {
               />
             </Link>
             <button
-              className="flex gap-2 cursor-pointer items-center"
+              className="flex h-[50px] gap-2 cursor-pointer items-center"
               onMouseEnter={hoveredOpen}
               onMouseLeave={hoveredClose}
               onClick={openMenuFunct}
@@ -291,12 +301,17 @@ const Header = () => {
       {/* click on  menu starts  */}
       <div
         id="overlay"
-        className="fixed top-full bg-black w-[200%] h-[200%] -left-1/2 z-10 transition-all duration-300"
-        style={{ clipPath: "ellipse(50% 50% at 50% 50%)" }}
-      ></div>
+        className="fixed top-full  w-[200%] h-[200%] -left-1/2 z-[1001] transition-all duration-300"
+        // style={{ clipPath: "ellipse(50% 50% at 50% 50%)" }}
+      >
+        <div className="w-[100%] h-[50%] bg-black rounded-t-full"></div>
+        <div className="w-[100%] h-[50%] -top-48 bg-white rounded-t-full relative">
+          <div className="relative left-0 w-full h-full z-10 rounded-t-full"></div>
+        </div>
+      </div>
       <div
         id="menu"
-        className={`fixed top-full bg-white left-0 w-full h-full ${
+        className={`fixed top-full bg-white left-0 w-full h-full z-[1000] ${
           openMenu ? "" : ""
         }`}
       >
@@ -371,15 +386,14 @@ const Header = () => {
                     </li>
                   ))}
                 </ul>
-                <ul className="absolute top-0 opacity-0" id="dropdown-nav">
-                  <li>
-                    <button className="cursor-pointer" onClick={backMainMenu}>
-                      Back
-                    </button>
-                  </li>
-                  {dropdown !== null &&
-                    NAV_ITEMS[dropdown].isDropdown && // <-- type guard to ensure it's dropdown
-                    NAV_ITEMS[dropdown].subItems.map((nav, index) => (
+                {dropdown !== null && NAV_ITEMS[dropdown].isDropdown && (
+                  <ul className="absolute top-0" id="dropdown-nav">
+                    <li>
+                      <button className="cursor-pointer" onClick={backMainMenu}>
+                        Back
+                      </button>
+                    </li>
+                    {NAV_ITEMS[dropdown].subItems.map((nav, index) => (
                       <li key={nav.name}>
                         <Link
                           className="text-3xl text-nowrap cursor-pointer transition-all duration-300 tracking-normal origin-top-left hover:tracking-wider hover:skew-1 inline-block"
@@ -391,7 +405,8 @@ const Header = () => {
                         </Link>
                       </li>
                     ))}
-                </ul>
+                  </ul>
+                )}
               </div>
               <div className="flex flex-col gap-2 w-[25%] ps-6 border-l border-black">
                 <div>
