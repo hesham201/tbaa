@@ -156,7 +156,7 @@ const Header = () => {
       {
         yPercent: -200,
         duration: 1,
-        ease: "power3.out",
+        ease: "power1.out",
         opacity: 1,
       },
       "<+0.2"
