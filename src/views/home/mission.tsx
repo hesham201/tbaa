@@ -185,7 +185,7 @@ const Mission = () => {
               <p>{parse(item.para)}</p>
             </div>
             <div
-              className="w-[40%] h-[500px] overflow-hidden relative"
+              className="w-[45%] h-[500px] overflow-hidden relative"
               ref={(el) => {
                 imageRefs.current[index] = el;
               }}
