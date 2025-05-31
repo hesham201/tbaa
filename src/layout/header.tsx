@@ -251,8 +251,8 @@ const Header = () => {
       { yPercent: -200 },
       {
         yPercent: 0,
-        duration: 2,
-        ease: "power1.in",
+        duration: 4,
+        ease: "power1.out",
       },
       "<"
     );
