@@ -75,9 +75,9 @@ const Mission = () => {
       const image = imgWrapper.querySelector("img");
       console.log(image);
       if (!image) return;
-      gsap.set(image, {
-        objectPosition: "center 60%",
-      });
+      // gsap.set(image, {
+      //   objectPosition: "center 60%",
+      // });
 
       gsap.to(image, {
         objectPosition: "center 30%", // animate upward
