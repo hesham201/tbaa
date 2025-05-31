@@ -154,7 +154,7 @@ const Header = () => {
     tl.to("#overlay", {
       yPercent: -200,
       duration: 4,
-      ease: "power1.in",
+      ease: "power1.out",
       opacity: 1,
     });
 
