@@ -20,8 +20,8 @@ const Header = () => {
     tl.to("#main-nav li", {
       opacity: 0,
       visibility: "hidden",
-      duration: 1,
-      stagger: 0.1,
+      duration: 0.3,
+      stagger: 0.01,
     });
 
     tl.to(
@@ -30,7 +30,7 @@ const Header = () => {
         // y: 10,
         opacity: 0,
         visibility: "visible",
-        duration: 1,
+        duration: 0.9,
         stagger: 0.1,
       },
       ">"
@@ -251,7 +251,7 @@ const Header = () => {
       { yPercent: -200 },
       {
         yPercent: 0,
-        ease: "circ.out",
+        ease: "linear",
         duration: 1, // ← Moved here
       },
       "<"
@@ -423,14 +423,20 @@ const Header = () => {
       {/* click on  menu starts  */}
       <div
         id="overlay"
-        className="fixed top-full  w-[200%] h-[200%] -left-1/2 z-[1001] transition-all duration-300"
-        // style={{ clipPath: "ellipse(50% 50% at 50% 50%)" }}
+        className="fixed top-full w-[200%] h-[200%] -left-1/2 z-[1001] transition-all duration-300 overflow-hidden"
       >
-        <div className="w-[100%] h-[50%] bg-black rounded-t-full"></div>
-        <div className="w-[100%] h-[50%] -top-48 bg-white rounded-t-full relative">
-          <div className="relative left-0 w-full h-full z-10 rounded-t-full"></div>
+        <div
+          className="w-[100%] h-[50%] bg-black "
+          style={{ borderRadius: "50% 50% 0 0" }}
+        ></div>
+        <div className="w-[100%] h-[50%]  relative">
+          <div
+            className="relative left-0 w-full -top-38 bg-white h-full z-10 rounded-t-full"
+            style={{ borderRadius: "50% 50% 0 0" }}
+          ></div>
         </div>
       </div>
+
       <div
         id="menu"
         className={`fixed top-full bg-white left-0 w-full h-full z-[1000] ${
@@ -485,12 +491,12 @@ const Header = () => {
           <Container className="h-full">
             <div className="h-full flex flex-row items-center justify-between">
               <div className="relative">
-                <ul className="" id="main-nav">
+                <ul className="flex flex-col gap-4" id="main-nav">
                   {NAV_ITEMS.map((nav, index) => (
                     <li key={nav.name} className="nav-items">
                       {nav.isDropdown ? (
                         <button
-                          className="text-3xl cursor-pointer transition-all duration-300 tracking-normal origin-top-left hover:tracking-wider hover:skew-1 inline-block"
+                          className="text-4xl cursor-pointer transition-all duration-300 tracking-normal origin-top-left hover:tracking-wider hover:skew-1 inline-block"
                           onClick={() => dropdownOpen(index)}
                         >
                           <span className="text-lg">0{index + 1}</span>{" "}
@@ -498,7 +504,7 @@ const Header = () => {
                         </button>
                       ) : (
                         <Link
-                          className="text-3xl transition-all duration-300 tracking-normal origin-top-left hover:tracking-wider hover:skew-[1deg] inline-block"
+                          className="text-4xl transition-all duration-300 tracking-normal origin-top-left hover:tracking-wider hover:skew-[1deg] inline-block"
                           href={nav.link}
                           onClick={CloseMenuFunct}
                         >
@@ -510,7 +516,10 @@ const Header = () => {
                   ))}
                 </ul>
                 {dropdown !== null && NAV_ITEMS[dropdown].isDropdown && (
-                  <ul className="absolute top-0" id="dropdown-nav">
+                  <ul
+                    className="absolute top-0 flex flex-col gap-4"
+                    id="dropdown-nav"
+                  >
                     <li>
                       <button
                         className="cursor-pointer transition-all duration-300"
@@ -522,7 +531,7 @@ const Header = () => {
                     {NAV_ITEMS[dropdown].subItems.map((nav, index) => (
                       <li key={nav.name}>
                         <Link
-                          className="text-3xl text-nowrap cursor-pointer transition-all duration-300 tracking-normal origin-top-left hover:tracking-wider hover:skew-1 inline-block"
+                          className="text-4xl text-nowrap cursor-pointer transition-all duration-300 tracking-normal origin-top-left hover:tracking-wider hover:skew-1 inline-block"
                           href={nav.link}
                           onClick={CloseMenuFunct}
                         >
