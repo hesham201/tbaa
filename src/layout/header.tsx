@@ -19,6 +19,7 @@ const Header = () => {
   function dropdownOpen(index: number) {
     setDropdown(index);
     const tl: GSAPTimeline = gsap.timeline();
+
     tl.to("#main-nav li", {
       opacity: 0,
       visibility: "hidden",
@@ -26,18 +27,25 @@ const Header = () => {
       stagger: 0.01,
     });
 
-    tl.to(
+    tl.fromTo(
       "#dropdown-nav li",
       {
-        // y: 10,
         opacity: 0,
-        visibility: "visible",
-        duration: 0.9,
-        stagger: 0.1,
+        visibility: "hidden",
+        y: 10,
       },
-      ">"
+      {
+        opacity: 1,
+        visibility: "visible",
+        y: 0,
+        duration: 0.5,
+        stagger: 0.08,
+        ease: "power2.out",
+      },
+      ">0.2"
     );
   }
+
   function hoveredOpen() {
     const split = new SplitType("#menu", { types: "words,chars" });
 
@@ -168,7 +176,7 @@ const Header = () => {
         height: "100%",
         bottom: "100%",
       },
-      "-=2"
+      "-=.5"
     );
 
     tl.from("#main-menu-nav", {
@@ -249,10 +257,10 @@ const Header = () => {
       { yPercent: -200 },
       {
         yPercent: 0,
-        duration: 4,
-        ease: "power1.out",
+        duration: 2.8,
+        ease: "power2.out",
       },
-      "<"
+      "<-0.5"
     );
     // tl.from(
     //   "#overlay",
@@ -329,25 +337,36 @@ const Header = () => {
     // setIsHoveredOne(false);
   }
   function backMainMenu() {
-    setDropdown(null);
-    gsap.to("#dropdown-nav li", {
+    const tl = gsap.timeline();
+
+    tl.to("#dropdown-nav li", {
       opacity: 0,
       visibility: "hidden",
-      duration: 1,
-      stagger: 0.1,
+      y: -10,
+      duration: 0.4,
+      stagger: 0.05,
+      ease: "power2.in",
     });
-    gsap.to("#main-nav li", {
-      opacity: 1,
-      stagger: 0.1,
-      duration: 1,
-      visibility: "visible",
-      onComplete: () => {
-        // Optional reset values
-        gsap.set("#dropdown-nav li", { clearProps: "all" });
-        gsap.set("#main-nav li", { clearProps: "all" });
+
+    tl.to(
+      "#main-nav li",
+      {
+        opacity: 1,
+        visibility: "visible",
+        y: 0,
+        stagger: 0.08,
+        duration: 0.5,
+        ease: "power2.out",
+        onComplete: () => {
+          setDropdown(null); // 👈 Move it here to avoid flicker during animation
+          gsap.set("#dropdown-nav li", { clearProps: "all" });
+          gsap.set("#main-nav li", { clearProps: "all" });
+        },
       },
-    });
+      ">0.1"
+    );
   }
+
   // useGSAP(
   //   () => {
   //     const split = new SplitType("#myText", { types: "words,chars" });
@@ -431,17 +450,17 @@ const Header = () => {
           className="w-[100%] h-[50%] bg-black "
           style={{ borderRadius: "50% 50% 0 0" }}
         ></div>
-        <div className="w-[100%] h-[50%]  relative">
+        <div className="w-[100%] h-[50%] bg-transparent  relative">
           <div
             className="relative left-0 w-full -top-38 bg-white h-full z-10 rounded-t-full"
-            style={{ borderRadius: "50% 50% 0 0" }}
+            style={{ borderRadius: "50%" }}
           ></div>
         </div>
       </div>
 
       <div
         id="menu"
-        className={`fixed top-full bg-white left-0 w-full h-full z-[1000] ${
+        className={`fixed top-full bg-[url(/menu-bg.webp)] left-0 w-full h-full z-[1000] ${
           openMenu ? "" : ""
         }`}
       >
