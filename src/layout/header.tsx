@@ -7,6 +7,8 @@ import Image from "next/image";
 import Link from "next/link";
 import { NAV_ITEMS } from "@/constant/data";
 import Container from "@/components/container";
+import { CustomEase } from "gsap/CustomEase";
+gsap.registerPlugin(CustomEase);
 const Header = () => {
   const galleryRef = useRef<HTMLDivElement>(null);
   const [isHovered, setIsHovered] = useState(false);
