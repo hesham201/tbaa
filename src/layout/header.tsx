@@ -151,16 +151,12 @@ const Header = () => {
 
     const tl: GSAPTimeline = gsap.timeline();
     menuTimelineRef.current = tl;
-    tl.to(
-      "#overlay",
-      {
-        yPercent: -200,
-        duration: 4,
-        ease: "power1.in",
-        opacity: 1,
-      },
-      "<+0.2"
-    );
+    tl.to("#overlay", {
+      yPercent: -200,
+      duration: 4,
+      ease: "power1.in",
+      opacity: 1,
+    });
 
     tl.to(
       "#menu",
