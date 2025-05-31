@@ -155,7 +155,7 @@ const Header = () => {
       "#overlay",
       {
         yPercent: -200,
-        duration: 1,
+        duration: 4,
         ease: "power1.in",
         opacity: 1,
       },
