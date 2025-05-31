@@ -250,9 +250,9 @@ const Header = () => {
       "#overlay",
       { yPercent: -200 },
       {
-        ease: "power1.out",
         yPercent: 0,
-        duration: 1, // ← Moved here
+        duration: 2,
+        ease: "expo.out",
       },
       "<"
     );
@@ -274,19 +274,23 @@ const Header = () => {
     // tl.to("#menu", {
     //   yPercent: 100,
     // });
-    tl.to("#menu", {
-      yPercent: 200,
-      duration: 0.1,
-      onComplete: () => {
-        // Optional reset values
-        gsap.set("#menu", { clearProps: "all" });
-        gsap.set("#main-menu-nav", { clearProps: "all" });
-        gsap.set(".nav-items", { clearProps: "all" });
-        gsap.set("#address div", { clearProps: "all" });
-        gsap.set("#address", { clearProps: "all" });
-        gsap.set("#overlay", { clearProps: "all" });
+    tl.to(
+      "#menu",
+      {
+        yPercent: 200,
+        duration: 0.2,
+        onComplete: () => {
+          // Optional reset values
+          gsap.set("#menu", { clearProps: "all" });
+          gsap.set("#main-menu-nav", { clearProps: "all" });
+          gsap.set(".nav-items", { clearProps: "all" });
+          gsap.set("#address div", { clearProps: "all" });
+          gsap.set("#address", { clearProps: "all" });
+          gsap.set("#overlay", { clearProps: "all" });
+        },
       },
-    });
+      ">"
+    );
   }
   function hoveredOpenOne() {
     const splitMenuInner = new SplitType("#menu-inner", {
