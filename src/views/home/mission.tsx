@@ -9,6 +9,7 @@ import parse from "html-react-parser";
 import HeadingTwo from "@/components/heading-two";
 import { WELCOME_TO } from "@/constant/data";
 import SplitType from "split-type";
+// import Image from "next/image";
 gsap.registerPlugin(ScrollTrigger);
 const Mission = () => {
   const animatedRef = useRef<HTMLDivElement>(null);
@@ -72,70 +73,94 @@ const Mission = () => {
     imageRefs.current.forEach((imgWrapper) => {
       if (!imgWrapper) return;
 
-      const image = imgWrapper.querySelector("img");
-      console.log(image);
-      if (!image) return;
-      gsap.set(image, {
-        objectPosition: "center 60%",
-      });
+      const img = imgWrapper.querySelector("img");
+      if (!img) return;
 
-      gsap.to(image, {
-        objectPosition: "center 30%", // animate upward
-        ease: "none",
-        scrollTrigger: {
-          trigger: imgWrapper,
-          scroller: "[data-scroll-container]",
-          start: "top bottom",
-          end: "bottom top",
-          scrub: true,
-        },
-      });
-
-      // Optional: Hover Movement
-      const handleMouseMove = (e: MouseEvent) => {
-        const rect = imgWrapper.getBoundingClientRect();
-        const x = e.clientX - rect.left;
-        const y = e.clientY - rect.top;
-        const moveX = ((x - rect.width / 2) / rect.width) * 10;
-        const moveY = ((y - rect.height / 2) / rect.height) * 10;
-
-        gsap.to(image, {
-          x: moveX,
-          y: moveY,
-          duration: 0.3,
-          ease: "power2.out",
-        });
-      };
-
-      const handleMouseEnter = () => {
-        gsap.to(image, {
-          scale: 1.02,
-          duration: 0.5,
-          ease: "power2.out",
-        });
-      };
-
-      const handleMouseLeave = () => {
-        gsap.to(image, {
+      gsap.fromTo(
+        img,
+        { y: "-20%", scale: 1.1 },
+        {
+          y: "20%",
           scale: 1,
-          x: 0,
-          y: 0,
-          duration: 0.5,
-          ease: "power2.out",
-        });
-      };
-
-      imgWrapper.addEventListener("mousemove", handleMouseMove);
-      imgWrapper.addEventListener("mouseenter", handleMouseEnter);
-      imgWrapper.addEventListener("mouseleave", handleMouseLeave);
-
-      // Cleanup
-      return () => {
-        imgWrapper.removeEventListener("mousemove", handleMouseMove);
-        imgWrapper.removeEventListener("mouseenter", handleMouseEnter);
-        imgWrapper.removeEventListener("mouseleave", handleMouseLeave);
-      };
+          ease: "none",
+          scrollTrigger: {
+            trigger: imgWrapper,
+            scroller: "[data-scroll-container]", // or remove if you're not using locomotive-scroll
+            start: "top bottom",
+            end: "bottom top",
+            scrub: true,
+          },
+        }
+      );
     });
+
+    // imageRefs.current.forEach((imgWrapper) => {
+    //   if (!imgWrapper) return;
+
+    //   const image = imgWrapper.querySelector("img");
+    //   console.log(image);
+    //   if (!image) return;
+    //   gsap.set(image, {
+    //     objectPosition: "center 60%",
+    //   });
+
+    //   gsap.to(image, {
+    //     objectPosition: "center 30%", // animate upward
+    //     ease: "none",
+    //     scrollTrigger: {
+    //       trigger: imgWrapper,
+    //       scroller: "[data-scroll-container]",
+    //       start: "top bottom",
+    //       end: "bottom top",
+    //       scrub: true,
+    //     },
+    //   });
+
+    //   // Optional: Hover Movement
+    //   const handleMouseMove = (e: MouseEvent) => {
+    //     const rect = imgWrapper.getBoundingClientRect();
+    //     const x = e.clientX - rect.left;
+    //     const y = e.clientY - rect.top;
+    //     const moveX = ((x - rect.width / 2) / rect.width) * 10;
+    //     const moveY = ((y - rect.height / 2) / rect.height) * 10;
+
+    //     gsap.to(image, {
+    //       x: moveX,
+    //       y: moveY,
+    //       duration: 0.3,
+    //       ease: "power2.out",
+    //     });
+    //   };
+
+    //   const handleMouseEnter = () => {
+    //     gsap.to(image, {
+    //       scale: 1.02,
+    //       duration: 0.5,
+    //       ease: "power2.out",
+    //     });
+    //   };
+
+    //   const handleMouseLeave = () => {
+    //     gsap.to(image, {
+    //       scale: 1,
+    //       x: 0,
+    //       y: 0,
+    //       duration: 0.5,
+    //       ease: "power2.out",
+    //     });
+    //   };
+
+    //   imgWrapper.addEventListener("mousemove", handleMouseMove);
+    //   imgWrapper.addEventListener("mouseenter", handleMouseEnter);
+    //   imgWrapper.addEventListener("mouseleave", handleMouseLeave);
+
+    //   // Cleanup
+    //   return () => {
+    //     imgWrapper.removeEventListener("mousemove", handleMouseMove);
+    //     imgWrapper.removeEventListener("mouseenter", handleMouseEnter);
+    //     imgWrapper.removeEventListener("mouseleave", handleMouseLeave);
+    //   };
+    // });
   });
   return (
     <div className="py-10" ref={animatedRef}>
@@ -185,6 +210,21 @@ const Mission = () => {
               <p>{parse(item.para)}</p>
             </div>
             <div
+              ref={(el) => {
+                imageRefs.current[index] = el;
+              }}
+              className="relative w-[45%] h-[500px] overflow-hidden"
+            >
+              <img
+                width={700}
+                height={700}
+                src={item.image}
+                className="absolute top-0 left-0 w-full h-auto min-h-full object-cover will-change-transform"
+                alt="image"
+              />
+            </div>
+
+            {/* <div
               className="w-[45%] h-[500px] overflow-hidden relative"
               ref={(el) => {
                 imageRefs.current[index] = el;
@@ -204,7 +244,7 @@ const Mission = () => {
                   }}
                 />
               </div>
-            </div>
+            </div> */}
           </div>
         ))}
       </Container>
