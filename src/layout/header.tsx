@@ -252,7 +252,7 @@ const Header = () => {
       {
         yPercent: 0,
         duration: 2,
-        ease: "power1.out",
+        ease: "power1.in",
       },
       "<"
     );
