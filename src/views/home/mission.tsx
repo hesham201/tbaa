@@ -75,6 +75,7 @@ const Mission = () => {
 
       const img = imgWrapper.querySelector("img");
       if (!img) return;
+      console.log(img);
 
       gsap.fromTo(
         img,
@@ -89,6 +90,7 @@ const Mission = () => {
             start: "top bottom",
             end: "bottom top",
             scrub: true,
+            markers: true,
           },
         }
       );
@@ -195,7 +197,7 @@ const Mission = () => {
             key={item.headingTwo}
           >
             <div className="py-22 px-4 w-1/2 flex flex-col justify-center gap-3 shrink-0">
-              <h3 className="text-5xl font-popins-m">
+              <h3 className="text-6xl">
                 <span
                   className="inline-block text-outline"
                   //   data-scroll
