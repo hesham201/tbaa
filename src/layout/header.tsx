@@ -153,8 +153,8 @@ const Header = () => {
     menuTimelineRef.current = tl;
     tl.to("#overlay", {
       yPercent: -200,
-      duration: 2.5,
-      ease: "power1.out",
+      duration: 2,
+      ease: CustomEase.create("custom", "M0,0 C0.104,0.204 0.634,0.883 1,1 "),
       opacity: 1,
     });
 
