@@ -28,7 +28,7 @@ const LocomotiveProvider = ({ children }: { children: React.ReactNode }) => {
         scrollTop(value) {
           return arguments.length
             ? scrollInstance.scrollTo(value, 0, 0)
-            : scrollInstance.scroll.instance.scroll.y;
+            : scrollInstance.scroll.instance.scroll.y; // check if correct or use `scrollInstance.scroll.instance.scroll.y`
         },
         getBoundingClientRect() {
           return {

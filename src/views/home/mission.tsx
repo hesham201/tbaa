@@ -17,84 +17,85 @@ const Mission = () => {
   const imageRefs = useRef<(HTMLDivElement | null)[]>([]); // NEW for images
   useLayoutEffect(() => {
     // let ctx = gsap.context(() => {}, animatedRef);
-    const tl = gsap.timeline({
-      scrollTrigger: {
-        trigger: animatedRef.current,
-        scroller: "[data-scroll-container]", // required for LocomotiveScroll
-        start: "top 90%",
-        end: "top 40%",
-      },
-    });
-    const splitUpperMenu = new SplitType("#upper-para", {
-      types: "words,chars",
-    });
-    const splitHeadingTwo = new SplitType("#heading-two-span", {
-      types: "words,chars",
-    });
-    tl.to("#span-id", {
-      scaleY: 1,
-      zIndex: 0,
-    });
-    tl.to("#para-id", {
-      color: "white",
-      zIndex: 1,
-    });
-    tl.from(splitUpperMenu.words, {
-      opacity: 0,
-      y: 10,
-      stagger: 0.2,
-    });
-    tl.to(splitHeadingTwo.chars, {
-      color: "#987F51",
-      stagger: 0.1,
-    });
-    // Animate each item in the map individually
-    itemRefs.current.forEach((ref) => {
-      if (!ref) return;
+    const timeout = setTimeout(() => {
+      const tl = gsap.timeline({
+        scrollTrigger: {
+          trigger: animatedRef.current,
+          scroller: "[data-scroll-container]", // required for LocomotiveScroll
+          start: "top 90%",
+          end: "top 40%",
+        },
+      });
+      const splitUpperMenu = new SplitType("#upper-para", {
+        types: "words,chars",
+      });
+      const splitHeadingTwo = new SplitType("#heading-two-span", {
+        types: "words,chars",
+      });
+      tl.to("#span-id", {
+        scaleY: 1,
+        zIndex: 0,
+      });
+      tl.to("#para-id", {
+        color: "white",
+        zIndex: 1,
+      });
+      tl.from(splitUpperMenu.words, {
+        opacity: 0,
+        y: 10,
+        stagger: 0.2,
+      });
+      tl.to(splitHeadingTwo.chars, {
+        color: "#987F51",
+        stagger: 0.1,
+      });
+      // Animate each item in the map individually
+      itemRefs.current.forEach((ref) => {
+        if (!ref) return;
 
-      const textOutline = ref.querySelector(".text-outline");
-      if (!textOutline) return;
+        const textOutline = ref.querySelector(".text-outline");
+        if (!textOutline) return;
 
-      gsap.fromTo(
-        ref.querySelector(".text-outline"),
-        { x: 50 },
-        {
-          x: 0,
-          ease: "power2.out",
-          scrollTrigger: {
-            trigger: ref,
-            scroller: "[data-scroll-container]",
-            scrub: 3,
-            start: "top 60%",
-            end: "top 0%",
-          },
-        }
-      );
-    });
-    imageRefs.current.forEach((imgWrapper) => {
-      if (!imgWrapper) return;
+        gsap.fromTo(
+          ref.querySelector(".text-outline"),
+          { x: 50 },
+          {
+            x: 0,
+            ease: "power2.out",
+            scrollTrigger: {
+              trigger: ref,
+              scroller: "[data-scroll-container]",
+              scrub: 3,
+              start: "top 60%",
+              end: "top 0%",
+            },
+          }
+        );
+      });
+      imageRefs.current.forEach((imgWrapper) => {
+        if (!imgWrapper) return;
 
-      const img = imgWrapper.querySelector("img");
-      if (!img) return;
+        const img = imgWrapper.querySelector("img");
+        if (!img) return;
 
-      gsap.fromTo(
-        img,
-        { y: "-20%", scale: 1.1 },
-        {
-          y: "20%",
-          scale: 1,
-          ease: "none",
-          scrollTrigger: {
-            trigger: imgWrapper,
-            scroller: "[data-scroll-container]", // or remove if you're not using locomotive-scroll
-            start: "top bottom",
-            end: "bottom top",
-            scrub: true,
-          },
-        }
-      );
-    });
-
+        gsap.fromTo(
+          img,
+          { y: "-20%", scale: 1.1 },
+          {
+            y: "20%",
+            scale: 1,
+            ease: "none",
+            scrollTrigger: {
+              trigger: imgWrapper,
+              scroller: "[data-scroll-container]", // or remove if you're not using locomotive-scroll
+              start: "top bottom",
+              end: "bottom top",
+              scrub: true,
+            },
+          }
+        );
+      });
+    }, 300);
     // imageRefs.current.forEach((imgWrapper) => {
     //   if (!imgWrapper) return;
 
@@ -162,17 +163,18 @@ const Mission = () => {
     //     imgWrapper.removeEventListener("mouseleave", handleMouseLeave);
     //   };
     // });
-    const onLoad = () => {
-      ScrollTrigger.refresh(); // ensures all positions are recalculated
-    };
+    // const onLoad = () => {
+    //   ScrollTrigger.refresh(); // ensures all positions are recalculated
+    // };
 
-    window.addEventListener("load", onLoad);
+    // window.addEventListener("load", onLoad);
 
-    // Force refresh even if load missed
-    setTimeout(() => ScrollTrigger.refresh(), 1000);
-    return () => {
-      window.removeEventListener("load", onLoad);
-    };
+    // // Force refresh even if load missed
+    // setTimeout(() => ScrollTrigger.refresh(), 1000);
+    // return () => {
+    //   window.removeEventListener("load", onLoad);
+    // };
+    return () => clearTimeout(timeout);
   });
   return (
     <div className="py-10" ref={animatedRef}>
