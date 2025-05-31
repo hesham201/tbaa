@@ -82,7 +82,7 @@ const Banner = () => {
               <div className="absolute z-10 inset-0 h-full w-full bg-primary video-bg"></div>
               <div className="video-div-main relative">
                 <p
-                  className="absolute top-1/2 w-full px-2 text-center text-white -translate-y-1/2 video-para"
+                  className="absolute bottom-2 w-full px-2 text-center text-white  video-para"
                   id="video-para"
                 >
                   The British Academy of Aesthetic Dentistry (BAAD) Champions

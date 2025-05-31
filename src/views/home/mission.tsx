@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useRef, useLayoutEffect } from "react";
-import Image from "next/image";
+// import Image from "next/image";
 import gsap from "gsap";
 import ScrollTrigger from "gsap/dist/ScrollTrigger";
 import Container from "@/components/container";
@@ -71,12 +71,27 @@ const Mission = () => {
     });
     imageRefs.current.forEach((imgWrapper) => {
       if (!imgWrapper) return;
-      const imageInner = imgWrapper.querySelector(".image-inner");
 
-      if (!imageInner) return;
+      const image = imgWrapper.querySelector("img");
+      console.log(image);
+      if (!image) return;
+      gsap.set(image, {
+        objectPosition: "center 60%",
+      });
 
-      //   let moveTween: gsap.core.Tween;
+      gsap.to(image, {
+        objectPosition: "center 30%", // animate upward
+        ease: "none",
+        scrollTrigger: {
+          trigger: imgWrapper,
+          scroller: "[data-scroll-container]",
+          start: "top bottom",
+          end: "bottom top",
+          scrub: true,
+        },
+      });
 
+      // Optional: Hover Movement
       const handleMouseMove = (e: MouseEvent) => {
         const rect = imgWrapper.getBoundingClientRect();
         const x = e.clientX - rect.left;
@@ -84,7 +99,7 @@ const Mission = () => {
         const moveX = ((x - rect.width / 2) / rect.width) * 10;
         const moveY = ((y - rect.height / 2) / rect.height) * 10;
 
-        gsap.to(imageInner, {
+        gsap.to(image, {
           x: moveX,
           y: moveY,
           duration: 0.3,
@@ -93,7 +108,7 @@ const Mission = () => {
       };
 
       const handleMouseEnter = () => {
-        gsap.to(imageInner, {
+        gsap.to(image, {
           scale: 1.02,
           duration: 0.5,
           ease: "power2.out",
@@ -101,7 +116,7 @@ const Mission = () => {
       };
 
       const handleMouseLeave = () => {
-        gsap.to(imageInner, {
+        gsap.to(image, {
           scale: 1,
           x: 0,
           y: 0,
@@ -170,23 +185,23 @@ const Mission = () => {
               <p>{parse(item.para)}</p>
             </div>
             <div
-              className="w-[40%] h-[450px] transition-all duration-300 overflow-hidden relative"
+              className="w-[40%] h-[500px] overflow-hidden relative"
               ref={(el) => {
                 imageRefs.current[index] = el;
               }}
             >
-              <div
-                className="image-inner w-full h-full will-change-transform"
-                data-scroll
-                data-scroll-direction="vertical"
-                data-scroll-speed="3" // Adjusted to a subtle value
-              >
-                <Image
+              <div className="image-inner w-full h-full will-change-transform">
+                <img
                   src={item.image}
-                  className="w-full h-full object-cover pointer-events-none"
                   alt="image"
-                  width={1000}
-                  height={1000}
+                  className="pointer-events-none"
+                  style={{
+                    width: "100%",
+                    height: "600px", // taller than container (e.g., container is 500px)
+                    objectFit: "none",
+                    objectPosition: "center 60%",
+                    willChange: "object-position",
+                  }}
                 />
               </div>
             </div>
