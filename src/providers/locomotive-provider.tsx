@@ -21,11 +21,9 @@ const LocomotiveProvider = ({ children }: { children: React.ReactNode }) => {
       scrollInstance = new LocomotiveScroll({
         el: scrollRef.current,
         smooth: true,
-        multiplier: 1, // Optional: adjust scroll speed
-        class: "is-reveal", // Optional: custom class
       });
-
-      // Sync GSAP with Locomotive
+      scrollInstance.on("scroll", ScrollTrigger.update);
+      // Set up ScrollTrigger proxy
       ScrollTrigger.scrollerProxy(scrollRef.current, {
         scrollTop(value) {
           return arguments.length
@@ -43,32 +41,21 @@ const LocomotiveProvider = ({ children }: { children: React.ReactNode }) => {
         pinType: scrollRef.current.style.transform ? "transform" : "fixed",
       });
 
+      // Update ScrollTrigger on locomotive scroll
       scrollInstance.on("scroll", ScrollTrigger.update);
 
-      // Ensure updates when ScrollTrigger refreshes
-      ScrollTrigger.addEventListener("refresh", () => {
-        scrollInstance.update();
-      });
+      ScrollTrigger.addEventListener("refresh", () => scrollInstance.update());
 
-      // ⚠️ Wait for images/content to load before refreshing
-      window.addEventListener("load", () => {
-        setTimeout(() => {
-          scrollInstance.update();
-          ScrollTrigger.refresh();
-        }, 300); // delay ensures all content is painted
-      });
-
-      // Manual fallback (extra safeguard)
+      // This is key to syncing on load
       setTimeout(() => {
-        scrollInstance.update();
         ScrollTrigger.refresh();
-      }, 1000);
+      }, 100);
     };
 
     initLocoScroll();
 
     return () => {
-      if (scrollInstance) scrollInstance.destroy();
+      scrollInstance?.destroy();
       ScrollTrigger.removeEventListener("refresh", () =>
         scrollInstance?.update()
       );
@@ -76,7 +63,7 @@ const LocomotiveProvider = ({ children }: { children: React.ReactNode }) => {
   }, []);
 
   return (
-    <main ref={scrollRef} data-scroll-container>
+    <main ref={scrollRef} data-scroll-container className="">
       {children}
     </main>
   );

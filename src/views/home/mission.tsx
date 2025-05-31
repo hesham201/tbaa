@@ -75,7 +75,6 @@ const Mission = () => {
 
       const img = imgWrapper.querySelector("img");
       if (!img) return;
-      console.log(img);
 
       gsap.fromTo(
         img,
