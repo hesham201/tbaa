@@ -9,6 +9,7 @@ import parse from "html-react-parser";
 import HeadingTwo from "@/components/heading-two";
 import { WELCOME_TO } from "@/constant/data";
 import SplitType from "split-type";
+import Button from "@/components/button";
 // import Image from "next/image";
 gsap.registerPlugin(ScrollTrigger);
 const Mission = () => {
@@ -222,6 +223,9 @@ const Mission = () => {
                 <span>{parse(item.headingTwo)}</span>
               </h3>
               <p>{parse(item.para)}</p>
+              <div className="flex justify-center lg:block">
+                <Button href={item.href}>{item.btn}</Button>
+              </div>
             </div>
             <div
               ref={(el) => {
