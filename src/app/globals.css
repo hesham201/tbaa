@@ -22,6 +22,13 @@
   font-style: normal;
 }
 
+@font-face {
+  font-family: "popins medium";
+  src: url("/fonts/Poppins-Medium.ttf") format("truetype");
+  font-weight: 500;
+  font-style: normal;
+}
+
 @theme {
   --color-primary: #987F51;
   --color-secondary: #031A37;
@@ -32,6 +39,7 @@
   --font-headings: "Outfit Heading";
   --font-smallh: "Outfit smallH";
   --font-para: "Outfit";
+  --font-popins-m: "popins medium";
   --animate-nav: opacity-nav .3s linear forwards;
 
   @keyframes opacity-nav {
