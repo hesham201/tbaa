@@ -250,6 +250,7 @@ const Header = () => {
       "#overlay",
       { yPercent: -200 },
       {
+        ease: "power1.out",
         yPercent: 0,
         duration: 1, // ← Moved here
       },
