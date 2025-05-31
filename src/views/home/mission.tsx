@@ -170,15 +170,20 @@ const Mission = () => {
               <p>{parse(item.para)}</p>
             </div>
             <div
-              className="w-[40%] h-[450px] transition-all duration-300"
+              className="w-[40%] h-[450px] transition-all duration-300 overflow-hidden relative"
               ref={(el) => {
                 imageRefs.current[index] = el;
               }}
             >
-              <div className="image-inner w-full h-full">
+              <div
+                className="image-inner w-full h-full will-change-transform"
+                data-scroll
+                data-scroll-direction="vertical"
+                data-scroll-speed="3" // Adjusted to a subtle value
+              >
                 <Image
                   src={item.image}
-                  className="w-full h-full pointer-events-none  object-cover"
+                  className="w-full h-full object-cover pointer-events-none"
                   alt="image"
                   width={1000}
                   height={1000}

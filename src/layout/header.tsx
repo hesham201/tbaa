@@ -156,7 +156,7 @@ const Header = () => {
       {
         yPercent: -200,
         duration: 1,
-        ease: "circ.out",
+        ease: "power3.out",
         opacity: 1,
       },
       "<+0.2"
@@ -251,7 +251,6 @@ const Header = () => {
       { yPercent: -200 },
       {
         yPercent: 0,
-        ease: "linear",
         duration: 1, // ← Moved here
       },
       "<"
