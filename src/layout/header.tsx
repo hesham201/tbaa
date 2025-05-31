@@ -13,12 +13,13 @@ const Header = () => {
   // const [isHoveredOne, setIsHoveredOne] = useState(false);
   const [openMenu, setOpenMenu] = useState(false);
   const [dropdown, setDropdown] = useState<null | number>(null);
-
+  const menuTimelineRef = useRef<GSAPTimeline | null>(null);
   function dropdownOpen(index: number) {
     setDropdown(index);
     const tl: GSAPTimeline = gsap.timeline();
     tl.to("#main-nav li", {
       opacity: 0,
+      visibility: "hidden",
       duration: 1,
       stagger: 0.1,
     });
@@ -28,27 +29,35 @@ const Header = () => {
       {
         // y: 10,
         opacity: 0,
+        visibility: "visible",
         duration: 1,
         stagger: 0.1,
       },
-      ">+2"
+      ">"
     );
   }
   function hoveredOpen() {
     const split = new SplitType("#menu", { types: "words,chars" });
 
     const splitOpen = new SplitType("#open", { types: "words,chars" });
-    gsap.to(splitOpen.chars, {
+    const tl: GSAPTimeline = gsap.timeline();
+    tl.to(splitOpen.chars, {
       yPercent: -100,
       top: 0,
       opacity: 1,
+      duration: 0.5,
       stagger: 0.05,
     });
-    gsap.to(split.chars, {
-      y: -100,
-      opacity: 0,
-      stagger: 0.05,
-    });
+    tl.to(
+      split.chars,
+      {
+        y: -100,
+        opacity: 0,
+        duration: 0.4,
+        stagger: 0.05,
+      },
+      "<"
+    );
     setIsHovered(true);
   }
   function hoveredClose() {
@@ -68,29 +77,91 @@ const Header = () => {
     });
     setIsHovered(false);
   }
+  // function openMenuFunct() {
+  //   setOpenMenu(true);
+  //   setIsHovered(false);
+  //   setDropdown(null);
+  //   gsap.set("#overlay", {
+  //     // clipPath: "ellipse(50% 50% at 50% 50%)",
+  //     yPercent: 0,
+  //     // opacity: 0,
+  //   });
+  //   const tl: GSAPTimeline = gsap.timeline();
+  //   // gsap.set("#main-menu-nav", { opacity: 0, y: 100 });
+  //   // gsap.set(".nav-items", { stagger: 0.1, opacity: 0, y: -10 });
+  //   // tl.to("#menu", {});
+  //   tl.to(
+  //     "#overlay",
+  //     {
+  //       // clipPath: "ellipse(50% 50% at 50% 50%)",
+  //       yPercent: -200,
+  //       duration: 1,
+  //       ease: "circ.out",
+  //       opacity: 1,
+  //     },
+  //     "<+0.2"
+  //   );
+  //   tl.to(
+  //     "#menu",
+  //     {
+  //       yPercent: -100,
+  //       zIndex: 1000,
+  //       height: "100%",
+  //       bottom: "100%",
+  //     },
+  //     "-=2"
+  //   );
+  //   tl.from("#main-menu-nav", {
+  //     opacity: 0,
+  //     y: 100,
+  //   });
+  //   tl.from(".nav-items", {
+  //     stagger: 0.1,
+  //     opacity: 0,
+  //     y: -10,
+  //     duration: 0.2,
+  //   });
+  //   tl.from(
+  //     "#address div",
+  //     {
+  //       stagger: 0.1,
+  //       opacity: 0,
+  //       y: -10,
+  //       duration: 0.2,
+  //     },
+  //     "<"
+  //   );
+  // }
   function openMenuFunct() {
+    if (menuTimelineRef.current) {
+      menuTimelineRef.current.kill();
+    }
     setOpenMenu(true);
     setIsHovered(false);
     setDropdown(null);
-    gsap.set("#overlay", {
-      // clipPath: "ellipse(50% 50% at 50% 50%)",
-      yPercent: 0,
-      // opacity: 0,
+
+    // ✅ Reset styles first
+    gsap.set(["#main-menu-nav", ".nav-items", "#overlay"], {
+      clearProps: "all",
     });
+
+    gsap.set("#overlay", {
+      yPercent: 0,
+    });
+
     const tl: GSAPTimeline = gsap.timeline();
-    // gsap.set("#main-menu-nav", { opacity: 0, y: 100 });
-    // gsap.set(".nav-items", { stagger: 0.1, opacity: 0, y: -10 });
-    // tl.to("#menu", {});
+    menuTimelineRef.current = tl;
     tl.to(
       "#overlay",
       {
-        // clipPath: "ellipse(50% 50% at 50% 50%)",
         yPercent: -200,
-        duration: 2,
+        duration: 1,
+        ease: "circ.out",
         opacity: 1,
       },
       "<+0.2"
     );
+
     tl.to(
       "#menu",
       {
@@ -99,19 +170,41 @@ const Header = () => {
         height: "100%",
         bottom: "100%",
       },
-      "-=1"
+      "-=2"
     );
+
     tl.from("#main-menu-nav", {
       opacity: 0,
       y: 100,
     });
+
     tl.from(".nav-items", {
       stagger: 0.1,
       opacity: 0,
       y: -10,
       duration: 0.2,
     });
+
+    tl.from(
+      "#address",
+      {
+        opacity: 0,
+        duration: 0.1,
+      },
+      "<"
+    );
+    tl.from(
+      "#address div",
+      {
+        stagger: 0.1,
+        opacity: 0,
+        y: -10,
+        duration: 0.2,
+      },
+      "<"
+    );
   }
+
   function CloseMenuFunct() {
     setOpenMenu(false);
     // gsap.set("#overlay", {
@@ -122,22 +215,46 @@ const Header = () => {
       stagger: 0.1,
       opacity: 0,
       y: -10,
-      duration: 1,
+      duration: 0.2,
     });
-    tl.to("#main-menu-nav", {
-      opacity: 0,
-      y: 100,
-      duration: 0.5,
-    });
+    tl.to(
+      "#address div",
+      {
+        stagger: 0.1,
+        opacity: 0,
+        y: -10,
+        duration: 0.2,
+      },
+      "<"
+    );
+    tl.to(
+      "#address",
+      {
+        stagger: 0.1,
+        opacity: 0,
+        y: -10,
+        duration: 0.1,
+      },
+      "<"
+    );
+    tl.to(
+      "#main-menu-nav",
+      {
+        opacity: 0,
+        y: 100,
+        duration: 0.2,
+      },
+      "<"
+    );
     tl.fromTo(
       "#overlay",
       { yPercent: -200 },
       {
         yPercent: 0,
-        ease: "power4.out",
-        duration: 1.5, // ← Moved here
+        ease: "circ.out",
+        duration: 1, // ← Moved here
       },
-      "<+0.2"
+      "<"
     );
     // tl.from(
     //   "#overlay",
@@ -159,12 +276,14 @@ const Header = () => {
     // });
     tl.to("#menu", {
       yPercent: 200,
-      duration: 2,
+      duration: 0.1,
       onComplete: () => {
         // Optional reset values
         gsap.set("#menu", { clearProps: "all" });
         gsap.set("#main-menu-nav", { clearProps: "all" });
         gsap.set(".nav-items", { clearProps: "all" });
+        gsap.set("#address div", { clearProps: "all" });
+        gsap.set("#address", { clearProps: "all" });
         gsap.set("#overlay", { clearProps: "all" });
       },
     });
@@ -212,11 +331,13 @@ const Header = () => {
     gsap.to("#dropdown-nav li", {
       opacity: 0,
       visibility: "hidden",
+      duration: 1,
       stagger: 0.1,
     });
     gsap.to("#main-nav li", {
       opacity: 1,
       stagger: 0.1,
+      duration: 1,
       visibility: "visible",
       onComplete: () => {
         // Optional reset values
@@ -244,11 +365,12 @@ const Header = () => {
           <div className="flex justify-between items-center">
             <Link href={"/"}>
               <Image
-                src={"/logo.png"}
+                src={"/header-logo.png"}
                 className="w-[200px] h-[80px] object-contain"
                 width={300}
                 height={300}
                 alt="image"
+                quality={100}
               />
             </Link>
             <button
@@ -262,7 +384,7 @@ const Header = () => {
                 <div
                   className={`w-1/2 absolute top-0 h-[2px] bg-black transition-all duration-300 ${
                     isHovered
-                      ? "top-1/2 -translate-y-1/2 w-[6px] h-[6px] rounded-full"
+                      ? "top-1/2 -translate-y-1/2 w-[4px] h-[4px] rounded-full"
                       : ""
                   }`}
                 ></div>
@@ -270,7 +392,7 @@ const Header = () => {
                 <div
                   className={`w-full  h-[2px] top-1/2 -translate-y-1/2 absolute bg-black transition-all duration-300 ${
                     isHovered
-                      ? "!w-[6px] h-[6px] rounded-full left-1/2 -translate-1/2"
+                      ? "!w-[4px] h-[4px] rounded-full left-1/2 -translate-1/2"
                       : ""
                   }`}
                 ></div>
@@ -278,7 +400,7 @@ const Header = () => {
                 <div
                   className={`w-1/2 h-[2px] bottom-0 right-0 absolute bg-black transition-all duration-300 ${
                     isHovered
-                      ? "w-[6px] h-[6px] rounded-full top-1/2 -translate-y-1/2"
+                      ? "w-[4px] h-[4px] rounded-full top-1/2 -translate-y-1/2"
                       : ""
                   }`}
                 ></div>
@@ -321,10 +443,11 @@ const Header = () => {
               <div className="flex justify-between">
                 <Link href={"/"}>
                   <Image
-                    src={"/logo.png"}
-                    className="w-[200px] h-auto"
+                    src={"/header-logo.png"}
+                    className="w-[200px] h-[80px] object-contain"
                     width={300}
                     height={300}
+                    quality={100}
                     alt="image"
                   />
                 </Link>
@@ -389,7 +512,10 @@ const Header = () => {
                 {dropdown !== null && NAV_ITEMS[dropdown].isDropdown && (
                   <ul className="absolute top-0" id="dropdown-nav">
                     <li>
-                      <button className="cursor-pointer" onClick={backMainMenu}>
+                      <button
+                        className="cursor-pointer transition-all duration-300"
+                        onClick={backMainMenu}
+                      >
                         Back
                       </button>
                     </li>
@@ -408,7 +534,10 @@ const Header = () => {
                   </ul>
                 )}
               </div>
-              <div className="flex flex-col gap-2 w-[25%] ps-6 border-l border-black">
+              <div
+                className="flex flex-col gap-2 w-[25%] ps-6 border-l border-black"
+                id="address"
+              >
                 <div>
                   <p>Studio</p>
                   <p>Address</p>
