@@ -16,6 +16,7 @@ const Mission = () => {
   const itemRefs = useRef<(HTMLDivElement | null)[]>([]);
   const imageRefs = useRef<(HTMLDivElement | null)[]>([]); // NEW for images
   useLayoutEffect(() => {
+    // let ctx = gsap.context(() => {}, animatedRef);
     const tl = gsap.timeline({
       scrollTrigger: {
         trigger: animatedRef.current,
@@ -89,7 +90,6 @@ const Mission = () => {
             start: "top bottom",
             end: "bottom top",
             scrub: true,
-            markers: true,
           },
         }
       );
@@ -162,6 +162,17 @@ const Mission = () => {
     //     imgWrapper.removeEventListener("mouseleave", handleMouseLeave);
     //   };
     // });
+    const onLoad = () => {
+      ScrollTrigger.refresh(); // ensures all positions are recalculated
+    };
+
+    window.addEventListener("load", onLoad);
+
+    // Force refresh even if load missed
+    setTimeout(() => ScrollTrigger.refresh(), 1000);
+    return () => {
+      window.removeEventListener("load", onLoad);
+    };
   });
   return (
     <div className="py-10" ref={animatedRef}>
