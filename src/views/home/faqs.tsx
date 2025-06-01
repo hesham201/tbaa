@@ -1,12 +1,82 @@
 "use client";
-import React, { useState, useRef, useEffect } from "react";
+import React, { useState, useRef, useEffect, useLayoutEffect } from "react";
+import gsap from "gsap";
+import ScrollTrigger from "gsap/dist/ScrollTrigger";
 import OpenFaq from "./open-faq";
 import Container from "@/components/container";
-
+import SplitType from "split-type";
+gsap.registerPlugin(ScrollTrigger);
 const Faqs = () => {
   const [openIndex, setOpenIndex] = useState<number>(-1);
   const contentRefs = useRef<(HTMLDivElement | null)[]>([]);
+  const bgWrapperRefFAQS = useRef<HTMLDivElement>(null);
+  const bgImageRefFaqs = useRef<HTMLImageElement>(null);
+  const faqItemRefs = useRef<(HTMLDivElement | null)[]>([]);
 
+  useLayoutEffect(() => {
+    if (!bgWrapperRefFAQS.current || !bgImageRefFaqs.current) return;
+    const timeout = setTimeout(() => {
+      const split = new SplitType("#faqs-spans-animation", {
+        types: "words,chars",
+      });
+      gsap.fromTo(
+        split.chars,
+        {
+          color: "#1A1A1A",
+        },
+        {
+          color: "#987F51",
+          duration: 0.6,
+          scrollTrigger: {
+            trigger: bgWrapperRefFAQS.current,
+            scroller: "[data-scroll-container]", // Remove if not using Locomotive Scroll
+            start: "top 65%",
+            end: "top 45%",
+            markers: true,
+          },
+        }
+      );
+      gsap.fromTo(
+        bgImageRefFaqs.current,
+        {
+          y: "-34%", // Start position (slightly above)
+        },
+        {
+          y: "34%", // End position (slightly below)
+          ease: "none",
+          scrollTrigger: {
+            trigger: bgWrapperRefFAQS.current,
+            scroller: "[data-scroll-container]", // Remove if not using Locomotive Scroll
+            start: "top bottom",
+            end: "bottom top",
+            scrub: true,
+          },
+        }
+      );
+      faqItemRefs.current.forEach((item) => {
+        if (!item) return;
+
+        gsap.fromTo(
+          item,
+          { opacity: 0, y: 60 },
+          {
+            opacity: 1,
+            y: 0,
+            duration: 0.8,
+            ease: "power3.out",
+            scrollTrigger: {
+              trigger: bgWrapperRefFAQS.current,
+              start: "top 85%", // trigger point
+              end: "bottom 60%",
+              toggleActions: "play none none reverse",
+              scroller: "[data-scroll-container]", // include only if using Locomotive
+            },
+          }
+        );
+      });
+    }, 300);
+    return () => clearTimeout(timeout);
+  }, []);
   const toggleAccordion = (index: number) => {
     setOpenIndex(openIndex === index ? -1 : index);
   };
@@ -62,15 +132,31 @@ const Faqs = () => {
   ];
 
   return (
-    <div className="py-12 px-5" id="FAQS">
+    <div
+      ref={bgWrapperRefFAQS}
+      className="py-12 px-5 relative overflow-hidden"
+      id="FAQS"
+    >
+      <img
+        src="/menu-bg.webp"
+        className="absolute top-0 left-0 w-full h-full object-cover will-change-transform pointer-events-none"
+        ref={bgImageRefFaqs}
+        alt=""
+      />
       <Container>
-        <h2 className="2xl:text-[54px] xl:text-[54px] lg:text-[54px] md:text-[44px] text-[30px] font-bold text-center text-[#1A1A1A] mb-8 px-4 playfair">
-          Frequently Asked <span className="text-primary">Questions</span>
+        <h2 className="2xl:text-[54px] relative xl:text-[54px] lg:text-[54px] md:text-[44px] text-[30px] font-bold text-center text-[#1A1A1A] mb-8 px-4 playfair">
+          Frequently Asked{" "}
+          <span className="" id="faqs-spans-animation">
+            Questions
+          </span>
         </h2>
-        <div className=" grid  grid-cols-1 gap-8">
+        <div className=" grid relative grid-cols-1 gap-8">
           {DENTAL_FAQ?.map((faq, index) => (
             <div
               key={faq?.question}
+              ref={(el) => {
+                faqItemRefs.current[index] = el;
+              }}
               className={`bg-white shadow-md overflow-hidden h-fit rounded-2xl hover:shadow-[6px_4px_14px_1px_#dcdcdc] px-4 py-6 ${
                 openIndex === index ? "border-2 border-primary" : ""
               }`}
