@@ -460,7 +460,7 @@ const Header = () => {
 
       <div
         id="menu"
-        className={`fixed top-full bg-[url(/menu-bg.webp)] bg-cover left-0 w-full h-full z-[1000] ${
+        className={`fixed top-full bg-[url(/menu-bg.webp)] bg-cover left-0 w-full h-[100vh] z-[1000] ${
           openMenu ? "" : ""
         }`}
       >
