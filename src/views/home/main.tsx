@@ -2,6 +2,7 @@ import React from "react";
 import Banner from "./banner";
 import Mission from "./mission";
 import OurEvents from "./our-events";
+import Faqs from "./faqs";
 
 const Main = () => {
   return (
@@ -9,6 +10,7 @@ const Main = () => {
       <Banner />
       <Mission />
       <OurEvents />
+      <Faqs />
     </>
   );
 };
