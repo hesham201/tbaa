@@ -9,7 +9,7 @@ const Footer = () => {
       <div className="py-5 bg-black">
         <Container>
           <div className="flex flex-wrap flex-row gap-4 lg:gap-0 justify-between">
-            <div className="w-full sm:w-[calc(50%-15px)] lg:w-[30%]">
+            <div className="w-full sm:w-[calc(60%-15px)] lg:w-[30%]">
               <Link href={"/"}>
                 <Image
                   src={"/baad-footer-logo.webp"}
@@ -41,13 +41,11 @@ const Footer = () => {
                 <div className="relative w-12 h-6 before:content-[''] before:w-6 before:h-6 before:rounded-full before:bg-primary before:absolute before:top-0 before:left-0 after:content-[''] after:absolute after:bg-primary after:rounded-full after:top-0 after:right-2 after:w-6 after:h-6"></div>
                 <p>Follow Us</p>
               </div>
-              <ul>
+              <ul className="mb-4">
                 <li>Instagrem</li>
                 <li>LinkedIn</li>
                 <li>Facebook</li>
               </ul>
-            </div>
-            <div className="flex flex-col gap-3 w-[calc(50%-15px)] lg:w-[16%]">
               <div className="flex mb-4">
                 <div className="relative w-12 h-6 before:content-[''] before:w-6 before:h-6 before:rounded-full before:bg-primary before:absolute before:top-0 before:left-0 after:content-[''] after:absolute after:bg-primary after:rounded-full after:top-0 after:right-2 after:w-6 after:h-6"></div>
                 <p>Contact</p>
@@ -61,6 +59,7 @@ const Footer = () => {
                 </li>
               </ul>
             </div>
+            {/* <div className="flex flex-col gap-3 w-[calc(50%-15px)] lg:w-[16%]"></div> */}
             <div className="w-full sm:w-[calc(50%-15px)] lg:w-[17%]">
               <div className="flex gap-2 mb-4">
                 <div className="relative w-12 h-6 before:content-[''] before:w-6 before:h-6 before:rounded-full before:bg-primary before:absolute before:top-0 before:left-0 after:content-[''] after:absolute after:bg-primary after:rounded-full after:top-0 after:right-2 after:w-6 after:h-6"></div>
