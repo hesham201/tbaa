@@ -8,7 +8,7 @@ import Footer from "@/layout/footer";
 import Header from "@/layout/header";
 
 const LocomotiveProvider = ({ children }: { children: React.ReactNode }) => {
-  const scrollRef = useRef<HTMLDivElement>(null);
+  const scrollRef = useRef<HTMLBodyElement>(null);
 
   useEffect(() => {
     let scrollInstance: any; // eslint-disable-line
@@ -65,11 +65,9 @@ const LocomotiveProvider = ({ children }: { children: React.ReactNode }) => {
   }, []);
 
   return (
-    <body className={` antialiased`}>
+    <body ref={scrollRef} data-scroll-container className={` antialiased`}>
       <Header />
-      <main ref={scrollRef} data-scroll-container className="">
-        {children}
-      </main>
+      <main className="">{children}</main>
       <Footer />
     </body>
   );
