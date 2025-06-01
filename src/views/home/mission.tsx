@@ -221,7 +221,7 @@ const Mission = () => {
             key={item.headingTwo}
           >
             <div
-              className={`py-22 px-4 lg:w-1/2 flex flex-col justify-center data-welcome gap-3 shrink-0 ${
+              className={`py-10 lg:py-22 px-4 lg:w-1/2 flex flex-col justify-center data-welcome gap-3 shrink-0 ${
                 item.reverse ? "" : "ps-5 lg:ps-14"
               }`}
             >
