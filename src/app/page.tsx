@@ -1,12 +1,12 @@
-import Random from "@/components/random";
+// import Random from "@/components/random";
 import Main from "@/views/home/main";
-import Image from "next/image";
+// import Image from "next/image";
 
 export default function Home() {
   return (
     <>
       <Main />
-      <div className="grid ">
+      {/* <div className="grid ">
         <main className="">
           <div className="bg-white text-white h-[100vh]">hi</div>
           <div className="bg-black  text-white h-[100vh]">by</div>
@@ -61,7 +61,7 @@ export default function Home() {
             Go to nextjs.org →
           </a>
         </footer>
-      </div>
+      </div> */}
     </>
   );
 }

@@ -4,6 +4,8 @@ import { useEffect, useRef } from "react";
 import gsap from "gsap";
 import ScrollTrigger from "gsap/dist/ScrollTrigger";
 import "locomotive-scroll/dist/locomotive-scroll.min.css";
+import Footer from "@/layout/footer";
+import Header from "@/layout/header";
 
 const LocomotiveProvider = ({ children }: { children: React.ReactNode }) => {
   const scrollRef = useRef<HTMLDivElement>(null);
@@ -63,9 +65,13 @@ const LocomotiveProvider = ({ children }: { children: React.ReactNode }) => {
   }, []);
 
   return (
-    <main ref={scrollRef} data-scroll-container className="">
-      {children}
-    </main>
+    <body className={` antialiased`}>
+      <Header />
+      <main ref={scrollRef} data-scroll-container className="">
+        {children}
+      </main>
+      <Footer />
+    </body>
   );
 };
 
