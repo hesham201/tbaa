@@ -180,7 +180,7 @@ const Mission = () => {
   return (
     <div className="py-10" ref={animatedRef}>
       <Container>
-        <div className="flex flex-col gap-3">
+        <div className="flex flex-col gap-3 mb-6">
           <p className="text-center text-white relative" id="upper-para">
             <span className="px-2 inline-block">
               <span id="para-id">{parse(WELCOME_TO.upperPara)}</span>
@@ -202,14 +202,18 @@ const Mission = () => {
             }`}
             style={{
               background:
-                " linear-gradient(to bottom, white 0%, white 23.33%, rgba(152, 127, 81,.6) 23.33%, rgba(152, 127, 81,.6) 76.66%, white 76.66%, white 100%)",
+                " linear-gradient(to bottom, white 0%, white 19.33%, rgba(152, 127, 81,.6) 19.33%, rgba(152, 127, 81,.6) 86.66%, white 86.66%, white 100%)",
             }}
             ref={(el) => {
               itemRefs.current[index] = el;
             }} // 🔥 Attach ref here
             key={item.headingTwo}
           >
-            <div className="py-22 px-4 w-1/2 flex flex-col justify-center gap-3 shrink-0">
+            <div
+              className={`py-22 px-4 w-1/2 flex flex-col justify-center gap-3 shrink-0 ${
+                item.reverse ? "" : "ps-14"
+              }`}
+            >
               <h3 className="text-6xl">
                 <span
                   className="inline-block text-outline"
