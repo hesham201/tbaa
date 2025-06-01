@@ -8,17 +8,24 @@ const Footer = () => {
     <footer className=" text-white">
       <div className="py-5 bg-black">
         <Container>
-          <div className="grid grid-cols-4">
+          <div className="grid gap-3 grid-cols-4">
             <div>
               <Link href={"/"}>
                 <Image
-                  src={"/header-logo.png"}
-                  className="w-[150px] h-[100px] object-contain"
+                  src={"/footer-logo.png"}
+                  className="w-full h-[150px] object-contain"
                   alt="logo"
                   width={500}
                   height={500}
                 />
               </Link>
+              {/* <p>
+                The British Academy of Aeshetic Dentistry is the leading
+                authority of aesthetic dentistry in the UK and Europe. Our
+                members include world-class dentists, technicians, therapists
+                and specialists on our panel who stand at the pinnacle of their
+                respective fields and share a commitment to dental excellence.
+              </p> */}
             </div>
             <div>
               <div className="flex gap-2">
