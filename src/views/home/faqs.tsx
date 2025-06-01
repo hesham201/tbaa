@@ -32,7 +32,6 @@ const Faqs = () => {
             scroller: "[data-scroll-container]", // Remove if not using Locomotive Scroll
             start: "top 65%",
             end: "top 45%",
-            markers: true,
           },
         }
       );

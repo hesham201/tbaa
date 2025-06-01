@@ -77,7 +77,7 @@ const Banner = () => {
       </div>
       <div className="-mt-24 relative">
         <Container>
-          <div className="h-[450px]">
+          <div className="h-[300px] lg:h-[450px]">
             <div className="video-main-div relative scale-x-0 h-0 overflow-hidden origin-top mx-auto max-w-[800px] transition-all ">
               <div className="absolute z-10 inset-0 h-full w-full bg-primary video-bg"></div>
               <div className="video-div-main relative">
@@ -94,7 +94,13 @@ const Banner = () => {
                   dedicated to elevating dental artistry across the UK and
                   beyond.
                 </p>
-                <video src="/videos/header.mp4" loop autoPlay muted></video>
+                <video
+                  src="/videos/header.mp4"
+                  className="w-full h-full"
+                  loop
+                  autoPlay
+                  muted
+                ></video>
               </div>
             </div>
           </div>

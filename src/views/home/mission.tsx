@@ -56,7 +56,18 @@ const Mission = () => {
 
         const textOutline = ref.querySelector(".text-outline");
         if (!textOutline) return;
-
+        const dataDiv = ref.querySelector(".data-welcome");
+        gsap.from(dataDiv, {
+          y: 30,
+          opacity: 0,
+          duration: 0.5,
+          scrollTrigger: {
+            trigger: dataDiv,
+            scroller: "[data-scroll-container]",
+            start: "top 70%",
+            end: "top 0%",
+          },
+        });
         gsap.fromTo(
           ref.querySelector(".text-outline"),
           { x: 50 },
@@ -197,7 +208,7 @@ const Mission = () => {
 
         {WELCOME_TO.data.map((item, index) => (
           <div
-            className={`flex flex-row lg:justify-between gap-5 ${
+            className={`flex flex-col lg:flex-row lg:justify-between gap-5 ${
               item.reverse ? "lg:flex-row-reverse" : ""
             }`}
             style={{
@@ -210,8 +221,8 @@ const Mission = () => {
             key={item.headingTwo}
           >
             <div
-              className={`py-22 px-4 w-1/2 flex flex-col justify-center gap-3 shrink-0 ${
-                item.reverse ? "" : "ps-14"
+              className={`py-22 px-4 lg:w-1/2 flex flex-col justify-center data-welcome gap-3 shrink-0 ${
+                item.reverse ? "" : "ps-5 lg:ps-14"
               }`}
             >
               <h3 className="text-6xl">
@@ -235,7 +246,7 @@ const Mission = () => {
               ref={(el) => {
                 imageRefs.current[index] = el;
               }}
-              className="relative w-[45%] h-[500px] overflow-hidden"
+              className="relative lg:w-[45%] h-[500px] overflow-hidden"
             >
               <img
                 width={700}
