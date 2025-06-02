@@ -433,7 +433,7 @@ const Header = () => {
                 ></div>
                 {/* second line  */}
                 <div
-                  className={`w-full  h-[2px] top-1/2 -translate-y-1/2 absolute bg-black transition-all duration-300 ${
+                  className={`w-full h-[2px] top-1/2 -translate-y-1/2 absolute bg-black transition-all duration-300 ${
                     isHovered
                       ? "!w-[4px] h-[4px] rounded-full left-1/2 -translate-1/2"
                       : ""
