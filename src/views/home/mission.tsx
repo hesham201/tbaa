@@ -252,7 +252,7 @@ const Mission = () => {
                   }}
                   data-scroll
                   data-scroll-direction="horizontal"
-                  data-scroll-speed={item.reverse ? "-1.7" : "1"}
+                  data-scroll-speed={item.reverse ? "-1.7" : "1.7"}
                   className="relative lg:w-[35%] rounded-2xl h-[500px] overflow-hidden"
                 >
                   <img
