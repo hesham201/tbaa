@@ -151,7 +151,7 @@ const Header = () => {
     setDropdown(null);
 
     // ✅ Reset styles first
-    gsap.set(["#main-menu-nav", ".nav-items", "#overlay"], {
+    gsap.set(["#main-menu-nav", "#menu-fixed", ".nav-items", "#overlay"], {
       clearProps: "all",
     });
 
@@ -173,7 +173,7 @@ const Header = () => {
       {
         yPercent: -100,
         zIndex: 1000,
-        height: "100%",
+        height: "100vh",
         bottom: "100%",
       },
       "-=.5"

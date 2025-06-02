@@ -10,9 +10,9 @@ const OpenFaq = () => {
       <path
         d="M0.990234 13.4424L6.91543 7.49029L0.990235 1.5382"
         stroke="currentColor"
-        stroke-width="1.44178"
-        stroke-linecap="round"
-        stroke-linejoin="round"
+        strokeWidth="1.44178"
+        strokeLinecap="round"
+        strokeLinejoin="round"
       />
     </svg>
   );
