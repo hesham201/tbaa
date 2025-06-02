@@ -173,7 +173,7 @@ const Header = () => {
       {
         yPercent: -100,
         zIndex: 1000,
-        // height: "100%",
+        height: "100%",
         bottom: "100%",
       },
       "-=.5"
