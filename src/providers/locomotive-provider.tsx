@@ -47,7 +47,7 @@ const LocomotiveProvider = ({ children }: { children: React.ReactNode }) => {
       scrollInstance.on("scroll", ScrollTrigger.update);
 
       ScrollTrigger.addEventListener("refresh", () => scrollInstance.update());
-
+      window.LOCO_SCROLL = scrollInstance;
       // This is key to syncing on load
       setTimeout(() => {
         ScrollTrigger.refresh();
@@ -58,6 +58,7 @@ const LocomotiveProvider = ({ children }: { children: React.ReactNode }) => {
 
     return () => {
       scrollInstance?.destroy();
+      window.LOCO_SCROLL = undefined;
       ScrollTrigger.removeEventListener("refresh", () =>
         scrollInstance?.update()
       );

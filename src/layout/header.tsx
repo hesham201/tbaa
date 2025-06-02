@@ -9,6 +9,18 @@ import { NAV_ITEMS } from "@/constant/data";
 import Container from "@/components/container";
 import { CustomEase } from "gsap/CustomEase";
 gsap.registerPlugin(CustomEase);
+export {};
+
+declare global {
+  interface Window {
+    LOCO_SCROLL?: {
+      update: () => void;
+      start: () => void;
+      stop: () => void;
+    };
+  }
+}
+
 const Header = () => {
   const galleryRef = useRef<HTMLDivElement>(null);
   const [isHovered, setIsHovered] = useState(false);
@@ -151,7 +163,7 @@ const Header = () => {
     setDropdown(null);
 
     // ✅ Reset styles first
-    gsap.set(["#main-menu-nav", "#menu-fixed", ".nav-items", "#overlay"], {
+    gsap.set(["#main-menu-nav", ".nav-items", "#overlay"], {
       clearProps: "all",
     });
 
@@ -173,8 +185,11 @@ const Header = () => {
       {
         yPercent: -100,
         zIndex: 1000,
-        height: "100vh",
+        height: "100%",
         bottom: "100%",
+        onComplete: () => {
+          window.LOCO_SCROLL?.stop();
+        },
       },
       "-=.5"
     );
@@ -460,12 +475,19 @@ const Header = () => {
 
       <div
         id="menu-fixed"
-        className={`fixed top-full bg-[url(/menu-bg.webp)] bg-cover left-0 w-full z-[1000] ${
+        // data-scroll-target
+        data-scroll-section
+        className={`fixed top-full left-0 w-full h-full z-[1000000] ${
           openMenu ? "" : ""
         }`}
-        style={{ height: "100vh !important" }}
       >
-        <nav className="h-full relative">
+        <nav
+          data-scroll
+          data-scroll-sticky
+          data-scroll-offset="0"
+          data-scroll-target="#menu"
+          className="h-[100vh] bg-[url(/menu-bg.webp)] bg-cover w-full"
+        >
           <div className="absolute top-0 w-full" id="main-menu-nav">
             <Container>
               <div className="flex justify-between">
@@ -518,7 +540,7 @@ const Header = () => {
                     <li key={nav.name} className="nav-items">
                       {nav.isDropdown ? (
                         <button
-                          className="text-2xl lg:text-4xl cursor-pointer transition-all duration-300 tracking-normal origin-top-left hover:tracking-wider hover:skew-1 inline-block"
+                          className="text-4xl cursor-pointer transition-all duration-300 tracking-normal origin-top-left hover:tracking-wider hover:skew-1 inline-block"
                           onClick={() => dropdownOpen(index)}
                         >
                           <span className="text-lg">0{index + 1}</span>{" "}
@@ -526,7 +548,7 @@ const Header = () => {
                         </button>
                       ) : (
                         <Link
-                          className="text-2xl lg:text-4xl transition-all duration-300 tracking-normal origin-top-left hover:tracking-wider hover:skew-[1deg] inline-block"
+                          className="text-4xl transition-all duration-300 tracking-normal origin-top-left hover:tracking-wider hover:skew-[1deg] inline-block"
                           href={nav.link}
                           onClick={CloseMenuFunct}
                         >
@@ -553,7 +575,7 @@ const Header = () => {
                     {NAV_ITEMS[dropdown].subItems.map((nav, index) => (
                       <li key={nav.name}>
                         <Link
-                          className="text-2xl lg:text-4xl lg:text-nowrap cursor-pointer transition-all duration-300 tracking-normal origin-top-left hover:tracking-wider hover:skew-1 inline-block"
+                          className="text-4xl text-nowrap cursor-pointer transition-all duration-300 tracking-normal origin-top-left hover:tracking-wider hover:skew-1 inline-block"
                           href={nav.link}
                           onClick={CloseMenuFunct}
                         >
