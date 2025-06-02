@@ -61,10 +61,10 @@ const Banner = () => {
   }, []);
   return (
     <div ref={headerRef}>
-      <div className=" upper w-full bg-dark origin-bottom scale-y-0">
+      <div className=" upper w-full bg-dark origin-bottom scale-y-0 ">
         <Container>
-          <div className="pt-28 pb-44">
-            <h1 className="text-white text-5xl" id="home-h1">
+          <div className="py-28 w-[40%] ">
+            <h1 className="text-white mb-3 text-5xl" id="home-h1">
               The{" "}
               <span className="relative inline-block text-should-change transition-all">
                 <span className="relative z-1">British</span>{" "}
@@ -72,28 +72,24 @@ const Banner = () => {
               </span>{" "}
               Academy of Aesthetic Dentistry
             </h1>
+            <p className=" text-white  video-para" id="video-para">
+              The British Academy of Aesthetic Dentistry (BAAD) Champions
+              excellence in aesthetic dentistry, bringing together leading
+              clinicians, technicians, and educators to promote the highest
+              standards of clinical care, education, and innovation. Through
+              world-class events, collaborative learning, and a commitment to
+              advancing aesthetic outcomes, BAAD supports professionals
+              dedicated to elevating dental artistry across the UK and beyond.
+            </p>
           </div>
         </Container>
       </div>
-      <div className="-mt-24 relative">
+      <div className="-mt-[280px] relative z-10">
         <Container>
           <div className="h-[300px] lg:h-[450px]">
-            <div className="video-main-div relative scale-x-0 h-0 overflow-hidden origin-top mx-auto max-w-[800px] transition-all ">
+            <div className="video-main-div relative scale-x-0 h-0 overflow-hidden origin-top ms-auto max-w-[58%] transition-all ">
               <div className="absolute z-10 inset-0 h-full w-full bg-primary video-bg"></div>
               <div className="video-div-main relative">
-                <p
-                  className="absolute bottom-2 w-full px-2 text-center text-white  video-para"
-                  id="video-para"
-                >
-                  The British Academy of Aesthetic Dentistry (BAAD) Champions
-                  excellence in aesthetic dentistry, bringing together leading
-                  clinicians, technicians, and educators to promote the highest
-                  standards of clinical care, education, and innovation. Through
-                  world-class events, collaborative learning, and a commitment
-                  to advancing aesthetic outcomes, BAAD supports professionals
-                  dedicated to elevating dental artistry across the UK and
-                  beyond.
-                </p>
                 <video
                   src="/videos/header.mp4"
                   className="w-full h-full"
