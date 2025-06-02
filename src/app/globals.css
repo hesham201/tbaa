@@ -30,9 +30,9 @@
 }
 
 @theme {
-  --color-primary: #987F51;
-  --color-secondary: #031A37;
-  --color-tertiary: #031A37;
+  --color-primary: #CFAE91;
+  --color-midnight: #031A37;
+  --color-chalk: #F8F8F8;
   --color-light-dark: #585858;
   --color-light-primary: #f5f0eb;
   --color-dark: #181818;

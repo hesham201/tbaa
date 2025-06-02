@@ -61,14 +61,14 @@ const Banner = () => {
   }, []);
   return (
     <div ref={headerRef}>
-      <div className=" upper w-full bg-dark origin-bottom scale-y-0 ">
+      <div className=" upper w-full bg-midnight origin-bottom scale-y-0 ">
         <Container>
           <div className="py-16 w-[45%] ">
             <h1 className="text-primary mb-3 text-6xl" id="home-h1">
               The{" "}
               <span className="relative inline-block text-should-change transition-all">
                 <span className="relative z-1">British</span>{" "}
-                <span className="bg-white absolute left-0 bottom-0 w-full h-full text-bg scale-y-0 origin-bottom"></span>
+                <span className="bg-chalk absolute left-0 bottom-0 w-full h-full text-bg scale-y-0 origin-bottom"></span>
               </span>{" "}
               Academy of Aesthetic Dentistry
             </h1>

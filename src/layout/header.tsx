@@ -589,23 +589,48 @@ const Header = () => {
                 )}
               </div>
               <div
-                className="flex flex-col gap-2 w-[25%] ps-6 border-l border-black"
+                className="flex flex-col gap-2 w-[25%] ps-6 border-l border-midnight"
                 id="address"
               >
                 <div>
-                  <p>Studio</p>
-                  <p>Address</p>
+                  <p>
+                    The British Academy of Aesthetic Dentistry, Gower House, 18
+                    Ashmere Lane, Felpham, West Sussex, PO22 7QT
+                  </p>
                 </div>
                 <div>
                   <p>Contact</p>
                   <ul>
-                    <li>telephone</li>
-                    <li>email</li>
+                    <li>
+                      <a href="mailto:info@baad.org.uk">info@baad.org.uk</a>
+                    </li>
+                    <li>
+                      <a href="tel:+44 (0)1243 585577">+44 (0)1243 585577</a>
+                    </li>
                   </ul>
                 </div>
                 <div>
                   <p>Follow us</p>
-                  <p>Icons</p>
+                  <div className="flex gap-2 items-center">
+                    <div>
+                      <Image
+                        src={"/facebook.svg"}
+                        width={100}
+                        height={100}
+                        className="w-8 h-8"
+                        alt="logo"
+                      />
+                    </div>
+                    <div>
+                      <Image
+                        src={"/instagram.svg"}
+                        width={100}
+                        height={100}
+                        className="w-8 h-8"
+                        alt="logo"
+                      />
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>

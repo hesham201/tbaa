@@ -42,7 +42,7 @@ const Footer = () => {
                 <p>Follow Us</p>
               </div>
               <ul className="mb-4">
-                <li>Instagrem</li>
+                <li>Instagram</li>
                 <li>LinkedIn</li>
                 <li>Facebook</li>
               </ul>
