@@ -149,7 +149,7 @@ const Faqs = () => {
             Questions
           </span>
         </h2>
-        <div className=" grid relative grid-cols-1 gap-8">
+        <div className=" grid relative grid-cols-2 gap-8">
           {DENTAL_FAQ?.map((faq, index) => (
             <div
               key={faq?.question}

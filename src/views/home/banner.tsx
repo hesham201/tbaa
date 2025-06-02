@@ -63,16 +63,16 @@ const Banner = () => {
     <div ref={headerRef}>
       <div className=" upper w-full bg-dark origin-bottom scale-y-0 ">
         <Container>
-          <div className="py-28 w-[40%] ">
-            <h1 className="text-white mb-3 text-5xl" id="home-h1">
+          <div className="py-16 w-[45%] ">
+            <h1 className="text-primary mb-3 text-6xl" id="home-h1">
               The{" "}
               <span className="relative inline-block text-should-change transition-all">
                 <span className="relative z-1">British</span>{" "}
-                <span className="bg-primary absolute left-0 bottom-0 w-full h-full text-bg scale-y-0 origin-bottom"></span>
+                <span className="bg-white absolute left-0 bottom-0 w-full h-full text-bg scale-y-0 origin-bottom"></span>
               </span>{" "}
               Academy of Aesthetic Dentistry
             </h1>
-            <p className=" text-white  video-para" id="video-para">
+            <p className="text-xl text-white  video-para" id="video-para">
               Championing excellence in aesthetic dentistry to promote the
               highest standard of clinical care, education and innovation by
               bringing together the industry’s brightest minds.
@@ -83,7 +83,7 @@ const Banner = () => {
       <div className="-mt-[280px] relative z-10">
         <Container>
           <div className="h-[300px] lg:h-[450px]">
-            <div className="video-main-div relative scale-x-0 h-0 overflow-hidden origin-top ms-auto max-w-[58%] transition-all ">
+            <div className="video-main-div relative scale-x-0 h-0 overflow-hidden origin-top ms-auto max-w-[52%] transition-all ">
               <div className="absolute z-10 inset-0 h-full w-full bg-primary video-bg"></div>
               <div className="video-div-main relative">
                 <video

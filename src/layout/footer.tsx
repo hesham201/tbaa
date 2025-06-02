@@ -29,7 +29,16 @@ const Footer = () => {
             </div>
             <div className="w-[calc(50%-15px)] lg:w-[16%] relative">
               <div className="flex mb-4">
-                <div className="relative w-12 h-6 before:content-[''] before:w-6 before:h-6 before:rounded-full before:bg-primary before:absolute before:top-0 before:left-0 after:content-[''] after:absolute after:bg-primary after:rounded-full after:top-0 after:right-2 after:w-6 after:h-6"></div>
+                {/* <div className="relative w-12 h-6 before:content-[''] before:w-6 before:h-6 before:rounded-full before:bg-primary before:absolute before:top-0 before:left-0 after:content-[''] after:absolute after:bg-primary after:rounded-full after:top-0 after:right-2 after:w-6 after:h-6"></div> */}
+                <div className="">
+                  <Image
+                    src={"/baad-footer-icon.webp"}
+                    alt="image"
+                    height={100}
+                    className="w-8 h-8 object-contain"
+                    width={100}
+                  />
+                </div>
                 <p>Follow Us</p>
               </div>
               <ul className="mb-4">
@@ -38,7 +47,16 @@ const Footer = () => {
                 <li>Facebook</li>
               </ul>
               <div className="flex mb-4">
-                <div className="relative w-12 h-6 before:content-[''] before:w-6 before:h-6 before:rounded-full before:bg-primary before:absolute before:top-0 before:left-0 after:content-[''] after:absolute after:bg-primary after:rounded-full after:top-0 after:right-2 after:w-6 after:h-6"></div>
+                {/* <div className="relative w-12 h-6 before:content-[''] before:w-6 before:h-6 before:rounded-full before:bg-primary before:absolute before:top-0 before:left-0 after:content-[''] after:absolute after:bg-primary after:rounded-full after:top-0 after:right-2 after:w-6 after:h-6"></div> */}
+                <div className="">
+                  <Image
+                    src={"/baad-footer-icon.webp"}
+                    alt="image"
+                    height={100}
+                    className="w-8 h-8 object-contain"
+                    width={100}
+                  />
+                </div>
                 <p>Contact</p>
               </div>
               <ul>
@@ -62,7 +80,16 @@ const Footer = () => {
             {/* <div className="flex flex-col gap-3 w-[calc(50%-15px)] lg:w-[16%]"></div> */}
             <div className="w-full sm:w-[calc(50%-15px)] lg:w-[17%]">
               <div className="flex gap-2 mb-4">
-                <div className="relative w-12 h-6 before:content-[''] before:w-6 before:h-6 before:rounded-full before:bg-primary before:absolute before:top-0 before:left-0 after:content-[''] after:absolute after:bg-primary after:rounded-full after:top-0 after:right-2 after:w-6 after:h-6"></div>
+                {/* <div className="relative w-12 h-6 before:content-[''] before:w-6 before:h-6 before:rounded-full before:bg-primary before:absolute before:top-0 before:left-0 after:content-[''] after:absolute after:bg-primary after:rounded-full after:top-0 after:right-2 after:w-6 after:h-6"></div> */}
+                <div className="">
+                  <Image
+                    src={"/baad-footer-icon.webp"}
+                    alt="image"
+                    height={100}
+                    className="w-8 h-8 object-contain"
+                    width={100}
+                  />
+                </div>
                 <p>Address</p>
               </div>
               {/* <ul>
@@ -71,14 +98,14 @@ const Footer = () => {
               </ul> */}
 
               <p className="">
-                The British Academy of Aesthetic Dentistry Gower House 18
-                Ashmere Lane Felpham West Sussex PO22 7QT
+                The British Academy of Aesthetic Dentistry, Gower House, 18
+                Ashmere Lane, Felpham, West Sussex, PO22 7QT
               </p>
             </div>
           </div>
         </Container>
       </div>
-      <div className="py-5 bg-black/90">
+      {/* <div className="py-5 bg-black/90">
         <Container>
           <ul className="flex flex-wrap justify-center gap-3">
             <li>
@@ -98,12 +125,17 @@ const Footer = () => {
             </li>
           </ul>
         </Container>
-      </div>
+      </div> */}
       <div className="py-5 bg-black">
         <Container>
           <div>
-            <p className="text-center">
+            <p className="text-center flex justify-center gap-2">
               © 1996 - 2025 BAAD. All Rights Reserved{" "}
+              <p>
+                <a href="">Privacy Policy</a> |{" "}
+                <a href="">Terms & Conditions</a> |{" "}
+                <a href="">Complaints Procedure</a>
+              </p>
             </p>
             <p className="text-center">
               <Link href={"https://www.smile-mc.co.uk/"} target="_blank">
