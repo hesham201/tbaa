@@ -129,12 +129,11 @@ const Footer = () => {
       <div className="py-5 bg-black">
         <Container>
           <div>
-            <p className="text-center flex justify-center gap-2">
+            <p className="text-center">
               © 1996 - 2025 BAAD. All Rights Reserved{" "}
-              <p>
-                <a href="">Privacy Policy</a> |{" "}
-                <a href="">Terms & Conditions</a> |{" "}
-                <a href="">Complaints Procedure</a>
+              <p className="text-center">
+                <a href="">Refund Policy</a> | <a href="">Terms & Conditions</a>{" "}
+                | <a href="">Privacy Policy</a>
               </p>
             </p>
             <p className="text-center">
