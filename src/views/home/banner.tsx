@@ -73,13 +73,9 @@ const Banner = () => {
               Academy of Aesthetic Dentistry
             </h1>
             <p className=" text-white  video-para" id="video-para">
-              The British Academy of Aesthetic Dentistry (BAAD) Champions
-              excellence in aesthetic dentistry, bringing together leading
-              clinicians, technicians, and educators to promote the highest
-              standards of clinical care, education, and innovation. Through
-              world-class events, collaborative learning, and a commitment to
-              advancing aesthetic outcomes, BAAD supports professionals
-              dedicated to elevating dental artistry across the UK and beyond.
+              Championing excellence in aesthetic dentistry to promote the
+              highest standard of clinical care, education and innovation by
+              bringing together the industry’s brightest minds.
             </p>
           </div>
         </Container>

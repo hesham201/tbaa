@@ -64,21 +64,21 @@ const Mission = () => {
           scrollTrigger: {
             trigger: dataDiv,
             scroller: "[data-scroll-container]",
-            start: "top 70%",
+            start: "top 60%",
             end: "top 0%",
           },
         });
         gsap.fromTo(
           ref.querySelector(".text-outline"),
-          { x: 50 },
+          { x: 60 },
           {
             x: 0,
             ease: "power2.out",
             scrollTrigger: {
-              trigger: ref,
+              trigger: textOutline,
               scroller: "[data-scroll-container]",
-              scrub: 3,
-              start: "top 60%",
+              scrub: 2,
+              start: "top 80%",
               end: "top 0%",
             },
           }
@@ -211,7 +211,7 @@ const Mission = () => {
           <div
             style={{
               background:
-                " linear-gradient(to bottom, white 0%, white 30.33%, rgba(152, 127, 81,.6) 30.33%, rgba(152, 127, 81,.6) 100%)",
+                " linear-gradient(to bottom, white 0%, white 30.33%, rgba(152, 127, 81,.6) 30.33%, rgba(152, 127, 81,.6) 85%,white 85%, white 100%)",
             }}
             ref={(el) => {
               itemRefs.current[index] = el;
@@ -229,7 +229,7 @@ const Mission = () => {
                     item.reverse ? "" : "ps-5 lg:ps-14"
                   }`}
                 >
-                  <h3 className="text-6xl">
+                  <h3 className="text-7xl">
                     <span
                       className="inline-block text-outline"
                       //   data-scroll
@@ -252,7 +252,7 @@ const Mission = () => {
                   }}
                   data-scroll
                   data-scroll-direction="horizontal"
-                  data-scroll-speed="-1"
+                  data-scroll-speed={item.reverse ? "-1.7" : "1"}
                   className="relative lg:w-[35%] rounded-2xl h-[500px] overflow-hidden"
                 >
                   <img
