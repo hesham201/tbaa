@@ -169,11 +169,11 @@ const Header = () => {
     });
 
     tl.to(
-      "#menu",
+      "#menu-fixed",
       {
         yPercent: -100,
         zIndex: 1000,
-        height: "100%",
+        // height: "100%",
         bottom: "100%",
       },
       "-=.5"
@@ -281,13 +281,13 @@ const Header = () => {
     //   yPercent: 100,
     // });
     tl.to(
-      "#menu",
+      "#menu-fixed",
       {
         yPercent: 200,
         duration: 0.2,
         onComplete: () => {
           // Optional reset values
-          gsap.set("#menu", { clearProps: "all" });
+          gsap.set("#menu-fixed", { clearProps: "all" });
           gsap.set("#main-menu-nav", { clearProps: "all" });
           gsap.set(".nav-items", { clearProps: "all" });
           gsap.set("#address div", { clearProps: "all" });
@@ -459,7 +459,7 @@ const Header = () => {
       </div>
 
       <div
-        id="menu"
+        id="menu-fixed"
         className={`fixed top-full bg-[url(/menu-bg.webp)] bg-cover left-0 w-full z-[1000] ${
           openMenu ? "" : ""
         }`}
