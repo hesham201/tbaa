@@ -460,9 +460,10 @@ const Header = () => {
 
       <div
         id="menu"
-        className={`fixed top-full bg-[url(/menu-bg.webp)] bg-no-repeat left-0 w-full h-full z-[1000] ${
+        className={`fixed top-full bg-[url(/menu-bg.webp)] bg-cover left-0 w-full z-[1000] ${
           openMenu ? "" : ""
         }`}
+        style={{ height: "100vh" }}
       >
         <nav className="h-full relative">
           <div className="absolute top-0 w-full" id="main-menu-nav">
