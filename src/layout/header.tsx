@@ -302,6 +302,7 @@ const Header = () => {
         duration: 0.2,
         onComplete: () => {
           // Optional reset values
+          window.LOCO_SCROLL?.start();
           gsap.set("#menu-fixed", { clearProps: "all" });
           gsap.set("#main-menu-nav", { clearProps: "all" });
           gsap.set(".nav-items", { clearProps: "all" });
@@ -396,7 +397,13 @@ const Header = () => {
   // );
   return (
     <>
-      <header ref={galleryRef}>
+      <header
+        // data-scroll
+        // data-scroll-sticky
+        // data-scroll-target="#body"
+        ref={galleryRef}
+        className=""
+      >
         <Container>
           <div className="flex justify-between items-center">
             <Link href={"/"}>
@@ -476,18 +483,12 @@ const Header = () => {
       <div
         id="menu-fixed"
         // data-scroll-target
-        data-scroll-section
+        // data-scroll-section
         className={`fixed top-full left-0 w-full h-full z-[1000000] ${
           openMenu ? "" : ""
         }`}
       >
-        <nav
-          data-scroll
-          data-scroll-sticky
-          data-scroll-offset="0"
-          data-scroll-target="#menu"
-          className="h-[100vh] bg-[url(/menu-bg.webp)] bg-cover w-full"
-        >
+        <nav className="h-[100vh] bg-[url(/menu-bg.webp)] bg-cover w-full">
           <div className="absolute top-0 w-full" id="main-menu-nav">
             <Container>
               <div className="flex justify-between">

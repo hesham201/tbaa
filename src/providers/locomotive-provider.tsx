@@ -66,7 +66,13 @@ const LocomotiveProvider = ({ children }: { children: React.ReactNode }) => {
   }, []);
 
   return (
-    <body ref={scrollRef} data-scroll-container className={` antialiased`}>
+    <body
+      ref={scrollRef}
+      data-scroll-container
+      data-scroll-section
+      id="body"
+      className={` antialiased`}
+    >
       <Header />
       <main className="">{children}</main>
       <Footer />
