@@ -43,7 +43,7 @@ const OurEvents = () => {
         scrollTrigger: {
           trigger: "#our-events-heading",
           scroller: "[data-scroll-container]", // Remove if not using Locomotive Scroll
-          start: "top 80%",
+          start: "top 76%",
           end: "bottom top",
         },
       });
@@ -75,10 +75,11 @@ const OurEvents = () => {
       <div className="relative z-10">
         <Container>
           <div className="grid grid-cols-1 lg:grid-cols-2 lg:min-h-[70vh]">
-            <div className="flex flex-col justify-center gap-6 text-white">
-              <HeadingTwo className="mb-3" id="our-events-heading">
-                Our Events
-              </HeadingTwo>
+            <div
+              className="flex flex-col justify-center gap-6 text-white"
+              id="our-events-heading"
+            >
+              <HeadingTwo className="mb-3">Our Events</HeadingTwo>
               <p className="text-lg">
                 The British Academy of Aesthetic Dentistry hosts a range of
                 events designed to inspire, educate, and connect professionals
