@@ -65,10 +65,11 @@ const Faqs = () => {
             ease: "power3.out",
             scrollTrigger: {
               trigger: bgWrapperRefFAQS.current,
-              start: "top 85%", // trigger point
+              start: "top 70%", // trigger point
               end: "bottom 60%",
               toggleActions: "play none none reverse",
               scroller: "[data-scroll-container]", // include only if using Locomotive
+              markers: true,
             },
           }
         );

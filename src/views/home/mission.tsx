@@ -205,59 +205,66 @@ const Mission = () => {
             {parse(WELCOME_TO.heading)}
           </HeadingTwo>
         </div>
-
+      </Container>
+      <div className="grid grid-cols-1 gap-3">
         {WELCOME_TO.data.map((item, index) => (
           <div
-            className={`flex flex-col lg:flex-row lg:justify-between gap-5 ${
-              item.reverse ? "lg:flex-row-reverse" : ""
-            }`}
             style={{
               background:
-                " linear-gradient(to bottom, white 0%, white 19.33%, rgba(152, 127, 81,.6) 19.33%, rgba(152, 127, 81,.6) 86.66%, white 86.66%, white 100%)",
+                " linear-gradient(to bottom, white 0%, white 30.33%, rgba(152, 127, 81,.6) 30.33%, rgba(152, 127, 81,.6) 100%)",
             }}
             ref={(el) => {
               itemRefs.current[index] = el;
             }} // 🔥 Attach ref here
             key={item.headingTwo}
           >
-            <div
-              className={`py-10 lg:py-22 px-4 lg:w-1/2 flex flex-col justify-center data-welcome gap-3 shrink-0 ${
-                item.reverse ? "" : "ps-5 lg:ps-14"
-              }`}
-            >
-              <h3 className="text-6xl">
-                <span
-                  className="inline-block text-outline"
-                  //   data-scroll
-                  //   data-scroll-direction="horizontal"
-                  //   data-scroll-speed="-1"
+            <Container>
+              <div
+                className={`flex flex-col lg:flex-row lg:justify-between gap-5 ${
+                  item.reverse ? "lg:flex-row-reverse" : ""
+                }`}
+              >
+                <div
+                  className={`py-10 lg:py-22 px-4 lg:w-1/2 flex flex-col justify-center data-welcome gap-3 shrink-0 ${
+                    item.reverse ? "" : "ps-5 lg:ps-14"
+                  }`}
                 >
-                  {parse(item.heading)}
-                </span>{" "}
-                <br />
-                <span>{parse(item.headingTwo)}</span>
-              </h3>
-              <p>{parse(item.para)}</p>
-              <div className="flex justify-center lg:block">
-                <Button href={item.href}>{item.btn}</Button>
+                  <h3 className="text-6xl">
+                    <span
+                      className="inline-block text-outline"
+                      //   data-scroll
+                      //   data-scroll-direction="horizontal"
+                      //   data-scroll-speed="-1"
+                    >
+                      {parse(item.heading)}
+                    </span>{" "}
+                    <br />
+                    <span>{parse(item.headingTwo)}</span>
+                  </h3>
+                  <p>{parse(item.para)}</p>
+                  <div className="flex justify-center lg:block">
+                    <Button href={item.href}>{item.btn}</Button>
+                  </div>
+                </div>
+                <div
+                  ref={(el) => {
+                    imageRefs.current[index] = el;
+                  }}
+                  data-scroll
+                  data-scroll-direction="horizontal"
+                  data-scroll-speed="-1"
+                  className="relative lg:w-[35%] rounded-2xl h-[500px] overflow-hidden"
+                >
+                  <img
+                    width={700}
+                    height={700}
+                    src={item.image}
+                    className="absolute top-0 left-0 w-full h-auto min-h-full object-cover will-change-transform"
+                    alt="image"
+                  />
+                </div>
               </div>
-            </div>
-            <div
-              ref={(el) => {
-                imageRefs.current[index] = el;
-              }}
-              className="relative lg:w-[45%] h-[500px] overflow-hidden"
-            >
-              <img
-                width={700}
-                height={700}
-                src={item.image}
-                className="absolute top-0 left-0 w-full h-auto min-h-full object-cover will-change-transform"
-                alt="image"
-              />
-            </div>
-
-            {/* <div
+              {/* <div
               className="w-[45%] h-[500px] overflow-hidden relative"
               ref={(el) => {
                 imageRefs.current[index] = el;
@@ -278,9 +285,10 @@ const Mission = () => {
                 />
               </div>
             </div> */}
+            </Container>
           </div>
         ))}
-      </Container>
+      </div>
     </div>
   );
 };
