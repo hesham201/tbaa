@@ -201,7 +201,7 @@ const Mission = () => {
               ></span>
             </span>
           </p>
-          <HeadingTwo className="text-center text-5xl">
+          <HeadingTwo className="text-center">
             {parse(WELCOME_TO.heading)}
           </HeadingTwo>
         </div>

@@ -10,7 +10,7 @@ const HeadingTwo = ({
   return (
     <h2
       id={id ? id : "heading-two"}
-      className={`text-4xl font-two font-bold  ${className ? className : ""}`}
+      className={`text-5xl font-two font-bold  ${className ? className : ""}`}
     >
       {children}
     </h2>
