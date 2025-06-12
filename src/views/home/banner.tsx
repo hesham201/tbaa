@@ -82,7 +82,7 @@ const Banner = () => {
       </div>
       <div className="-mt-[280px] relative z-10">
         <Container>
-          <div className="h-[300px] lg:h-[450px]">
+          <div className="h-[300px] lg:h-[380px]">
             <div className="video-main-div relative scale-x-0 h-0 overflow-hidden origin-top ms-auto max-w-[52%] transition-all ">
               <div className="absolute z-10 inset-0 h-full w-full bg-primary video-bg"></div>
               <div className="video-div-main relative">
