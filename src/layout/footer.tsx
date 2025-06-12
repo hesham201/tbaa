@@ -42,9 +42,23 @@ const Footer = () => {
                 <p>Follow Us</p>
               </div>
               <ul className="mb-4">
-                <li>Instagram</li>
-                <li>LinkedIn</li>
-                <li>Facebook</li>
+                <li>
+                  <a
+                    href="https://www.instagram.com/baadaestheticdentistry/"
+                    target="_blank"
+                  >
+                    Instagram
+                  </a>
+                </li>
+                {/* <li>LinkedIn</li> */}
+                <li>
+                  <a
+                    href="https://www.facebook.com/BAADacademy/"
+                    target="_blank"
+                  >
+                    Facebook
+                  </a>
+                </li>
               </ul>
               <div className="flex mb-4">
                 {/* <div className="relative w-12 h-6 before:content-[''] before:w-6 before:h-6 before:rounded-full before:bg-primary before:absolute before:top-0 before:left-0 after:content-[''] after:absolute after:bg-primary after:rounded-full after:top-0 after:right-2 after:w-6 after:h-6"></div> */}
@@ -138,7 +152,7 @@ const Footer = () => {
             </p>
             <p className="text-center">
               <Link href={"https://www.smile-mc.co.uk/"} target="_blank">
-                Site Design by Smile Marketing & Consultancy
+                site designed and maintained by smile marketing & consultancy
               </Link>
             </p>
           </div>

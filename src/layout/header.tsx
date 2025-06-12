@@ -613,22 +613,32 @@ const Header = () => {
                   <p>Follow us</p>
                   <div className="flex gap-2 items-center">
                     <div>
-                      <Image
-                        src={"/facebook.svg"}
-                        width={100}
-                        height={100}
-                        className="w-8 h-8"
-                        alt="logo"
-                      />
+                      <a
+                        href="https://www.facebook.com/BAADacademy/"
+                        target="_blank"
+                      >
+                        <Image
+                          src={"/facebook.svg"}
+                          width={100}
+                          height={100}
+                          className="w-8 h-8"
+                          alt="logo"
+                        />
+                      </a>
                     </div>
                     <div>
-                      <Image
-                        src={"/instagram.svg"}
-                        width={100}
-                        height={100}
-                        className="w-8 h-8"
-                        alt="logo"
-                      />
+                      <a
+                        href="https://www.instagram.com/baadaestheticdentistry/"
+                        target="_blank"
+                      >
+                        <Image
+                          src={"/instagram.svg"}
+                          width={100}
+                          height={100}
+                          className="w-8 h-8"
+                          alt="logo"
+                        />
+                      </a>
                     </div>
                   </div>
                 </div>
