@@ -6,9 +6,9 @@ import gsap from "gsap";
 import ScrollTrigger from "gsap/dist/ScrollTrigger";
 import Container from "@/components/container";
 import parse from "html-react-parser";
-import HeadingTwo from "@/components/heading-two";
+// import HeadingTwo from "@/components/heading-two";
 import { WELCOME_TO } from "@/constant/data";
-import SplitType from "split-type";
+// import SplitType from "split-type";
 import Button from "@/components/button";
 // import Image from "next/image";
 gsap.registerPlugin(ScrollTrigger);
@@ -19,37 +19,37 @@ const Mission = () => {
   useLayoutEffect(() => {
     // let ctx = gsap.context(() => {}, animatedRef);
     const timeout = setTimeout(() => {
-      const tl = gsap.timeline({
-        scrollTrigger: {
-          trigger: animatedRef.current,
-          scroller: "[data-scroll-container]", // required for LocomotiveScroll
-          start: "top 90%",
-          end: "top 40%",
-        },
-      });
-      const splitUpperMenu = new SplitType("#upper-para", {
-        types: "words,chars",
-      });
-      const splitHeadingTwo = new SplitType("#heading-two-span", {
-        types: "words,chars",
-      });
-      tl.to("#span-id", {
-        scaleY: 1,
-        zIndex: 0,
-      });
-      tl.to("#para-id", {
-        color: "white",
-        zIndex: 1,
-      });
-      tl.from(splitUpperMenu.words, {
-        opacity: 0,
-        y: 10,
-        stagger: 0.2,
-      });
-      tl.to(splitHeadingTwo.chars, {
-        color: "#987F51",
-        stagger: 0.1,
-      });
+      // const tl = gsap.timeline({
+      //   scrollTrigger: {
+      //     trigger: animatedRef.current,
+      //     scroller: "[data-scroll-container]", // required for LocomotiveScroll
+      //     start: "top 90%",
+      //     end: "top 40%",
+      //   },
+      // });
+      // const splitUpperMenu = new SplitType("#upper-para", {
+      //   types: "words,chars",
+      // });
+      // const splitHeadingTwo = new SplitType("#heading-two-span", {
+      //   types: "words,chars",
+      // });
+      // tl.to("#span-id", {
+      //   scaleY: 1,
+      //   zIndex: 0,
+      // });
+      // tl.to("#para-id", {
+      //   color: "white",
+      //   zIndex: 1,
+      // });
+      // tl.from(splitUpperMenu.words, {
+      //   opacity: 0,
+      //   y: 10,
+      //   stagger: 0.2,
+      // });
+      // tl.to(splitHeadingTwo.chars, {
+      //   color: "#987F51",
+      //   stagger: 0.1,
+      // });
       // Animate each item in the map individually
       itemRefs.current.forEach((ref) => {
         if (!ref) return;
@@ -192,7 +192,7 @@ const Mission = () => {
     <div className="py-10" ref={animatedRef}>
       <Container>
         <div className="flex flex-col gap-3 mb-6">
-          <p className="text-center text-white relative" id="upper-para">
+          {/* <p className="text-center text-white relative" id="upper-para">
             <span className="px-2 inline-block">
               <span id="para-id">{parse(WELCOME_TO.upperPara)}</span>
               <span
@@ -200,10 +200,10 @@ const Mission = () => {
                 className="absolute inset-0 origin-top w-full h-full scale-y-0 bg-primary"
               ></span>
             </span>
-          </p>
-          <HeadingTwo className="text-center">
+          </p> */}
+          {/* <HeadingTwo className="text-center">
             {parse(WELCOME_TO.heading)}
-          </HeadingTwo>
+          </HeadingTwo> */}
         </div>
       </Container>
       <div className="grid grid-cols-1 gap-3">

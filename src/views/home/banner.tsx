@@ -54,10 +54,10 @@ const Banner = () => {
       opacity: 0,
       stagger: 0.2,
     });
-    tl.to(".text-bg", {
-      scaleY: 1,
-      transformOrigin: "bottom",
-    });
+    // tl.to(".text-bg", {
+    //   scaleY: 1,
+    //   transformOrigin: "bottom",
+    // });
   }, []);
   return (
     <div ref={headerRef}>

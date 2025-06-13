@@ -76,7 +76,7 @@ export const WELCOME_TO = {
       heading: "Our",
       headingTwo: "Mission",
       para: "Promoting excellence in aesthetic dentistry across the UK through education, innovation, and the sharing of expertise between clinicians, technicians, and academics.",
-      btn: "Elevate Your Practice",
+      btn: "About BAAD",
       href: "/",
     },
     {
