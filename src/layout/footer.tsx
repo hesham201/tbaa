@@ -27,7 +27,7 @@ const Footer = () => {
                 respective fields and share a commitment to dental excellence.
               </p>
             </div>
-            <div className="w-[calc(50%-15px)] lg:w-[16%] relative">
+            <div className="w-[calc(50%-15px)] lg:w-[16%] lg:mt-9 relative">
               <div className="flex mb-4">
                 {/* <div className="relative w-12 h-6 before:content-[''] before:w-6 before:h-6 before:rounded-full before:bg-primary before:absolute before:top-0 before:left-0 after:content-[''] after:absolute after:bg-primary after:rounded-full after:top-0 after:right-2 after:w-6 after:h-6"></div> */}
                 <div className="">
@@ -48,6 +48,14 @@ const Footer = () => {
                     target="_blank"
                   >
                     Instagram
+                  </a>
+                </li>
+                <li>
+                  <a
+                    href="https://www.linkedin.com/company/british-academy-of-aesthetic-dentistry/about/"
+                    target="_blank"
+                  >
+                    LinkedIn
                   </a>
                 </li>
                 {/* <li>LinkedIn</li> */}
@@ -81,18 +89,9 @@ const Footer = () => {
                   <a href="tel:+44 (0)1243 585577">+44 (0)1243 585577</a>
                 </li>
               </ul>
-              <div className="absolute bottom-0 w-[150%] left-1/2 ">
-                <Image
-                  src={"/ifed.webp"}
-                  className="w-full h-[70px] object-contain"
-                  alt="logo"
-                  width={500}
-                  height={500}
-                />
-              </div>
             </div>
             {/* <div className="flex flex-col gap-3 w-[calc(50%-15px)] lg:w-[16%]"></div> */}
-            <div className="w-full sm:w-[calc(50%-15px)] lg:w-[17%]">
+            <div className="w-full sm:w-[calc(50%-15px)] lg:w-[25%] lg:mt-9">
               <div className="flex gap-2 mb-4">
                 {/* <div className="relative w-12 h-6 before:content-[''] before:w-6 before:h-6 before:rounded-full before:bg-primary before:absolute before:top-0 before:left-0 after:content-[''] after:absolute after:bg-primary after:rounded-full after:top-0 after:right-2 after:w-6 after:h-6"></div> */}
                 <div className="">
@@ -115,6 +114,15 @@ const Footer = () => {
                 The British Academy of Aesthetic Dentistry, Gower House, 18
                 Ashmere Lane, Felpham, West Sussex, PO22 7QT
               </p>
+              <div className="mt-4">
+                <Image
+                  src={"/ifed.webp"}
+                  className="w-full h-auto"
+                  alt="logo"
+                  width={500}
+                  height={500}
+                />
+              </div>
             </div>
           </div>
         </Container>

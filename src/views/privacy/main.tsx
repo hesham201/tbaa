@@ -1,5 +1,5 @@
 import Container from "@/components/container";
-import HeadingTwo from "@/components/heading-two";
+// import HeadingTwo from "@/components/heading-two";
 
 const Main = () => {
   return (
@@ -9,7 +9,9 @@ const Main = () => {
           <h1 className="text-primary mb-3 text-6xl">PRIVACY POLICY</h1>
 
           <div className="mb-4">
-            <HeadingTwo className="mb-3">Who are we?</HeadingTwo>
+            <h2 className="mb-3 text-2xl font-two font-bold text-midnight">
+              Who are we?
+            </h2>
             <p className="mb-2">
               The British Academy of Aesthetic Dentistry Ltd (BAAD Ltd) respects
               your privacy and is committed to maintaining the confidentiality
@@ -29,7 +31,9 @@ const Main = () => {
           </div>
 
           <div className="mb-4">
-            <HeadingTwo className="mb-3">Personal information</HeadingTwo>
+            <h2 className="mb-3 text-2xl font-two font-bold text-midnight">
+              Personal information
+            </h2>
             <p>
               You have control over your personal information. Your data may be
               collected if you request us to provide you with a product or
@@ -43,9 +47,9 @@ const Main = () => {
           </div>
 
           <div className="mb-4">
-            <HeadingTwo className="mb-3">
+            <h2 className="mb-3 text-2xl font-two font-bold text-midnight">
               How we use your information
-            </HeadingTwo>
+            </h2>
             <p className="mb-2">
               The information stored and collected about you, helps us to
               provide and improve the services you need and we may contact you
@@ -60,7 +64,9 @@ const Main = () => {
           </div>
 
           <div className="mb-4">
-            <HeadingTwo className="mb-3">Service providers</HeadingTwo>
+            <h2 className="mb-3 text-2xl font-two font-bold text-midnight">
+              Service providers
+            </h2>
             <p className="mb-2">
               We may employ third-party companies/individuals to facilitate our
               service, to provide a service on our behalf, to perform
@@ -76,7 +82,9 @@ const Main = () => {
           </div>
 
           <div className="mb-4">
-            <HeadingTwo className="mb-3">Links to other sites</HeadingTwo>
+            <h2 className="mb-3 text-2xl font-two font-bold text-midnight">
+              Links to other sites
+            </h2>
             <p>
               The BAAD Ltd website offers links to third party websites. Such
               external sites are not operated by us and we would advise you to
@@ -87,7 +95,9 @@ const Main = () => {
           </div>
 
           <div className="mb-4">
-            <HeadingTwo className="mb-3">Security</HeadingTwo>
+            <h2 className="mb-3 text-2xl font-two font-bold text-midnight">
+              Security
+            </h2>
             <p>
               We value your trust in providing us with your personal information
               and strive to protect it. However, no method of transmission via
@@ -97,7 +107,9 @@ const Main = () => {
           </div>
 
           <div className="mb-4">
-            <HeadingTwo className="mb-3">Changes to this policy</HeadingTwo>
+            <h2 className="mb-3 text-2xl font-two font-bold text-midnight">
+              Changes to this policy
+            </h2>
             <p>
               From time to time, we may update our Privacy Policy. We would
               therefore advise that you periodically review this policy for
@@ -106,9 +118,9 @@ const Main = () => {
           </div>
 
           <div className="mb-4">
-            <HeadingTwo className="mb-3">
+            <h2 className="mb-3 text-2xl font-two font-bold text-midnight">
               How to access & control your information
-            </HeadingTwo>
+            </h2>
             <p className="mb-2">
               You have the right to request a copy of your information, to amend
               your information, to opt out of receiving marketing information
@@ -122,7 +134,9 @@ const Main = () => {
           </div>
 
           <div className="mb-4">
-            <HeadingTwo className="mb-3">Contact Us</HeadingTwo>
+            <h2 className="mb-3 text-2xl font-two font-bold text-midnight">
+              Contact Us
+            </h2>
             <p>
               Should you have any questions concerning our Privacy Policy,
               please do not hesitate to contact us{" "}

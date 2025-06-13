@@ -28,34 +28,62 @@ const Header = () => {
   const [openMenu, setOpenMenu] = useState(false);
   const [dropdown, setDropdown] = useState<null | number>(null);
   const menuTimelineRef = useRef<GSAPTimeline | null>(null);
+  // function dropdownOpen(index: number) {
+  //   setDropdown(index);
+  //   const tldropdown: GSAPTimeline = gsap.timeline();
+
+  //   tldropdown.to("#main-nav li", {
+  //     opacity: 0,
+  //     visibility: "hidden",
+  //     duration: 0.4,
+  //     stagger: 0.05,
+  //     ease: "power2.in",
+  //   });
+
+  //   tldropdown.to("#dropdown-nav li", {
+  //     opacity: 1,
+  //     visibility: "hidden",
+  //     y: 0,
+  //     stagger: 0.08,
+  //     duration: 0.5,
+  //     ease: "power2.out",
+  //   });
+  // }
   function dropdownOpen(index: number) {
     setDropdown(index);
-    const tl: GSAPTimeline = gsap.timeline();
 
-    tl.to("#main-nav li", {
-      opacity: 0,
-      visibility: "hidden",
-      duration: 0.3,
-      stagger: 0.01,
-    });
+    requestAnimationFrame(() => {
+      const mainNavItems = gsap.utils.toArray("#main-nav li");
+      const dropdownItems = gsap.utils.toArray("#dropdown-nav li");
 
-    tl.fromTo(
-      "#dropdown-nav li",
-      {
+      const tl = gsap.timeline();
+
+      tl.to(mainNavItems, {
         opacity: 0,
         visibility: "hidden",
-        y: 10,
-      },
-      {
-        opacity: 1,
-        visibility: "visible",
-        y: 0,
-        duration: 0.5,
-        stagger: 0.08,
-        ease: "power2.out",
-      },
-      ">0.2"
-    );
+        duration: 0.4,
+        stagger: 0.05,
+        ease: "power2.in",
+      });
+
+      tl.fromTo(
+        dropdownItems,
+        {
+          opacity: 0,
+          visibility: "hidden",
+          y: 10,
+        },
+        {
+          opacity: 1,
+          visibility: "visible",
+          y: 0,
+          duration: 0.5,
+          stagger: 0.08,
+          ease: "power2.out",
+        },
+        "+=0.1"
+      );
+    });
   }
 
   function hoveredOpen() {
@@ -354,7 +382,7 @@ const Header = () => {
   }
   function backMainMenu() {
     const tl = gsap.timeline();
-
+    // setDropdown(null);
     tl.to("#dropdown-nav li", {
       opacity: 0,
       visibility: "hidden",
@@ -619,6 +647,20 @@ const Header = () => {
                       >
                         <Image
                           src={"/facebook.svg"}
+                          width={100}
+                          height={100}
+                          className="w-8 h-8"
+                          alt="logo"
+                        />
+                      </a>
+                    </div>
+                    <div>
+                      <a
+                        href="https://www.linkedin.com/company/british-academy-of-aesthetic-dentistry/about/"
+                        target="_blank"
+                      >
+                        <Image
+                          src={"/linkedin.svg"}
                           width={100}
                           height={100}
                           className="w-8 h-8"
