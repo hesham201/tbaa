@@ -6,10 +6,10 @@ import ScrollTrigger from "gsap/dist/ScrollTrigger";
 import "locomotive-scroll/dist/locomotive-scroll.min.css";
 import Footer from "@/layout/footer";
 import Header from "@/layout/header";
-
+import { usePathname } from "next/navigation";
 const LocomotiveProvider = ({ children }: { children: React.ReactNode }) => {
   const scrollRef = useRef<HTMLBodyElement>(null);
-
+  const pathname = usePathname(); // forces effect to run on route change
   useEffect(() => {
     let scrollInstance: any; // eslint-disable-line
 
@@ -63,13 +63,12 @@ const LocomotiveProvider = ({ children }: { children: React.ReactNode }) => {
         scrollInstance?.update()
       );
     };
-  }, []);
+  }, [pathname]);
 
   return (
     <body
       ref={scrollRef}
       data-scroll-container
-      data-scroll-section
       id="body"
       className={` antialiased`}
     >

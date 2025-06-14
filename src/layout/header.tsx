@@ -211,7 +211,7 @@ const Header = () => {
     tl.to(
       "#menu-fixed",
       {
-        yPercent: -100,
+        top: 0,
         zIndex: 1000,
         height: "100%",
         bottom: "100%",
@@ -426,11 +426,11 @@ const Header = () => {
   return (
     <>
       <header
-        // data-scroll
-        // data-scroll-sticky
-        // data-scroll-target="#body"
+        data-scroll
+        data-scroll-sticky
+        data-scroll-target="#body"
         ref={galleryRef}
-        className=""
+        className="sticky top-0 z-50 bg-white"
       >
         <Container>
           <div className="flex justify-between items-center">
@@ -490,6 +490,187 @@ const Header = () => {
             </button>
           </div>
         </Container>
+        <div
+          id="menu-fixed"
+          // data-scroll-target
+          // data-scroll-section
+          className={`fixed top-[100vh] left-0 w-full h-full z-[1000000] ${
+            openMenu ? "" : ""
+          }`}
+        >
+          <nav className="h-[100vh] bg-[url(/menu-bg.webp)] bg-cover w-full">
+            <div className="absolute top-0 w-full" id="main-menu-nav">
+              <Container>
+                <div className="flex justify-between">
+                  <Link href={"/"}>
+                    <Image
+                      src={"/header-logo.png"}
+                      className="w-[200px] h-[80px] object-contain"
+                      width={300}
+                      height={300}
+                      quality={100}
+                      alt="image"
+                    />
+                  </Link>
+                  <button
+                    className="flex gap-2 cursor-pointer items-center"
+                    onMouseEnter={hoveredOpenOne}
+                    onMouseLeave={hoveredCloseOne}
+                    onClick={CloseMenuFunct}
+                  >
+                    <div className="h-[30px] w-[20px] text-black  relative">
+                      {/* first line  */}
+                      <div
+                        className={`h-full w-[2px] absolute top-0 right-[9px] rotate-45 bg-black transition-all duration-300 `}
+                      ></div>
+                      {/* Third line  */}
+                      <div
+                        className={`h-full w-[2px] -rotate-45 bottom-0 left-[9px] absolute bg-black transition-all duration-300 `}
+                      ></div>
+                    </div>
+                    <div className="relative text-lg overflow-hidden">
+                      <p className={`relative text-black`} id="menu-inner">
+                        Menu <span className="invisible">ff</span>
+                      </p>
+                      <p
+                        id="close"
+                        className={`absolute bottom-0 translate-y-full duration-300`}
+                      >
+                        Close
+                      </p>
+                    </div>
+                  </button>
+                </div>
+              </Container>
+            </div>
+            <Container className="h-full">
+              <div className="h-full flex flex-row items-center justify-between">
+                <div className="relative">
+                  <ul className="flex flex-col gap-4" id="main-nav">
+                    {NAV_ITEMS.map((nav, index) => (
+                      <li key={nav.name} className="nav-items">
+                        {nav.isDropdown ? (
+                          <button
+                            className="text-4xl cursor-pointer transition-all duration-300 tracking-normal origin-top-left hover:tracking-wider hover:skew-1 inline-block"
+                            onClick={() => dropdownOpen(index)}
+                          >
+                            <span className="text-lg">0{index + 1}</span>{" "}
+                            {nav.name}
+                          </button>
+                        ) : (
+                          <Link
+                            className="text-4xl transition-all duration-300 tracking-normal origin-top-left hover:tracking-wider hover:skew-[1deg] inline-block"
+                            href={nav.link}
+                            onClick={CloseMenuFunct}
+                          >
+                            <span className="text-lg">0{index + 1}</span>{" "}
+                            {nav.name}
+                          </Link>
+                        )}
+                      </li>
+                    ))}
+                  </ul>
+                  {dropdown !== null && NAV_ITEMS[dropdown].isDropdown && (
+                    <ul
+                      className="absolute top-0 flex flex-col gap-4"
+                      id="dropdown-nav"
+                    >
+                      <li>
+                        <button
+                          className="cursor-pointer transition-all duration-300"
+                          onClick={backMainMenu}
+                        >
+                          Back
+                        </button>
+                      </li>
+                      {NAV_ITEMS[dropdown].subItems.map((nav, index) => (
+                        <li key={nav.name}>
+                          <Link
+                            className="text-4xl text-nowrap cursor-pointer transition-all duration-300 tracking-normal origin-top-left hover:tracking-wider hover:skew-1 inline-block"
+                            href={nav.link}
+                            onClick={CloseMenuFunct}
+                          >
+                            <span className="text-lg">0{index + 1}</span>{" "}
+                            {nav.name}
+                          </Link>
+                        </li>
+                      ))}
+                    </ul>
+                  )}
+                </div>
+                <div
+                  className="flex flex-col gap-2 w-[25%] ps-6 border-l border-midnight"
+                  id="address"
+                >
+                  <div>
+                    <p>
+                      The British Academy of Aesthetic Dentistry, Gower House,
+                      18 Ashmere Lane, Felpham, West Sussex, PO22 7QT
+                    </p>
+                  </div>
+                  <div>
+                    <p>Contact</p>
+                    <ul>
+                      <li>
+                        <a href="mailto:info@baad.org.uk">info@baad.org.uk</a>
+                      </li>
+                      <li>
+                        <a href="tel:+44 (0)1243 585577">+44 (0)1243 585577</a>
+                      </li>
+                    </ul>
+                  </div>
+                  <div>
+                    <p>Follow us</p>
+                    <div className="flex gap-2 items-center">
+                      <div>
+                        <a
+                          href="https://www.facebook.com/BAADacademy/"
+                          target="_blank"
+                        >
+                          <Image
+                            src={"/facebook.svg"}
+                            width={100}
+                            height={100}
+                            className="w-8 h-8"
+                            alt="logo"
+                          />
+                        </a>
+                      </div>
+                      <div>
+                        <a
+                          href="https://www.linkedin.com/company/british-academy-of-aesthetic-dentistry/about/"
+                          target="_blank"
+                        >
+                          <Image
+                            src={"/linkedin.svg"}
+                            width={100}
+                            height={100}
+                            className="w-8 h-8"
+                            alt="logo"
+                          />
+                        </a>
+                      </div>
+                      <div>
+                        <a
+                          href="https://www.instagram.com/baadaestheticdentistry/"
+                          target="_blank"
+                        >
+                          <Image
+                            src={"/instagram.svg"}
+                            width={100}
+                            height={100}
+                            className="w-8 h-8"
+                            alt="logo"
+                          />
+                        </a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </Container>
+          </nav>
+        </div>
       </header>
       {/* click on  menu starts  */}
       <div
@@ -508,187 +689,6 @@ const Header = () => {
         </div>
       </div>
 
-      <div
-        id="menu-fixed"
-        // data-scroll-target
-        // data-scroll-section
-        className={`fixed top-full left-0 w-full h-full z-[1000000] ${
-          openMenu ? "" : ""
-        }`}
-      >
-        <nav className="h-[100vh] bg-[url(/menu-bg.webp)] bg-cover w-full">
-          <div className="absolute top-0 w-full" id="main-menu-nav">
-            <Container>
-              <div className="flex justify-between">
-                <Link href={"/"}>
-                  <Image
-                    src={"/header-logo.png"}
-                    className="w-[200px] h-[80px] object-contain"
-                    width={300}
-                    height={300}
-                    quality={100}
-                    alt="image"
-                  />
-                </Link>
-                <button
-                  className="flex gap-2 cursor-pointer items-center"
-                  onMouseEnter={hoveredOpenOne}
-                  onMouseLeave={hoveredCloseOne}
-                  onClick={CloseMenuFunct}
-                >
-                  <div className="h-[30px] w-[20px] text-black  relative">
-                    {/* first line  */}
-                    <div
-                      className={`h-full w-[2px] absolute top-0 right-[9px] rotate-45 bg-black transition-all duration-300 `}
-                    ></div>
-                    {/* Third line  */}
-                    <div
-                      className={`h-full w-[2px] -rotate-45 bottom-0 left-[9px] absolute bg-black transition-all duration-300 `}
-                    ></div>
-                  </div>
-                  <div className="relative text-lg overflow-hidden">
-                    <p className={`relative text-black`} id="menu-inner">
-                      Menu <span className="invisible">ff</span>
-                    </p>
-                    <p
-                      id="close"
-                      className={`absolute bottom-0 translate-y-full duration-300`}
-                    >
-                      Close
-                    </p>
-                  </div>
-                </button>
-              </div>
-            </Container>
-          </div>
-          <Container className="h-full">
-            <div className="h-full flex flex-row items-center justify-between">
-              <div className="relative">
-                <ul className="flex flex-col gap-4" id="main-nav">
-                  {NAV_ITEMS.map((nav, index) => (
-                    <li key={nav.name} className="nav-items">
-                      {nav.isDropdown ? (
-                        <button
-                          className="text-4xl cursor-pointer transition-all duration-300 tracking-normal origin-top-left hover:tracking-wider hover:skew-1 inline-block"
-                          onClick={() => dropdownOpen(index)}
-                        >
-                          <span className="text-lg">0{index + 1}</span>{" "}
-                          {nav.name}
-                        </button>
-                      ) : (
-                        <Link
-                          className="text-4xl transition-all duration-300 tracking-normal origin-top-left hover:tracking-wider hover:skew-[1deg] inline-block"
-                          href={nav.link}
-                          onClick={CloseMenuFunct}
-                        >
-                          <span className="text-lg">0{index + 1}</span>{" "}
-                          {nav.name}
-                        </Link>
-                      )}
-                    </li>
-                  ))}
-                </ul>
-                {dropdown !== null && NAV_ITEMS[dropdown].isDropdown && (
-                  <ul
-                    className="absolute top-0 flex flex-col gap-4"
-                    id="dropdown-nav"
-                  >
-                    <li>
-                      <button
-                        className="cursor-pointer transition-all duration-300"
-                        onClick={backMainMenu}
-                      >
-                        Back
-                      </button>
-                    </li>
-                    {NAV_ITEMS[dropdown].subItems.map((nav, index) => (
-                      <li key={nav.name}>
-                        <Link
-                          className="text-4xl text-nowrap cursor-pointer transition-all duration-300 tracking-normal origin-top-left hover:tracking-wider hover:skew-1 inline-block"
-                          href={nav.link}
-                          onClick={CloseMenuFunct}
-                        >
-                          <span className="text-lg">0{index + 1}</span>{" "}
-                          {nav.name}
-                        </Link>
-                      </li>
-                    ))}
-                  </ul>
-                )}
-              </div>
-              <div
-                className="flex flex-col gap-2 w-[25%] ps-6 border-l border-midnight"
-                id="address"
-              >
-                <div>
-                  <p>
-                    The British Academy of Aesthetic Dentistry, Gower House, 18
-                    Ashmere Lane, Felpham, West Sussex, PO22 7QT
-                  </p>
-                </div>
-                <div>
-                  <p>Contact</p>
-                  <ul>
-                    <li>
-                      <a href="mailto:info@baad.org.uk">info@baad.org.uk</a>
-                    </li>
-                    <li>
-                      <a href="tel:+44 (0)1243 585577">+44 (0)1243 585577</a>
-                    </li>
-                  </ul>
-                </div>
-                <div>
-                  <p>Follow us</p>
-                  <div className="flex gap-2 items-center">
-                    <div>
-                      <a
-                        href="https://www.facebook.com/BAADacademy/"
-                        target="_blank"
-                      >
-                        <Image
-                          src={"/facebook.svg"}
-                          width={100}
-                          height={100}
-                          className="w-8 h-8"
-                          alt="logo"
-                        />
-                      </a>
-                    </div>
-                    <div>
-                      <a
-                        href="https://www.linkedin.com/company/british-academy-of-aesthetic-dentistry/about/"
-                        target="_blank"
-                      >
-                        <Image
-                          src={"/linkedin.svg"}
-                          width={100}
-                          height={100}
-                          className="w-8 h-8"
-                          alt="logo"
-                        />
-                      </a>
-                    </div>
-                    <div>
-                      <a
-                        href="https://www.instagram.com/baadaestheticdentistry/"
-                        target="_blank"
-                      >
-                        <Image
-                          src={"/instagram.svg"}
-                          width={100}
-                          height={100}
-                          className="w-8 h-8"
-                          alt="logo"
-                        />
-                      </a>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </Container>
-        </nav>
-      </div>
       {/* click on  menu ends */}
     </>
   );
