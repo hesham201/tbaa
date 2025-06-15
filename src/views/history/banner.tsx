@@ -10,7 +10,7 @@ const Banner = () => {
   const headerRef = useRef<HTMLDivElement | null>(null);
   useGSAP(() => {
     const split = new SplitType("#home-h1", { types: "words,chars" });
-    const splitPara = new SplitType("#video-para", { types: "words,chars" });
+    // const splitPara = new SplitType("#video-para", { types: "words,chars" });
     const tl: GSAPTimeline = gsap.timeline();
     tl.to(".video-main-div", {
       scaleX: 1,
@@ -36,10 +36,10 @@ const Banner = () => {
       },
       ">"
     );
-    tl.from(splitPara.words, {
-      opacity: 0,
-      y: 10,
-    });
+    // tl.from(splitPara.words, {
+    //   opacity: 0,
+    //   y: 10,
+    // });
     tl.to(
       ".upper",
       {
