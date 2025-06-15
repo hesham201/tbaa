@@ -72,7 +72,10 @@ const Banner = () => {
               </span>{" "}
               Academy of Aesthetic Dentistry
             </h1>
-            <p className="text-xl text-white  video-para" id="video-para">
+            <p
+              className="text-xl overflow-hidden text-white  video-para"
+              id="video-para"
+            >
               Championing excellence in aesthetic dentistry to promote the
               highest standard of clinical care, education and innovation by
               bringing together the industry’s brightest minds.
