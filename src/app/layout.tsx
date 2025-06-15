@@ -35,11 +35,11 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      {/* <body className={` antialiased`}> */}
-      {/* <Header /> */}
-      <LocomotiveProvider>{children}</LocomotiveProvider>
-      {/* <Footer /> */}
-      {/* </body> */}
+      <body className={`antialiased`}>
+        {/* <Header /> */}
+        <LocomotiveProvider>{children}</LocomotiveProvider>
+        {/* <Footer /> */}
+      </body>
     </html>
   );
 }

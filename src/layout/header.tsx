@@ -28,6 +28,7 @@ const Header = () => {
   const [openMenu, setOpenMenu] = useState(false);
   const [dropdown, setDropdown] = useState<null | number>(null);
   const menuTimelineRef = useRef<GSAPTimeline | null>(null);
+
   // function dropdownOpen(index: number) {
   //   setDropdown(index);
   //   const tldropdown: GSAPTimeline = gsap.timeline();
@@ -196,13 +197,13 @@ const Header = () => {
     });
 
     gsap.set("#overlay", {
-      yPercent: 0,
+      top: "100vh",
     });
 
     const tl: GSAPTimeline = gsap.timeline();
     menuTimelineRef.current = tl;
     tl.to("#overlay", {
-      yPercent: -200,
+      top: "-300vh",
       duration: 2,
       ease: CustomEase.create("custom", "M0,0 C0.104,0.204 0.634,0.883 1,1 "),
       opacity: 1,
@@ -297,9 +298,9 @@ const Header = () => {
     );
     tl.fromTo(
       "#overlay",
-      { yPercent: -200 },
+      { top: "-300vh" },
       {
-        yPercent: 0,
+        top: "100vh",
         duration: 2.8,
         ease: "power2.out",
       },
@@ -426,11 +427,11 @@ const Header = () => {
   return (
     <>
       <header
+        ref={galleryRef}
         data-scroll
         data-scroll-sticky
-        data-scroll-target="#body"
-        ref={galleryRef}
-        className="sticky top-0 z-50 bg-white"
+        data-scroll-target="#main-scroll-con"
+        className="sticky top-0 z-100 bg-white"
       >
         <Container>
           <div className="flex justify-between items-center">
@@ -671,23 +672,23 @@ const Header = () => {
             </Container>
           </nav>
         </div>
+        <div
+          id="overlay"
+          className="fixed top-[100vh] w-[200%] h-[200vh] -left-1/2 z-[1001] transition-all duration-300 overflow-hidden"
+        >
+          <div
+            className="w-[100%] h-[50%] bg-black "
+            style={{ borderRadius: "50% 50% 0 0" }}
+          ></div>
+          <div className="w-[100%] h-[50%] bg-transparent  relative">
+            <div
+              className="relative left-0 w-full -top-38 bg-white h-full z-10 rounded-t-full"
+              style={{ borderRadius: "50%" }}
+            ></div>
+          </div>
+        </div>
       </header>
       {/* click on  menu starts  */}
-      <div
-        id="overlay"
-        className="fixed top-full w-[200%] h-[200%] -left-1/2 z-[1001] transition-all duration-300 overflow-hidden"
-      >
-        <div
-          className="w-[100%] h-[50%] bg-black "
-          style={{ borderRadius: "50% 50% 0 0" }}
-        ></div>
-        <div className="w-[100%] h-[50%] bg-transparent  relative">
-          <div
-            className="relative left-0 w-full -top-38 bg-white h-full z-10 rounded-t-full"
-            style={{ borderRadius: "50%" }}
-          ></div>
-        </div>
-      </div>
 
       {/* click on  menu ends */}
     </>

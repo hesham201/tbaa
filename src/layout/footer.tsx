@@ -29,7 +29,6 @@ const Footer = () => {
             </div>
             <div className="w-[calc(50%-15px)] lg:w-[16%] lg:mt-9 relative">
               <div className="flex mb-4">
-                {/* <div className="relative w-12 h-6 before:content-[''] before:w-6 before:h-6 before:rounded-full before:bg-primary before:absolute before:top-0 before:left-0 after:content-[''] after:absolute after:bg-primary after:rounded-full after:top-0 after:right-2 after:w-6 after:h-6"></div> */}
                 <div className="">
                   <Image
                     src={"/baad-footer-icon.webp"}
@@ -58,7 +57,6 @@ const Footer = () => {
                     LinkedIn
                   </a>
                 </li>
-                {/* <li>LinkedIn</li> */}
                 <li>
                   <a
                     href="https://www.facebook.com/BAADacademy/"
@@ -69,7 +67,6 @@ const Footer = () => {
                 </li>
               </ul>
               <div className="flex mb-4">
-                {/* <div className="relative w-12 h-6 before:content-[''] before:w-6 before:h-6 before:rounded-full before:bg-primary before:absolute before:top-0 before:left-0 after:content-[''] after:absolute after:bg-primary after:rounded-full after:top-0 after:right-2 after:w-6 after:h-6"></div> */}
                 <div className="">
                   <Image
                     src={"/baad-footer-icon.webp"}
@@ -90,10 +87,8 @@ const Footer = () => {
                 </li>
               </ul>
             </div>
-            {/* <div className="flex flex-col gap-3 w-[calc(50%-15px)] lg:w-[16%]"></div> */}
             <div className="w-full sm:w-[calc(50%-15px)] lg:w-[25%] lg:mt-9">
               <div className="flex gap-2 mb-4">
-                {/* <div className="relative w-12 h-6 before:content-[''] before:w-6 before:h-6 before:rounded-full before:bg-primary before:absolute before:top-0 before:left-0 after:content-[''] after:absolute after:bg-primary after:rounded-full after:top-0 after:right-2 after:w-6 after:h-6"></div> */}
                 <div className="">
                   <Image
                     src={"/baad-footer-icon.webp"}
@@ -105,19 +100,14 @@ const Footer = () => {
                 </div>
                 <p>Address</p>
               </div>
-              {/* <ul>
-                <li>Phone</li>
-                <li>Email</li>
-              </ul> */}
-
               <p className="">
                 The British Academy of Aesthetic Dentistry, Gower House, 18
                 Ashmere Lane, Felpham, West Sussex, PO22 7QT
               </p>
-              <div className="mt-4">
+              <div className="mt-4 w-full h-[70px]">
                 <Image
                   src={"/ifed.webp"}
-                  className="w-full h-auto"
+                  className="w-full h-full object-contain"
                   alt="logo"
                   width={500}
                   height={500}

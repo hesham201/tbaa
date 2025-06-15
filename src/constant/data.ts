@@ -18,7 +18,7 @@ export const NAV_ITEMS: INavItem[] = [
       },
       {
         name: "The History of BAAD",
-        link: "/",
+        link: "/the-history-of-baad",
       },
       {
         name: "Lambert Fick Memorial",

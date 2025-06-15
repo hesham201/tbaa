@@ -7,30 +7,33 @@ import "locomotive-scroll/dist/locomotive-scroll.min.css";
 import Footer from "@/layout/footer";
 import Header from "@/layout/header";
 import { usePathname } from "next/navigation";
+
 const LocomotiveProvider = ({ children }: { children: React.ReactNode }) => {
-  const scrollRef = useRef<HTMLBodyElement>(null);
-  const pathname = usePathname(); // forces effect to run on route change
+  const scrollRef = useRef<HTMLDivElement>(null);
+  const pathname = usePathname();
   useEffect(() => {
     let scrollInstance: any; // eslint-disable-line
 
     gsap.registerPlugin(ScrollTrigger);
 
-    const initLocoScroll = async () => {
+    const initLoco = async () => {
       const LocomotiveScroll = (await import("locomotive-scroll")).default;
 
-      if (!scrollRef.current) return;
+      const scrollEl = scrollRef.current;
+      if (!scrollEl) return;
 
       scrollInstance = new LocomotiveScroll({
-        el: scrollRef.current,
+        el: scrollEl,
         smooth: true,
       });
+
       scrollInstance.on("scroll", ScrollTrigger.update);
-      // Set up ScrollTrigger proxy
-      ScrollTrigger.scrollerProxy(scrollRef.current, {
+
+      ScrollTrigger.scrollerProxy(scrollEl, {
         scrollTop(value) {
           return arguments.length
             ? scrollInstance.scrollTo(value, 0, 0)
-            : scrollInstance.scroll.instance.scroll.y; // check if correct or use `scrollInstance.scroll.instance.scroll.y`
+            : scrollInstance.scroll.instance.scroll.y;
         },
         getBoundingClientRect() {
           return {
@@ -40,42 +43,55 @@ const LocomotiveProvider = ({ children }: { children: React.ReactNode }) => {
             height: window.innerHeight,
           };
         },
-        pinType: scrollRef.current.style.transform ? "transform" : "fixed",
+        pinType: scrollEl.style.transform ? "transform" : "fixed",
       });
 
-      // Update ScrollTrigger on locomotive scroll
-      scrollInstance.on("scroll", ScrollTrigger.update);
-
       ScrollTrigger.addEventListener("refresh", () => scrollInstance.update());
+
       window.LOCO_SCROLL = scrollInstance;
-      // This is key to syncing on load
-      setTimeout(() => {
+
+      // Initial update
+      await scrollInstance.update();
+      ScrollTrigger.refresh();
+
+      // Additional update after content load
+      window.addEventListener("load", () => {
+        scrollInstance.update();
         ScrollTrigger.refresh();
-      }, 100);
+      });
+
+      // Optional slight delay update
+      setTimeout(() => {
+        scrollInstance.update();
+        ScrollTrigger.refresh();
+      }, 500);
     };
 
-    initLocoScroll();
+    setTimeout(() => {
+      initLoco();
+    }, 200);
 
     return () => {
-      scrollInstance?.destroy();
-      window.LOCO_SCROLL = undefined;
+      if (scrollInstance) scrollInstance.destroy();
+      ScrollTrigger.getAll().forEach((trigger) => trigger.kill());
       ScrollTrigger.removeEventListener("refresh", () =>
         scrollInstance?.update()
       );
+      window.LOCO_SCROLL = undefined;
     };
   }, [pathname]);
 
   return (
-    <body
+    <div
       ref={scrollRef}
+      id="main-scroll-con"
       data-scroll-container
-      id="body"
-      className={` antialiased`}
+      className="scroll-container"
     >
       <Header />
-      <main className="">{children}</main>
+      <main>{children}</main>
       <Footer />
-    </body>
+    </div>
   );
 };
 
