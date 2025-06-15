@@ -101,10 +101,16 @@ const Footer = () => {
                 <p>Address</p>
               </div>
               <p className="">
-                The British Academy of Aesthetic Dentistry, Gower House, 18
-                Ashmere Lane, Felpham, West Sussex, PO22 7QT
+                Gower House, <br />
+                18 Ashmere Lane,
+                <br />
+                Felpham,
+                <br />
+                West Sussex,
+                <br />
+                PO22 7QT
               </p>
-              <div className="mt-4 w-full h-[70px]">
+              <div className="mt-2 w-full h-[65px]">
                 <Image
                   src={"/ifed.webp"}
                   className="w-full h-full object-contain"
