@@ -59,7 +59,10 @@ const LocomotiveProvider = ({ children }: { children: React.ReactNode }) => {
         scrollInstance.update();
         ScrollTrigger.refresh();
       });
-
+      scrollInstance.stop();
+      setTimeout(() => {
+        scrollInstance.start(); // resume scroll
+      }, 1000);
       // Optional slight delay update
       setTimeout(() => {
         scrollInstance.update();
