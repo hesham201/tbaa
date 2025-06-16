@@ -261,12 +261,23 @@ const Header = () => {
     //   yPercent: -200,
     // });
     const tl: GSAPTimeline = gsap.timeline();
-    tl.to(".nav-items", {
-      stagger: 0.1,
-      opacity: 0,
-      y: -10,
-      duration: 0.2,
-    });
+    if (dropdown !== null) {
+      tl.to("#dropdown-nav li", {
+        opacity: 0,
+        visibility: "hidden",
+        y: -10,
+        duration: 0.4,
+        stagger: 0.05,
+        ease: "power2.in",
+      });
+    } else {
+      tl.to(".nav-items", {
+        stagger: 0.1,
+        opacity: 0,
+        y: -10,
+        duration: 0.2,
+      });
+    }
     tl.to(
       "#address div",
       {
@@ -431,7 +442,7 @@ const Header = () => {
         data-scroll
         data-scroll-sticky
         data-scroll-target="#main-scroll-con"
-        className="sticky top-0 z-100 bg-white"
+        className="sticky top-0 z-100 bg-white shadow-2xl"
       >
         <Container>
           <div className="flex justify-between items-center">
@@ -605,8 +616,8 @@ const Header = () => {
                 >
                   <div>
                     <p>
-                      The British Academy of Aesthetic Dentistry, Gower House,
-                      18 Ashmere Lane, Felpham, West Sussex, PO22 7QT
+                      Gower House, 18 Ashmere Lane, Felpham, West Sussex, PO22
+                      7QT
                     </p>
                   </div>
                   <div>

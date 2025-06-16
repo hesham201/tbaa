@@ -62,7 +62,7 @@ export const NAV_ITEMS: INavItem[] = [
   },
   {
     name: "Contact us",
-    link: "/",
+    link: "/contact-us",
   },
 ];
 
