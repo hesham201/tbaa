@@ -13,7 +13,7 @@ export default function MasterClasses() {
   const containerRefs = useRef<(HTMLDivElement | null)[]>([]);
 
   useLayoutEffect(() => {
-    setTimeout(() => {
+    const timeout = setTimeout(() => {
       containerRefs.current.forEach((container) => {
         if (!container) return;
 
@@ -40,9 +40,9 @@ export default function MasterClasses() {
           }
         );
       });
-    }, 300);
+    }, 500);
 
-    ScrollTrigger.refresh();
+    return () => clearTimeout(timeout);
   }, []);
 
   return (
