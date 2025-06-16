@@ -1,7 +1,7 @@
 "use client";
 import Container from "@/components/container";
-import { useGSAP } from "@gsap/react";
-import React from "react";
+// import { useGSAP } from "@gsap/react";
+import React, { useLayoutEffect } from "react";
 import gsap from "gsap";
 import SplitType from "split-type";
 import { useRef } from "react";
@@ -9,7 +9,7 @@ import Image from "next/image";
 import { IBanner } from "@/types";
 const Banner = ({ data }: { data: IBanner }) => {
   const headerRef = useRef<HTMLDivElement | null>(null);
-  useGSAP(() => {
+  useLayoutEffect(() => {
     setTimeout(() => {
       const split = new SplitType("#home-h1", { types: "words,chars" });
       // const splitPara = new SplitType("#video-para", { types: "words,chars" });
