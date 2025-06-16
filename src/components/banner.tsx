@@ -6,7 +6,8 @@ import gsap from "gsap";
 import SplitType from "split-type";
 import { useRef } from "react";
 import Image from "next/image";
-const Banner = () => {
+import { IBanner } from "@/types";
+const Banner = ({ data }: { data: IBanner }) => {
   const headerRef = useRef<HTMLDivElement | null>(null);
   useGSAP(() => {
     const split = new SplitType("#home-h1", { types: "words,chars" });
@@ -66,7 +67,7 @@ const Banner = () => {
         <Container>
           <div className="py-16 w-[45%] ">
             <h1 className="text-primary mb-3 text-6xl" id="home-h1">
-              The History of BAAD
+              {data.heading}
             </h1>
           </div>
         </Container>
@@ -78,7 +79,7 @@ const Banner = () => {
               <div className="absolute z-10 inset-0 h-full w-full bg-primary video-bg"></div>
               <div className="video-div-main relative">
                 <Image
-                  src={"/couple.webp"}
+                  src={data.image}
                   width={800}
                   height={800}
                   alt="image"

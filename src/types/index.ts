@@ -38,3 +38,7 @@ export type INavItem = ISimpleDropdownItem | IRegularNavItem;
 //     }
 //   })();
 // }, []);
+export interface IBanner {
+  image: string;
+  heading: string;
+}

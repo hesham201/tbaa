@@ -64,7 +64,7 @@ const Banner = () => {
     <div ref={headerRef}>
       <div className=" upper w-full bg-midnight origin-bottom scale-y-0 ">
         <Container>
-          <div className="py-16 w-[45%] ">
+          <div className="py-16 ">
             <h1 className="text-primary text-center mb-3 text-6xl" id="home-h1">
               Contact Us
             </h1>

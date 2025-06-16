@@ -3,7 +3,6 @@
 import { useEffect, useRef } from "react";
 import lottie from "lottie-web";
 import Container from "@/components/container";
-import React from "react";
 
 const ContactForm = () => {
   const animRefs = [
