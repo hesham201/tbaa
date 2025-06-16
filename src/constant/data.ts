@@ -9,6 +9,10 @@ export const NAV_ITEMS: INavItem[] = [
     isDropdown: true,
     subItems: [
       {
+        name: "About Us",
+        link: "/",
+      },
+      {
         name: "Executive Council",
         link: "/",
       },
