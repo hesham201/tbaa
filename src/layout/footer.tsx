@@ -149,10 +149,10 @@ const Footer = () => {
           <div>
             <p className="text-center">
               © 1996 - 2025 BAAD. All Rights Reserved{" "}
-              <p className="text-center">
+              <span className="text-center block">
                 <a href="">Refund Policy</a> | <a href="">Terms & Conditions</a>{" "}
                 | <a href="/privacy-policy">Privacy Policy</a>
-              </p>
+              </span>
             </p>
             <p className="text-center">
               <Link href={"https://www.smile-mc.co.uk/"} target="_blank">
