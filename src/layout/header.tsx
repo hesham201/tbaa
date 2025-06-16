@@ -437,13 +437,7 @@ const Header = () => {
   // );
   return (
     <>
-      <header
-        ref={galleryRef}
-        data-scroll
-        data-scroll-sticky
-        data-scroll-target="#main-scroll-con"
-        className="sticky top-0 z-100 bg-white shadow-2xl"
-      >
+      <header ref={galleryRef}>
         <Container>
           <div className="flex justify-between items-center">
             <Link href={"/"}>

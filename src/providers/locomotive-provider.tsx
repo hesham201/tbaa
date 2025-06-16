@@ -91,7 +91,14 @@ const LocomotiveProvider = ({ children }: { children: React.ReactNode }) => {
       data-scroll-container
       className="scroll-container"
     >
-      <Header />
+      <div
+        data-scroll
+        data-scroll-sticky
+        className="sticky top-0 z-100 bg-white shadow-2xl"
+        data-scroll-target="#main-scroll-con"
+      >
+        <Header />
+      </div>
       <main>{children}</main>
       <Footer />
     </div>

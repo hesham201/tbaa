@@ -14,14 +14,14 @@ const Content = () => {
   const bgImageRef2 = useRef<HTMLImageElement>(null);
 
   useLayoutEffect(() => {
-    if (
-      !bgWrapperRef.current ||
-      !bgImageRef.current ||
-      !bgImageRef2.current ||
-      !bgWrapperRef2.current
-    )
-      return;
     const timeout = setTimeout(() => {
+      if (
+        !bgWrapperRef.current ||
+        !bgImageRef.current ||
+        !bgImageRef2.current ||
+        !bgWrapperRef2.current
+      )
+        return;
       gsap.fromTo(
         bgImageRef.current,
         {
