@@ -10,52 +10,54 @@ import { IBanner } from "@/types";
 const Banner = ({ data }: { data: IBanner }) => {
   const headerRef = useRef<HTMLDivElement | null>(null);
   useGSAP(() => {
-    const split = new SplitType("#home-h1", { types: "words,chars" });
-    // const splitPara = new SplitType("#video-para", { types: "words,chars" });
-    const tl: GSAPTimeline = gsap.timeline();
-    tl.to(".video-main-div", {
-      scaleX: 1,
-      height: "10px",
-      transformOrigin: "top",
-      ease: "power2.out",
-      duration: 0.8,
-    });
-
-    tl.to(".video-main-div", {
-      height: "450px", // ← use an exact value
-      ease: "power2.out",
-      duration: 1,
-    });
-    tl.to(".video-bg", {
-      opacity: 0,
-    });
-    tl.from(
-      ".video-div-main",
-      {
-        opacity: 1,
-        scale: 1.2,
-      },
-      ">"
-    );
-    // tl.from(splitPara.words, {
-    //   opacity: 0,
-    //   y: 10,
-    // });
-    tl.to(
-      ".upper",
-      {
-        scaleY: 1,
-        transformOrigin: "bottom",
-        duration: 1,
+    setTimeout(() => {
+      const split = new SplitType("#home-h1", { types: "words,chars" });
+      // const splitPara = new SplitType("#video-para", { types: "words,chars" });
+      const tl: GSAPTimeline = gsap.timeline();
+      tl.to(".video-main-div", {
+        scaleX: 1,
+        height: "10px",
+        transformOrigin: "top",
         ease: "power2.out",
-      },
-      ">-2"
-    );
-    tl.from(split.words, {
-      y: 20,
-      opacity: 0,
-      stagger: 0.2,
-    });
+        duration: 0.8,
+      });
+
+      tl.to(".video-main-div", {
+        height: "450px", // ← use an exact value
+        ease: "power2.out",
+        duration: 1,
+      });
+      tl.to(".video-bg", {
+        opacity: 0,
+      });
+      tl.from(
+        ".video-div-main",
+        {
+          opacity: 1,
+          scale: 1.2,
+        },
+        ">"
+      );
+      // tl.from(splitPara.words, {
+      //   opacity: 0,
+      //   y: 10,
+      // });
+      tl.to(
+        ".upper",
+        {
+          scaleY: 1,
+          transformOrigin: "bottom",
+          duration: 1,
+          ease: "power2.out",
+        },
+        ">-2"
+      );
+      tl.from(split.words, {
+        y: 20,
+        opacity: 0,
+        stagger: 0.2,
+      });
+    }, 300);
     // tl.to(".text-bg", {
     //   scaleY: 1,
     //   transformOrigin: "bottom",
