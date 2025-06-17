@@ -62,8 +62,8 @@ export const NAV_ITEMS: INavItem[] = [
   },
   {
     name: "Masterclasses",
-    // link: "/masterclasses",
-    link: "/",
+    link: "/masterclasses",
+    // link: "/",
   },
   {
     name: "Contact us",
