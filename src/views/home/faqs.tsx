@@ -73,7 +73,7 @@ const Faqs = () => {
           }
         );
       });
-    }, 300);
+    }, 400);
     return () => clearTimeout(timeout);
   }, []);
   const toggleAccordion = (index: number) => {
