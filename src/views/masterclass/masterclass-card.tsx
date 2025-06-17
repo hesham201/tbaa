@@ -41,7 +41,7 @@ export default function MasterClasses() {
           }
         );
       });
-    }, 500);
+    }, 600);
 
     return () => clearTimeout(timeout);
   }, []);
