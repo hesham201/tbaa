@@ -8,9 +8,9 @@ const Main = () => {
   return (
     <>
       <Banner />
+      <ContactForm />
       <ContactDetails />
       <WholeMap />
-      <ContactForm />
     </>
   );
 };

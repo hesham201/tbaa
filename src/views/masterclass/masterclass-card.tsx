@@ -6,6 +6,7 @@ import gsap from "gsap";
 import ScrollTrigger from "gsap/ScrollTrigger";
 import { MASTER_CLASSES } from "@/constant/data";
 import Container from "@/components/container";
+import Link from "next/link";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -70,6 +71,16 @@ export default function MasterClasses() {
               <div className="absolute bottom-6 left-6 right-6 text-white z-20">
                 <h3 className="text-lg font-bold">{item.year}</h3>
                 <p className="text-sm mt-2">{item.description}</p>
+                {item.link && (
+                  <div className="mt-2">
+                    <Link
+                      href={item.link}
+                      className="border border-white py-1 px-4"
+                    >
+                      Download Flyer
+                    </Link>
+                  </div>
+                )}
               </div>
             </div>
           ))}
