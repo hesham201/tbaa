@@ -11,6 +11,7 @@ import { usePathname } from "next/navigation";
 const LocomotiveProvider = ({ children }: { children: React.ReactNode }) => {
   const scrollRef = useRef<HTMLDivElement>(null);
   const pathname = usePathname();
+
   useEffect(() => {
     let scrollInstance: any; // eslint-disable-line
 
@@ -18,7 +19,6 @@ const LocomotiveProvider = ({ children }: { children: React.ReactNode }) => {
 
     const initLoco = async () => {
       const LocomotiveScroll = (await import("locomotive-scroll")).default;
-
       const scrollEl = scrollRef.current;
       if (!scrollEl) return;
 
@@ -48,23 +48,32 @@ const LocomotiveProvider = ({ children }: { children: React.ReactNode }) => {
 
       ScrollTrigger.addEventListener("refresh", () => scrollInstance.update());
 
+      // PIN HEADER USING SCROLLTRIGGER
+      ScrollTrigger.create({
+        trigger: "#pinned-header",
+        start: "top top",
+        end: "+=99999",
+        pin: true,
+        pinSpacing: false,
+        scroller: scrollEl,
+      });
+
       window.LOCO_SCROLL = scrollInstance;
 
-      // Initial update
       await scrollInstance.update();
       ScrollTrigger.refresh();
 
-      // Additional update after content load
       window.addEventListener("load", () => {
         scrollInstance.update();
         ScrollTrigger.refresh();
       });
+
+      // Optional: pause & resume scroll for layout timing
       scrollInstance.stop();
       setTimeout(() => {
-        console.log("hi");
-        scrollInstance.start(); // resume scroll
+        scrollInstance.start();
       }, 2000);
-      // Optional slight delay update
+
       setTimeout(() => {
         scrollInstance.update();
         ScrollTrigger.refresh();
@@ -76,7 +85,7 @@ const LocomotiveProvider = ({ children }: { children: React.ReactNode }) => {
     }, 100);
 
     return () => {
-      clearTimeout(timeout); // Prevent double init
+      clearTimeout(timeout);
       if (scrollInstance) scrollInstance.destroy();
       ScrollTrigger.getAll().forEach((trigger) => trigger.kill());
       ScrollTrigger.removeEventListener("refresh", () =>
@@ -93,12 +102,7 @@ const LocomotiveProvider = ({ children }: { children: React.ReactNode }) => {
       data-scroll-container
       className="scroll-container"
     >
-      <div
-        data-scroll
-        data-scroll-sticky
-        className="sticky top-0 z-100 bg-white shadow-2xl"
-        data-scroll-target="#main-scroll-con"
-      >
+      <div id="pinned-header" className="z-[10000] w-full bg-white shadow-2xl">
         <Header />
       </div>
       <main>{children}</main>

@@ -4,27 +4,32 @@ import { useEffect, useRef } from "react";
 import gsap from "gsap";
 import ScrollTrigger from "gsap/dist/ScrollTrigger";
 import "locomotive-scroll/dist/locomotive-scroll.min.css";
+import Footer from "@/layout/footer";
+import Header from "@/layout/header";
+import { usePathname } from "next/navigation";
 
 const LocomotiveProvider = ({ children }: { children: React.ReactNode }) => {
   const scrollRef = useRef<HTMLDivElement>(null);
-
+  const pathname = usePathname();
   useEffect(() => {
     let scrollInstance: any; // eslint-disable-line
 
     gsap.registerPlugin(ScrollTrigger);
 
-    const initLocoScroll = async () => {
+    const initLoco = async () => {
       const LocomotiveScroll = (await import("locomotive-scroll")).default;
 
-      if (!scrollRef.current) return;
+      const scrollEl = scrollRef.current;
+      if (!scrollEl) return;
 
       scrollInstance = new LocomotiveScroll({
-        el: scrollRef.current,
+        el: scrollEl,
         smooth: true,
       });
+
       scrollInstance.on("scroll", ScrollTrigger.update);
-      // Set up ScrollTrigger proxy
-      ScrollTrigger.scrollerProxy(scrollRef.current, {
+
+      ScrollTrigger.scrollerProxy(scrollEl, {
         scrollTop(value) {
           return arguments.length
             ? scrollInstance.scrollTo(value, 0, 0)
@@ -38,34 +43,67 @@ const LocomotiveProvider = ({ children }: { children: React.ReactNode }) => {
             height: window.innerHeight,
           };
         },
-        pinType: scrollRef.current.style.transform ? "transform" : "fixed",
+        pinType: scrollEl.style.transform ? "transform" : "fixed",
       });
-
-      // Update ScrollTrigger on locomotive scroll
-      scrollInstance.on("scroll", ScrollTrigger.update);
 
       ScrollTrigger.addEventListener("refresh", () => scrollInstance.update());
 
-      // This is key to syncing on load
-      setTimeout(() => {
+      window.LOCO_SCROLL = scrollInstance;
+
+      // Initial update
+      await scrollInstance.update();
+      ScrollTrigger.refresh();
+
+      // Additional update after content load
+      window.addEventListener("load", () => {
+        scrollInstance.update();
         ScrollTrigger.refresh();
-      }, 100);
+      });
+      scrollInstance.stop();
+      setTimeout(() => {
+        console.log("hi");
+        scrollInstance.start(); // resume scroll
+      }, 2000);
+      // Optional slight delay update
+      setTimeout(() => {
+        scrollInstance.update();
+        ScrollTrigger.refresh();
+      }, 500);
     };
 
-    initLocoScroll();
+    const timeout = setTimeout(() => {
+      initLoco();
+    }, 100);
 
     return () => {
-      scrollInstance?.destroy();
+      clearTimeout(timeout); // Prevent double init
+      if (scrollInstance) scrollInstance.destroy();
+      ScrollTrigger.getAll().forEach((trigger) => trigger.kill());
       ScrollTrigger.removeEventListener("refresh", () =>
         scrollInstance?.update()
       );
+      window.LOCO_SCROLL = undefined;
     };
-  }, []);
+  }, [pathname]);
 
   return (
-    <main ref={scrollRef} data-scroll-container className="">
-      {children}
-    </main>
+    <div
+      ref={scrollRef}
+      id="main-scroll-con"
+      data-scroll-container
+      className="scroll-container"
+    >
+      <div
+        data-scroll
+        data-scroll-sticky
+        className="sticky top-0 z-100 bg-white shadow-2xl"
+        data-scroll-target="#main-scroll-con"
+      >
+        <Header />
+      </div>
+      <main>{children}</main>
+      <Footer />
+    </div>
   );
 };
 
