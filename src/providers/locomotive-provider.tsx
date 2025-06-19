@@ -61,6 +61,7 @@ const LocomotiveProvider = ({ children }: { children: React.ReactNode }) => {
       });
       scrollInstance.stop();
       setTimeout(() => {
+        console.log("hi");
         scrollInstance.start(); // resume scroll
       }, 2000);
       // Optional slight delay update
@@ -70,11 +71,12 @@ const LocomotiveProvider = ({ children }: { children: React.ReactNode }) => {
       }, 500);
     };
 
-    setTimeout(() => {
+    const timeout = setTimeout(() => {
       initLoco();
-    }, 200);
+    }, 100);
 
     return () => {
+      clearTimeout(timeout); // Prevent double init
       if (scrollInstance) scrollInstance.destroy();
       ScrollTrigger.getAll().forEach((trigger) => trigger.kill());
       ScrollTrigger.removeEventListener("refresh", () =>
