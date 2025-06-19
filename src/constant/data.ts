@@ -26,11 +26,11 @@ export const NAV_ITEMS: INavItem[] = [
       },
       {
         name: "Lambert Fick Memorial",
-        link: "/",
+        link: "/lambert-fick-memorial",
       },
       {
         name: "Revised Constitution 2024",
-        link: "/",
+        link: "/2024-Revised-Constitution.pdf",
       },
       {
         name: "Testimonials",

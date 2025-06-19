@@ -10,7 +10,11 @@ const ContactForm = () => {
     useRef<HTMLDivElement>(null),
     useRef<HTMLDivElement>(null),
   ];
-  const jsonPaths = ["/location.json", "/incoming-call.json", "/email.json"];
+  const jsonPaths = [
+    "/location_white_min.json",
+    "/incoming_call_offwhite_min.json",
+    "/email_white_min.json",
+  ];
   const labels = [
     "Gower House, 18 Ashmere Lane, Felpham, West Sussex, PO22 7QT",
     "+44 (0)1243 585577",
@@ -61,7 +65,7 @@ const ContactForm = () => {
             <div></div>
             <div></div>
           </div>
-          <div className="bg-primary py-10 px-4 shadow-2xl">
+          <div className="bg-midnight py-10 px-4 shadow-2xl">
             <h3 className="text-4xl mb-4 text-white">Get In Touch</h3>
             <form action="">
               <div className="flex flex-col gap-4">

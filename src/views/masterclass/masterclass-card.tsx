@@ -67,7 +67,7 @@ export default function MasterClasses() {
                 className="absolute top-0 left-0 w-full h-full object-cover will-change-transform pointer-events-none"
                 priority
               />
-              <div className="absolute inset-0 bg-black/40 z-10" />
+              <div className="absolute inset-0 bg-black/60 z-10" />
               <div className="absolute bottom-6 left-6 right-6 text-white z-20">
                 <h3 className="text-lg font-bold">{item.year}</h3>
                 <p className="text-sm mt-2">{item.description}</p>

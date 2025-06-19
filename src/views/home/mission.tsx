@@ -10,6 +10,7 @@ import parse from "html-react-parser";
 import { WELCOME_TO } from "@/constant/data";
 // import SplitType from "split-type";
 import Button from "@/components/button";
+import Image from "next/image";
 // import Image from "next/image";
 gsap.registerPlugin(ScrollTrigger);
 const Mission = () => {
@@ -189,7 +190,17 @@ const Mission = () => {
     return () => clearTimeout(timeout);
   });
   return (
-    <div className="py-10" ref={animatedRef}>
+    <div className="py-10 relative" ref={animatedRef}>
+      <div className="absolute opacity-60 left-0 -top-8 w-[50%] h-[200px]">
+        <Image
+          src={"/header-logo.png"}
+          className="w-full h-full object-contain"
+          width={1000}
+          height={1000}
+          quality={100}
+          alt="logo"
+        />
+      </div>
       <Container>
         <div className="flex flex-col gap-3 mb-6">
           {/* <p className="text-center text-white relative" id="upper-para">

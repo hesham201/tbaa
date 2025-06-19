@@ -10,7 +10,11 @@ const ContactDetails = () => {
     useRef<HTMLDivElement>(null),
     useRef<HTMLDivElement>(null),
   ];
-  const jsonPaths = ["/location.json", "/incoming-call.json", "/email.json"];
+  const jsonPaths = [
+    "/updated_location_cfae91_min.json",
+    "/updated_incoming_call_cfae91_min.json",
+    "/updated_email_cfae91_fixed_min.json",
+  ];
   const labels = [
     "Gower House, 18 Ashmere Lane, Felpham, West Sussex, PO22 7QT",
     "+44 (0)1243 585577",
