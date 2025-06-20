@@ -48,11 +48,11 @@ export const NAV_ITEMS: INavItem[] = [
       },
       {
         name: "Becoming a Full Member",
-        link: "/",
+        link: "/full-member",
       },
       {
         name: "Associate Membership",
-        link: "/",
+        link: "/associate-membership",
       },
     ],
   },

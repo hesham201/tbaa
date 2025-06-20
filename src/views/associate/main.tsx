@@ -1,15 +1,13 @@
 import React from "react";
 import Banner from "./banner";
-import Mission from "./mission";
-import OurEvents from "./our-events";
+import Content from "./content";
 import Faqs from "@/components/faqs";
 
 const Main = () => {
   return (
     <>
       <Banner />
-      <Mission />
-      <OurEvents />
+      <Content />
       <Faqs />
     </>
   );

@@ -18,6 +18,17 @@ export default function MasterClasses() {
       containerRefs.current.forEach((container) => {
         if (!container) return;
 
+        gsap.from(container, {
+          yPercent: 10,
+          opacity: 0,
+          duration: 1,
+          scrollTrigger: {
+            trigger: container,
+            scroller: "[data-scroll-container]",
+            start: "top bottom",
+            end: "bottom top",
+          },
+        });
         const image = container.querySelector("img");
         if (!image) return;
 
