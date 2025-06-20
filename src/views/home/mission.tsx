@@ -191,7 +191,7 @@ const Mission = () => {
   });
   return (
     <div className="py-10 relative" ref={animatedRef}>
-      <div className="absolute opacity-60 left-0 -top-8 w-[50%] h-[200px]">
+      <div className="absolute opacity-40 left-0 -top-8 w-[50%] h-[200px]">
         <Image
           src={"/header-logo.png"}
           className="w-full h-full object-contain"
