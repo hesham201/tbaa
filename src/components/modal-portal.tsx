@@ -20,8 +20,8 @@ const ModalPortal = ({ children }: ModalPortalProps) => {
       el.style.position = "fixed";
       el.style.inset = "0";
       el.style.zIndex = "999999";
-      el.style.width = "100%";
-      el.style.height = "100%";
+      el.style.width = "100vw";
+      el.style.height = "100vh";
       el.style.pointerEvents = "auto";
       document.body.appendChild(el);
     }

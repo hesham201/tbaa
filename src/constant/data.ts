@@ -215,19 +215,19 @@ export const MASTER_CLASSES = [
   },
 ];
 export const MASTER_CLASSES_BANNER = {
-  image: "/couple.webp",
+  image: "/large-conference.webp",
   heading: "Masterclasses",
 };
 export const EXECTIVE_COUNCIL_BANNER = {
-  image: "/couple.webp",
+  image: "/large-conference.webp",
   heading: "Executive Council",
 };
 export const ABOUT_US_BANNER = {
-  image: "/couple.webp",
+  image: "/large-conference.webp",
   heading: "About us",
 };
 export const TESTIMONIALS_BANNER = {
-  image: "/couple.webp",
+  image: "/large-conference.webp",
   heading: "Testimonials",
 };
 export const EXECUTIVE_TEAM = [
@@ -1345,14 +1345,14 @@ export const ABOUT_SAME_SECTION = [
   {
     heading: "Organisation",
     para: "The Academy is a non-profit organisation and no part of net earnings, if any, shall inure to the benefit of any person. The Academy earnings are devoted exclusively to the uses and purposes of the Academy as defined in the foregoing section.",
-    image: "/organisation.jpg",
-    imageOne: "/organisation-1.jpg",
+    image: "/three-man-conference.webp",
+    imageOne: "/girl-conference.webp",
   },
   {
     heading: "Meetings",
     para: "The Academy arranges an annual scientific conference by bringing together and encouraging debate between opinion leaders in our profession from all around the world. Information about past conferences and the next event can be found on the event pages.",
-    image: "/organisation.jpg",
-    imageOne: "/organisation-1.jpg",
+    image: "/three-man-conference.webp",
+    imageOne: "/girl-conference.webp",
     reverse: true,
   },
 ];
