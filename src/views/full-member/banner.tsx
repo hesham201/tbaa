@@ -66,7 +66,7 @@ const Banner = () => {
         <Container>
           <div className="py-16 w-[45%] ">
             <h1 className="text-primary mb-3 text-6xl" id="home-h1">
-              Full Members Presentation Protocol
+              Full members presentation protocol
             </h1>
           </div>
         </Container>
