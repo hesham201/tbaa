@@ -1358,8 +1358,8 @@ export const ABOUT_SAME_SECTION = [
 ];
 export const TESTIMONIALS = [
   {
-    name: "Thomas",
-    para: "“High-class aesthetic and implant dentistry in a wonderful venue with great colleagues.<br/>Honestly, I have great memories about the BAAD meeting!<br/>I look forward to seeing you again, hopefully in the near future.”",
+    name: "Dr Koray Feran BDS MSc FDSRCS",
+    para: "“I have been a member of BAAD for 12 years, with 8 of those spent on committee firstly as treasurer and as immediate past president.<br/>BAAD has been an inspiration since my first meeting - the consistent objective of the academy being to promote the highest standards of dental care to restore a patient's appearance and wellbeing to look as natural as possible based on a sound scientific foundation. This never changes and the ethos of BAAD has always been one of sharing knowledge.<br/>The level of presentations is consistently high and of a practical nature and the list of speakers that have attended BAAD over the last 20 years is a who's who of beautiful dentistry.<br/>BAAD has been a family that I have been proud to serve and be associated with and it is gratifying to see the mental and professional stimulation it gives to younger colleagues attending for the first time.<br/>BAAD's scientific meeting and study clubs are a great way to be introduced into the world of quality dentistry and a great group of likeminded colleagues. From the UK and abroad.”",
   },
   {
     name: "Dr Juerg Willi",
@@ -1367,7 +1367,7 @@ export const TESTIMONIALS = [
     reverse: true,
   },
   {
-    name: "Dr Koray Feran BDS MSc FDSRCS",
-    para: "“I have been a member of BAAD for 12 years, with 8 of those spent on committee firstly as treasurer and as immediate past president.<br/>BAAD has been an inspiration since my first meeting - the consistent objective of the academy being to promote the highest standards of dental care to restore a patient's appearance and wellbeing to look as natural as possible based on a sound scientific foundation. This never changes and the ethos of BAAD has always been one of sharing knowledge.<br/>The level of presentations is consistently high and of a practical nature and the list of speakers that have attended BAAD over the last 20 years is a who's who of beautiful dentistry.<br/>BAAD has been a family that I have been proud to serve and be associated with and it is gratifying to see the mental and professional stimulation it gives to younger colleagues attending for the first time.<br/>BAAD's scientific meeting and study clubs are a great way to be introduced into the world of quality dentistry and a great group of likeminded colleagues. From the UK and abroad.”",
+    name: "Thomas",
+    para: "“High-class aesthetic and implant dentistry in a wonderful venue with great colleagues.<br/>Honestly, I have great memories about the BAAD meeting!<br/>I look forward to seeing you again, hopefully in the near future.”",
   },
 ];

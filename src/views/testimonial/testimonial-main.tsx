@@ -26,9 +26,9 @@ const TestimonialMain = () => {
           transformOrigin: "center center",
           scrollTrigger: {
             trigger: item,
-            start: "top 35%",
+            start: "top 15%",
             scroller: "[data-scroll-container]", // 👈 IMPORTANT
-            end: index === items.length - 1 ? "bottom 22%" : "bottom 22%",
+            end: index === items.length - 1 ? "bottom 2%" : "bottom 2%",
             pin: true,
             pinSpacing: false,
             scrub: true,
