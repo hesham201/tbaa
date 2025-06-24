@@ -3,6 +3,7 @@ import { ABOUT_US_BANNER } from "@/constant/data";
 import React from "react";
 import Purpose from "./purpose";
 import OrganisationMeetings from "./organisation-meetings";
+import Faqs from "@/components/faqs";
 
 const Main = () => {
   return (
@@ -10,6 +11,7 @@ const Main = () => {
       <Banner data={ABOUT_US_BANNER} />
       <Purpose />
       <OrganisationMeetings />
+      <Faqs />
     </>
   );
 };
