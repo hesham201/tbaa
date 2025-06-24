@@ -35,7 +35,7 @@ export const NAV_ITEMS: INavItem[] = [
       },
       {
         name: "Testimonials",
-        link: "/",
+        link: "/testimonials",
       },
     ],
   },
