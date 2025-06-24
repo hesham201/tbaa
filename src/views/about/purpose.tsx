@@ -1,11 +1,24 @@
 "use client";
 import Container from "@/components/container";
-import { useLayoutEffect, useRef } from "react";
+import { useLayoutEffect, useRef, useState } from "react";
 import gsap from "gsap";
 import ScrollTrigger from "gsap/ScrollTrigger";
+import Image from "next/image";
+import VideoModal from "@/components/popup-modal";
 gsap.registerPlugin(ScrollTrigger);
+declare global {
+  interface Window {
+    LOCO_SCROLL?: {
+      update: () => void;
+      start: () => void;
+      stop: () => void;
+    };
+  }
+}
+
 const Purpose = () => {
   const sectionRef = useRef(null);
+  const [showModal, setShowModal] = useState(false);
   useLayoutEffect(() => {
     const timeOut = setTimeout(() => {
       gsap.from(".purpose-heading", {
@@ -47,42 +60,82 @@ const Purpose = () => {
       clearTimeout(timeOut);
     };
   }, []);
+  const handleOpenModal = () => {
+    setShowModal(true);
+    if (window.LOCO_SCROLL) window.LOCO_SCROLL.stop(); // 👈 Stop Locomotive Scroll
+  };
+
+  const handleCloseModal = () => {
+    setShowModal(false);
+    setTimeout(() => {
+      if (window.LOCO_SCROLL) window.LOCO_SCROLL.start(); // 👈 Resume after a short delay
+    }, 100); // Allow DOM repaint
+  };
   return (
-    <div ref={sectionRef}>
-      <Container>
-        <div>
-          <div className="max-w-[700px] mx-auto">
-            <h2 className="purpose-heading text-center text-5xl mb-5">
-              Purpose
-            </h2>
-            <p className="purpose-paragraph text-center text-lg mb-3">
-              The Academy&apos;s primary purpose is to promote and foster dental
-              health for the benefit of the community.
-            </p>
-            <p className="purpose-paragraph  text-center text-lg">
-              In particular, the Academy helps to facilitate the integration of
-              natural dental aesthetics into the total spectrum of oral health
-              care and to provide a leadership role for the profession by
-              defining the highest professional, scientific, artistic and
-              ethical standards through research, publications and educational
-              presentations.
-            </p>
+    <>
+      <div ref={sectionRef}>
+        <Container>
+          <div>
+            <div className="max-w-[700px] mx-auto">
+              <h2 className="purpose-heading text-center text-5xl mb-5">
+                Purpose
+              </h2>
+              <p className="purpose-paragraph text-center text-lg mb-3">
+                The Academy&apos;s primary purpose is to promote and foster
+                dental health for the benefit of the community.
+              </p>
+              <p className="purpose-paragraph  text-center text-lg">
+                In particular, the Academy helps to facilitate the integration
+                of natural dental aesthetics into the total spectrum of oral
+                health care and to provide a leadership role for the profession
+                by defining the highest professional, scientific, artistic and
+                ethical standards through research, publications and educational
+                presentations.
+              </p>
+            </div>
+            <div className="purpose-video rounded-4xl overflow-hidden mt-6 max-w-[800px] mx-auto relative h-[500px]">
+              <Image
+                width={1000}
+                height={1000}
+                className="h-full w-full object-cover"
+                src="/thumbnailv1.webp"
+                alt=""
+              />
+              <div
+                className="absolute top-0 cursor-pointer left-0 w-full h-full flex justify-center items-center z-[12]"
+                onClick={handleOpenModal}
+              >
+                <Image
+                  src={"/play.svg"}
+                  width={60}
+                  height={60}
+                  alt="play button"
+                  className="relative cursor-pointer z-[100]"
+                />
+                <div className="absolute left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[150px] h-[150px]">
+                  <div className="absolute w-[150px] h-[150px] bg-[rgba(0,0,0,0.1)] opacity-0 rounded-full left-0 top-0 z-[1] animate-waves "></div>
+                  <div
+                    className="absolute w-[150px] h-[150px] bg-[rgba(0,0,0,0.1)] opacity-0 rounded-full left-0 top-0 z-[1] animate-waves "
+                    style={{ animationDelay: "2s" }}
+                  ></div>
+                  <div
+                    className="absolute w-[150px] h-[150px] bg-[rgba(0,0,0,0.1)] opacity-0 rounded-full left-0 top-0 z-[1] animate-waves "
+                    style={{ animationDelay: "2s" }}
+                  ></div>
+                  <div className="waves wave-2"></div>
+                  <div className="waves wave-3"></div>
+                </div>
+              </div>
+            </div>
           </div>
-          <div className="purpose-video rounded-4xl overflow-hidden mt-6 max-w-[800px] mx-auto relative h-[600px]">
-            <iframe
-              width="560"
-              height="315"
-              src="https://www.youtube.com/embed/5LhqI5IRXTo?si=LtpZM77yKKWMYrCG"
-              title="YouTube video player"
-              className="absolute inset-0 w-full h-full"
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-              referrerPolicy="strict-origin-when-cross-origin"
-              allowFullScreen
-            ></iframe>
-          </div>
-        </div>
-      </Container>
-    </div>
+        </Container>
+      </div>
+      <VideoModal
+        show={showModal}
+        onClose={handleCloseModal}
+        src="/videos/about.mp4"
+      />
+    </>
   );
 };
 
