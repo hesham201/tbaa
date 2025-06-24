@@ -12,7 +12,25 @@ gsap.registerPlugin(ScrollTrigger);
 
 const TestimonialMain = () => {
   const mainRef = useRef<HTMLDivElement>(null);
-
+  useLayoutEffect(() => {
+    const timeout = setTimeout(() => {
+      const items = gsap.utils.toArray<HTMLDivElement>(".testimonial-item");
+      if (!items) return;
+      items.forEach((item) => {
+        const bg = item.querySelector(".content-bg");
+        const tl: GSAPTimeline = gsap.timeline();
+        tl.to(bg, {
+          scaleX: 0,
+          duration: 1,
+        });
+        tl.from(item, {
+          scale: 0.8,
+          duration: 0.5,
+        });
+      });
+    }, 1000);
+    return () => clearTimeout(timeout);
+  });
   useLayoutEffect(() => {
     const timeout = setTimeout(() => {
       const items = gsap.utils.toArray<HTMLDivElement>(".testimonial-item");
@@ -22,18 +40,18 @@ const TestimonialMain = () => {
       items.forEach((item, index) => {
         // const tl = gsap.timeline({});
 
-        // Appear animation
-        gsap.from(item, {
-          y: 50,
-          duration: 1,
-          ease: "power2.out",
-          scrollTrigger: {
-            trigger: item,
-            start: "top 75%", // when 25% of item is visible
-            end: "top 60%", // start pin after entry
-            scroller: "[data-scroll-container]",
-          },
-        });
+        // // Appear animation
+        // gsap.from(item, {
+        //   y: 50,
+        //   duration: 1,
+        //   ease: "power2.out",
+        //   scrollTrigger: {
+        //     trigger: item,
+        //     start: "top 75%", // when 25% of item is visible
+        //     end: "top 60%", // start pin after entry
+        //     scroller: "[data-scroll-container]",
+        //   },
+        // });
         gsap.to(item, {
           opacity: index === items.length - 1 ? 1 : 0,
           scale: 0.9,
@@ -68,7 +86,7 @@ const TestimonialMain = () => {
           {TESTIMONIALS.map((item) => (
             <div key={item.name} className="relative  overflow-hidden">
               <div
-                className={`testimonial-item py-7 px-10 rounded-4xl flex flex-row items-center gap-16 ${
+                className={`testimonial-item py-7 overflow-hidden px-10 rounded-4xl flex flex-row items-center gap-16 ${
                   item.reverse ? "flex-row-reverse" : ""
                 }`}
                 style={{
@@ -77,6 +95,7 @@ const TestimonialMain = () => {
                     : "linear-gradient(to right, #CFAE91, #031A37)",
                 }}
               >
+                <div className="absolute origin-right z-10 inset-0 h-full w-full bg-primary content-bg"></div>
                 <div className="text-white grow">
                   <div className="flex gap-1 mb-3 flex-row">
                     {Array(5)

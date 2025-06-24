@@ -86,18 +86,22 @@ const OrganisationMeetings = () => {
               <div className="w-[calc(50%-16px)] h-[500px] relative">
                 <img
                   src={item.image}
-                  className={`org-image absolute inset-0 w-[80%] h-full object-cover ${
+                  className={`org-image absolute inset-0 w-[80%] h-full object-cover rounded-2xl ${
                     item.reverse ? "me-auto" : "ms-auto"
                   }`}
                   alt=""
                 />
-                <img
-                  src={item.imageOne}
+                <div
                   className={`orgs-image absolute top-1/2 -translate-y-1/2 ${
                     item.reverse ? "right-[4.5%]" : "left-[4.5%]"
-                  } w-[35%] h-[50%] object-cover border rounded-xl border-8 border-white`}
-                  alt=""
-                />
+                  } w-[35%] h-[50%] object-cover  rounded-xl border-8 border-white z-10`}
+                >
+                  <img
+                    src={item.imageOne}
+                    alt="image"
+                    className="w-full relative h-full object-center object-cover rounded-2xl"
+                  />
+                </div>
               </div>
             </div>
           ))}
