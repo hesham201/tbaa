@@ -10,8 +10,8 @@ export const NAV_ITEMS: INavItem[] = [
     subItems: [
       {
         name: "About Us",
-        // link: "/about-us",
-        link: "/",
+        link: "/about-us",
+        // link: "/",
       },
       {
         name: "Executive Council",
