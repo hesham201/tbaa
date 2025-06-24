@@ -16,7 +16,28 @@ const OrganisationMeetings = () => {
         const heading = block.querySelector(".org-heading");
         const para = block.querySelector(".org-para");
         const images = block.querySelectorAll(".org-image");
+        const orgsImage = block.querySelector(".orgs-image");
 
+        const isReversed = block.classList.contains("flex-row-reverse");
+        if (orgsImage) {
+          gsap.fromTo(
+            orgsImage,
+            {
+              x: isReversed ? -200 : 200,
+            },
+            {
+              x: 0,
+              ease: "power2.out",
+              scrollTrigger: {
+                trigger: block,
+                scroller: "[data-scroll-container]",
+                start: "top 85%",
+                end: "top 5%",
+                scrub: true,
+              },
+            }
+          );
+        }
         gsap.from([heading, para], {
           opacity: 0,
           y: 50,
@@ -72,9 +93,9 @@ const OrganisationMeetings = () => {
                 />
                 <img
                   src={item.imageOne}
-                  className={`org-image absolute top-1/2 -translate-y-1/2 ${
+                  className={`orgs-image absolute top-1/2 -translate-y-1/2 ${
                     item.reverse ? "right-[4.5%]" : "left-[4.5%]"
-                  } w-[35%] h-[50%] object-cover border border-8 border-white`}
+                  } w-[35%] h-[50%] object-cover border rounded-xl border-8 border-white`}
                   alt=""
                 />
               </div>

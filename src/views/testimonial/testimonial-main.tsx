@@ -20,6 +20,20 @@ const TestimonialMain = () => {
       // let counter = 1;
 
       items.forEach((item, index) => {
+        // const tl = gsap.timeline({});
+
+        // Appear animation
+        gsap.from(item, {
+          y: 50,
+          duration: 1,
+          ease: "power2.out",
+          scrollTrigger: {
+            trigger: item,
+            start: "top 75%", // when 25% of item is visible
+            end: "top 60%", // start pin after entry
+            scroller: "[data-scroll-container]",
+          },
+        });
         gsap.to(item, {
           opacity: index === items.length - 1 ? 1 : 0,
           scale: 0.9,
@@ -58,7 +72,9 @@ const TestimonialMain = () => {
                   item.reverse ? "flex-row-reverse" : ""
                 }`}
                 style={{
-                  background: "linear-gradient(to right,#CFAE91,#031A37)",
+                  background: item.reverse
+                    ? "linear-gradient(to left, #CFAE91, #031A37)"
+                    : "linear-gradient(to right, #CFAE91, #031A37)",
                 }}
               >
                 <div className="text-white grow">
