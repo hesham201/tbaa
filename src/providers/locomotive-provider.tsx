@@ -115,10 +115,7 @@ const LocomotiveProvider = ({ children }: { children: React.ReactNode }) => {
       </div>
       <main>{children}</main>
       <Footer />
-      <div
-        id="pinned-modal"
-        className="z-[1] fixed top-0 left-0 w-fit h-fit"
-      ></div>
+      <div id="pinned-modal" className="z-[1] fixed top-0 left-0"></div>
     </div>
   );
 };
