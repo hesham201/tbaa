@@ -197,14 +197,14 @@ const Header = () => {
     });
 
     gsap.set("#overlay", {
-      top: "100vh",
+      top: "90vh",
     });
 
     const tl: GSAPTimeline = gsap.timeline();
     menuTimelineRef.current = tl;
     tl.to("#overlay", {
-      top: "-300vh",
-      duration: 2,
+      top: "-400vh",
+      duration: 1.6,
       ease: CustomEase.create("custom", "M0,0 C0.104,0.204 0.634,0.883 1,1 "),
       opacity: 1,
     });
@@ -220,13 +220,17 @@ const Header = () => {
           window.LOCO_SCROLL?.stop();
         },
       },
-      "-=.5"
+      "-=.4"
     );
 
-    tl.from("#main-menu-nav", {
-      opacity: 0,
-      y: 100,
-    });
+    tl.from(
+      "#main-menu-nav",
+      {
+        opacity: 0,
+        y: 100,
+      },
+      ">"
+    );
 
     tl.from(".nav-items", {
       stagger: 0.1,
@@ -272,10 +276,10 @@ const Header = () => {
       });
     } else {
       tl.to(".nav-items", {
-        stagger: 0.1,
         opacity: 0,
         y: -10,
-        duration: 0.2,
+        duration: 0.4,
+        stagger: 0.05,
       });
     }
     tl.to(
@@ -294,7 +298,7 @@ const Header = () => {
         stagger: 0.1,
         opacity: 0,
         y: -10,
-        duration: 0.1,
+        duration: 0.2,
       },
       "<"
     );
@@ -307,15 +311,16 @@ const Header = () => {
       },
       "<"
     );
+    gsap.set("#overlay", { top: "-180vh" }); // Ensure it's in the starting position
     tl.fromTo(
       "#overlay",
-      { top: "-300vh" },
+      { top: "-180vh" },
       {
         top: "100vh",
-        duration: 2.8,
-        ease: "power2.out",
+        duration: 2,
+        ease: CustomEase.create("custom", "M0,0 C0.104,0.204 0.634,0.883 1,1"),
       },
-      "<-0.5"
+      "+=0.1"
     );
     // tl.from(
     //   "#overlay",
@@ -351,7 +356,7 @@ const Header = () => {
           gsap.set("#overlay", { clearProps: "all" });
         },
       },
-      ">"
+      ">0.1"
     );
   }
   function hoveredOpenOne() {
