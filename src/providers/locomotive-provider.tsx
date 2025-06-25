@@ -89,7 +89,9 @@ const LocomotiveProvider = ({ children }: { children: React.ReactNode }) => {
     };
 
     const timeout = setTimeout(() => {
-      initLoco();
+      if (pathname !== "/members") {
+        initLoco();
+      }
     }, 100);
 
     return () => {
