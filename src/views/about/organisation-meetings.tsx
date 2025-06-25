@@ -66,7 +66,7 @@ const OrganisationMeetings = () => {
           }
         );
       });
-    }, 600);
+    }, 1000);
 
     return () => clearTimeout(timeout);
   }, []);
