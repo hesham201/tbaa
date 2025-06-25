@@ -358,6 +358,10 @@ export const MASTER_CLASSES_BANNER = {
   image: "/our-mission.jpg",
   heading: "Masterclasses",
 };
+export const MEMBERS_BANNER = {
+  image: "/our-mission.jpg",
+  heading: "Members",
+};
 export const EXECTIVE_COUNCIL_BANNER = {
   image: "/our-mission.jpg",
   heading: "Executive Council",
