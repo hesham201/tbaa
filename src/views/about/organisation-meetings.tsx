@@ -38,6 +38,7 @@ const OrganisationMeetings = () => {
                 start: "top 85%",
                 end: "top 5%",
                 scrub: true,
+                markers: true,
               },
             }
           );
