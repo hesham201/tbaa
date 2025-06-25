@@ -54,6 +54,22 @@ const Purpose = () => {
           start: "top 90%",
         },
       });
+      gsap.fromTo(
+        ".purpose-video img.thumbnail",
+        { y: "-20%", scale: 1.1 },
+        {
+          y: "20%",
+          scale: 1,
+          ease: "none",
+          scrollTrigger: {
+            trigger: ".purpose-video",
+            scroller: "[data-scroll-container]", // or remove if you're not using locomotive-scroll
+            start: "top bottom",
+            end: "bottom top",
+            scrub: true,
+          },
+        }
+      );
     }, 500);
 
     return () => {
@@ -94,10 +110,10 @@ const Purpose = () => {
               </p>
             </div>
             <div className="purpose-video rounded-4xl overflow-hidden mt-6 max-w-[800px] mx-auto relative h-[500px]">
-              <Image
+              <img
                 width={1000}
                 height={1000}
-                className="h-full w-full object-cover"
+                className="absolute thumbnail top-0 left-0 w-full h-auto min-h-full object-cover will-change-transform"
                 src="/thumbnailv1.webp"
                 alt=""
               />
