@@ -119,7 +119,12 @@ const SuperHero = () => {
                 <Button href="/">View BAAD programme</Button>
               </div>
             </div>
-            <div className="relative w-[35%] overflow-hidden rounded-2xl shrink-0 h-[600px]">
+            <div
+              data-scroll
+              data-scroll-direction="horizontal"
+              data-scroll-speed={"1.7"}
+              className="relative w-[35%] overflow-hidden rounded-2xl shrink-0 h-[600px]"
+            >
               <img
                 ref={bgImageRef2}
                 src="/baad-super-hero.png"
