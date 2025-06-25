@@ -1,7 +1,7 @@
 "use client";
 import { useLayoutEffect, useRef } from "react";
 import gsap from "gsap";
-import ScrollTrigger from "gsap/dist/ScrollTrigger";
+import ScrollTrigger from "gsap/ScrollTrigger";
 import "locomotive-scroll/dist/locomotive-scroll.min.css";
 import Footer from "@/layout/footer";
 import Header from "@/layout/header";

@@ -5,7 +5,7 @@ import { TESTIMONIALS } from "@/constant/data";
 import Image from "next/image";
 // import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
-import ScrollTrigger from "gsap/dist/ScrollTrigger";
+import ScrollTrigger from "gsap/ScrollTrigger";
 
 // gsap.registerPlugin(useGSAP);
 gsap.registerPlugin(ScrollTrigger);

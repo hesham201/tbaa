@@ -3,7 +3,7 @@
 import React, { useRef, useLayoutEffect } from "react";
 // import Image from "next/image";
 import gsap from "gsap";
-import ScrollTrigger from "gsap/dist/ScrollTrigger";
+import ScrollTrigger from "gsap/ScrollTrigger";
 import Container from "@/components/container";
 import parse from "html-react-parser";
 // import HeadingTwo from "@/components/heading-two";

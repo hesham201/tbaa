@@ -1,7 +1,7 @@
 "use client";
 import React, { useState, useRef, useEffect, useLayoutEffect } from "react";
 import gsap from "gsap";
-import ScrollTrigger from "gsap/dist/ScrollTrigger";
+import ScrollTrigger from "gsap/ScrollTrigger";
 import OpenFaq from "./open-faq";
 import Container from "@/components/container";
 import SplitType from "split-type";
