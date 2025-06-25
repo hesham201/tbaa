@@ -13,6 +13,10 @@ const OrganisationMeetings = () => {
   useLayoutEffect(() => {
     const timeout = setTimeout(() => {
       gsap.utils.toArray<HTMLElement>(".org-block").forEach((block) => {
+        if (!block) {
+          console.log("returning");
+          return;
+        }
         const heading = block.querySelector(".org-heading");
         const para = block.querySelector(".org-para");
         const images = block.querySelectorAll(".org-image");
