@@ -3,6 +3,7 @@ import Banner from "./banner";
 import ContactDetails from "./contact-details";
 import WholeMap from "./whole-map";
 import ContactForm from "./contact-form";
+import Faqs from "@/components/faqs";
 
 const Main = () => {
   return (
@@ -11,6 +12,7 @@ const Main = () => {
       <ContactForm />
       <ContactDetails />
       <WholeMap />
+      <Faqs />
     </>
   );
 };

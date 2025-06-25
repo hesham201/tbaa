@@ -215,23 +215,27 @@ export const MASTER_CLASSES = [
   },
 ];
 export const MASTER_CLASSES_BANNER = {
-  image: "/large-conference.webp",
+  image: "/our-mission.jpg",
   heading: "Masterclasses",
 };
 export const EXECTIVE_COUNCIL_BANNER = {
-  image: "/large-conference.webp",
+  image: "/our-mission.jpg",
   heading: "Executive Council",
 };
 export const ASSOCIATE_MEMBER_BANNER = {
-  image: "/large-conference.webp",
+  image: "/our-mission.jpg",
   heading: "Associate Membership",
 };
+export const FULL_MEMBER_BANNER = {
+  image: "/our-mission.jpg",
+  heading: "Full members presentation protocol",
+};
 export const ABOUT_US_BANNER = {
-  image: "/large-conference.webp",
+  image: "/our-mission.jpg",
   heading: "About us",
 };
 export const TESTIMONIALS_BANNER = {
-  image: "/large-conference.webp",
+  image: "/our-mission.jpg",
   heading: "Testimonials",
 };
 export const EXECUTIVE_TEAM = [
