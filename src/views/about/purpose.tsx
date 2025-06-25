@@ -89,7 +89,7 @@ const Purpose = () => {
   };
   return (
     <>
-      <div ref={sectionRef} className="py-7">
+      <div ref={sectionRef} className="py-7 text-midnight">
         <Container>
           <div>
             <div className="max-w-[700px] mx-auto">

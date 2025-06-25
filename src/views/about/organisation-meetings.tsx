@@ -83,7 +83,7 @@ const OrganisationMeetings = () => {
           {ABOUT_SAME_SECTION.map((item) => (
             <div
               key={item.heading}
-              className={`org-block flex flex-row gap-8 items-center ${
+              className={`org-block text-midnight flex flex-row gap-8 items-center ${
                 item.reverse ? "flex-row-reverse" : ""
               }`}
             >

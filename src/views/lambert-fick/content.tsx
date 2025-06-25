@@ -67,7 +67,7 @@ const Content = () => {
     <div className="">
       <div className="py-10">
         <Container>
-          <div className="flex flex-col  gap-4 text-lg">
+          <div className="flex flex-col text-midnight gap-4 text-lg">
             <p>
               Lambert Fick was a truly passionate dentist, as those of you who
               have attended his lectures or have simply “talked teeth” with him
@@ -117,7 +117,7 @@ const Content = () => {
       </div>
       <div className="py-10">
         <Container>
-          <div className="flex flex-col  gap-4 text-lg">
+          <div className="flex flex-col text-midnight gap-4 text-lg">
             <p>
               We both felt greatly welcomed & basked in the special social
               ambience that the meetings had. He felt truly inspired and he was

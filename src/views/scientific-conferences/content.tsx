@@ -31,9 +31,9 @@ const Content = () => {
     <>
       <div ref={sectionRef} className="py-10">
         <Container>
-          <div>
+          <div className="text-midnight">
             {/* <div className="max-w-[900px] mx-auto"> */}
-            <p className="purpose-paragraph text-lg mb-3">
+            <p className="purpose-paragraph  text-lg mb-3">
               The Academy arranges an annual scientific conference usually in
               combination with an annual general meeting. It is an opportunity
               to promote, foster and share with other members their professional

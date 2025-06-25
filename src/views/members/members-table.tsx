@@ -28,9 +28,9 @@ const MembersTable = () => {
         </div>
         <div>
           {filteredMembers.length === 0 ? (
-            <p className="p-4 text-center">No member found</p>
+            <p className="p-4 text-center text-midnight">No member found</p>
           ) : (
-            <table className="table-auto">
+            <table className="table-auto text-midnight">
               <thead>
                 <tr>
                   <th className="border border-gray-300 ...">

@@ -143,7 +143,7 @@ const Faqs = () => {
         alt=""
       />
       <Container>
-        <h2 className="2xl:text-[54px] relative xl:text-[54px] lg:text-[54px] md:text-[44px] text-[30px] font-bold text-center text-[#1A1A1A] mb-8 px-4 playfair">
+        <h2 className="2xl:text-[54px] relative xl:text-[54px] lg:text-[54px] md:text-[44px] text-[30px] font-bold text-center text-midnight mb-8 px-4 playfair">
           Frequently Asked{" "}
           <span className="" id="faqs-spans-animation">
             Questions
@@ -162,7 +162,7 @@ const Faqs = () => {
               onClick={() => toggleAccordion(index)}
             >
               <button
-                className="w-full text-left font-Poppins font-medium text-[#170F49] flex justify-between items-center"
+                className="w-full text-left font-Poppins font-medium text-midnight flex justify-between items-center"
                 onClick={() => toggleAccordion(index)}
               >
                 {faq?.question}
@@ -186,7 +186,7 @@ const Faqs = () => {
                   openIndex === index ? "opacity-100" : "opacity-0"
                 }`}
               >
-                <p className="font-Poppins text-[#6F6C90] text-sm mt-2">
+                <p className="font-Poppins text-midnight text-sm mt-2">
                   {faq?.answer}
                 </p>
               </div>

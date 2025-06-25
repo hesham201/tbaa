@@ -67,7 +67,7 @@ const Content = () => {
     <div className="">
       <div className="py-10">
         <Container>
-          <div className="flex flex-col  gap-4 text-lg">
+          <div className="flex flex-col text-midnight gap-4 text-lg">
             <p>
               The first step is to approach 2 Full Members to act as your guides
               and coaches. A good starting point is the members who supported
@@ -128,7 +128,7 @@ const Content = () => {
       </div> */}
       <div className="py-10">
         <Container>
-          <div className="flex gap-20 justify-center ">
+          <div className="flex gap-20 text-midnight justify-center ">
             <div className="flex flex-col  gap-4 text-lg">
               <div>
                 <h2 className="text-2xl">Additional investigations:</h2>

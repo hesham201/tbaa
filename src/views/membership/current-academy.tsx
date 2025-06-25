@@ -79,7 +79,7 @@ const CurrentAcademy = () => {
           {MEMBERSHIP_SAME_SECTION.map((item) => (
             <div
               key={item.heading}
-              className={`org-block flex flex-row gap-8 items-center ${
+              className={`org-block flex flex-row text-midnight gap-8 items-center ${
                 item.reverse ? "flex-row-reverse" : ""
               }`}
             >

@@ -69,7 +69,7 @@ const MembershipAcademy = () => {
       <div ref={sectionRef} className="py-5">
         <Container>
           <div>
-            <div className="max-w-[700px] mx-auto">
+            <div className="max-w-[700px] text-midnight mx-auto">
               <h2 className="purpose-heading text-center text-5xl mb-5">
                 Membership of the Academy
               </h2>
