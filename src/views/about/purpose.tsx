@@ -80,11 +80,11 @@ const Purpose = () => {
               <h2 className="purpose-heading text-center text-5xl mb-5">
                 Purpose
               </h2>
-              <p className="purpose-paragraph text-center text-lg mb-3">
+              <p className="purpose-paragraph  text-lg mb-3">
                 The Academy&apos;s primary purpose is to promote and foster
                 dental health for the benefit of the community.
               </p>
-              <p className="purpose-paragraph  text-center text-lg">
+              <p className="purpose-paragraph   text-lg">
                 In particular, the Academy helps to facilitate the integration
                 of natural dental aesthetics into the total spectrum of oral
                 health care and to provide a leadership role for the profession

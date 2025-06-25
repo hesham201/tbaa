@@ -67,7 +67,7 @@ const Content = () => {
     <div className="">
       <div className="py-10">
         <Container>
-          <div className="flex flex-col text-center gap-4 text-lg">
+          <div className="flex flex-col  gap-4 text-lg">
             <p>
               Following the enormous success of the American Academy of Esthetic
               Dentistry, founded in 1975, the European Academy of Esthetic
@@ -122,7 +122,7 @@ const Content = () => {
       </div>
       <div className="py-10">
         <Container>
-          <div className="flex flex-col text-center gap-4 text-lg">
+          <div className="flex flex-col  gap-4 text-lg">
             <p>
               Fabio Toffenetti, President of the EAED, made two significant
               announcements during the concluding speech of the meeting. The
