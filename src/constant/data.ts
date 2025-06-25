@@ -442,6 +442,58 @@ export const EXECUTIVE_TEAM = [
     jd: "Executive Administrator",
   },
 ];
+export const PRESIDENT_TEAM = [
+  {
+    image: "/Nik-Sethi.jpg",
+    name: "Nik Sethi",
+    jd: "President",
+  },
+  {
+    image: "/Nik-Sisodia.jpg",
+    name: "Nik Sisodia",
+    jd: "Past President",
+  },
+  {
+    image: "/Roy-Morris.jpg",
+    name: "Roy Morris",
+    jd: "President Elect",
+  },
+  {
+    image: "/Fazeela-Khan-Osborne.jpg",
+    name: "Fazeela Khan Osborne",
+    jd: "Secretary",
+  },
+  {
+    image: "/Elaine-Mo.jpg",
+    name: "Elaine Mo",
+    jd: "Treasurer",
+  },
+  {
+    image: "/gurvinder-Bhirth.jpg",
+    name: "Gurvinder Bhirth",
+    jd: "Scientific Committee",
+  },
+  {
+    image: "/dipesh-Parmar.jpg",
+    name: "Dipesh Parmar",
+    jd: "Scientific Committee",
+  },
+  {
+    image: "/andrew-Chandrapal.jpg",
+    name: "Andrew Chandrapal",
+    jd: "Full Committee Member",
+  },
+  {
+    image: "/jon-Ayres-1.jpg",
+    name: "Jon Ayres",
+    jd: "Trade Liaison & Co-opted Committee Member",
+  },
+  {
+    image: "/penny-Sykes.jpg",
+    name: "Penny Sykes",
+    jd: "Executive Administrator",
+  },
+];
 export const MEMBERS_DATA = [
   {
     firstname: "Orestis",
