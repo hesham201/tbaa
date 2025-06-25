@@ -29,7 +29,7 @@ const VideoModal = ({ show, onClose, src }: VideoModalProps) => {
 
   return (
     <ModalPortal>
-      <div className="relative w-full h-[100vh] bg-black bg-opacity-90 z-[999999] flex items-center justify-center">
+      <div className="relative w-full h-[100vh] bg-black/50 backdrop-blur-2xl bg-opacity-90 z-[999999] flex items-center justify-center">
         <button
           onClick={onClose}
           className="absolute flex cursor-pointer justify-center items-center border-4 h-12 w-12 rounded-full top-3 left-3 text-white z-[10000] text-4xl focus:outline-none"
@@ -42,7 +42,7 @@ const VideoModal = ({ show, onClose, src }: VideoModalProps) => {
             alt="close button"
           />
         </button>
-        <div className="relative w-full max-w-5xl h-[80vh] px-4">
+        <div className="relative w-full max-w-[600px] h-[400px]">
           <iframe
             width="100%"
             height="100%"
@@ -51,7 +51,7 @@ const VideoModal = ({ show, onClose, src }: VideoModalProps) => {
             frameBorder="0"
             allow="autoplay; encrypted-media"
             allowFullScreen
-            className="rounded-xl w-full h-full"
+            className="rounded-xl absolute inset-0 bg-transparent w-full h-full"
           ></iframe>
         </div>
       </div>
