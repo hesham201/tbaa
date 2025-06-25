@@ -1,6 +1,5 @@
 "use client";
-
-import { useEffect, useRef } from "react";
+import { useLayoutEffect, useRef } from "react";
 import gsap from "gsap";
 import ScrollTrigger from "gsap/dist/ScrollTrigger";
 import "locomotive-scroll/dist/locomotive-scroll.min.css";
@@ -12,52 +11,49 @@ const LocomotiveProvider = ({ children }: { children: React.ReactNode }) => {
   const scrollRef = useRef<HTMLDivElement>(null);
   const pathname = usePathname();
 
-  useEffect(() => {
-    let scrollInstance: any; // eslint-disable-line
+  useLayoutEffect(() => {
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    let loco: any;
+    let onRefresh: () => void;
 
     gsap.registerPlugin(ScrollTrigger);
 
-    const initLoco = async () => {
-      const LocomotiveScroll = (await import("locomotive-scroll")).default;
-      const scrollEl = scrollRef.current;
-      if (!scrollEl) return;
+    async function initLoco() {
+      const { default: LocomotiveScroll } = await import("locomotive-scroll");
+      const el = scrollRef.current;
+      if (!el) return;
 
-      scrollInstance = new LocomotiveScroll({
-        el: scrollEl,
-        smooth: true,
-      });
-
-      scrollInstance.on("scroll", ScrollTrigger.update);
-
-      ScrollTrigger.scrollerProxy(scrollEl, {
-        scrollTop(value) {
+      loco = new LocomotiveScroll({ el, smooth: true });
+      // wire up ScrollTrigger
+      ScrollTrigger.scrollerProxy(el, {
+        scrollTop(v) {
           return arguments.length
-            ? scrollInstance.scrollTo(value, 0, 0)
-            : scrollInstance.scroll.instance.scroll.y;
+            ? loco.scrollTo(v, { duration: 0, disableLerp: true })
+            : loco.scroll.instance.scroll.y;
         },
-        getBoundingClientRect() {
-          return {
-            top: 0,
-            left: 0,
-            width: window.innerWidth,
-            height: window.innerHeight,
-          };
-        },
-        pinType: scrollEl.style.transform ? "transform" : "fixed",
+        getBoundingClientRect: () => ({
+          top: 0,
+          left: 0,
+          width: window.innerWidth,
+          height: window.innerHeight,
+        }),
+        pinType: el.style.transform ? "transform" : "fixed",
       });
 
-      ScrollTrigger.addEventListener("refresh", () => scrollInstance.update());
-      ScrollTrigger.defaults({
-        scroller: scrollEl,
-      });
-      // PIN HEADER USING SCROLLTRIGGER
+      // default scroller so you never forget
+      ScrollTrigger.defaults({ scroller: el });
+
+      // keep Loco in sync
+      onRefresh = () => loco.update();
+      ScrollTrigger.addEventListener("refresh", onRefresh);
+
+      // pin header & modal
       ScrollTrigger.create({
         trigger: "#pinned-header",
         start: "top top",
         end: "+=99999",
         pin: true,
         pinSpacing: false,
-        scroller: scrollEl,
       });
       ScrollTrigger.create({
         trigger: "#pinned-modal",
@@ -65,76 +61,31 @@ const LocomotiveProvider = ({ children }: { children: React.ReactNode }) => {
         end: "+=99999",
         pin: true,
         pinSpacing: false,
-        scroller: scrollEl,
       });
 
-      window.LOCO_SCROLL = scrollInstance;
+      loco.on("scroll", ScrollTrigger.update);
 
-      await scrollInstance.update();
+      await loco.update();
       ScrollTrigger.refresh();
+    }
 
-      window.addEventListener("load", () => {
-        scrollInstance.update();
-        ScrollTrigger.refresh();
-      });
-
-      // Optional: pause & resume scroll for layout timing
-      scrollInstance.stop();
-      setTimeout(() => {
-        scrollInstance.start();
-      }, 2000);
-
-      setTimeout(() => {
-        scrollInstance.update();
-        ScrollTrigger.refresh();
-      }, 500);
-    };
-
-    const timeout = setTimeout(() => {
-      if (pathname !== "/members") {
-        initLoco();
-      } else {
-        ScrollTrigger.create({
-          trigger: "#pinned-header",
-          start: "top top",
-          end: "+=99999",
-          pin: true,
-          pinSpacing: false,
-        });
-        ScrollTrigger.create({
-          trigger: "#pinned-modal",
-          start: "top top",
-          end: "+=99999",
-          pin: true,
-          pinSpacing: false,
-        });
-      }
-    }, 100);
+    initLoco();
 
     return () => {
-      clearTimeout(timeout);
-      if (scrollInstance) scrollInstance.destroy();
-      ScrollTrigger.getAll().forEach((trigger) => trigger.kill());
-      ScrollTrigger.removeEventListener("refresh", () =>
-        scrollInstance?.update()
-      );
-      window.LOCO_SCROLL = undefined;
+      if (onRefresh) ScrollTrigger.removeEventListener("refresh", onRefresh);
+      ScrollTrigger.getAll().forEach((t) => t.kill());
+      if (loco) loco.destroy();
     };
   }, [pathname]);
 
   return (
-    <div
-      ref={scrollRef}
-      id="main-scroll-con"
-      data-scroll-container
-      className="scroll-container"
-    >
+    <div ref={scrollRef} id="main-scroll-con" data-scroll-container>
       <div id="pinned-header" className="z-[10000] w-full bg-white shadow-2xl">
         <Header />
       </div>
       <main>{children}</main>
       <Footer />
-      <div id="pinned-modal" className="z-[1] fixed top-0 left-0"></div>
+      <div id="pinned-modal" className="z-[1] fixed top-0 left-0" />
     </div>
   );
 };
