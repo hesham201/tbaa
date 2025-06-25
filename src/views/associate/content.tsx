@@ -61,7 +61,7 @@ const Content = () => {
     <div className="">
       <div className="py-10">
         <Container>
-          <div className="flex flex-col text-center gap-4 text-lg">
+          <div className="flex flex-col  gap-4 text-lg">
             <p>To Qualify for associate membership, an applicant must have:</p>
             <p>
               1) Attended two scientific meetings and paid the required dues

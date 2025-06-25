@@ -382,6 +382,14 @@ export const FULL_MEMBER_BANNER = {
   image: "/our-mission.jpg",
   heading: "Full Members Presentation Protocol",
 };
+export const HISTORY_BANNER = {
+  image: "/our-mission.jpg",
+  heading: "The History of BAAD",
+};
+export const LAM_BANNER = {
+  image: "/our-mission.jpg",
+  heading: "Lambert Fick Memorial",
+};
 export const SCIENTIFIC_BANNER = {
   image: "/our-mission.jpg",
   heading: "Scientific Conferences",

@@ -75,8 +75,18 @@ const Banner = ({ data }: { data: IBanner }) => {
         </Container>
       </div>
       <div className="-mt-[140px] relative z-10">
+        <div className="absolute bottom-20 left-10 w-full h-[140px] opacity-40 z-20">
+          <Image
+            src={"/header-logo.png"}
+            className="w-[40%] h-auto object-contain"
+            width={1000}
+            height={1000}
+            quality={100}
+            alt="logo"
+          />
+        </div>
         <Container>
-          <div className="h-[300px] lg:h-[380px] overflow-hidden">
+          <div className="flex h-[300px] lg:h-[380px] overflow-hidden">
             <div className="video-main-div relative scale-x-0 h-0 overflow-hidden origin-top ms-auto max-w-[52%] transition-all ">
               <div className="absolute z-10 inset-0 h-full w-full bg-primary video-bg"></div>
               <div className="video-div-main relative">
