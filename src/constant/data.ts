@@ -376,7 +376,7 @@ export const MEMBERSHIP_BANNER = {
 };
 export const FULL_MEMBER_BANNER = {
   image: "/our-mission.jpg",
-  heading: "Full members presentation protocol",
+  heading: "Full Members Presentation Protocol",
 };
 export const SCIENTIFIC_BANNER = {
   image: "/our-mission.jpg",
@@ -384,7 +384,7 @@ export const SCIENTIFIC_BANNER = {
 };
 export const ABOUT_US_BANNER = {
   image: "/our-mission.jpg",
-  heading: "About us",
+  heading: "About Us",
 };
 export const TESTIMONIALS_BANNER = {
   image: "/our-mission.jpg",
