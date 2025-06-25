@@ -44,6 +44,10 @@ export const NAV_ITEMS: INavItem[] = [
     isDropdown: true,
     subItems: [
       {
+        name: "Membership",
+        link: "/membership",
+      },
+      {
         name: "Members",
         link: "/members",
       },
@@ -59,7 +63,7 @@ export const NAV_ITEMS: INavItem[] = [
   },
   {
     name: "Scientific Conferences",
-    link: "/",
+    link: "/scientific-conferences",
   },
   {
     name: "Masterclasses",
@@ -214,6 +218,142 @@ export const MASTER_CLASSES = [
     link: "/BAAD-E2014-pdf.jpg",
   },
 ];
+export const SCIENTIFIC_CARDS = [
+  {
+    image: "/bAAD-2024-Conference-Flyer.jpg",
+    description: "2023 – Scientific Meeting",
+  },
+  {
+    image: "/bAAD-Conference-2023.png",
+    description: "2023 – Scientific Meeting",
+    link: "/",
+  },
+  {
+    image: "/baad-2022-front.png",
+    description: "2022 – Scientific Meeting",
+    link: "/",
+  },
+  {
+    image: "/bAAD-2020-768x223.jpeg",
+    description: "2020 – Scientific Meeting",
+    link: "/",
+  },
+  {
+    image: "/BAAD-2019-768x223.jpeg",
+    description: "2019 – Scientific Meeting",
+    link: "/",
+  },
+  {
+    image: "/BAAD-2018-768x220.jpeg",
+    description: "2018 – Scientific Meeting",
+    link: "/",
+  },
+  {
+    image: "/BAAD-2017-768x223.jpeg",
+    description: "2017 – Scientific Meeting",
+    link: "/",
+  },
+  {
+    image: "/BAAD-Early-2016-768x223.jpeg",
+    description: "2016 – Gala Dinner",
+    link: "/",
+  },
+  {
+    image: "/BAAD-Early-2016-768x223.jpeg",
+    description: "2016 – Scientific Meeting",
+    link: "/",
+  },
+  {
+    image: "/BAAD-2015.jpeg",
+    description: "2015 – Scientific Meeting",
+    link: "/",
+  },
+  {
+    image: "/BAAD-2014.jpeg",
+    description: "2014 – Scientific Meeting",
+    link: "/",
+  },
+  {
+    image: "/4-724x1024.png",
+    description: "2013 – Scientific Meeting",
+    link: "/",
+  },
+  {
+    image: "/BAAD-2012.jpeg",
+    description: "2012 – Scientific Meeting",
+    link: "/",
+  },
+  {
+    image: "/6-724x1024.png",
+    description: "2011 – Scientific Meeting",
+    link: "/",
+  },
+  {
+    image: "/BAAD-2010.jpeg",
+    description: "2010 – Scientific Meeting",
+    link: "/",
+  },
+  {
+    image: "/7-724x1024.png",
+    description: "2009 – Scientific Meeting",
+    link: "/",
+  },
+  {
+    image: "/8-724x1024.png",
+    description: "2008 – Scientific Meeting",
+    link: "/",
+  },
+  {
+    image: "/BAAD-2007-768x310.jpeg",
+    description: "2007 – Scientific Meeting",
+    link: "/",
+  },
+  {
+    image: "/BAAD-2006.jpeg",
+    description: "2006 – Scientific Meeting",
+    link: "/",
+  },
+  {
+    image: "/BAAD-2005.jpeg",
+    description: "2005 – Scientific Meeting",
+    link: "/",
+  },
+  {
+    image: "/2-e1659344441553-768x543.png",
+    description: "2004 – Scientific Meeting",
+    link: "/",
+  },
+  {
+    image: "/BAAD-2003.jpeg",
+    description: "2003 – Scientific Meeting",
+    link: "/",
+  },
+  {
+    image: "/2001-768x543.png",
+    description: "2001 – Scientific Meeting",
+    link: "/",
+  },
+  {
+    image: "/2000-768x543.png",
+    description: "2000 – Scientific Meeting",
+    link: "/",
+  },
+  {
+    image: "/1999-e1663334503826-768x543.png",
+    description: "1999 – Scientific Meeting",
+    link: "/",
+  },
+  {
+    image: "/WhatsApp-Image-2022-09-21-at-4.41.05-PM-768x536.jpeg",
+    description: "1998 – Scientific Meeting",
+    link: "/",
+  },
+  {
+    image: "/5-e1663334455410.png",
+    description: "1997 – Scientific Meeting",
+    link: "/",
+  },
+];
 export const MASTER_CLASSES_BANNER = {
   image: "/our-mission.jpg",
   heading: "Masterclasses",
@@ -226,9 +366,17 @@ export const ASSOCIATE_MEMBER_BANNER = {
   image: "/our-mission.jpg",
   heading: "Associate Membership",
 };
+export const MEMBERSHIP_BANNER = {
+  image: "/our-mission.jpg",
+  heading: "Membership",
+};
 export const FULL_MEMBER_BANNER = {
   image: "/our-mission.jpg",
   heading: "Full members presentation protocol",
+};
+export const SCIENTIFIC_BANNER = {
+  image: "/our-mission.jpg",
+  heading: "Scientific Conferences",
 };
 export const ABOUT_US_BANNER = {
   image: "/our-mission.jpg",
@@ -1359,6 +1507,21 @@ export const ABOUT_SAME_SECTION = [
   {
     heading: "Meetings",
     para: "The Academy arranges an annual scientific conference by bringing together and encouraging debate between opinion leaders in our profession from all around the world. Information about past conferences and the next event can be found on the event pages.",
+    image: "/meetings.webp",
+    imageOne: "/sliding-image.webp",
+    reverse: true,
+  },
+];
+export const MEMBERSHIP_SAME_SECTION = [
+  {
+    heading: "Joining the Academy",
+    para: "Should you wish to join the Academy, please contact our secretary or forward your contact details to us by email at <a href='mailto:info@baad.org.uk'>info@baad.org.uk.</a>",
+    image: "/scimeet2019_57.jpg",
+    imageOne: "/sliding-image.webp",
+  },
+  {
+    heading: "Current Academy Members",
+    para: "Please feel free to view the Membership Directory.",
     image: "/meetings.webp",
     imageOne: "/sliding-image.webp",
     reverse: true,
