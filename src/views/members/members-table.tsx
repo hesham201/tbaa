@@ -5,7 +5,7 @@ import React from "react";
 const MembersTable = () => {
   console.log(MEMBERS_DATA.length);
   return (
-    <div>
+    <div className="mt-1">
       <Container>
         <div>
           <table className="table-auto">
@@ -30,7 +30,7 @@ const MembersTable = () => {
             <tbody className="text-[12px]">
               {MEMBERS_DATA.map((item, i) => (
                 <tr key={i}>
-                  <td className="p-4 border text-lg border-gray-300 ...">
+                  <td className="p-4 border  border-gray-300 ...">
                     {item.firstname}
                   </td>
                   <td className="p-4 border border-gray-300 ...">

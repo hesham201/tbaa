@@ -67,7 +67,7 @@ const Content = () => {
     <div className="">
       <div className="py-10">
         <Container>
-          <div className="flex flex-col text-center gap-4 text-lg">
+          <div className="flex flex-col  gap-4 text-lg">
             <p>
               Lambert Fick was a truly passionate dentist, as those of you who
               have attended his lectures or have simply “talked teeth” with him
