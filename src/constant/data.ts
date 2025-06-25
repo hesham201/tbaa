@@ -362,6 +362,10 @@ export const EXECTIVE_COUNCIL_BANNER = {
   image: "/our-mission.jpg",
   heading: "Executive Council",
 };
+export const PAST_PRESIDENTS_BANNER = {
+  image: "/our-mission.jpg",
+  heading: "Past Presidents",
+};
 export const ASSOCIATE_MEMBER_BANNER = {
   image: "/our-mission.jpg",
   heading: "Associate Membership",
