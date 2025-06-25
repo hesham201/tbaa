@@ -117,7 +117,7 @@ const Content = () => {
       </div>
       <div className="py-10">
         <Container>
-          <div className="flex flex-col text-center gap-4 text-lg">
+          <div className="flex flex-col  gap-4 text-lg">
             <p>
               We both felt greatly welcomed & basked in the special social
               ambience that the meetings had. He felt truly inspired and he was

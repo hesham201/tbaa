@@ -73,19 +73,19 @@ const MembershipAcademy = () => {
               <h2 className="purpose-heading text-center text-5xl mb-5">
                 Membership of the Academy
               </h2>
-              <p className="purpose-paragraph text-center text-lg mb-3">
+              <p className="purpose-paragraph  text-lg mb-3">
                 Membership is open to all qualified members of the Dental
                 Profession, including Dental Surgeons, Dental
                 Technicians/Technologists, Nurses, Hygienists, Therapists and
                 Practice Managers, registered with the General Dental Council.
               </p>
-              <p className="purpose-paragraph  text-center text-lg">
+              <p className="purpose-paragraph   text-lg">
                 The Academy has several membership types; Full or Associate for
                 UK residents and an International Membership for those members
                 residing abroad. There are also Corporate, Honorary and Life
                 Memberships. Current membership fees are £500.00 per annum.
               </p>
-              <p className="purpose-paragraph  text-center text-lg">
+              <p className="purpose-paragraph   text-lg">
                 Full membership of the Academy is a distinctive honour and is
                 bestowed upon persons who have presented to the Academy and have
                 been validated by their peers and those who have made notable

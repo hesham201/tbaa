@@ -539,6 +539,7 @@ export const MEMBERS_DATA = [
     postCode: "W1G 7HX",
     telephone: "0207 580 4200",
     email: "info@specialistdentalservices.com",
+    link: "https://www.specialistdentalservices.com",
     website: "www.specialistdentalservices.com",
   },
   {
@@ -551,6 +552,7 @@ export const MEMBERS_DATA = [
     postCode: "M3 3FL",
     telephone: "0161 348 8738",
     email: "manchester@ruhdental.com",
+    link: "https://www.www.ruhdental.com",
     website: "www.ruhdental.com",
   },
   {
@@ -563,6 +565,7 @@ export const MEMBERS_DATA = [
     postCode: "CF71 7AG",
     telephone: "01446 773 284",
     email: "info@cowbridgedental.com",
+    link: "https://www.cowbridgedental.com",
     website: "www.cowbridgedental.com",
   },
   {
@@ -575,6 +578,7 @@ export const MEMBERS_DATA = [
     postCode: "W6 0LJ",
     telephone: "020 8748 1381",
     email: "01708 740372",
+    link: "https://www.92dental.co.uk",
     website: "www.92dental.co.uk",
   },
   {
@@ -587,6 +591,7 @@ export const MEMBERS_DATA = [
     postCode: "HG1 1LE",
     telephone: "01423 561392",
     email: "iain.baldwin@nexus.dental",
+    link: "https://www.nexus.dental",
     website: "www.nexus.dental",
   },
   {
@@ -600,6 +605,7 @@ export const MEMBERS_DATA = [
     telephone: "0141 222 6580",
     email: "GlasgowVisage@bupadentalcare.co.uk",
     website: "",
+    link: "",
   },
   {
     firstname: "Simon",
@@ -612,6 +618,7 @@ export const MEMBERS_DATA = [
     telephone: "01202 763 348",
     email: "info@bridgedentalpractice.com",
     website: "",
+    link: "",
   },
   {
     firstname: "John",
@@ -624,6 +631,7 @@ export const MEMBERS_DATA = [
     telephone: "BT74 6AA",
     email: "028 6632 9222",
     website: "tco@belmoredental.co.uk",
+    link: "https://tco@belmoredental.co.uk",
   },
   {
     firstname: "Gurvinder",
@@ -636,6 +644,7 @@ export const MEMBERS_DATA = [
     telephone: "01208 873116",
     email: "enquiries@carriageworksdental.co.uk",
     website: "",
+    link: "",
   },
   {
     firstname: "Patrick",
@@ -648,6 +657,7 @@ export const MEMBERS_DATA = [
     telephone: "WC2A 3LZ",
     email: "020 7404 8600",
     website: "amit@sardiniadental.com",
+    link: "https://amit@sardiniadental.com",
   },
   {
     firstname: "Steven",
@@ -660,6 +670,7 @@ export const MEMBERS_DATA = [
     telephone: "01423 561392",
     email: "steve.campbell@nexus.dental",
     website: "www.nexus.dental",
+    link: "https://www.nexus.dental",
   },
   {
     firstname: "Julian",
@@ -672,6 +683,7 @@ export const MEMBERS_DATA = [
     telephone: "01727 854429",
     email: "info@avivacosmeticdentistry.co.uk",
     website: "",
+    link: "",
   },
   {
     firstname: "Anmol",
@@ -684,6 +696,7 @@ export const MEMBERS_DATA = [
     telephone: "01784 466325",
     email: "reception@stcode.co.uk",
     website: "www.stcode.co.uk",
+    link: "https://www.stcode.co.uk",
   },
   {
     firstname: "Andrew",
@@ -696,6 +709,7 @@ export const MEMBERS_DATA = [
     telephone: "01628 523353",
     email: "mail@bourneenddental.co.uk",
     website: "www.bourneenddental.co.uk",
+    link: "https://www.bourneenddental.co.uk",
   },
   {
     firstname: "Tomi",
@@ -708,6 +722,7 @@ export const MEMBERS_DATA = [
     telephone: "0040 731 400851",
     email: "",
     website: "",
+    link: "",
   },
   {
     firstname: "Stuart",
@@ -720,6 +735,7 @@ export const MEMBERS_DATA = [
     telephone: "01539 720302",
     email: "info@kendaldentalcare.co.uk",
     website: "",
+    link: "",
   },
   {
     firstname: "Andrew",
@@ -732,6 +748,7 @@ export const MEMBERS_DATA = [
     telephone: "01934 620220",
     email: "info@twenty2dental.com",
     website: "www.twenty2dental.com",
+    link: "https://www.twenty2dental.com",
   },
   {
     firstname: "Rebecca",
@@ -744,6 +761,7 @@ export const MEMBERS_DATA = [
     telephone: "01934 620220",
     email: "info@twenty2dental.com",
     website: "www.twenty2dental.com",
+    link: "https://www.twenty2dental.com",
   },
   {
     firstname: "Andrew",
@@ -756,6 +774,7 @@ export const MEMBERS_DATA = [
     telephone: "01708 371223",
     email: "afennell@winning-smiles.co.uk",
     website: "www.winning-smiles.co.uk",
+    link: "https://www.winning-smiles.co.uk",
   },
   {
     firstname: "Koray",
@@ -769,6 +788,7 @@ export const MEMBERS_DATA = [
     telephone: "0207 323 3041",
     email: "koray@lciad.co.uk",
     website: "www.lciad.co.uk",
+    link: "https://www.lciad.co.uk",
   },
   {
     firstname: "Eva",
@@ -782,6 +802,7 @@ export const MEMBERS_DATA = [
     telephone: "01635 237 755",
     email: "info@fusiondental.com",
     website: "www.fusiondental.com",
+    link: "https://www.fusiondental.com",
   },
   {
     firstname: "Yasmin",
@@ -795,6 +816,7 @@ export const MEMBERS_DATA = [
     telephone: "01932 858656",
     email: "info@confidentsmiles.org",
     website: "www.confidentsmiles.org",
+    link: "https://www.confidentsmiles.org",
   },
   {
     firstname: "Massimo",
@@ -807,6 +829,7 @@ export const MEMBERS_DATA = [
     telephone: "01179 238 400",
     email: "info@rootfillings.com",
     website: "www.rootfillings.com",
+    link: "https://www.rootfillings.com",
   },
   {
     firstname: "Shane",
@@ -819,6 +842,7 @@ export const MEMBERS_DATA = [
     telephone: "01843 860 825",
     email: "shane.gordon@foreversmile.co.uk",
     website: "www.foreversmile.co.uk",
+    link: "https://www.foreversmile.co.uk",
   },
   {
     firstname: "Alex",
@@ -831,6 +855,7 @@ export const MEMBERS_DATA = [
     telephone: "01708 740372",
     email: "info@dentalbeautyromford.co.uk",
     website: "",
+    link: "",
   },
   {
     firstname: "Elaine",
@@ -843,6 +868,7 @@ export const MEMBERS_DATA = [
     telephone: "01738 624667",
     email: "info@cherrydental.com",
     website: "",
+    link: "",
   },
   {
     firstname: "Ognedal",
@@ -855,6 +881,7 @@ export const MEMBERS_DATA = [
     telephone: "00 47 51 51 0317",
     email: "post@bratann.no",
     website: "",
+    link: "",
   },
   {
     firstname: "Patrick",
@@ -868,6 +895,7 @@ export const MEMBERS_DATA = [
     telephone: "01793 722 194",
     email: "Pat@sevenfields.co.uk",
     website: "ceo.Pat@sevenfields.sm.td",
+    link: "https://ceo.Pat@sevenfields.sm.td",
   },
   {
     firstname: "John",
@@ -880,6 +908,7 @@ export const MEMBERS_DATA = [
     telephone: "01622 677769",
     email: "jhdental@aol.com",
     website: "",
+    link: "",
   },
   {
     firstname: "Dhanish",
@@ -892,6 +921,7 @@ export const MEMBERS_DATA = [
     telephone: "01282 423973",
     email: "info@bridgedentalpractice.com",
     website: "",
+    link: "",
   },
   {
     firstname: "Gareth",
@@ -904,6 +934,7 @@ export const MEMBERS_DATA = [
     telephone: "",
     email: "",
     website: "",
+    link: "",
   },
   {
     firstname: "Stephen",
@@ -916,6 +947,7 @@ export const MEMBERS_DATA = [
     telephone: "",
     email: "",
     website: "",
+    link: "",
   },
   {
     firstname: "Harmit",
@@ -928,6 +960,7 @@ export const MEMBERS_DATA = [
     telephone: "020 8977 2911",
     email: "hsk@sheendental.co.uk",
     website: "www.sheendental.co.uk",
+    link: "https://www.sheendental.co.uk",
   },
   {
     firstname: "Manraj",
@@ -940,6 +973,7 @@ export const MEMBERS_DATA = [
     telephone: "020 8977 2911",
     email: "msk@sheendental.co.uk",
     website: "www.sheendental.co.uk",
+    link: "https://www.sheendental.co.uk",
   },
   {
     firstname: "David",
@@ -952,6 +986,7 @@ export const MEMBERS_DATA = [
     telephone: "",
     email: "",
     website: "",
+    link: "",
   },
   {
     firstname: "Des",
@@ -965,6 +1000,7 @@ export const MEMBERS_DATA = [
     telephone: "01635 237 755",
     email: "info@fusiondental.com",
     website: "www.fusiondental.com",
+    link: "https://www.fusiondental.com",
   },
   {
     firstname: "Fazeela",
@@ -977,6 +1013,7 @@ export const MEMBERS_DATA = [
     telephone: "0207 486 0000",
     email: "fazeela@121dental.co.uk",
     website: "www.121dental.co.uk",
+    link: "https://www.121dental.co.uk",
   },
   {
     firstname: "Sripal",
@@ -990,6 +1027,7 @@ export const MEMBERS_DATA = [
     telephone: "020 7531 1717",
     email: "info@platinumdentalcare.co.uk",
     website: "www.platinumdentalcare.co.uk",
+    link: "https://www.platinumdentalcare.co.uk",
   },
   {
     firstname: "Asad",
@@ -1002,6 +1040,7 @@ export const MEMBERS_DATA = [
     telephone: "0203 621 2260",
     email: "info@dentalbeautyblackheath.co.uk",
     website: "www.dentalbeautyblackheath.co.uk",
+    link: "https://www.dentalbeautyblackheath.co.uk",
   },
   {
     firstname: "Anthony",
@@ -1014,6 +1053,7 @@ export const MEMBERS_DATA = [
     telephone: "0207 248 2180",
     email: "anthony@dentalexcellencetech.com",
     website: "www.dentalexcellencetech.com",
+    link: "https://www.dentalexcellencetech.com",
   },
   {
     firstname: "Tidu",
@@ -1027,6 +1067,7 @@ export const MEMBERS_DATA = [
     telephone: "01753 833755",
     email: "tidu@advanceddentistry.co.uk",
     website: "www.advanceddentistry.co.uk",
+    link: "https://www.advanceddentistry.co.uk",
   },
   {
     firstname: "Ljubo",
@@ -1039,6 +1080,7 @@ export const MEMBERS_DATA = [
     telephone: "",
     email: "",
     website: "",
+    link: "",
   },
   {
     firstname: "Quentin",
@@ -1051,6 +1093,7 @@ export const MEMBERS_DATA = [
     telephone: "0207 602 1856",
     email: "info@addisonplace.co.uk",
     website: "www.addisonplace.co.uk",
+    link: "https://www.addisonplace.co.uk",
   },
   {
     firstname: "Sinead",
@@ -1063,6 +1106,7 @@ export const MEMBERS_DATA = [
     telephone: "028 6632 9222",
     email: "tco@belmoredental.co.uk",
     website: "",
+    link: "",
   },
   {
     firstname: "Nikita",
@@ -1076,6 +1120,7 @@ export const MEMBERS_DATA = [
     telephone: "020 8866 3025",
     email: "hello@westhousedental.com",
     website: "",
+    link: "",
   },
   {
     firstname: "Shubham",
@@ -1089,6 +1134,7 @@ export const MEMBERS_DATA = [
     telephone: "01904 479777",
     email: "cmdental.implantcentre@gmail.com",
     website: "www.cmdental.co.uk",
+    link: "https://www.cmdental.co.uk",
   },
   {
     firstname: "Basil",
@@ -1101,6 +1147,7 @@ export const MEMBERS_DATA = [
     telephone: "0207 436 3194",
     email: "info@basilmizrahi.co.uk",
     website: "www.basilmizrahi.co.uk",
+    link: "https://www.basilmizrahi.co.uk",
   },
   {
     firstname: "Elaine",
@@ -1113,6 +1160,7 @@ export const MEMBERS_DATA = [
     telephone: "020 8946 2255",
     email: "info@ridgwaydental.co.uk",
     website: "www.ridgwaydental.co.uk",
+    link: "https://www.ridgwaydental.co.uk",
   },
   {
     firstname: "Roy",
@@ -1125,6 +1173,7 @@ export const MEMBERS_DATA = [
     telephone: "01905 778873",
     email: "roy@excellence-in-dentistry.co.uk",
     website: "www.excellence-in-dentistry.co.uk",
+    link: "https://www.excellence-in-dentistry.co.uk",
   },
   {
     firstname: "Denise",
@@ -1137,6 +1186,7 @@ export const MEMBERS_DATA = [
     telephone: "01582 601 351",
     email: "appointments@darrellhousedental.co.uk",
     website: "",
+    link: "",
   },
   {
     firstname: "Eimear",
@@ -1149,6 +1199,7 @@ export const MEMBERS_DATA = [
     telephone: "0131 22804030",
     email: "Eimear@bitedentistry.co.uk",
     website: "www.bitedentistry.co.uk",
+    link: "https://www.bitedentistry.co.uk",
   },
   {
     firstname: "Robert",
@@ -1161,6 +1212,7 @@ export const MEMBERS_DATA = [
     telephone: "01635 550353",
     email: "robert.oretti@bupadentalcare.co.uk",
     website: "www.bupadentalcare.co.uk",
+    link: "https://www.bupadentalcare.co.uk",
   },
   {
     firstname: "Dipesh",
@@ -1173,6 +1225,7 @@ export const MEMBERS_DATA = [
     telephone: "0121 777 1537",
     email: "dipesh@acorndental.co.uk",
     website: "www.acorndental.co.uk",
+    link: "https://www.acorndental.co.uk",
   },
   {
     firstname: "Neilesh",
@@ -1185,6 +1238,7 @@ export const MEMBERS_DATA = [
     telephone: "01932 585686",
     email: "info@oatlandsdentallounge.com",
     website: "www.oatlandsdentallounge.com",
+    link: "https://www.oatlandsdentallounge.com",
   },
   {
     firstname: "Amie",
@@ -1197,6 +1251,7 @@ export const MEMBERS_DATA = [
     telephone: "020 7407 2174",
     email: "info@bridgedental.com",
     website: "www.bridgedental.com",
+    link: "https://www.bridgedental.com",
   },
   {
     firstname: "Amit",
@@ -1210,6 +1265,7 @@ export const MEMBERS_DATA = [
     telephone: "020 7404 8600",
     email: "amit@sardiniadental.com",
     website: "",
+    link: "",
   },
   {
     firstname: "Amit",
@@ -1223,6 +1279,7 @@ export const MEMBERS_DATA = [
     telephone: "01245 328060",
     email: "info@brickfieldsdentalcare.co.uk",
     website: "",
+    link: "",
   },
   {
     firstname: "Hiral",
@@ -1235,6 +1292,7 @@ export const MEMBERS_DATA = [
     telephone: "020 8294 3081",
     email: "info@dentaria.co.uk",
     website: "www.dentaria.co.uk",
+    link: "https://www.dentaria.co.uk",
   },
   {
     firstname: "Rahul",
@@ -1247,6 +1305,7 @@ export const MEMBERS_DATA = [
     telephone: "01371 875 116",
     email: "infp@greatdunmowdentalcare.co.uk",
     website: "www.greatdunmowdentalcare.co.uk",
+    link: "https://www.greatdunmowdentalcare.co.uk",
   },
   {
     firstname: "André Philip",
@@ -1260,6 +1319,7 @@ export const MEMBERS_DATA = [
     telephone: "01225 466086",
     email: "info@smileofconfidence.com",
     website: "www.smileofconfidence.com",
+    link: "https://www.smileofconfidence.com",
   },
   {
     firstname: "Shameek",
@@ -1272,6 +1332,7 @@ export const MEMBERS_DATA = [
     telephone: "01923 282691",
     email: "info@rosebankdental.co.uk",
     website: "www.rosebankdental.co.uk",
+    link: "https://www.rosebankdental.co.uk",
   },
   {
     firstname: "Ivo",
@@ -1284,6 +1345,7 @@ export const MEMBERS_DATA = [
     telephone: "0208 617 9180",
     email: "ivo@cherrytreedentistry.co.uk",
     website: "www.cherrytreedentistry.co.uk",
+    link: "https://www.cherrytreedentistry.co.uk",
   },
   {
     firstname: "Nadia",
@@ -1296,6 +1358,7 @@ export const MEMBERS_DATA = [
     telephone: "0208 617 9180",
     email: "nadia@cherrytreedentistry.co.uk",
     website: "www.cherrytreedentistry.co.uk",
+    link: "https://www.cherrytreedentistry.co.uk",
   },
   {
     firstname: "Jacqueline",
@@ -1308,6 +1371,7 @@ export const MEMBERS_DATA = [
     telephone: "",
     email: "tandkliniken@yahoo.com",
     website: "www.happident.se",
+    link: "https://www.happident.se",
   },
   {
     firstname: "Nigel",
@@ -1321,6 +1385,7 @@ export const MEMBERS_DATA = [
     telephone: "0161 439 4247",
     email: "pm@smiledoc.co.uk",
     website: "www.smiledoc.co.uk",
+    link: "https://www.smiledoc.co.uk",
   },
   {
     firstname: "Tristan",
@@ -1333,6 +1398,7 @@ export const MEMBERS_DATA = [
     telephone: "0117 405 4364",
     email: "tristan@practicegeneral.co.uk",
     website: "www.practicegeneral.co.uk",
+    link: "https://www.practicegeneral.co.uk",
   },
   {
     firstname: "Nik",
@@ -1345,6 +1411,7 @@ export const MEMBERS_DATA = [
     telephone: "0207 377 0990",
     email: "info@squaremiledentalcentre.co.uk",
     website: "www.squaremiledentalcentre.co.uk",
+    link: "https://www.squaremiledentalcentre.co.uk",
   },
   {
     firstname: "Sanjay",
@@ -1357,6 +1424,7 @@ export const MEMBERS_DATA = [
     telephone: "0207 377 0990",
     email: "info@squaremiledentalcentre.co.uk",
     website: "www.squaremiledentalcentre.co.uk",
+    link: "https://www.squaremiledentalcentre.co.uk",
   },
   {
     firstname: "Gizem",
@@ -1369,6 +1437,7 @@ export const MEMBERS_DATA = [
     telephone: "020 3409 1947",
     email: "info@longevitahealth.com",
     website: "www.longevitahealth.com",
+    link: "https://www.longevitahealth.com",
   },
   {
     firstname: "Dhruv",
@@ -1381,6 +1450,7 @@ export const MEMBERS_DATA = [
     telephone: "01206 767471",
     email: "enquiries@thesmileclinic.uk.com",
     website: "www.thesmileclinic.uk.com",
+    link: "https://www.thesmileclinic.uk.com",
   },
   {
     firstname: "Vishaal",
@@ -1393,6 +1463,7 @@ export const MEMBERS_DATA = [
     telephone: "01992 462345",
     email: "dentalitylimited@gmail.com",
     website: "www.dentality.co.uk",
+    link: "https://www.dentality.co.uk",
   },
   {
     firstname: "Rajiv",
@@ -1405,6 +1476,7 @@ export const MEMBERS_DATA = [
     telephone: "01708 447063",
     email: "info@hactondentalcare.com",
     website: "www.hactondentalcare.com",
+    link: "https://www.hactondentalcare.com",
   },
   {
     firstname: "Nik",
@@ -1417,6 +1489,7 @@ export const MEMBERS_DATA = [
     telephone: "0207 622 7610",
     email: "nik@tendental.com",
     website: "www.tendental.com",
+    link: "https://www.tendental.com",
   },
   {
     firstname: "Payman",
@@ -1429,6 +1502,7 @@ export const MEMBERS_DATA = [
     telephone: "",
     email: "",
     website: "",
+    link: "",
   },
   {
     firstname: "Lara",
@@ -1441,6 +1515,7 @@ export const MEMBERS_DATA = [
     telephone: "00 40 735 785894",
     email: "write@drlara.dentist",
     website: "www.drlara.dentist",
+    link: "https://www.drlara.dentist",
   },
   {
     firstname: "Finlay",
@@ -1453,6 +1528,7 @@ export const MEMBERS_DATA = [
     telephone: "01995 606091",
     email: "office@garstangdrp.co.uk",
     website: "www.garstangdrp.co.uk",
+    link: "https://www.garstangdrp.co.uk",
   },
   {
     firstname: "Jurgita",
@@ -1465,6 +1541,7 @@ export const MEMBERS_DATA = [
     telephone: "07500 931261",
     email: "reception@basilmizrahi.co.uk",
     website: "www.basilmizrahi.co.uk",
+    link: "https://www.basilmizrahi.co.uk",
   },
   {
     firstname: "Thomas",
@@ -1477,6 +1554,7 @@ export const MEMBERS_DATA = [
     telephone: "01423 561392",
     email: "info@nexus.dental",
     website: "www.nexus.dental",
+    link: "https://www.nexus.dental",
   },
   {
     firstname: "Mete",
@@ -1489,6 +1567,7 @@ export const MEMBERS_DATA = [
     telephone: "01483 417102",
     email: "info@notleydentalcare.co.uk",
     website: "www.notleydentalcare.co.uk",
+    link: "https://www.notleydentalcare.co.uk",
   },
   {
     firstname: "Devin",
@@ -1501,6 +1580,7 @@ export const MEMBERS_DATA = [
     telephone: "0117 405 4364",
     email: "",
     website: "www.thebristoldentist.co.uk",
+    link: "https://www.thebristoldentist.co.uk",
   },
   {
     firstname: "Shernaz",
@@ -1513,6 +1593,7 @@ export const MEMBERS_DATA = [
     telephone: "",
     email: "",
     website: "www.longboroughdental.co.uk",
+    link: "https://www.longboroughdental.co.uk",
   },
   {
     firstname: "Martin",
@@ -1525,6 +1606,7 @@ export const MEMBERS_DATA = [
     telephone: "020 8138 8623",
     email: "martin@tendental.com",
     website: "www.tendental.com",
+    link: "https://www.tendental.com",
   },
   {
     firstname: "Juerg",
@@ -1537,6 +1619,7 @@ export const MEMBERS_DATA = [
     telephone: "055 442 7433",
     email: "rezeption@zahnarzt-lachen.ch",
     website: "www.zahnarzt-lachen.ch",
+    link: "https://www.zahnarzt-lachen.ch",
   },
   {
     firstname: "David",
@@ -1549,6 +1632,7 @@ export const MEMBERS_DATA = [
     telephone: "",
     email: "",
     website: "",
+    link: "",
   },
   {
     firstname: "Riaz",
@@ -1561,6 +1645,7 @@ export const MEMBERS_DATA = [
     telephone: "0161 980 9730",
     email: "info@thesquaredental.com",
     website: "www.thesquaredental.com",
+    link: "https://www.thesquaredental.com",
   },
   {
     firstname: "Nadeem",
@@ -1573,6 +1658,7 @@ export const MEMBERS_DATA = [
     telephone: "01282 423973",
     email: "info@bridgedentalpractice.com",
     website: "www.bridgedentalpractice.com",
+    link: "https://www.bridgedentalpractice.com",
   },
   {
     firstname: "Monder",
@@ -1585,6 +1671,7 @@ export const MEMBERS_DATA = [
     telephone: "0161 928 0014",
     email: "info@barringtondental.co.uk",
     website: "www.barringtondental.co.uk",
+    link: "https://www.barringtondental.co.uk",
   },
 ];
 export const ABOUT_SAME_SECTION = [
