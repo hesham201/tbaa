@@ -464,7 +464,7 @@ const Header = () => {
               <div className="h-[20px] w-[30px]  relative">
                 {/* first line  */}
                 <div
-                  className={`w-1/2 absolute top-0 h-[2px] bg-black transition-all duration-300 ${
+                  className={`w-1/2 absolute top-0 h-[2px] bg-midnight transition-all duration-300 ${
                     isHovered
                       ? "top-1/2 -translate-y-1/2 w-[4px] h-[4px] rounded-full"
                       : ""
@@ -472,7 +472,7 @@ const Header = () => {
                 ></div>
                 {/* second line  */}
                 <div
-                  className={`w-full h-[2px] top-1/2 -translate-y-1/2 absolute bg-black transition-all duration-300 ${
+                  className={`w-full h-[2px] top-1/2 -translate-y-1/2 absolute bg-midnight transition-all duration-300 ${
                     isHovered
                       ? "!w-[4px] h-[4px] rounded-full left-1/2 -translate-1/2"
                       : ""
@@ -480,7 +480,7 @@ const Header = () => {
                 ></div>
                 {/* Third line  */}
                 <div
-                  className={`w-1/2 h-[2px] bottom-0 right-0 absolute bg-black transition-all duration-300 ${
+                  className={`w-1/2 h-[2px] bottom-0 right-0 absolute bg-midnight transition-all duration-300 ${
                     isHovered
                       ? "w-[4px] h-[4px] rounded-full top-1/2 -translate-y-1/2"
                       : ""
@@ -488,12 +488,12 @@ const Header = () => {
                 ></div>
               </div>
               <div className="relative text-lg overflow-hidden">
-                <p className={`relative`} id="menu">
+                <p className={`relative text-midnight`} id="menu">
                   Menu<span className="invisible">ff</span>
                 </p>
                 <p
                   id="open"
-                  className={`absolute left-0 bottom-0 translate-y-full duration-300`}
+                  className={`absolute left-0 bottom-0 text-midnight translate-y-full duration-300`}
                 >
                   Open
                 </p>
@@ -529,7 +529,7 @@ const Header = () => {
                     onMouseLeave={hoveredCloseOne}
                     onClick={CloseMenuFunct}
                   >
-                    <div className="h-[30px] w-[20px] text-black  relative">
+                    <div className="h-[30px] w-[20px] text-midnight relative">
                       {/* first line  */}
                       <div
                         className={`h-full w-[2px] absolute top-0 right-[9px] rotate-45 bg-black transition-all duration-300 `}
@@ -562,7 +562,7 @@ const Header = () => {
                       <li key={nav.name} className="nav-items">
                         {nav.isDropdown ? (
                           <button
-                            className="text-4xl cursor-pointer transition-all duration-300 tracking-normal origin-top-left hover:tracking-wider hover:skew-1 inline-block"
+                            className="text-4xl cursor-pointer text-midnight transition-all duration-300 tracking-normal origin-top-left hover:tracking-wider hover:skew-1 inline-block"
                             onClick={() => dropdownOpen(index)}
                           >
                             <span className="text-lg">0{index + 1}</span>{" "}
@@ -570,7 +570,7 @@ const Header = () => {
                           </button>
                         ) : (
                           <Link
-                            className="text-4xl transition-all duration-300 tracking-normal origin-top-left hover:tracking-wider hover:skew-[1deg] inline-block"
+                            className="text-4xl transition-all text-midnight duration-300 tracking-normal origin-top-left hover:tracking-wider hover:skew-[1deg] inline-block"
                             href={nav.link}
                             onClick={CloseMenuFunct}
                           >
@@ -588,7 +588,7 @@ const Header = () => {
                     >
                       <li>
                         <button
-                          className="cursor-pointer transition-all duration-300"
+                          className="cursor-pointer text-midnight transition-all duration-300"
                           onClick={backMainMenu}
                         >
                           Back
@@ -597,7 +597,7 @@ const Header = () => {
                       {NAV_ITEMS[dropdown].subItems.map((nav, index) => (
                         <li key={nav.name}>
                           <Link
-                            className="text-4xl text-nowrap cursor-pointer transition-all duration-300 tracking-normal origin-top-left hover:tracking-wider hover:skew-1 inline-block"
+                            className="text-4xl text-nowrap text-midnight cursor-pointer transition-all duration-300 tracking-normal origin-top-left hover:tracking-wider hover:skew-1 inline-block"
                             href={nav.link}
                             onClick={CloseMenuFunct}
                           >
@@ -610,7 +610,7 @@ const Header = () => {
                   )}
                 </div>
                 <div
-                  className="flex flex-col gap-2 w-[25%] ps-6 border-l border-midnight"
+                  className="flex flex-col gap-2 w-[25%] ps-6 border-l text-midnight border-midnight"
                   id="address"
                 >
                   <div>
@@ -687,7 +687,7 @@ const Header = () => {
           className="fixed top-[100vh] w-[200%] h-[200vh] -left-1/2 z-[1001] transition-all duration-300 overflow-hidden"
         >
           <div
-            className="w-[100%] h-[50%] bg-black "
+            className="w-[100%] h-[50%] bg-midnight "
             style={{ borderRadius: "50% 50% 0 0" }}
           ></div>
           <div className="w-[100%] h-[50%] bg-transparent  relative">

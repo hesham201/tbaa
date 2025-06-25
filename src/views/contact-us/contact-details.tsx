@@ -46,7 +46,7 @@ const ContactDetails = () => {
           {animRefs.map((ref, index) => (
             <div key={index} className="flex flex-col items-center">
               <div ref={ref} className="w-[100px] h-[100px]" />
-              <p className="mt-2 text-center font-medium text-gray-800">
+              <p className="mt-2 text-center font-medium text-midnight">
                 {labels[index]}
               </p>
             </div>
