@@ -78,7 +78,7 @@ const Banner = () => {
               <div className="absolute z-10 inset-0 h-full w-full bg-primary video-bg"></div>
               <div className="video-div-main relative">
                 <Image
-                  src={"/couple.webp"}
+                  src={"/our-community.jpg"}
                   width={800}
                   height={800}
                   alt="image"

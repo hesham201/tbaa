@@ -119,7 +119,7 @@ const Content = () => {
       >
         <Image
           ref={bgImageRef}
-          src={"/couple.webp"}
+          src={"/our-community.jpg"}
           width={800}
           height={800}
           alt="image"
