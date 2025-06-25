@@ -70,7 +70,7 @@ const Purpose = () => {
           },
         }
       );
-    }, 500);
+    }, 1000);
 
     return () => {
       clearTimeout(timeOut);
