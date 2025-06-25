@@ -103,6 +103,7 @@ const Mission = () => {
               scroller: "[data-scroll-container]", // or remove if you're not using locomotive-scroll
               start: "top bottom",
               end: "bottom top",
+              markers: true,
               scrub: true,
             },
           }
