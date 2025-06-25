@@ -47,7 +47,9 @@ const LocomotiveProvider = ({ children }: { children: React.ReactNode }) => {
       });
 
       ScrollTrigger.addEventListener("refresh", () => scrollInstance.update());
-
+      ScrollTrigger.defaults({
+        scroller: scrollEl,
+      });
       // PIN HEADER USING SCROLLTRIGGER
       ScrollTrigger.create({
         trigger: "#pinned-header",
