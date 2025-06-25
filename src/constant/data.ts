@@ -451,32 +451,32 @@ export const PRESIDENT_TEAM = [
   {
     image: "/Nik-Sisodia.jpg",
     name: "Nik Sisodia",
+    jd: "Immediate Past President",
+  },
+  {
+    image: "/Dr-Nadeem-Younis.jpg",
+    name: "Dr Nadeem Younis",
     jd: "Past President",
   },
   {
-    image: "/Roy-Morris.jpg",
-    name: "Roy Morris",
-    jd: "President Elect",
-  },
-  {
-    image: "/Fazeela-Khan-Osborne.jpg",
-    name: "Fazeela Khan Osborne",
-    jd: "Secretary",
+    image: "/Dr-Rob-Oretti.jpg",
+    name: "Dr Rob Oretti",
+    jd: "Past President",
   },
   {
     image: "/Elaine-Mo.jpg",
     name: "Elaine Mo",
-    jd: "Treasurer",
+    jd: "Past President",
   },
   {
     image: "/gurvinder-Bhirth.jpg",
     name: "Gurvinder Bhirth",
-    jd: "Scientific Committee",
+    jd: "Past President",
   },
   {
     image: "/dipesh-Parmar.jpg",
     name: "Dipesh Parmar",
-    jd: "Scientific Committee",
+    jd: "Past President",
   },
   {
     image: "/andrew-Chandrapal.jpg",
