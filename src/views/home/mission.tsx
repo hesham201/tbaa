@@ -103,9 +103,9 @@ const Mission = () => {
               scroller: "[data-scroll-container]", // or remove if you're not using locomotive-scroll
               start: "top bottom",
               end: "bottom top",
-              onEnter: () => console.log("▶️ Entered trigger area"),
-              onLeaveBack: () => console.log("↩️ Left going back"),
-              markers: true,
+              // onEnter: () => console.log("▶️ Entered trigger area"),
+              // onLeaveBack: () => console.log("↩️ Left going back"),
+              // markers: true,
               scrub: true,
             },
           }
