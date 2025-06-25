@@ -85,7 +85,10 @@ const CurrentAcademy = () => {
             >
               <div className="w-[calc(50%-16px)]">
                 <h2 className="org-heading text-4xl mb-4">{item.heading}</h2>
-                <p className="org-para text-xl">{item.para}</p>
+                <p
+                  className="org-para text-xl"
+                  dangerouslySetInnerHTML={{ __html: item.para }}
+                />
               </div>
               <div className="w-[calc(50%-16px)] h-[500px] relative">
                 <div
