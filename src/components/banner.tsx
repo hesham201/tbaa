@@ -77,7 +77,7 @@ const Banner = ({ data }: { data: IBanner }) => {
       <div className="-mt-[140px] relative z-10">
         <div className="absolute bottom-20 left-10 w-full h-[140px] opacity-40 z-20">
           <Image
-            src={"/header-logo.png"}
+            src={"/baad-logo.webp"}
             className="w-[40%] h-full object-contain"
             width={1000}
             height={1000}

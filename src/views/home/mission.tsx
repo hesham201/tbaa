@@ -196,7 +196,7 @@ const Mission = () => {
     <div className="py-10 relative" ref={animatedRef}>
       <div className="absolute opacity-40 left-0 -top-8 w-[50%] h-[200px]">
         <Image
-          src={"/header-logo.png"}
+          src={"/baad-logo.webp"}
           className="w-full h-full object-contain"
           width={1000}
           height={1000}

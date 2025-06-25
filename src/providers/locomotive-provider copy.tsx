@@ -2,7 +2,7 @@
 
 import { useEffect, useRef } from "react";
 import gsap from "gsap";
-import ScrollTrigger from "gsap/ScrollTrigger";
+import ScrollTrigger from "gsap/dist/ScrollTrigger";
 import "locomotive-scroll/dist/locomotive-scroll.min.css";
 import Footer from "@/layout/footer";
 import Header from "@/layout/header";
@@ -11,7 +11,6 @@ import { usePathname } from "next/navigation";
 const LocomotiveProvider = ({ children }: { children: React.ReactNode }) => {
   const scrollRef = useRef<HTMLDivElement>(null);
   const pathname = usePathname();
-
   useEffect(() => {
     let scrollInstance: any; // eslint-disable-line
 
@@ -19,6 +18,7 @@ const LocomotiveProvider = ({ children }: { children: React.ReactNode }) => {
 
     const initLoco = async () => {
       const LocomotiveScroll = (await import("locomotive-scroll")).default;
+
       const scrollEl = scrollRef.current;
       if (!scrollEl) return;
 
@@ -48,40 +48,23 @@ const LocomotiveProvider = ({ children }: { children: React.ReactNode }) => {
 
       ScrollTrigger.addEventListener("refresh", () => scrollInstance.update());
 
-      // PIN HEADER USING SCROLLTRIGGER
-      ScrollTrigger.create({
-        trigger: "#pinned-header",
-        start: "top top",
-        end: "+=99999",
-        pin: true,
-        pinSpacing: false,
-        scroller: scrollEl,
-      });
-      ScrollTrigger.create({
-        trigger: "#pinned-modal",
-        start: "top top",
-        end: "+=99999",
-        pin: true,
-        pinSpacing: false,
-        scroller: scrollEl,
-      });
-
       window.LOCO_SCROLL = scrollInstance;
 
+      // Initial update
       await scrollInstance.update();
       ScrollTrigger.refresh();
 
+      // Additional update after content load
       window.addEventListener("load", () => {
         scrollInstance.update();
         ScrollTrigger.refresh();
       });
-
-      // Optional: pause & resume scroll for layout timing
       scrollInstance.stop();
       setTimeout(() => {
-        scrollInstance.start();
+        console.log("hi");
+        scrollInstance.start(); // resume scroll
       }, 2000);
-
+      // Optional slight delay update
       setTimeout(() => {
         scrollInstance.update();
         ScrollTrigger.refresh();
@@ -89,28 +72,11 @@ const LocomotiveProvider = ({ children }: { children: React.ReactNode }) => {
     };
 
     const timeout = setTimeout(() => {
-      if (pathname !== "/members") {
-        initLoco();
-      } else {
-        ScrollTrigger.create({
-          trigger: "#pinned-header",
-          start: "top top",
-          end: "+=99999",
-          pin: true,
-          pinSpacing: false,
-        });
-        ScrollTrigger.create({
-          trigger: "#pinned-modal",
-          start: "top top",
-          end: "+=99999",
-          pin: true,
-          pinSpacing: false,
-        });
-      }
+      initLoco();
     }, 100);
 
     return () => {
-      clearTimeout(timeout);
+      clearTimeout(timeout); // Prevent double init
       if (scrollInstance) scrollInstance.destroy();
       ScrollTrigger.getAll().forEach((trigger) => trigger.kill());
       ScrollTrigger.removeEventListener("refresh", () =>
@@ -127,12 +93,16 @@ const LocomotiveProvider = ({ children }: { children: React.ReactNode }) => {
       data-scroll-container
       className="scroll-container"
     >
-      <div id="pinned-header" className="z-[10000] w-full bg-white shadow-2xl">
+      <div
+        data-scroll
+        data-scroll-sticky
+        className="sticky top-0 z-100 bg-white shadow-2xl"
+        data-scroll-target="#main-scroll-con"
+      >
         <Header />
       </div>
       <main>{children}</main>
       <Footer />
-      <div id="pinned-modal" className="z-[1] fixed top-0 left-0"></div>
     </div>
   );
 };
