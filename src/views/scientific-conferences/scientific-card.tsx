@@ -67,7 +67,7 @@ export default function ScientificCard() {
               ref={(el) => {
                 containerRefs.current[i] = el;
               }}
-              className="relative h-[400px] overflow-hidden rounded-xl"
+              className="relative h-[350px] overflow-hidden rounded-xl"
               data-scroll
             >
               <Image
