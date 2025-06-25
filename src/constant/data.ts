@@ -481,17 +481,17 @@ export const PRESIDENT_TEAM = [
   {
     image: "/andrew-Chandrapal.jpg",
     name: "Andrew Chandrapal",
-    jd: "Full Committee Member",
+    jd: "Past President",
   },
   {
     image: "/jon-Ayres-1.jpg",
     name: "Jon Ayres",
-    jd: "Trade Liaison & Co-opted Committee Member",
+    jd: "Past President",
   },
   {
     image: "/penny-Sykes.jpg",
     name: "Penny Sykes",
-    jd: "Executive Administrator",
+    jd: "Past President",
   },
 ];
 export const MEMBERS_DATA = [
