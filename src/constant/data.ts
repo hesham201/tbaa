@@ -469,32 +469,62 @@ export const PRESIDENT_TEAM = [
   },
   {
     image: "/Elaine-Mo.jpg",
-    name: "Elaine Mo",
+    name: "Dr Patrick Holmes",
     jd: "Past President",
   },
   {
     image: "/gurvinder-Bhirth.jpg",
-    name: "Gurvinder Bhirth",
+    name: "Dr Sanjay Sethi",
     jd: "Past President",
   },
   {
     image: "/dipesh-Parmar.jpg",
-    name: "Dipesh Parmar",
+    name: "Dr Koray Feran",
     jd: "Past President",
   },
   {
     image: "/andrew-Chandrapal.jpg",
-    name: "Andrew Chandrapal",
+    name: "Dr David Winkler",
     jd: "Past President",
   },
   {
     image: "/jon-Ayres-1.jpg",
-    name: "Jon Ayres",
+    name: "Mr Anthony Laurie",
     jd: "Past President",
   },
   {
     image: "/penny-Sykes.jpg",
-    name: "Penny Sykes",
+    name: "Dr Shane Gordon",
+    jd: "Past President",
+  },
+  {
+    image: "/penny-Sykes.jpg",
+    name: "Dr Nigel Saynor",
+    jd: "Past President",
+  },
+  {
+    image: "/penny-Sykes.jpg",
+    name: "Mr John Hubbard",
+    jd: "Past President",
+  },
+  {
+    image: "/penny-Sykes.jpg",
+    name: "Dr Gareth Jenkins",
+    jd: "Past President",
+  },
+  {
+    image: "/penny-Sykes.jpg",
+    name: "Dr Tidu Mankoo",
+    jd: "Past President",
+  },
+  {
+    image: "/penny-Sykes.jpg",
+    name: "Dr David Klaff",
+    jd: "Past President",
+  },
+  {
+    image: "/penny-Sykes.jpg",
+    name: "Dr Lambert Fick",
     jd: "Past President",
   },
 ];
