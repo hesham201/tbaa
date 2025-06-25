@@ -49,7 +49,10 @@ const Content = () => {
   }, []);
 
   return (
-    <div ref={bgWrapperRef} className="py-5 lg:py-10 relative overflow-hidden">
+    <div
+      ref={bgWrapperRef}
+      className="py-5 mt-5 lg:py-10 relative overflow-hidden"
+    >
       <img
         ref={bgImageRef}
         src="/exective-text-BG.webp"
@@ -60,7 +63,7 @@ const Content = () => {
       />
       <div className="relative z-10">
         <Container>
-          <div className="grid grid-cols-1 lg:grid-cols-2 lg:min-h-[70vh]">
+          <div className="grid grid-cols-1 lg:grid-cols-2 lg:min-h-[50vh]">
             <div
               className="flex flex-col justify-center gap-6 text-white"
               id="our-events-heading"

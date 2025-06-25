@@ -31,7 +31,7 @@ export const NAV_ITEMS: INavItem[] = [
       },
       {
         name: "Revised Constitution 2024",
-        link: "/2024-Revised-Constitution.pdf",
+        link: "/revised-constitution.pdf",
       },
       {
         name: "Testimonials",
@@ -363,11 +363,11 @@ export const MEMBERS_BANNER = {
   heading: "Members",
 };
 export const EXECTIVE_COUNCIL_BANNER = {
-  image: "/our-mission.jpg",
+  image: "/executive-council-header.jpg",
   heading: "Executive Council",
 };
 export const PAST_PRESIDENTS_BANNER = {
-  image: "/our-mission.jpg",
+  image: "/past-presidents-header.jpg",
   heading: "Past Presidents",
 };
 export const ASSOCIATE_MEMBER_BANNER = {
@@ -379,15 +379,15 @@ export const MEMBERSHIP_BANNER = {
   heading: "Membership",
 };
 export const FULL_MEMBER_BANNER = {
-  image: "/our-mission.jpg",
+  image: "/full-member-header.jpg",
   heading: "Full Members Presentation Protocol",
 };
 export const HISTORY_BANNER = {
-  image: "/our-mission.jpg",
+  image: "/history-of-baad-header.jpg",
   heading: "The History of BAAD",
 };
 export const LAM_BANNER = {
-  image: "/our-mission.jpg",
+  image: "/lambert-fick-memorial-header.jpg",
   heading: "Lambert Fick Memorial",
 };
 export const SCIENTIFIC_BANNER = {
@@ -395,11 +395,11 @@ export const SCIENTIFIC_BANNER = {
   heading: "Scientific Conferences",
 };
 export const ABOUT_US_BANNER = {
-  image: "/our-mission.jpg",
+  image: "/aboutus-header.jpg",
   heading: "About Us",
 };
 export const TESTIMONIALS_BANNER = {
-  image: "/our-mission.jpg",
+  image: "/testemonials-header.jpg",
   heading: "Testimonials",
 };
 export const EXECUTIVE_TEAM = [

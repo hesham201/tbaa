@@ -120,7 +120,7 @@ const TestimonialMain = () => {
                 </div>
                 <div className="w-[200px] shrink-0 h-[200px]">
                   <Image
-                    src={"/profile.jpg"}
+                    src={"/profile-circle-on-testimonials-page.webp"}
                     width={300}
                     height={300}
                     className="w-full h-full object-cover rounded-full"
