@@ -91,6 +91,21 @@ const LocomotiveProvider = ({ children }: { children: React.ReactNode }) => {
     const timeout = setTimeout(() => {
       if (pathname !== "/members") {
         initLoco();
+      } else {
+        ScrollTrigger.create({
+          trigger: "#pinned-header",
+          start: "top top",
+          end: "+=99999",
+          pin: true,
+          pinSpacing: false,
+        });
+        ScrollTrigger.create({
+          trigger: "#pinned-modal",
+          start: "top top",
+          end: "+=99999",
+          pin: true,
+          pinSpacing: false,
+        });
       }
     }, 100);
 
