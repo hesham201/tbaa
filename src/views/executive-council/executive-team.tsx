@@ -1,7 +1,6 @@
 "use client";
 
 import { useLayoutEffect, useRef } from "react";
-import Image from "next/image";
 import gsap from "gsap";
 import ScrollTrigger from "gsap/ScrollTrigger";
 import { EXECUTIVE_TEAM } from "@/constant/data";
@@ -45,7 +44,7 @@ export default function ExecutiveTeam() {
               trigger: image,
               scroller: "[data-scroll-container]", // Remove if not using Locomotive Scroll
               start: "top bottom",
-              end: "bottom top",
+              end: "top 50%",
               scrub: true,
             },
           }
@@ -69,13 +68,10 @@ export default function ExecutiveTeam() {
               className="flex flex-col gap-3"
             >
               <div className="relative h-[350px] overflow-hidden rounded-xl">
-                <Image
+                <img
                   src={item.image}
                   alt={item.name}
-                  width={1000}
-                  height={1000}
-                  className="absolute top-0 left-0 w-full h-full object-cover will-change-transform pointer-events-none"
-                  quality={100}
+                  className="absolute top-0 origin-center left-0 w-full inset-0 h-full object-cover will-change-transform pointer-events-none"
                 />
               </div>
               <div className="">
