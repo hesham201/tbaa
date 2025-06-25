@@ -4,7 +4,7 @@ import { useLayoutEffect, useRef } from "react";
 import Image from "next/image";
 import gsap from "gsap";
 import ScrollTrigger from "gsap/ScrollTrigger";
-import { EXECUTIVE_TEAM } from "@/constant/data";
+import { PRESIDENT_TEAM } from "@/constant/data";
 import Container from "@/components/container";
 
 gsap.registerPlugin(ScrollTrigger);
@@ -60,7 +60,7 @@ export default function ExecutiveTeam() {
     <div>
       <Container>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 px-6 py-10">
-          {EXECUTIVE_TEAM.map((item, i) => (
+          {PRESIDENT_TEAM.map((item, i) => (
             <div
               key={i}
               ref={(el) => {

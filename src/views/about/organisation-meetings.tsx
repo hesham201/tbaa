@@ -49,19 +49,22 @@ const OrganisationMeetings = () => {
             start: "top 85%",
           },
         });
-
-        gsap.from(images, {
-          opacity: 0,
-          scale: 0.95,
-          duration: 1,
-          delay: 0.2,
-          stagger: 0.1,
-          scrollTrigger: {
-            trigger: block,
-            scroller: "[data-scroll-container]",
-            start: "top 85%",
-          },
-        });
+        gsap.fromTo(
+          images,
+          { y: "-20%", scale: 1.1 },
+          {
+            y: "20%",
+            scale: 1,
+            ease: "none",
+            scrollTrigger: {
+              trigger: block,
+              scroller: "[data-scroll-container]", // or remove if you're not using locomotive-scroll
+              start: "top bottom",
+              end: "bottom top",
+              scrub: true,
+            },
+          }
+        );
       });
     }, 600);
 
@@ -84,13 +87,17 @@ const OrganisationMeetings = () => {
                 <p className="org-para text-xl">{item.para}</p>
               </div>
               <div className="w-[calc(50%-16px)] h-[500px] relative">
-                <img
-                  src={item.image}
-                  className={`org-image absolute inset-0 w-[80%] h-full object-cover rounded-2xl ${
+                <div
+                  className={`relative h-full w-[80%] rounded-2xl overflow-hidden ${
                     item.reverse ? "me-auto" : "ms-auto"
                   }`}
-                  alt=""
-                />
+                >
+                  <img
+                    src={item.image}
+                    className={`org-image absolute inset-0 w-full min-h-full object-cover will-change-transform `}
+                    alt=""
+                  />
+                </div>
                 <div
                   className={`orgs-image absolute top-1/2 -translate-y-1/2 ${
                     item.reverse ? "right-[4.5%]" : "left-[4.5%]"

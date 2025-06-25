@@ -19,7 +19,7 @@ export const NAV_ITEMS: INavItem[] = [
       },
       {
         name: "Past Presidents",
-        link: "/",
+        link: "/past-presidents",
       },
       {
         name: "The History of BAAD",
@@ -468,64 +468,64 @@ export const PRESIDENT_TEAM = [
     jd: "Past President",
   },
   {
-    image: "/Elaine-Mo.jpg",
+    image: "/Dr-Patrick-Holmes.jpg",
     name: "Dr Patrick Holmes",
     jd: "Past President",
   },
   {
-    image: "/gurvinder-Bhirth.jpg",
+    image: "/Dr-Sanjay-Sethi.jpg",
     name: "Dr Sanjay Sethi",
     jd: "Past President",
   },
   {
-    image: "/dipesh-Parmar.jpg",
+    image: "/Dr-Korey-Feran.png",
     name: "Dr Koray Feran",
     jd: "Past President",
   },
   {
-    image: "/andrew-Chandrapal.jpg",
+    image: "/Dr-Gareth-Jenkins.jpg",
     name: "Dr David Winkler",
     jd: "Past President",
   },
   {
-    image: "/jon-Ayres-1.jpg",
+    image: "/Mr-Anthony-Laurie.jpg",
     name: "Mr Anthony Laurie",
     jd: "Past President",
   },
   {
-    image: "/penny-Sykes.jpg",
+    image: "/Dr-Shane-Gordon.jpg",
     name: "Dr Shane Gordon",
     jd: "Past President",
   },
   {
-    image: "/penny-Sykes.jpg",
+    image: "/Dr-Nigel-Saynor.jpg",
     name: "Dr Nigel Saynor",
     jd: "Past President",
   },
   {
-    image: "/penny-Sykes.jpg",
+    image: "/Mr-John-Hubbard.jpg",
     name: "Mr John Hubbard",
     jd: "Past President",
   },
   {
-    image: "/penny-Sykes.jpg",
+    image: "/Dr-Gareth-Jenkins.jpg",
     name: "Dr Gareth Jenkins",
     jd: "Past President",
   },
   {
-    image: "/penny-Sykes.jpg",
+    image: "/Dr-Tidu-Mankoo.jpg",
     name: "Dr Tidu Mankoo",
     jd: "Past President",
   },
   {
-    image: "/penny-Sykes.jpg",
+    image: "/Dr-David-Klaff.jpg",
     name: "Dr David Klaff",
     jd: "Past President",
   },
   {
-    image: "/penny-Sykes.jpg",
+    image: "/Dr-Lambert-Flick.jpg",
     name: "Dr Lambert Fick",
-    jd: "Past President",
+    jd: "Founding President",
   },
 ];
 export const MEMBERS_DATA = [
