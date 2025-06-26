@@ -67,15 +67,15 @@ const Banner = ({ data }: { data: IBanner }) => {
     <div ref={headerRef}>
       <div className=" upper w-full bg-midnight origin-bottom scale-y-0 ">
         <Container>
-          <div className="py-16 w-[45%] ">
+          <div className="py-16 lg:w-[45%] ">
             <h1 className="text-primary mb-3 text-6xl" id="home-h1">
               {data.heading}
             </h1>
           </div>
         </Container>
       </div>
-      <div className="-mt-[140px] relative z-10">
-        <div className="absolute bottom-20 left-10 w-full h-[140px] opacity-20 z-20">
+      <div className="-mt-[60px] lg:-mt-[140px] relative z-10">
+        <div className="hidden lg:block absolute bottom-20 left-10 w-full h-[140px] opacity-20 z-20">
           <Image
             src={"/baad-logo.webp"}
             className="w-[40%] h-full object-contain"
@@ -87,7 +87,7 @@ const Banner = ({ data }: { data: IBanner }) => {
         </div>
         <Container>
           <div className="flex h-[300px] lg:h-[380px] overflow-hidden">
-            <div className="video-main-div relative scale-x-0 h-0 overflow-hidden origin-top ms-auto max-w-[52%] transition-all ">
+            <div className="video-main-div relative scale-x-0 h-0 overflow-hidden origin-top ms-auto max-w-full lg:max-w-[52%] transition-all ">
               <div className="absolute z-10 inset-0 h-full w-full bg-primary video-bg"></div>
               <div className="video-div-main relative">
                 <Image

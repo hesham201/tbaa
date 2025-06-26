@@ -87,8 +87,8 @@ const TestimonialMain = () => {
           {TESTIMONIALS.map((item) => (
             <div key={item.name} className="relative  overflow-hidden">
               <div
-                className={`testimonial-item py-7  px-10 rounded-4xl flex flex-row items-center gap-16 ${
-                  item.reverse ? "flex-row-reverse" : ""
+                className={`testimonial-item py-7  px-10 rounded-4xl flex flex-col lg:flex-row items-center gap-16 ${
+                  item.reverse ? "lg:flex-row-reverse" : ""
                 }`}
                 style={{
                   background: item.reverse
@@ -98,27 +98,40 @@ const TestimonialMain = () => {
               >
                 <div className="absolute origin-right z-10 rounded-4xl inset-0 h-full w-full bg-primary content-bg"></div>
                 <div className="text-white grow">
-                  <div className="flex gap-1 mb-3 flex-row">
-                    {Array(5)
-                      .fill(0)
-                      .map((_, i) => (
-                        <Image
-                          key={i}
-                          src={"/star.svg"}
-                          alt="stars"
-                          width={100}
-                          height={100}
-                          className="w-[30px] h-[30px]"
-                        />
-                      ))}
+                  <div className="lg:block flex flex-row justify-between items-center">
+                    <div>
+                      <div className="flex gap-1 mb-3 flex-row">
+                        {Array(5)
+                          .fill(0)
+                          .map((_, i) => (
+                            <Image
+                              key={i}
+                              src={"/star.svg"}
+                              alt="stars"
+                              width={100}
+                              height={100}
+                              className="lg:w-[30px] w-[20px] h-[20px] lg:h-[30px]"
+                            />
+                          ))}
+                      </div>
+                      <h2 className="text-2xl lg:text-3xl mb-4">{item.name}</h2>
+                    </div>
+                    <div className="block lg:hidden w-[50px] shrink-0 h-[50px]">
+                      <Image
+                        src={"/profile-circle-on-testimonials-page.webp"}
+                        width={300}
+                        height={300}
+                        className="w-full h-full object-cover rounded-full"
+                        alt={item.name}
+                      />
+                    </div>
                   </div>
-                  <h2 className="text-3xl mb-4">{item.name}</h2>
                   <p
-                    className="text-lg"
+                    className="lg:text-lg text-base"
                     dangerouslySetInnerHTML={{ __html: item.para }}
                   />
                 </div>
-                <div className="w-[200px] shrink-0 h-[200px]">
+                <div className="hidden lg:block w-[200px] shrink-0 h-[200px]">
                   <Image
                     src={"/profile-circle-on-testimonials-page.webp"}
                     width={300}

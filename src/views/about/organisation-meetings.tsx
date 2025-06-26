@@ -83,15 +83,15 @@ const OrganisationMeetings = () => {
           {ABOUT_SAME_SECTION.map((item) => (
             <div
               key={item.heading}
-              className={`org-block text-midnight flex flex-row gap-8 items-center ${
-                item.reverse ? "flex-row-reverse" : ""
+              className={`org-block text-midnight flex flex-col lg:flex-row gap-8 items-center ${
+                item.reverse ? "lg:flex-row-reverse" : ""
               }`}
             >
-              <div className="w-[calc(50%-16px)]">
+              <div className="w-full lg:w-[calc(50%-16px)]">
                 <h2 className="org-heading text-4xl mb-4">{item.heading}</h2>
                 <p className="org-para text-xl">{item.para}</p>
               </div>
-              <div className="w-[calc(50%-16px)] h-[500px] relative">
+              <div className="w-full lg:w-[calc(50%-16px)] h-[350px] lg:h-[500px] relative">
                 <div
                   className={`relative h-full w-[80%] rounded-2xl overflow-hidden ${
                     item.reverse ? "me-auto" : "ms-auto"
@@ -106,7 +106,7 @@ const OrganisationMeetings = () => {
                 <div
                   className={`orgs-image absolute top-1/2 -translate-y-1/2 ${
                     item.reverse ? "right-[4.5%]" : "left-[4.5%]"
-                  } w-[35%] h-[50%] object-cover  rounded-xl border-8 border-white z-10`}
+                  } w-[35%] h-[40%] lg:h-[50%] object-cover  rounded-xl border-8 border-white z-10`}
                 >
                   <img
                     src={item.imageOne}

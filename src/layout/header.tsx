@@ -597,7 +597,7 @@ const Header = () => {
                       {NAV_ITEMS[dropdown].subItems.map((nav, index) => (
                         <li key={nav.name}>
                           <Link
-                            className="text-4xl text-nowrap text-midnight cursor-pointer transition-all duration-300 tracking-normal origin-top-left hover:tracking-wider hover:skew-1 inline-block"
+                            className="text-4xl lg:text-nowrap text-midnight cursor-pointer transition-all duration-300 tracking-normal origin-top-left hover:tracking-wider hover:skew-1 inline-block"
                             href={nav.link}
                             onClick={CloseMenuFunct}
                           >
@@ -610,7 +610,7 @@ const Header = () => {
                   )}
                 </div>
                 <div
-                  className="flex flex-col gap-2 w-[25%] ps-6 border-l text-midnight border-midnight"
+                  className="hidden lg:flex flex-col gap-2 w-[25%] ps-6 border-l text-midnight border-midnight"
                   id="address"
                 >
                   <div>
