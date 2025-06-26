@@ -15,7 +15,7 @@ const MembersTable = () => {
   );
 
   return (
-    <div className="mt-1">
+    <div className="mt-1 mb-5">
       <Container>
         <div className="mb-4">
           <input
