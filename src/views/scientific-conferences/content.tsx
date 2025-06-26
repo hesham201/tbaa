@@ -40,7 +40,7 @@ const Content = () => {
               knowledge and experiences, for the benefit of the community
               through its educational presentations.
             </p>
-            <p className="purpose-paragraph  text-lg">
+            <p className="purpose-paragraph  text-lg mb-3">
               Educational presentations are given by highly respected
               professionals at excellent venues with superior facilities.
               Meetings are open to everyone interested in Aesthetic Dentistry,
