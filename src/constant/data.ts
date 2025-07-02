@@ -387,7 +387,7 @@ export const HISTORY_BANNER = {
   heading: "The History of BAAD",
 };
 export const LAM_BANNER = {
-  image: "/lambert-fick-memorial-header.jpg",
+  image: "/lambert-fick-memorial-header.webp",
   heading: "Lambert Fick Memorial",
 };
 export const SCIENTIFIC_BANNER = {
