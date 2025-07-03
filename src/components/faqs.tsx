@@ -133,7 +133,7 @@ const Faqs = () => {
   return (
     <div
       ref={bgWrapperRefFAQS}
-      className="py-12 px-5 relative overflow-hidden"
+      className="py-12 relative overflow-hidden"
       id="FAQS"
     >
       <img
