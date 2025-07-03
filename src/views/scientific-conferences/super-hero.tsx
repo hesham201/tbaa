@@ -96,7 +96,7 @@ const SuperHero = () => {
       <div className="relative z-10">
         <Container>
           <div
-            className="flex flex-row grow gap-12 items-center lg:min-h-[70vh]"
+            className="flex flex-col lg:flex-row grow gap-12 items-center lg:min-h-[70vh]"
             ref={bgWrapperRef2}
           >
             <div
@@ -123,7 +123,7 @@ const SuperHero = () => {
               data-scroll
               data-scroll-direction="horizontal"
               data-scroll-speed={"1.7"}
-              className="relative w-[35%] overflow-hidden rounded-2xl shrink-0 h-[600px]"
+              className="relative w-full lg:w-[35%] overflow-hidden rounded-2xl shrink-0 h-[600px]"
             >
               <img
                 ref={bgImageRef2}

@@ -40,9 +40,9 @@ const ContactForm = () => {
   }, []);
   return (
     <div className="py-12 relative">
-      <div className="absolute inset-0 h-full w-[75%] bg-primary"></div>
+      <div className="absolute inset-0 h-full lg:w-[75%] bg-primary"></div>
       <Container>
-        <div className="grid grid-cols-2 gap-8 relative">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 relative">
           <div className="text-white">
             <h2 className="mb-4 text-3xl">
               Have a project or an idea you&apos;d like to collaborate with Us?
@@ -56,7 +56,7 @@ const ContactForm = () => {
               {animRefs.map((ref, index) => (
                 <div key={index} className="flex flex-row gap-3 items-center">
                   <div ref={ref} className="w-[50px] h-[50px]" />
-                  <p className="mt-2 text-center font-medium text-white">
+                  <p className="mt-2  font-medium text-white">
                     {labels[index]}
                   </p>
                 </div>

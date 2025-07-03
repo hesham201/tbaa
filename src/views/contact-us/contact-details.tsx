@@ -42,7 +42,7 @@ const ContactDetails = () => {
   return (
     <div className="py-10">
       <Container>
-        <div className="grid grid-cols-3 gap-5">
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-5">
           {animRefs.map((ref, index) => (
             <div key={index} className="flex flex-col items-center">
               <div ref={ref} className="w-[100px] h-[100px]" />

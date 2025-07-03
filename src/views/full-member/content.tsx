@@ -128,7 +128,7 @@ const Content = () => {
       </div> */}
       <div className="py-10">
         <Container>
-          <div className="flex gap-20 text-midnight justify-center ">
+          <div className="flex lg:flex-row flex-col gap-20 text-midnight justify-center ">
             <div className="flex flex-col  gap-4 text-lg">
               <div>
                 <h2 className="text-2xl">Additional investigations:</h2>
