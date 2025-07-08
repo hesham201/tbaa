@@ -37,7 +37,7 @@ const Header = () => {
     // Delay navigation until animation completes
     setTimeout(() => {
       router.push(href);
-    }, 1000); // Match this delay with your GSAP closing animation duration
+    }, 700); // Match this delay with your GSAP closing animation duration
   }
   // function dropdownOpen(index: number) {
   //   setDropdown(index);
