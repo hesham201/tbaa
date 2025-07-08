@@ -8,6 +8,7 @@ import Link from "next/link";
 import { NAV_ITEMS } from "@/constant/data";
 import Container from "@/components/container";
 import { CustomEase } from "gsap/CustomEase";
+import { useRouter } from "next/navigation";
 gsap.registerPlugin(CustomEase);
 export {};
 
@@ -24,11 +25,20 @@ declare global {
 const Header = () => {
   const galleryRef = useRef<HTMLDivElement>(null);
   const [isHovered, setIsHovered] = useState(false);
+  const router = useRouter();
   // const [isHoveredOne, setIsHoveredOne] = useState(false);
   const [openMenu, setOpenMenu] = useState(false);
   const [dropdown, setDropdown] = useState<null | number>(null);
   const menuTimelineRef = useRef<GSAPTimeline | null>(null);
+  function handleDropdownLinkClick(href: string) {
+    // Run the close animation first
+    CloseMenuFunct();
 
+    // Delay navigation until animation completes
+    setTimeout(() => {
+      router.push(href);
+    }, 1000); // Match this delay with your GSAP closing animation duration
+  }
   // function dropdownOpen(index: number) {
   //   setDropdown(index);
   //   const tldropdown: GSAPTimeline = gsap.timeline();
@@ -204,7 +214,7 @@ const Header = () => {
     menuTimelineRef.current = tl;
     tl.to("#overlay", {
       top: "-400vh",
-      duration: 1.6,
+      duration: 1,
       ease: CustomEase.create("custom", "M0,0 C0.104,0.204 0.634,0.883 1,1 "),
       opacity: 1,
     });
@@ -311,13 +321,13 @@ const Header = () => {
       },
       "<"
     );
-    gsap.set("#overlay", { top: "-180vh" }); // Ensure it's in the starting position
+    gsap.set("#overlay", { top: "-200vh" }); // Ensure it's in the starting position
     tl.fromTo(
       "#overlay",
-      { top: "-180vh" },
+      { top: "-200vh" },
       {
         top: "100vh",
-        duration: 2,
+        duration: 1,
         ease: CustomEase.create("custom", "M0,0 C0.104,0.204 0.634,0.883 1,1"),
       },
       "+=0.1"
@@ -596,14 +606,15 @@ const Header = () => {
                       </li>
                       {NAV_ITEMS[dropdown].subItems.map((nav, index) => (
                         <li key={nav.name}>
-                          <Link
+                          <button
                             className="text-4xl lg:text-nowrap text-midnight cursor-pointer transition-all duration-300 tracking-normal origin-top-left hover:tracking-wider hover:skew-1 inline-block"
-                            href={nav.link}
-                            onClick={CloseMenuFunct}
+                            onClick={() => {
+                              handleDropdownLinkClick(nav.link);
+                            }}
                           >
                             <span className="text-lg">0{index + 1}</span>{" "}
                             {nav.name}
-                          </Link>
+                          </button>
                         </li>
                       ))}
                     </ul>
