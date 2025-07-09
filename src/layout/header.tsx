@@ -274,6 +274,7 @@ const Header = () => {
     // gsap.set("#overlay", {
     //   yPercent: -200,
     // });
+    gsap.set("#overlay", { top: "-200vh" }); // Ensure it's in the starting position
     const tl: GSAPTimeline = gsap.timeline();
     if (dropdown !== null) {
       tl.to("#dropdown-nav li", {
@@ -321,16 +322,15 @@ const Header = () => {
       },
       "<"
     );
-    gsap.set("#overlay", { top: "-200vh" }); // Ensure it's in the starting position
+
     tl.fromTo(
       "#overlay",
       { top: "-200vh" },
       {
         top: "100vh",
-        duration: 1,
+        duration: 1.4,
         ease: CustomEase.create("custom", "M0,0 C0.104,0.204 0.634,0.883 1,1"),
-      },
-      "+=0.1"
+      }
     );
     // tl.from(
     //   "#overlay",
@@ -353,8 +353,9 @@ const Header = () => {
     tl.to(
       "#menu-fixed",
       {
-        yPercent: 200,
-        duration: 0.2,
+        top: "100vh",
+        duration: 0.7,
+        ease: "power3.in",
         onComplete: () => {
           // Optional reset values
           window.LOCO_SCROLL?.start();
@@ -366,7 +367,7 @@ const Header = () => {
           gsap.set("#overlay", { clearProps: "all" });
         },
       },
-      ">0.1"
+      "<+0.8"
     );
   }
   function hoveredOpenOne() {
@@ -579,14 +580,15 @@ const Header = () => {
                             {nav.name}
                           </button>
                         ) : (
-                          <Link
+                          <button
                             className="text-4xl transition-all text-midnight duration-300 tracking-normal origin-top-left hover:tracking-wider hover:skew-[1deg] inline-block"
-                            href={nav.link}
-                            onClick={CloseMenuFunct}
+                            onClick={() => {
+                              handleDropdownLinkClick(nav.link);
+                            }}
                           >
                             <span className="text-lg">0{index + 1}</span>{" "}
                             {nav.name}
-                          </Link>
+                          </button>
                         )}
                       </li>
                     ))}
