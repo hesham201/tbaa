@@ -66,7 +66,7 @@ const OurEvents = () => {
     <div ref={bgWrapperRef} className="py-5 lg:py-10 relative overflow-hidden">
       <img
         ref={bgImageRef}
-        src="/our-events.png"
+        src="/events-new.webp"
         width={1920}
         height={1080}
         alt="Our Events"
