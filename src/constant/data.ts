@@ -82,7 +82,7 @@ export const WELCOME_TO = {
   upperPara: "Advancing the Art & Science of Dentistry",
   data: [
     {
-      image: "/our-mission.jpg",
+      image: "/our-mission.webp",
       heading: "Our",
       headingTwo: "Mission",
       para: "Promoting excellence in aesthetic dentistry across the UK through education, innovation, and the sharing of expertise between clinicians, technicians, and academics.",
