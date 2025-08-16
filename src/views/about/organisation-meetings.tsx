@@ -80,15 +80,17 @@ const OrganisationMeetings = () => {
     <div ref={sectionRef} className="py-10">
       <Container>
         <div className="grid gap-7">
-          {ABOUT_SAME_SECTION.map((item) => (
+          {ABOUT_SAME_SECTION.map((item, index) => (
             <div
-              key={item.heading}
+              key={index}
               className={`org-block text-midnight flex flex-col lg:flex-row gap-8 items-center ${
                 item.reverse ? "lg:flex-row-reverse" : ""
               }`}
             >
               <div className="w-full lg:w-[calc(50%-16px)]">
-                <h2 className="org-heading text-4xl mb-4">{item.heading}</h2>
+                {/* {item.heading && (
+                  <h2 className="org-heading text-4xl mb-4">{item.heading}</h2>
+                )} */}
                 <p className="org-para text-xl">{item.para}</p>
               </div>
               <div className="w-full lg:w-[calc(50%-16px)] h-[350px] lg:h-[500px] relative">

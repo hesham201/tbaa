@@ -90,7 +90,8 @@ export const WELCOME_TO = {
       href: "/",
     },
     {
-      image: "/our-leadership.webp",
+      // image: "/our-leadership.webp",
+      image: "/leadership-two.webp",
       heading: "Our ",
       headingTwo: "Leadership",
       para: "Meet the esteemed professionals driving BAAD’s vision forward—uniting multidisciplinary perspectives to shape the future of aesthetic dentistry.",
@@ -1684,13 +1685,14 @@ export const MEMBERS_DATA = [
 ];
 export const ABOUT_SAME_SECTION = [
   {
-    heading: "Organisation",
-    para: "The Academy is a non-profit organisation and no part of net earnings, if any, shall inure to the benefit of any person. The Academy earnings are devoted exclusively to the uses and purposes of the Academy as defined in the foregoing section.",
+    // heading: "Organisation",
+    // para: "The Academy is a non-profit organisation and no part of net earnings, if any, shall inure to the benefit of any person. The Academy earnings are devoted exclusively to the uses and purposes of the Academy as defined in the foregoing section.",
+    para: "Founding leaders such as Lambert Fick, David Klaff, David Kaplan and Dave Winkler to name but a few, as inspirational visionaries forged a path for clinicians who were defined by their excellence and dedication to the highest professional, scientific, artistic and ethical standards in dentistry, encompassing research, publications and educational presentations.",
     image: "/organisation.webp",
     imageOne: "/sliding-image.webp",
   },
   {
-    heading: "Meetings",
+    // heading: "Meetings",
     para: "The Academy arranges an annual scientific conference by bringing together and encouraging debate between opinion leaders in our profession from all around the world. Information about past conferences and the next event can be found on the event pages.",
     image: "/meetings.webp",
     imageOne: "/sliding-image.webp",

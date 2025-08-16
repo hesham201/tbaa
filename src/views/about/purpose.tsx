@@ -21,16 +21,16 @@ const Purpose = () => {
   const [showModal, setShowModal] = useState(false);
   useLayoutEffect(() => {
     const timeOut = setTimeout(() => {
-      gsap.from(".purpose-heading", {
-        y: 50,
-        opacity: 0,
-        duration: 1,
-        scrollTrigger: {
-          trigger: ".purpose-heading",
-          scroller: "[data-scroll-container]",
-          start: "top 80%",
-        },
-      });
+      // gsap.from(".purpose-heading", {
+      //   y: 50,
+      //   opacity: 0,
+      //   duration: 1,
+      //   scrollTrigger: {
+      //     trigger: ".purpose-heading",
+      //     scroller: "[data-scroll-container]",
+      //     start: "top 80%",
+      //   },
+      // });
 
       gsap.from(".purpose-paragraph", {
         y: 40,
@@ -93,20 +93,19 @@ const Purpose = () => {
         <Container>
           <div>
             <div className="max-w-[700px] mx-auto">
-              <h2 className="purpose-heading text-center text-5xl mb-5">
+              {/* <h2 className="purpose-heading text-center text-5xl mb-5">
                 Purpose
-              </h2>
+              </h2> */}
               <p className="purpose-paragraph  text-lg mb-3">
-                The Academy&apos;s primary purpose is to promote and foster
-                dental health for the benefit of the community.
+                The British Academy of Aesthetic Dentistry (BAAD) is the leading
+                Organisation in the UK for Aesthetic Dentistry.
               </p>
               <p className="purpose-paragraph   text-lg">
-                In particular, the Academy helps to facilitate the integration
-                of natural dental aesthetics into the total spectrum of oral
-                health care and to provide a leadership role for the profession
-                by defining the highest professional, scientific, artistic and
-                ethical standards through research, publications and educational
-                presentations.
+                From its inception over 30 years ago the purpose of BAAD was to
+                promote dental health and aesthetic dentistry for all the
+                community. At its focus are its Membership, Dentists and Dental
+                Technicians who share a common commitment to excellence in
+                dentistry.
               </p>
             </div>
             <div className="purpose-video rounded-4xl overflow-hidden mt-6 max-w-[800px] mx-auto relative h-[500px]">
