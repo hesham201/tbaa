@@ -91,7 +91,8 @@ const OrganisationMeetings = () => {
                 {/* {item.heading && (
                   <h2 className="org-heading text-4xl mb-4">{item.heading}</h2>
                 )} */}
-                <p className="org-para text-xl">{item.para}</p>
+                <p className="org-para text-xl" dangerouslySetInnerHTML={{ __html: item.para.replace(/\n/g, '<br/>') }} />
+
               </div>
               <div className="w-full lg:w-[calc(50%-16px)] h-[350px] lg:h-[500px] relative">
                 <div
