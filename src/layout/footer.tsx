@@ -150,7 +150,7 @@ const Footer = () => {
             <p className="text-center">
               © 1996 - 2025 BAAD. All Rights Reserved{" "}
               <span className="text-center block">
-                <a href="">Refund Policy</a> | <a href="">Terms & Conditions</a>{" "}
+                <a href="">Refund Policy</a> | <a href="/terms-and-conditions">Terms & Conditions</a>{" "}
                 | <a href="/privacy-policy">Privacy Policy</a>
               </span>
             </p>

@@ -68,42 +68,12 @@ const Content = () => {
       <div className="py-10">
         <Container>
           <div className="flex flex-col  gap-4 text-lg text-midnight">
-            <p>
-              Following the enormous success of the American Academy of Esthetic
-              Dentistry, founded in 1975, the European Academy of Esthetic
-              Dentistry, founded in 1986 and the Japanese Academy of Esthetic
-              Dentistry founded in 1990, the UK, alone amongst the front runners
-              of dental excellence was conspicuous for the absence of an
-              aesthetic ethos manifested in the protocols of a structured
-              organisation.
-            </p>
-            <p>
-              Thus it was no surprise that in the early nineties a group of
-              like-minded individuals discussed the possibility of forming a
-              British society dedicated to the ethos of Aesthetics.
-            </p>
-            <p>
-              Initially the main founders were Lambert Fick and David Kaplan,
-              later joined by David Klaff. They met and discussed the ways and
-              means to form such an Academy.
-            </p>
-            <p>
-              By coincidence, or Karma, the first combined meeting of the above
-              three academies took place in Florence, Italy, in 1994. On the
-              flight to the meeting Milton Beinart and John Theunissen, two
-              like-minded clinicians, joined Lambert and the two David’s. By the
-              end of the flight and additional train journey a broad based
-              formula had been developed for the structure of a British
-              Aesthetic Academy. In Florence invitations were extended to Tidu
-              Mankoo and Carlo Nepute to join the founding party.
-            </p>
-
-            <p>
-              High-level talks were held at every opportunity during the
-              Florence meeting, with inspirational assistance from Cherilyn
-              Sheets, President of the AAED and David Winkler, President of the
-              Scandinavian Academy.
-            </p>
+           <p>
+                The British Academy of Aesthetic Dentistry (BAAD) was founded in the early 1990s, at a time when the UK lacked a dedicated organisation championing the principles of aesthetic dentistry. Inspired by the success of academies in America, Europe and Japan, a group of pioneering clinicians recognised the need to create a British counterpart that would promote excellence in aesthetics, education, and collaboration.
+              </p>
+              <p>
+                The founding vision began with Lambert Fick and David Kaplan, later joined by David Klaff. Their discussions laid the groundwork for what would become BAAD. In 1994, during the first combined meeting of the American, European, and Japanese academies in Florence, further momentum was gained. On the journey to this landmark event, Lambert, Kaplan and Klaff were joined by Milton Beinart and John Theunissen, and together they shaped the framework for a new Academy. In Florence, Tidu Mankoo and Carlo Nepute were also invited to join as founding members.
+              </p>
           </div>
         </Container>
       </div>
@@ -124,42 +94,14 @@ const Content = () => {
         <Container>
           <div className="flex flex-col text-midnight gap-4 text-lg">
             <p>
-              Fabio Toffenetti, President of the EAED, made two significant
-              announcements during the concluding speech of the meeting. The
-              first was the establishment of the International Federation of
-              Esthetic Dentistry; the second was the announcement of the
-              formation of the British Academy of Aesthetic Dentistry.
-            </p>
-            <p>
-              The following months were characterised by frequent intensive
-              meetings and within a short period a structured society had been
-              formed with a Mission Statement, Constitution and By-laws and was
-              to be called the British Academy of Aesthetic Dentistry. Two
-              further individuals were invited to join the original founding
-              Executive Council, Lothar Fulde and Paul Tipton. The Constitution
-              demanded that an annual general meeting be held with an associated
-              scientific programme.
-            </p>
-            <p>
-              The founding officers elected were Lambert Fick- President; David
-              Klaff – President -Elect and David Kaplan – Secretary -Treasurer.
-            </p>
-            <p>
-              The inaugural meeting was held at the Belfry Hotel with Sir
-              Bernard Ingham, Margaret Thatcher’s press secretary, the guest of
-              honour. The meeting was characterised by sponsoring possibly the
-              finest line-up of world clinicians seen in one programme in the
-              United Kingdom at that time. Many unforgettable moments were held
-              in the social aspects, not least of which being Dave Winkler
-              winning the “BA(A)D” golfer of the year trophy.
-            </p>
-            <p>
-              Within 6 years the British Academy of Aesthetic Dentistry had
-              formally achieved its position in the United Kingdom as a highly
-              formidable society that played a large part in the acceptance of
-              “aesthetics” as a discipline and method of treatment in this
-              country.
-            </p>
+                With encouragement from international colleagues – including Cherilyn Sheets (President of the American Academy of Esthetic Dentistry), David Winkler (President of the Scandinavian Academy), and Fabio Toffenetti (President of the European Academy) – the creation of a British academy was formally announced. Shortly after, <b> LotharFulde </b> and <b><b></b>Paul Tipton</b> joined the founding Executive Council, and the Academy was established with its Constitution, Mission Statement, and By-laws.
+              </p>
+              <p>
+                The inaugural meeting was held at The Belfry Hotel, welcoming an exceptional line-up of world-class clinicians. From the outset, BAAD set itself apart by combining academic rigour with an atmosphere of camaraderie, ensuring delegates benefitted from both education and fellowship.
+              </p>
+              <p>
+                In its early years, BAAD faced scepticism within the UK profession. Aesthetic dentistry was often dismissed as superficial. Yet the Academy quickly established credibility through scientific programmes rooted in biological principles, clinical excellence, and a commitment to restoring structure, form, and function. The outstanding standard of BAAD’s meetings soon attracted leading clinicians from around the world, cementing its reputation as a serious and respected academy.
+              </p>
           </div>
         </Container>
       </div>
@@ -169,7 +111,7 @@ const Content = () => {
       >
         <Image
           ref={bgImageRef2}
-          src={"/our-events.png"}
+          src={"/events-new.webp"}
           width={800}
           height={800}
           alt="image"
@@ -178,39 +120,14 @@ const Content = () => {
         <Container>
           <div className="relative ">
             <div className="flex flex-col justify-center-center text-white gap-4 text-lg">
-              <p>
-                There is no doubt that the BAAD was formed in the face of great
-                hostility and suspicion by the profession in the United Kingdom
-                and at the time aesthetics was certainly a “dirty word”.
+             <p>
+                Over time, BAAD has evolved while remaining true to its founding ethos. Study-club style meetings were introduced, creating more intimate opportunities for members to engage, learn, and share knowledge. Presidents and Executive Councils have passed the baton across generations, while the founding members continue to provide guidance and wisdom.
               </p>
               <p>
-                However the standard of the Scientific Meetings was so high with
-                high concentration on solid biological principles, with clinical
-                excellence and paying strict adherence to restoring Structure,
-                Form and Function, that BAAD soon established itself both
-                nationally and internationally as a serious academy promoting
-                the highest standards of dental clinical achievement, associated
-                with social camaraderie and friendship. Clinicians from abroad
-                queued to be included in a BAAD meeting line-up.
+                No history of BAAD would be complete without acknowledging the immense contributions of <b>John McLean, Brian Sykes, and Joyce Ronald</b> – three guiding figures whose support and vision helped shape the Academy’s enduring success.
               </p>
               <p>
-                BAAD has evolved in a linear fashion continuing to maintain the
-                high standards with the introduction of “study-club” type
-                meetings proving to be a tremendous success and very popular
-                with the membership.
-              </p>
-              <p>
-                Presidents and Executive councils have been elected, served and
-                passed on their mantles – the Dinosaurs and original founding
-                members have moved to the background, offering council and
-                wisdom in continuing to guide the Academy to leadership in
-                bringing Aesthetic Dentistry to the British Public.
-              </p>
-              <p>
-                No history of BAAD would be complete without paying homage to
-                three guiding lights in its development, namely John McLean,
-                Brian Sykes and Joyce Ronald – these three were instrumental in
-                guiding BAAD and the Academy’s debt is incalculable.
+                Today, BAAD stands as one of the most respected aesthetic dental academies worldwide, upholding the highest standards of education and clinical practice while nurturing a community of professionals committed to excellence.
               </p>
             </div>
           </div>

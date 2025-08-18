@@ -74,41 +74,18 @@ const Content = () => {
               your application for Associate Membership.
             </p>
             <p>
-              You will need to have your presentation approved by your mentors
-              prior to submitting to the Preview Committee. The Committee will
-              decide whether to allow you to proceed further or whether further
-              changes are necessary. Refer to the Constitution, Chapter 1
-              Membership Section 2(2).
+              You will need to prepare a 30 to 45 minute presentation as part of your application.
             </p>
             <p>
-              The presentation will be 30 to 45 minutes in duration. <br />
-              The basis of the presentation is to provide three cases
-              highlighting both clinical and laboratory work. <br />
-              All three cases must show a diagnosis based on clinical
-              examination and investigations. A detailed plan of treatment must
-              be provided. <br />
-              This plan must also include alternative treatment options that
-              could have been utilised for that particular case and you must
-              show why one option was chosen over other options. <br />
-              The treatment of the cases needs to be detailed and include a
-              step-by-step account of the sequence of treatment with clear and
-              accurate photographs.
+              Your presentation will need to be approved by your mentors prior to submitting it to the Preview Committee. The Committee will decide whether to allow you to proceed further or whether further changes are necessary in line with Chapter 1 Membership Section 2(2) of the Constitution. <br />
+              The basis of the presentation is to provide three cases highlighting both clinical and laboratory work. All three cases must show a diagnosis based on clinical examination and investigations. A detailed plan of treatment must be provided, as well as alternative treatment options that could have been used utilised with a rationale for why you went with your chosen treatment plan. The treatment of the cases needs to be detailed and include a step-by-step account of the sequence of treatment with clear and accurate photographs.
             </p>
             <p>
-              The final outcome must be shown clearly and include a
-              retrospective analysis of the treatment; identifying any
-              weaknesses and what could have been done differently. <br />
-              All treatment decisions must be backed by literature references.
-              The onus is on you to understand all the references quoted and be
-              fully prepared for the question and answer session, which follows
-              their presentation for 10-15 minutes.
+              The final outcome must be shown clearly and include a retrospective analysis of the treatment; identifying any weaknesses and what could have been done differently. All the treatment decisions must be backed by literature references. The presentation is followed by a 10 -15 minute question and answer session, where you may be asked to recall on the references you quoted.
             </p>
 
             <p>
-              The list below provides a guideline on the format as well as the
-              inclusion of relevant data for all presentations. It is by no
-              means comprehensive nor will all the data provided necessarily be
-              required in any one case presentation.
+              The list below provides a guideline on the format, as well as the inclusion of relevant data for all presentations. It is by no means comprehensive nor will all the data provided necessarily be required in any one case presentation.
             </p>
           </div>
         </Container>

@@ -3,8 +3,40 @@
 import { useEffect, useRef } from "react";
 import lottie from "lottie-web";
 import Container from "@/components/container";
+import { useFormik } from "formik";
+import * as Yup from "yup";
 
 const ContactForm = () => {
+  // Define validation schema with Yup
+  const validationSchema = Yup.object({
+    name: Yup.string().required("Please enter your name"),
+    email: Yup.string().email("Invalid email format").required("Please enter your email"),
+    message: Yup.string().required("Please enter your message"),
+    acceptPolicy: Yup.boolean().oneOf([true], "You must accept the Privacy Policy")
+  });
+  
+  // Initialize Formik
+  const formik = useFormik({
+    initialValues: {
+      name: "",
+      email: "",
+      message: "",
+      acceptPolicy: false
+    },
+    validationSchema,
+    validateOnBlur: true, // Validate when field loses focus
+    validateOnChange: false, // Don't validate on every keystroke
+    onSubmit: (values, { resetForm }) => {
+      // Here you would typically send the form data to your backend
+      console.log("Form submitted:", values);
+      
+      // Reset form after successful submission
+      setTimeout(() => {
+        resetForm();
+      }, 1500);
+    }
+  });
+  
   const animRefs = [
     useRef<HTMLDivElement>(null),
     useRef<HTMLDivElement>(null),
@@ -38,60 +70,111 @@ const ContactForm = () => {
       animations.forEach((anim) => anim?.destroy());
     };
   }, []);
+
   return (
     <div className="py-12 relative">
       <div className="absolute inset-0 h-full lg:w-[75%] bg-primary"></div>
       <Container>
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 relative">
+          {/* Left side */}
           <div className="text-white">
-            <h2 className="mb-4 text-3xl">
-              Have a project or an idea you&apos;d like to collaborate with Us?
-              Let&apos;s get in touch!
-            </h2>
+            <h2 className="mb-4 text-3xl">We’d love to hear from you</h2>
             <p className="text-lg">
-              If you need help with your reservation, need support, or just want
-              to say hi, feel free to get in touch with below.
+              Whether you have a question about membership, upcoming events, or
+              the work of the British Academy of Aesthetic Dentistry, please get
+              in touch using the details below or complete the contact form.
             </p>
             <div className="mt-4">
               {animRefs.map((ref, index) => (
                 <div key={index} className="flex flex-row gap-3 items-center">
                   <div ref={ref} className="w-[50px] h-[50px]" />
-                  <p className="mt-2  font-medium text-white">
-                    {labels[index]}
-                  </p>
+                  <p className="mt-2 font-medium text-white">{labels[index]}</p>
                 </div>
               ))}
             </div>
-            <div></div>
-            <div></div>
           </div>
+
+          {/* Right side (form) */}
           <div className="bg-midnight py-10 px-4 shadow-2xl">
             <h3 className="text-4xl mb-4 text-white">Get In Touch</h3>
-            <form action="">
+            <form onSubmit={formik.handleSubmit}>
               <div className="flex flex-col gap-4">
-                <input
-                  className="border-white placeholder:text-white border bg-transparent h-[43px] p-4  focus:outline-none"
-                  placeholder="Type your name"
-                  type="text"
-                />
-                <input
-                  type="email"
-                  className="border-white placeholder:text-white border bg-transparent h-[43px] p-4  focus:outline-none"
-                  placeholder="Type your Email Address"
-                />
-                <textarea
-                  name=""
-                  id=""
-                  className="form-control placeholder:text-white p-4 w-full h-[120px] bg-transparent border border-white text-white focus:outline-none"
-                  placeholder="Tell us about you and the world"
-                ></textarea>
+                {/* Name */}
+                <div>
+                  <input
+                    type="text"
+                    id="name"
+                    name="name"
+                    value={formik.values.name}
+                    onChange={formik.handleChange}
+                    onBlur={formik.handleBlur}
+                    placeholder="Enter your name"
+                    className="border-white placeholder:text-white text-white border bg-transparent h-[43px] p-4 w-full focus:outline-none"
+                  />
+                  {formik.touched.name && formik.errors.name && (
+                    <p className="text-red-500 text-sm mt-1">*{formik.errors.name}</p>
+                  )}
+                </div>
+
+                {/* Email */}
+                <div>
+                  <input
+                    type="email"
+                    id="email"
+                    name="email"
+                    value={formik.values.email}
+                    onChange={formik.handleChange}
+                    onBlur={formik.handleBlur}
+                    placeholder="Enter your email address"
+                    className="border-white placeholder:text-white text-white border bg-transparent h-[43px] p-4 w-full focus:outline-none"
+                  />
+                  {formik.touched.email && formik.errors.email && (
+                    <p className="text-red-500 text-sm mt-1">*{formik.errors.email}</p>
+                  )}
+                </div>
+
+                {/* Message */}
+                <div>
+                  <textarea
+                    id="message"
+                    name="message"
+                    value={formik.values.message}
+                    onChange={formik.handleChange}
+                    onBlur={formik.handleBlur}
+                    placeholder="Enter your message"
+                    className="placeholder:text-white p-4 w-full h-[120px] bg-transparent border border-white text-white focus:outline-none"
+                  ></textarea>
+                  {formik.touched.message && formik.errors.message && (
+                    <p className="text-red-500 text-sm mt-1">*{formik.errors.message}</p>
+                  )}
+                </div>
+                
+                {/* Privacy Policy Checkbox */}
+                <div className="">
+                  <label className="flex items-center text-white">
+                    <input
+                      type="checkbox"
+                      id="acceptPolicy"
+                      name="acceptPolicy"
+                      checked={formik.values.acceptPolicy}
+                      onChange={formik.handleChange}
+                      onBlur={formik.handleBlur}
+                      className="mr-2"
+                    />
+                    <span>Please tick this box to agree to our <a href="/privacy-policy" className="text-primary  hover:text-white"> Privacy Policy</a> before continuing.</span>
+                  </label>
+                  {formik.touched.acceptPolicy && formik.errors.acceptPolicy && (
+                    <p className="text-red-500 text-sm mt-1">*{formik.errors.acceptPolicy}</p>
+                  )}
+                </div>
               </div>
+
               <div className="mt-3">
                 <button
                   type="submit"
-                  className="text-xl uppercase cursor-pointer text-white px-7  py-2 border border-white"
+                  className="text-xl uppercase cursor-pointer text-white bg-primary px-7 py-2"
                 >
-                  send message
+                  Send Message
                 </button>
               </div>
             </form>

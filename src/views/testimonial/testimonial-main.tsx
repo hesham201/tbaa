@@ -118,7 +118,7 @@ const TestimonialMain = () => {
                     </div>
                     <div className="block lg:hidden w-[50px] shrink-0 h-[50px]">
                       <Image
-                        src={"/profile-circle-on-testimonials-page.webp"}
+                        src={item.ImageSrc}
                         width={300}
                         height={300}
                         className="w-full h-full object-cover rounded-full"
@@ -133,7 +133,7 @@ const TestimonialMain = () => {
                 </div>
                 <div className="hidden lg:block w-[200px] shrink-0 h-[200px]">
                   <Image
-                    src={"/profile-circle-on-testimonials-page.webp"}
+                    src={item.ImageSrc}
                     width={300}
                     height={300}
                     className="w-full h-full object-cover rounded-full"
