@@ -1,12 +1,17 @@
 "use client";
 
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import lottie from "lottie-web";
 import Container from "@/components/container";
 import { useFormik } from "formik";
 import * as Yup from "yup";
+import emailjs from "emailjs-com";
 
 const ContactForm = () => {
+  const [isSubmitted, setIsSubmitted] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
+  const [submissionMessage, setSubmissionMessage] = useState("");
+
   // Define validation schema with Yup
   const validationSchema = Yup.object({
     name: Yup.string().required("Please enter your name"),
@@ -27,13 +32,27 @@ const ContactForm = () => {
     validateOnBlur: true, // Validate when field loses focus
     validateOnChange: false, // Don't validate on every keystroke
     onSubmit: (values, { resetForm }) => {
-      // Here you would typically send the form data to your backend
-      console.log("Form submitted:", values);
-      
-      // Reset form after successful submission
-      setTimeout(() => {
-        resetForm();
-      }, 1500);
+      setIsLoading(true);
+      emailjs
+        .sendForm(
+          "service_2cnqd96",
+          "template_ur2kjim",
+          "#contactForm",
+          "nQBJzdhm_0rQ4QbLv"
+        )
+        .then(
+          () => {
+            setIsLoading(false);
+            setIsSubmitted(true);
+            setSubmissionMessage("Form submitted successfully!");
+            resetForm();
+          },
+          () => {
+            setIsLoading(false);
+            setIsSubmitted(true);
+            setSubmissionMessage("Failed to send message, please try again.");
+          }
+        );
     }
   });
   
@@ -97,7 +116,7 @@ const ContactForm = () => {
           {/* Right side (form) */}
           <div className="bg-midnight py-10 px-4 shadow-2xl">
             <h3 className="text-4xl mb-4 text-white">Get In Touch</h3>
-            <form onSubmit={formik.handleSubmit}>
+            <form id="contactForm" onSubmit={formik.handleSubmit}>
               <div className="flex flex-col gap-4">
                 {/* Name */}
                 <div>
@@ -172,11 +191,18 @@ const ContactForm = () => {
               <div className="mt-3">
                 <button
                   type="submit"
+                  disabled={isLoading}
                   className="text-xl uppercase cursor-pointer text-white bg-primary px-7 py-2"
                 >
-                  Send Message
+                  {isLoading ? "Sending..." : "Send Message"}
                 </button>
               </div>
+              
+              {isSubmitted && (
+                <div className={`mt-4 p-3 rounded ${submissionMessage.includes("success") ? "bg-green-100 text-green-800" : "bg-red-100 text-red-800"}`}>
+                  {submissionMessage}
+                </div>
+              )}
             </form>
           </div>
         </div>
