@@ -119,8 +119,9 @@ const TestimonialMain = () => {
                     <div className="block lg:hidden w-[50px] shrink-0 h-[50px]">
                       <Image
                         src={item.ImageSrc}
-                        width={300}
-                        height={300}
+                        width={600}
+                        height={600}
+                        quality={100}
                         className="w-full h-full object-cover rounded-full"
                         alt={item.name}
                       />
@@ -134,8 +135,9 @@ const TestimonialMain = () => {
                 <div className="hidden lg:block w-[200px] shrink-0 h-[200px]">
                   <Image
                     src={item.ImageSrc}
-                    width={300}
-                    height={300}
+                    width={600}
+                    height={600}
+                    quality={100}
                     className="w-full h-full object-cover rounded-full"
                     alt={item.name}
                   />
