@@ -103,7 +103,7 @@ const SuperHero = () => {
               className="flex flex-col justify-center gap-6 text-white"
               id="our-events-heading"
             >
-              <h3>2025</h3>
+              <h3>2026</h3>
               <HeadingTwo className="mb-3">
                 Super Hero’s: With great power comes great responsibility
               </HeadingTwo>
@@ -130,6 +130,7 @@ const SuperHero = () => {
                 src="/baad-super-hero.png"
                 className="absolute top-0 left-0 w-full h-full object-cover will-change-transform pointer-events-none"
                 alt=""
+                style={{ visibility: 'hidden' }}
               />
             </div>
           </div>

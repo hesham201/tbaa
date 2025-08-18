@@ -83,8 +83,7 @@ export default function ScientificCard() {
                 <p className="text-sm mt-2">{item.description}</p>
                 {item.link && (
                   <div className="mt-2">
-                    <Link href="/">Learn More</Link>
-                <Link href="/">View BAAD programme</Link>
+                    
                     <Link
                       href={item.link}
                       className="border border-white py-1 px-4"
