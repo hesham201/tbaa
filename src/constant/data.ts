@@ -223,7 +223,7 @@ export const MASTER_CLASSES = [
 export const SCIENTIFIC_CARDS = [
   {
     
-    description: "2025 – Super Hero's: With great power comes great responsibility",
+    description: "2025 – Super Hero's",
     
     image: "/baad-super-hero.png",
     learnMoreLink: "/",
@@ -231,7 +231,7 @@ export const SCIENTIFIC_CARDS = [
   },
   {
     image: "/bAAD-2024-Conference-Flyer.jpg",
-    description: "2023 – Scientific Meeting",
+    description: "2024 – Scientific Meeting",
   },
   {
     image: "/bAAD-Conference-2023.png",
@@ -1734,12 +1734,12 @@ export const TESTIMONIALS = [
     name: "Dr Juerg Willi",
     para: "“My initial absolutely coincidental encounter with BAAD has - in hindsight now many years later - turned out to be a true turning point in my outlook on dentistry and the part I should be playing in it. I met an expert group of likeminded people, united in their believe that only a job properly done is a job worth doing.<br/><br/>To be accepted by this group as equal (even though I was not) has been a huge incentive to do likewise and aspire to the same clinical standards. Excellence is not a skill, it is an attitude. Anybody who can live by this bonmot will easily find in BAAD not only encouragment and guidance, but also very good friends (even though they are called BAAD friends).”",
     reverse: true,
-    ImageSrc:"/profile-circle-on-testimonials-page.webp"
+    ImageSrc:"/favicon.png"
   },
   {
     name: "Thomas",
     para: "“High-class aesthetic and implant dentistry in a wonderful venue with great colleagues.<br/><br/>Honestly, I have great memories about the BAAD meeting!<br/><br/>I look forward to seeing you again, hopefully in the near future.”",
-    ImageSrc:"/profile-circle-on-testimonials-page.webp"
+    ImageSrc:"/favicon.png"
 
   },
 ];

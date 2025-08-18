@@ -97,8 +97,8 @@ const OurEvents = () => {
                 id="buttons-events"
               >
                 <Button href="/">Book Now</Button>
-                <Button href="/">Past Masterclasses</Button>
-                <Button href="/">Past Scientific Conferences</Button>
+                <Button href="/masterclasses">Masterclasses Page</Button>
+                <Button href="/scientific-conferences">Scientific Conferences Page</Button>
               </div>
             </div>
           </div>
