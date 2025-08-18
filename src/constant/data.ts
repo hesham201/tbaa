@@ -76,6 +76,7 @@ export const NAV_ITEMS: INavItem[] = [
   },
 ];
 
+
 export const WELCOME_TO = {
   heading:
     "Welcome to <span id='heading-two-span'>British Academy of Aesthetic</span> Dentistry",
@@ -91,7 +92,7 @@ export const WELCOME_TO = {
     },
     {
       // image: "/our-leadership.webp",
-      image: "/leadership-two.webp",
+      image: "/leadership-two.png",
       heading: "Our ",
       headingTwo: "Leadership",
       para: "Meet the esteemed professionals driving BAAD’s vision forward—uniting multidisciplinary perspectives to shape the future of aesthetic dentistry.",
@@ -220,6 +221,14 @@ export const MASTER_CLASSES = [
   },
 ];
 export const SCIENTIFIC_CARDS = [
+  {
+    
+    description: "2025 – Super Hero's: With great power comes great responsibility",
+    
+    image: "/baad-super-hero.png",
+    learnMoreLink: "/",
+    programmeLink: "/"
+  },
   {
     image: "/bAAD-2024-Conference-Flyer.jpg",
     description: "2023 – Scientific Meeting",
@@ -1693,7 +1702,7 @@ export const ABOUT_SAME_SECTION = [
   },
   {
     // heading: "Meetings",
-    para: "The Academy arranges an annual scientific conference by bringing together and encouraging debate between opinion leaders in our profession from all around the world. Information about past conferences and the next event can be found on the event pages.",
+    para: "BAAD is now recognised as one of the leading organisations in the world, known for its Scientific Meetings and Masterclass events. These are held in beautiful locations that bring people together to learn, connect, and build lasting relationships - creating a close-knit ‘dental family’ of like-minded professionals. Here, camaraderie and the sharing of knowledge form the foundation of a respected community of Aesthetic Clinicians.\n\n While our core values have stayed the same, BAAD continues to evolve - responding to the needs of our members and advances in dentistry - always staying true to the vision set by our founders.",
     image: "/meetings.webp",
     imageOne: "/sliding-image.webp",
     reverse: true,
@@ -1708,7 +1717,7 @@ export const MEMBERSHIP_SAME_SECTION = [
   },
   {
     heading: "Current Academy Members",
-    para: "Please feel free to view the Membership Directory.",
+    para: "Please feel free to view the <a href='/members' style='font-weight: bold;'>Membership Directory</a>.",
     image: "/meetings.webp",
     imageOne: "/sliding-image.webp",
     reverse: true,
@@ -1718,14 +1727,19 @@ export const TESTIMONIALS = [
   {
     name: "Dr Koray Feran BDS MSc FDSRCS",
     para: "“I have been a member of BAAD for 12 years, with 8 of those spent on committee firstly as treasurer and as immediate past president.<br/><br/>BAAD has been an inspiration since my first meeting - the consistent objective of the academy being to promote the highest standards of dental care to restore a patient's appearance and wellbeing to look as natural as possible based on a sound scientific foundation. This never changes and the ethos of BAAD has always been one of sharing knowledge.<br/><br/>The level of presentations is consistently high and of a practical nature and the list of speakers that have attended BAAD over the last 20 years is a who's who of beautiful dentistry.<br/><br/>BAAD has been a family that I have been proud to serve and be associated with and it is gratifying to see the mental and professional stimulation it gives to younger colleagues attending for the first time.<br/><br/>BAAD's scientific meeting and study clubs are a great way to be introduced into the world of quality dentistry and a great group of likeminded colleagues. From the UK and abroad.”",
+    ImageSrc:"/Dr-Koray-Feran.jpg"
   },
+
   {
     name: "Dr Juerg Willi",
     para: "“My initial absolutely coincidental encounter with BAAD has - in hindsight now many years later - turned out to be a true turning point in my outlook on dentistry and the part I should be playing in it. I met an expert group of likeminded people, united in their believe that only a job properly done is a job worth doing.<br/><br/>To be accepted by this group as equal (even though I was not) has been a huge incentive to do likewise and aspire to the same clinical standards. Excellence is not a skill, it is an attitude. Anybody who can live by this bonmot will easily find in BAAD not only encouragment and guidance, but also very good friends (even though they are called BAAD friends).”",
     reverse: true,
+    ImageSrc:"/profile-circle-on-testimonials-page.webp"
   },
   {
     name: "Thomas",
     para: "“High-class aesthetic and implant dentistry in a wonderful venue with great colleagues.<br/><br/>Honestly, I have great memories about the BAAD meeting!<br/><br/>I look forward to seeing you again, hopefully in the near future.”",
+    ImageSrc:"/profile-circle-on-testimonials-page.webp"
+
   },
 ];

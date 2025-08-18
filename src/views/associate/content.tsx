@@ -62,21 +62,16 @@ const Content = () => {
       <div className="py-10">
         <Container>
           <div className="flex flex-col text-midnight gap-4 text-lg">
-            <p>To Qualify for associate membership, an applicant must have:</p>
             <p>
-              1) Attended two scientific meetings and paid the required dues
-            </p>
-            <p>
-              2) To supply a photograph, CV and nomination from two charter/
-              full or life members in good standing who know the nominee well,
-              both personally and professionally. This must be supplied in
-              advance of the next annual scientific conference.
-            </p>
-            <p>
-              3) Receive a three-fourths affirmative vote, by secret ballot, of
-              the Executive Council and threefourths affirmative vote of the
-              charter/full and life members present and voting at the Annual
-              General Assembly
+              To qualify for associate membership, an applicant must have:
+              <br /><br/>
+              1) Attended two scientific meetings and paid the required dues.
+              <br />
+              2) To supply a photograph, CV and nomination from two charter/ full or life members in good standing who know the nominee well, both personally and professionally. This must be supplied in advance of the next annual scientific conference.
+              <br />
+              3) Receive a three-fourths affirmative vote, by secret ballot, of the Executive Council and three-fourths affirmative vote of the charter/full and life members present and voting at the Annual General Assembly.
+              <br /><br />
+              If you require any further information, please get in touch with us at <a href="mailto:info@baad.org.uk"><b>info@baad.org.uk</b></a>
             </p>
           </div>
         </Container>
