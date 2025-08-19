@@ -18,7 +18,7 @@ const SpeakerContent = () => {
                 <div className="w-80 h-80 rounded relative overflow-hidden md:absolute md:left-0 md:-top-2">
                   <Image 
                     src="/mc.jpg" 
-                    alt="Dr. Marco Veneziani" 
+                    alt="Dr. Marco  Veneziani" 
                     fill 
                     className="object-cover"
                   />
