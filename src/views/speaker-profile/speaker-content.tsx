@@ -9,13 +9,12 @@ const SpeakerContent = () => {
       {/* Speaker Header Section with Image */}
       <div className="relative">
         {/* Background section */}
-        <div className="bg-midnight text-white w-screen py-10 mt-20">
+        <div className="bg-[linear-gradient(to_bottom,#031A37_0%,#031A37_50%,transparent_50%,transparent_100%)] text-white w-screen py-10 pb-0 mt-20">
           <Container>
-            <div className="flex flex-col md:flex-row items-start relative">
-              {/* Left side - Image positioned outside the background */}
-              <div className="md:w-1/3 relative">
+            <div className="flex flex-row justify-between">
+              <div className="md:w-[40%] h-[500px] relative">
                 {/* Image positioned with 25% above the background but below navbar */}
-                <div className="w-80 h-80 rounded relative overflow-hidden md:absolute md:left-0 md:-top-2">
+                <div className="w-full h-[500px] rounded relative overflow-hidden md:absolute md:left-0 md:-top-2">
                   <Image
                     src="/mc.jpg"
                     alt="Dr. Marco  Veneziani"
@@ -24,10 +23,8 @@ const SpeakerContent = () => {
                   />
                 </div>
               </div>
-
-              {/* Right side - Content */}
-              <div className="md:w-4/5 px-6 flex flex-col justify-start mt-5 md:mt-0 md:pl-1">
-                <h2 className="text-3xl font-bold text-primary mb-4">
+              <div className="md:w-[50%] px-6 flex flex-col justify-start mt-5 md:mt-0 md:pl-1">
+                <h2 className="text-5xl font-bold text-primary mb-4">
                   Dr. Marco Veneziani
                 </h2>
                 <div className="bg-midnight mb-6 max-w-full">
