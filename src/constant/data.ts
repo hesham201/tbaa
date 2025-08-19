@@ -222,7 +222,22 @@ export const MASTER_CLASSES = [
 export const SCIENTIFIC_CARDS = [
   {
     description: "2025 – Super Hero's",
-
+    pageHeader: "Super Hero’s: With great power comes great responsibility",
+    venue: "The Hilton Syon Park, Park Road, Islesworth, TW8 8JF",
+    date: "Friday 24th & Saturday 25th January 2025",
+    upperPara: "Below are the speakers for this meeting:",
+    speakers: [
+      "Lorenzo Breschi",
+      "Ronaldo Hirata",
+      "Jason Smithson",
+      "Snjezana Pohl",
+      "Mark Ludlow",
+      "Javier Tapia Guadix",
+      "Ernest Lucas-Taule",
+      "Giuseppe Romeo",
+      "David De Franco",
+      "Dr Stefano Gracis",
+    ],
     image: "/baad-super-hero.png",
     learnMoreLink: "/",
     programmeLink: "/",
@@ -230,10 +245,6 @@ export const SCIENTIFIC_CARDS = [
   {
     image: "/bAAD-2024-Conference-Flyer.jpg",
     description: "2024 – Scientific Meeting",
-  },
-  {
-    image: "/bAAD-Conference-2023.png",
-    description: "2023 – Scientific Meeting",
     pageHeader: "Aesthetic Wizardry: Unlocking The Chamber Of Secrets",
     venue: "Great Fosters Hotel, Surrey, TW20 9UR",
     date: "Friday 26th & Saturday 27th January 2024",
@@ -250,12 +261,17 @@ export const SCIENTIFIC_CARDS = [
       "David De Franco",
       "Dr Stefano Gracis",
     ],
+  },
+  {
+    image: "/bAAD-Conference-2023.png",
+    description: "2023 – Scientific Meeting",
 
     link: "/",
   },
   {
     image: "/baad-2022-front.png",
     description: "2022 – Scientific Meeting",
+
     link: "/",
   },
   {
