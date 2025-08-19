@@ -1,81 +1,53 @@
 "use client";
 import Container from "@/components/container";
-import { useLayoutEffect, useRef, useState } from "react";
+import { useRef, useState } from "react";
 import gsap from "gsap";
 import ScrollTrigger from "gsap/ScrollTrigger";
 import Image from "next/image";
-import VideoModal from "@/components/popup-modal";
+import VideoModal from "@/components/video-modal";
+import { useGSAP } from "@gsap/react";
 gsap.registerPlugin(ScrollTrigger);
-declare global {
-  interface Window {
-    LOCO_SCROLL?: {
-      update: () => void;
-      start: () => void;
-      stop: () => void;
-    };
-  }
-}
 
 const Purpose = () => {
   const sectionRef = useRef(null);
   const [showModal, setShowModal] = useState(false);
-  useLayoutEffect(() => {
-    const timeOut = setTimeout(() => {
-      // gsap.from(".purpose-heading", {
-      //   y: 50,
-      //   opacity: 0,
-      //   duration: 1,
-      //   scrollTrigger: {
-      //     trigger: ".purpose-heading",
-      //     scroller: "[data-scroll-container]",
-      //     start: "top 80%",
-      //   },
-      // });
+  useGSAP(() => {
+    gsap.from(".purpose-paragraph", {
+      y: 40,
+      opacity: 0,
+      duration: 1,
+      stagger: 0.3,
+      scrollTrigger: {
+        trigger: ".purpose-paragraph",
+        start: "top 85%",
+      },
+    });
 
-      gsap.from(".purpose-paragraph", {
-        y: 40,
-        opacity: 0,
-        duration: 1,
-        stagger: 0.3,
-        scrollTrigger: {
-          trigger: ".purpose-paragraph",
-          scroller: "[data-scroll-container]",
-          start: "top 85%",
-        },
-      });
-
-      gsap.from(".purpose-video", {
-        scale: 0.95,
-        opacity: 0,
-        duration: 1.2,
+    gsap.from(".purpose-video", {
+      scale: 0.95,
+      opacity: 0,
+      duration: 1.2,
+      scrollTrigger: {
+        trigger: ".purpose-video",
+        start: "top 90%",
+      },
+    });
+    gsap.fromTo(
+      ".purpose-video img.thumbnail",
+      { y: "-20%", scale: 1.1 },
+      {
+        y: "20%",
+        scale: 1,
+        ease: "none",
         scrollTrigger: {
           trigger: ".purpose-video",
-          scroller: "[data-scroll-container]",
-          start: "top 90%",
+          start: "top bottom",
+          end: "bottom top",
+          scrub: true,
         },
-      });
-      gsap.fromTo(
-        ".purpose-video img.thumbnail",
-        { y: "-20%", scale: 1.1 },
-        {
-          y: "20%",
-          scale: 1,
-          ease: "none",
-          scrollTrigger: {
-            trigger: ".purpose-video",
-            scroller: "[data-scroll-container]", // or remove if you're not using locomotive-scroll
-            start: "top bottom",
-            end: "bottom top",
-            scrub: true,
-          },
-        }
-      );
-    }, 1000);
-
-    return () => {
-      clearTimeout(timeOut);
-    };
-  }, []);
+      }
+    );
+  });
   const handleOpenModal = () => {
     setShowModal(true);
     if (window.LOCO_SCROLL) window.LOCO_SCROLL.stop(); // 👈 Stop Locomotive Scroll

@@ -95,3 +95,7 @@ body {
 #sticky-wrapper {
   border: 2px dashed blue;
 } */
+html,
+body {
+  overflow-x: hidden;
+}

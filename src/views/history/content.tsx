@@ -1,67 +1,62 @@
 "use client";
 
-import { useRef, useLayoutEffect } from "react";
+import { useRef } from "react";
 import gsap from "gsap";
 import ScrollTrigger from "gsap/ScrollTrigger";
 import Container from "@/components/container";
 import React from "react";
+import { useGSAP } from "@gsap/react";
 gsap.registerPlugin(ScrollTrigger);
 const Content = () => {
   const bgWrapperRef = useRef<HTMLDivElement>(null);
   const bgWrapperRef2 = useRef<HTMLDivElement>(null);
   const bgImageRef = useRef<HTMLImageElement>(null);
   const bgImageRef2 = useRef<HTMLImageElement>(null);
-
-  useLayoutEffect(() => {
-    const timeout = setTimeout(() => {
-      if (
-        !bgWrapperRef.current ||
-        !bgImageRef.current ||
-        !bgImageRef2.current ||
-        !bgWrapperRef2.current
-      )
-        return;
-      gsap.fromTo(
-        bgImageRef.current,
-        {
-          y: "-10%", // Start position (slightly above)
-          scale: 1.2,
+  useGSAP(() => {
+    if (
+      !bgWrapperRef.current ||
+      !bgImageRef.current ||
+      !bgImageRef2.current ||
+      !bgWrapperRef2.current
+    )
+      return;
+    gsap.fromTo(
+      bgImageRef.current,
+      {
+        y: "-10%", // Start position (slightly above)
+        scale: 1.2,
+      },
+      {
+        y: "10%", // End position (slightly below)
+        scale: 1,
+        ease: "none",
+        scrollTrigger: {
+          trigger: bgWrapperRef.current,
+          start: "top bottom",
+          end: "bottom top",
+          scrub: true,
         },
-        {
-          y: "10%", // End position (slightly below)
-          scale: 1,
-          ease: "none",
-          scrollTrigger: {
-            trigger: bgWrapperRef.current,
-            scroller: "[data-scroll-container]", // Remove if not using Locomotive Scroll
-            start: "top bottom",
-            end: "bottom top",
-            scrub: true,
-          },
-        }
-      );
-      gsap.fromTo(
-        bgImageRef2.current,
-        {
-          y: "-10%", // Start position (slightly above)
-          scale: 1.2,
+      }
+    );
+    gsap.fromTo(
+      bgImageRef2.current,
+      {
+        y: "-10%", // Start position (slightly above)
+        scale: 1.2,
+      },
+      {
+        y: "10%", // End position (slightly below)
+        scale: 1,
+        ease: "none",
+        scrollTrigger: {
+          trigger: bgWrapperRef2.current,
+          start: "top bottom",
+          end: "bottom top",
+          scrub: true,
         },
-        {
-          y: "10%", // End position (slightly below)
-          scale: 1,
-          ease: "none",
-          scrollTrigger: {
-            trigger: bgWrapperRef2.current,
-            scroller: "[data-scroll-container]", // Remove if not using Locomotive Scroll
-            start: "top bottom",
-            end: "bottom top",
-            scrub: true,
-          },
-        }
-      );
-    }, 300);
-    return () => clearTimeout(timeout);
-  }, []);
+      }
+    );
+  });
   return (
     <div className="">
       <div className="py-10">

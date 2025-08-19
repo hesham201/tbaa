@@ -4,47 +4,46 @@ import { useRef, useLayoutEffect } from "react";
 import gsap from "gsap";
 import ScrollTrigger from "gsap/ScrollTrigger";
 import Container from "@/components/container";
+import { useGSAP } from "@gsap/react";
 
 gsap.registerPlugin(ScrollTrigger);
 
 const Content = () => {
   const bgWrapperRef = useRef<HTMLDivElement>(null);
   const bgImageRef = useRef<HTMLImageElement>(null);
-
-  useLayoutEffect(() => {
+  useGSAP(() => {
     if (!bgWrapperRef.current || !bgImageRef.current) return;
-    const timeout = setTimeout(() => {
-      gsap.fromTo(
-        bgImageRef.current,
-        {
-          y: "-10%", // Start position (slightly above)
-          scale: 1.2,
-        },
-        {
-          y: "10%", // End position (slightly below)
-          scale: 1,
-          ease: "none",
-          scrollTrigger: {
-            trigger: bgWrapperRef.current,
-            scroller: "[data-scroll-container]", // Remove if not using Locomotive Scroll
-            start: "top bottom",
-            end: "bottom top",
-            scrub: true,
-          },
-        }
-      );
-      gsap.from("#our-events-heading", {
-        y: 50,
-        opacity: 1,
-        duration: 0.3,
+    gsap.fromTo(
+      bgImageRef.current,
+      {
+        y: "-10%", // Start position (slightly above)
+        scale: 1.2,
+      },
+      {
+        y: "10%", // End position (slightly below)
+        scale: 1,
+        ease: "none",
         scrollTrigger: {
-          trigger: "#our-events-heading",
-          scroller: "[data-scroll-container]", // Remove if not using Locomotive Scroll
-          start: "top 76%",
+          trigger: bgWrapperRef.current,
+          start: "top bottom",
           end: "bottom top",
+          scrub: true,
         },
-      });
-    }, 300);
+      }
+    );
+    gsap.from("#our-events-heading", {
+      y: 50,
+      opacity: 1,
+      duration: 0.3,
+      scrollTrigger: {
+        trigger: "#our-events-heading",
+        start: "top 76%",
+        end: "bottom top",
+      },
+    });
+  });
+  useLayoutEffect(() => {
+    const timeout = setTimeout(() => {}, 300);
     return () => clearTimeout(timeout);
   }, []);
 

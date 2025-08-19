@@ -1,31 +1,25 @@
 "use client";
 import Container from "@/components/container";
-import { useLayoutEffect, useRef } from "react";
+import { useRef } from "react";
 import gsap from "gsap";
 import ScrollTrigger from "gsap/ScrollTrigger";
+import { useGSAP } from "@gsap/react";
 gsap.registerPlugin(ScrollTrigger);
 
 const Content = () => {
   const sectionRef = useRef(null);
-  useLayoutEffect(() => {
-    const timeOut = setTimeout(() => {
-      gsap.from(".purpose-paragraph", {
-        y: 40,
-        opacity: 0,
-        duration: 1,
-        stagger: 0.3,
-        scrollTrigger: {
-          trigger: ".purpose-paragraph",
-          scroller: "[data-scroll-container]",
-          start: "top 85%",
-        },
-      });
-    }, 500);
-
-    return () => {
-      clearTimeout(timeOut);
-    };
-  }, []);
+  useGSAP(() => {
+    gsap.from(".purpose-paragraph", {
+      y: 40,
+      opacity: 0,
+      duration: 1,
+      stagger: 0.3,
+      scrollTrigger: {
+        trigger: ".purpose-paragraph",
+        start: "top 85%",
+      },
+    });
+  });
 
   return (
     <>

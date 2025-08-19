@@ -6,16 +6,59 @@ import Image from "next/image";
 // import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 import ScrollTrigger from "gsap/ScrollTrigger";
+import { useGSAP } from "@gsap/react";
 
 // gsap.registerPlugin(useGSAP);
 gsap.registerPlugin(ScrollTrigger);
 
 const TestimonialMain = () => {
   const mainRef = useRef<HTMLDivElement>(null);
+  useGSAP(() => {});
+  useGSAP(() => {
+    const items = gsap.utils.toArray<HTMLDivElement>(".testimonial-item");
+    if (!items) return;
+
+    items.forEach((item, index) => {
+      // const tl = gsap.timeline({});
+
+      // // Appear animation
+      // gsap.from(item, {
+      //   y: 50,
+      //   duration: 1,
+      //   ease: "power2.out",
+      //   scrollTrigger: {
+      //     trigger: item,
+      //     start: "top 75%", // when 25% of item is visible
+      //     end: "top 60%", // start pin after entry
+      //     scroller: "[data-scroll-container]",
+      //   },
+      // });
+      gsap.to(item, {
+        opacity: index === items.length - 1 ? 1 : 0,
+        scale: 0.9,
+        transformOrigin: "center center",
+        scrollTrigger: {
+          trigger: item,
+          start: "top 15%",
+          end: index === items.length - 1 ? "bottom 2%" : "bottom 2%",
+          pin: true,
+          pinSpacing: false,
+          scrub: true,
+          // markers: true,
+          // onEnter: () => {
+          //   counter++;
+          //   if (index !== items.length - 1) {
+          //     ScrollTrigger.refresh();
+          //   }
+          //   console.log("Entered:", counter);
+          // },
+        },
+      });
+    });
+  });
   useLayoutEffect(() => {
     const timeout = setTimeout(() => {
       const items = gsap.utils.toArray<HTMLDivElement>(".testimonial-item");
-      if (!items) return;
       items.forEach((item) => {
         const bg = item.querySelector(".content-bg");
         // gsap.set(item, { scale: 0.8 });
@@ -29,54 +72,7 @@ const TestimonialMain = () => {
           duration: 0.5,
         });
       });
-    }, 2400);
-    return () => clearTimeout(timeout);
-  });
-  useLayoutEffect(() => {
-    const timeout = setTimeout(() => {
-      const items = gsap.utils.toArray<HTMLDivElement>(".testimonial-item");
-      if (!items) return;
-      // let counter = 1;
-
-      items.forEach((item, index) => {
-        // const tl = gsap.timeline({});
-
-        // // Appear animation
-        // gsap.from(item, {
-        //   y: 50,
-        //   duration: 1,
-        //   ease: "power2.out",
-        //   scrollTrigger: {
-        //     trigger: item,
-        //     start: "top 75%", // when 25% of item is visible
-        //     end: "top 60%", // start pin after entry
-        //     scroller: "[data-scroll-container]",
-        //   },
-        // });
-        gsap.to(item, {
-          opacity: index === items.length - 1 ? 1 : 0,
-          scale: 0.9,
-          transformOrigin: "center center",
-          scrollTrigger: {
-            trigger: item,
-            start: "top 15%",
-            scroller: "[data-scroll-container]", // 👈 IMPORTANT
-            end: index === items.length - 1 ? "bottom 2%" : "bottom 2%",
-            pin: true,
-            pinSpacing: false,
-            scrub: true,
-            // markers: true,
-            // onEnter: () => {
-            //   counter++;
-            //   if (index !== items.length - 1) {
-            //     ScrollTrigger.refresh();
-            //   }
-            //   console.log("Entered:", counter);
-            // },
-          },
-        });
-      });
-    }, 500);
+    }, 1000);
     return () => clearTimeout(timeout);
   });
 

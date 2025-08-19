@@ -1,10 +1,11 @@
 "use client";
-import React, { useState, useRef, useEffect, useLayoutEffect } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import gsap from "gsap";
 import ScrollTrigger from "gsap/ScrollTrigger";
 import OpenFaq from "./open-faq";
 import Container from "@/components/container";
 import SplitType from "split-type";
+import { useGSAP } from "@gsap/react";
 gsap.registerPlugin(ScrollTrigger);
 const Faqs = () => {
   const [openIndex, setOpenIndex] = useState<number>(-1);
@@ -12,70 +13,63 @@ const Faqs = () => {
   const bgWrapperRefFAQS = useRef<HTMLDivElement>(null);
   const bgImageRefFaqs = useRef<HTMLImageElement>(null);
   const faqItemRefs = useRef<(HTMLDivElement | null)[]>([]);
-
-  useLayoutEffect(() => {
+  useGSAP(() => {
     if (!bgWrapperRefFAQS.current || !bgImageRefFaqs.current) return;
-    const timeout = setTimeout(() => {
-      const split = new SplitType("#faqs-spans-animation", {
-        types: "words,chars",
-      });
-      gsap.fromTo(
-        split.chars,
-        {
-          color: "#1A1A1A",
+    const split = new SplitType("#faqs-spans-animation", {
+      types: "words,chars",
+    });
+    gsap.fromTo(
+      split.chars,
+      {
+        color: "#1A1A1A",
+      },
+      {
+        color: "#987F51",
+        duration: 0.6,
+        scrollTrigger: {
+          trigger: bgWrapperRefFAQS.current,
+          start: "top 65%",
+          end: "top 45%",
         },
-        {
-          color: "#987F51",
-          duration: 0.6,
-          scrollTrigger: {
-            trigger: bgWrapperRefFAQS.current,
-            scroller: "[data-scroll-container]", // Remove if not using Locomotive Scroll
-            start: "top 65%",
-            end: "top 45%",
-          },
-        }
-      );
-      gsap.fromTo(
-        bgImageRefFaqs.current,
-        {
-          y: "-34%", // Start position (slightly above)
+      }
+    );
+    gsap.fromTo(
+      bgImageRefFaqs.current,
+      {
+        y: "-34%", // Start position (slightly above)
+      },
+      {
+        y: "34%", // End position (slightly below)
+        ease: "none",
+        scrollTrigger: {
+          trigger: bgWrapperRefFAQS.current,
+          start: "top bottom",
+          end: "bottom top",
+          scrub: true,
         },
-        {
-          y: "34%", // End position (slightly below)
-          ease: "none",
-          scrollTrigger: {
-            trigger: bgWrapperRefFAQS.current,
-            scroller: "[data-scroll-container]", // Remove if not using Locomotive Scroll
-            start: "top bottom",
-            end: "bottom top",
-            scrub: true,
-          },
-        }
-      );
-      faqItemRefs.current.forEach((item) => {
-        if (!item) return;
+      }
+    );
+    faqItemRefs.current.forEach((item) => {
+      if (!item) return;
 
-        gsap.fromTo(
-          item,
-          { opacity: 0, y: 60 },
-          {
-            opacity: 1,
-            y: 0,
-            duration: 0.8,
-            ease: "power3.out",
-            scrollTrigger: {
-              trigger: item,
-              start: "top 90%", // trigger point
-              end: "bottom 60%",
-              toggleActions: "play none none reverse",
-              scroller: "[data-scroll-container]", // include only if using Locomotive
-            },
-          }
-        );
-      });
-    }, 400);
-    return () => clearTimeout(timeout);
-  }, []);
+      gsap.fromTo(
+        item,
+        { opacity: 0, y: 60 },
+        {
+          opacity: 1,
+          y: 0,
+          duration: 0.8,
+          ease: "power3.out",
+          scrollTrigger: {
+            trigger: item,
+            start: "top 90%", // trigger point
+            end: "bottom 60%",
+            toggleActions: "play none none reverse",
+          },
+        }
+      );
+    });
+  });
   const toggleAccordion = (index: number) => {
     setOpenIndex(openIndex === index ? -1 : index);
   };

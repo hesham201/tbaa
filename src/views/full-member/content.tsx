@@ -6,61 +6,60 @@ import ScrollTrigger from "gsap/ScrollTrigger";
 import Container from "@/components/container";
 // import Image from "next/image";
 import React from "react";
+import { useGSAP } from "@gsap/react";
 gsap.registerPlugin(ScrollTrigger);
 const Content = () => {
   const bgWrapperRef = useRef<HTMLDivElement>(null);
   const bgWrapperRef2 = useRef<HTMLDivElement>(null);
   const bgImageRef = useRef<HTMLImageElement>(null);
   const bgImageRef2 = useRef<HTMLImageElement>(null);
-
+  useGSAP(() => {
+    if (
+      !bgWrapperRef.current ||
+      !bgImageRef.current ||
+      !bgImageRef2.current ||
+      !bgWrapperRef2.current
+    )
+      return;
+    gsap.fromTo(
+      bgImageRef.current,
+      {
+        y: "-10%", // Start position (slightly above)
+        scale: 1.2,
+      },
+      {
+        y: "10%", // End position (slightly below)
+        scale: 1,
+        ease: "none",
+        scrollTrigger: {
+          trigger: bgWrapperRef.current,
+          start: "top bottom",
+          end: "bottom top",
+          scrub: true,
+        },
+      }
+    );
+    gsap.fromTo(
+      bgImageRef2.current,
+      {
+        y: "-10%", // Start position (slightly above)
+        scale: 1.2,
+      },
+      {
+        y: "10%", // End position (slightly below)
+        scale: 1,
+        ease: "none",
+        scrollTrigger: {
+          trigger: bgWrapperRef2.current,
+          start: "top bottom",
+          end: "bottom top",
+          scrub: true,
+        },
+      }
+    );
+  });
   useLayoutEffect(() => {
-    const timeout = setTimeout(() => {
-      if (
-        !bgWrapperRef.current ||
-        !bgImageRef.current ||
-        !bgImageRef2.current ||
-        !bgWrapperRef2.current
-      )
-        return;
-      gsap.fromTo(
-        bgImageRef.current,
-        {
-          y: "-10%", // Start position (slightly above)
-          scale: 1.2,
-        },
-        {
-          y: "10%", // End position (slightly below)
-          scale: 1,
-          ease: "none",
-          scrollTrigger: {
-            trigger: bgWrapperRef.current,
-            scroller: "[data-scroll-container]", // Remove if not using Locomotive Scroll
-            start: "top bottom",
-            end: "bottom top",
-            scrub: true,
-          },
-        }
-      );
-      gsap.fromTo(
-        bgImageRef2.current,
-        {
-          y: "-10%", // Start position (slightly above)
-          scale: 1.2,
-        },
-        {
-          y: "10%", // End position (slightly below)
-          scale: 1,
-          ease: "none",
-          scrollTrigger: {
-            trigger: bgWrapperRef2.current,
-            scroller: "[data-scroll-container]", // Remove if not using Locomotive Scroll
-            start: "top bottom",
-            end: "bottom top",
-            scrub: true,
-          },
-        }
-      );
-    }, 300);
+    const timeout = setTimeout(() => {}, 300);
     return () => clearTimeout(timeout);
   }, []);
   return (
@@ -74,18 +73,40 @@ const Content = () => {
               your application for Associate Membership.
             </p>
             <p>
-              You will need to prepare a 30 to 45 minute presentation as part of your application.
+              You will need to prepare a 30 to 45 minute presentation as part of
+              your application.
             </p>
             <p>
-              Your presentation will need to be approved by your mentors prior to submitting it to the Preview Committee. The Committee will decide whether to allow you to proceed further or whether further changes are necessary in line with Chapter 1 Membership Section 2(2) of the Constitution. <br />
-              The basis of the presentation is to provide three cases highlighting both clinical and laboratory work. All three cases must show a diagnosis based on clinical examination and investigations. A detailed plan of treatment must be provided, as well as alternative treatment options that could have been used utilised with a rationale for why you went with your chosen treatment plan. The treatment of the cases needs to be detailed and include a step-by-step account of the sequence of treatment with clear and accurate photographs.
+              Your presentation will need to be approved by your mentors prior
+              to submitting it to the Preview Committee. The Committee will
+              decide whether to allow you to proceed further or whether further
+              changes are necessary in line with Chapter 1 Membership Section
+              2(2) of the Constitution. <br />
+              The basis of the presentation is to provide three cases
+              highlighting both clinical and laboratory work. All three cases
+              must show a diagnosis based on clinical examination and
+              investigations. A detailed plan of treatment must be provided, as
+              well as alternative treatment options that could have been used
+              utilised with a rationale for why you went with your chosen
+              treatment plan. The treatment of the cases needs to be detailed
+              and include a step-by-step account of the sequence of treatment
+              with clear and accurate photographs.
             </p>
             <p>
-              The final outcome must be shown clearly and include a retrospective analysis of the treatment; identifying any weaknesses and what could have been done differently. All the treatment decisions must be backed by literature references. The presentation is followed by a 10 -15 minute question and answer session, where you may be asked to recall on the references you quoted.
+              The final outcome must be shown clearly and include a
+              retrospective analysis of the treatment; identifying any
+              weaknesses and what could have been done differently. All the
+              treatment decisions must be backed by literature references. The
+              presentation is followed by a 10 -15 minute question and answer
+              session, where you may be asked to recall on the references you
+              quoted.
             </p>
 
             <p>
-              The list below provides a guideline on the format, as well as the inclusion of relevant data for all presentations. It is by no means comprehensive nor will all the data provided necessarily be required in any one case presentation.
+              The list below provides a guideline on the format, as well as the
+              inclusion of relevant data for all presentations. It is by no
+              means comprehensive nor will all the data provided necessarily be
+              required in any one case presentation.
             </p>
           </div>
         </Container>

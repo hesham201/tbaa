@@ -1,76 +1,69 @@
 "use client";
 import Container from "@/components/container";
 import { MEMBERSHIP_SAME_SECTION } from "@/constant/data";
-import React, { useLayoutEffect, useRef } from "react";
+import React, { useRef } from "react";
 import gsap from "gsap";
 import ScrollTrigger from "gsap/ScrollTrigger";
+import { useGSAP } from "@gsap/react";
 
 gsap.registerPlugin(ScrollTrigger);
 
 const CurrentAcademy = () => {
   const sectionRef = useRef(null);
+  useGSAP(() => {
+    gsap.utils.toArray<HTMLElement>(".org-block").forEach((block, index) => {
+      const heading = block.querySelector(".org-heading");
+      const para = block.querySelector(".org-para");
+      const images = block.querySelectorAll(".org-image");
+      const orgsImage = block.querySelector(".orgs-image");
 
-  useLayoutEffect(() => {
-    const timeout = setTimeout(() => {
-      gsap.utils.toArray<HTMLElement>(".org-block").forEach((block) => {
-        const heading = block.querySelector(".org-heading");
-        const para = block.querySelector(".org-para");
-        const images = block.querySelectorAll(".org-image");
-        const orgsImage = block.querySelector(".orgs-image");
-
-        const isReversed = block.classList.contains("flex-row-reverse");
-        if (orgsImage) {
-          gsap.fromTo(
-            orgsImage,
-            {
-              x: isReversed ? -200 : 200,
-            },
-            {
-              x: 0,
-              ease: "power2.out",
-              scrollTrigger: {
-                trigger: block,
-                scroller: "[data-scroll-container]",
-                start: "top 85%",
-                end: "top 5%",
-                scrub: true,
-              },
-            }
-          );
-        }
-        gsap.from([heading, para], {
-          opacity: 0,
-          y: 50,
-          duration: 1,
-          stagger: 0.2,
-          scrollTrigger: {
-            trigger: block,
-            scroller: "[data-scroll-container]",
-            start: "top 85%",
-          },
-        });
-
+      // const isReversed = block.classList.contains("flex-row-reverse");
+      if (orgsImage) {
         gsap.fromTo(
-          images,
-          { y: "-20%", scale: 1.1 },
+          orgsImage,
           {
-            y: "20%",
-            scale: 1,
-            ease: "none",
+            x: index ? -200 : 200,
+          },
+          {
+            x: 0,
+            ease: "power2.out",
             scrollTrigger: {
               trigger: block,
-              scroller: "[data-scroll-container]", // or remove if you're not using locomotive-scroll
-              start: "top bottom",
-              end: "bottom top",
+              start: "top 85%",
+              end: "top 5%",
               scrub: true,
             },
           }
         );
+      }
+      gsap.from([heading, para], {
+        opacity: 0,
+        y: 50,
+        duration: 1,
+        stagger: 0.2,
+        scrollTrigger: {
+          trigger: block,
+          start: "top 85%",
+        },
       });
-    }, 600);
 
-    return () => clearTimeout(timeout);
-  }, []);
+      gsap.fromTo(
+        images,
+        { y: "-20%", scale: 1.1 },
+        {
+          y: "20%",
+          scale: 1,
+          ease: "none",
+          scrollTrigger: {
+            trigger: block,
+            start: "top bottom",
+            end: "bottom top",
+            scrub: true,
+          },
+        }
+      );
+    });
+  });
 
   return (
     <div ref={sectionRef} className="py-10">

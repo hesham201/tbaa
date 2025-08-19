@@ -1,62 +1,39 @@
 "use client";
 
-import { useRef, useLayoutEffect } from "react";
+import { useRef } from "react";
 import gsap from "gsap";
 import ScrollTrigger from "gsap/ScrollTrigger";
 import Container from "@/components/container";
-import Image from "next/image";
 import React from "react";
+import { useGSAP } from "@gsap/react";
 gsap.registerPlugin(ScrollTrigger);
 const Content = () => {
   const bgWrapperRef = useRef<HTMLDivElement>(null);
   // const bgWrapperRef2 = useRef<HTMLDivElement>(null);
   const bgImageRef = useRef<HTMLImageElement>(null);
   // const bgImageRef2 = useRef<HTMLImageElement>(null);
-
-  useLayoutEffect(() => {
-    const timeout = setTimeout(() => {
-      if (!bgWrapperRef.current || !bgImageRef.current) return;
-      gsap.fromTo(
-        bgImageRef.current,
-        {
-          y: "-10%", // Start position (slightly above)
-          scale: 1.2,
+  useGSAP(() => {
+    if (!bgWrapperRef.current || !bgImageRef.current) return;
+    gsap.fromTo(
+      bgImageRef.current,
+      {
+        y: "-10%", // Start position (slightly above)
+        scale: 1.2,
+      },
+      {
+        y: "10%", // End position (slightly below)
+        scale: 1,
+        ease: "none",
+        scrollTrigger: {
+          trigger: bgWrapperRef.current,
+          start: "top bottom",
+          end: "bottom top",
+          scrub: true,
         },
-        {
-          y: "10%", // End position (slightly below)
-          scale: 1,
-          ease: "none",
-          scrollTrigger: {
-            trigger: bgWrapperRef.current,
-            scroller: "[data-scroll-container]", // Remove if not using Locomotive Scroll
-            start: "top bottom",
-            end: "bottom top",
-            scrub: true,
-          },
-        }
-      );
-      // gsap.fromTo(
-      //   bgImageRef2.current,
-      //   {
-      //     y: "-10%", // Start position (slightly above)
-      //     scale: 1.2,
-      //   },
-      //   {
-      //     y: "10%", // End position (slightly below)
-      //     scale: 1,
-      //     ease: "none",
-      //     scrollTrigger: {
-      //       trigger: bgWrapperRef2.current,
-      //       scroller: "[data-scroll-container]", // Remove if not using Locomotive Scroll
-      //       start: "top bottom",
-      //       end: "bottom top",
-      //       scrub: true,
-      //     },
-      //   }
-      // );
-    }, 300);
-    return () => clearTimeout(timeout);
-  }, []);
+      }
+    );
+  });
+
   return (
     <div className="">
       <div className="py-10">
@@ -64,14 +41,26 @@ const Content = () => {
           <div className="flex flex-col text-midnight gap-4 text-lg">
             <p>
               To qualify for associate membership, an applicant must have:
-              <br /><br/>
+              <br />
+              <br />
               1) Attended two scientific meetings and paid the required dues.
               <br />
-              2) To supply a photograph, CV and nomination from two charter/ full or life members in good standing who know the nominee well, both personally and professionally. This must be supplied in advance of the next annual scientific conference.
+              2) To supply a photograph, CV and nomination from two charter/
+              full or life members in good standing who know the nominee well,
+              both personally and professionally. This must be supplied in
+              advance of the next annual scientific conference.
               <br />
-              3) Receive a three-fourths affirmative vote, by secret ballot, of the Executive Council and three-fourths affirmative vote of the charter/full and life members present and voting at the Annual General Assembly.
-              <br /><br />
-              If you require any further information, please get in touch with us at <a href="mailto:info@baad.org.uk"><b>info@baad.org.uk</b></a>
+              3) Receive a three-fourths affirmative vote, by secret ballot, of
+              the Executive Council and three-fourths affirmative vote of the
+              charter/full and life members present and voting at the Annual
+              General Assembly.
+              <br />
+              <br />
+              If you require any further information, please get in touch with
+              us at{" "}
+              <a href="mailto:info@baad.org.uk">
+                <b>info@baad.org.uk</b>
+              </a>
             </p>
           </div>
         </Container>
@@ -80,7 +69,7 @@ const Content = () => {
         ref={bgWrapperRef}
         className="relative overflow-hidden w-full h-[60vh]"
       >
-        <Image
+        <img
           ref={bgImageRef}
           src={"/our-community.jpg"}
           width={800}

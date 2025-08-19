@@ -1,8 +1,9 @@
 "use client";
 import Container from "@/components/container";
-import { useLayoutEffect, useRef } from "react";
+import { useRef } from "react";
 import gsap from "gsap";
 import ScrollTrigger from "gsap/ScrollTrigger";
+import { useGSAP } from "@gsap/react";
 // import Image from "next/image";
 gsap.registerPlugin(ScrollTrigger);
 declare global {
@@ -14,56 +15,46 @@ declare global {
     };
   }
 }
-
 const MembershipAcademy = () => {
   const sectionRef = useRef(null);
-  useLayoutEffect(() => {
-    const timeOut = setTimeout(() => {
-      gsap.from(".purpose-heading", {
-        y: 50,
-        opacity: 0,
-        duration: 1,
+  useGSAP(() => {
+    gsap.from(".purpose-heading", {
+      y: 50,
+      opacity: 0,
+      duration: 1,
+      scrollTrigger: {
+        trigger: ".purpose-heading",
+        start: "top 80%",
+      },
+    });
+
+    gsap.from(".purpose-paragraph", {
+      y: 40,
+      opacity: 0,
+      duration: 1,
+      stagger: 0.3,
+      scrollTrigger: {
+        trigger: ".purpose-paragraph",
+        start: "top 85%",
+      },
+    });
+
+    gsap.fromTo(
+      ".purpose-video img",
+      { y: "-20%", scale: 1.1 },
+      {
+        y: "20%",
+        scale: 1,
+        ease: "none",
         scrollTrigger: {
-          trigger: ".purpose-heading",
-          scroller: "[data-scroll-container]",
-          start: "top 80%",
+          trigger: ".purpose-video",
+          start: "top bottom",
+          end: "bottom top",
+          scrub: true,
         },
-      });
-
-      gsap.from(".purpose-paragraph", {
-        y: 40,
-        opacity: 0,
-        duration: 1,
-        stagger: 0.3,
-        scrollTrigger: {
-          trigger: ".purpose-paragraph",
-          scroller: "[data-scroll-container]",
-          start: "top 85%",
-        },
-      });
-
-      gsap.fromTo(
-        ".purpose-video img",
-        { y: "-20%", scale: 1.1 },
-        {
-          y: "20%",
-          scale: 1,
-          ease: "none",
-          scrollTrigger: {
-            trigger: ".purpose-video",
-            scroller: "[data-scroll-container]", // or remove if you're not using locomotive-scroll
-            start: "top bottom",
-            end: "bottom top",
-            scrub: true,
-          },
-        }
-      );
-    }, 500);
-
-    return () => {
-      clearTimeout(timeOut);
-    };
-  }, []);
+      }
+    );
+  });
   return (
     <>
       <div ref={sectionRef} className="py-5">

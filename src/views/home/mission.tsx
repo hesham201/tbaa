@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useRef, useLayoutEffect } from "react";
+import React, { useRef } from "react";
 // import Image from "next/image";
 import gsap from "gsap";
 import ScrollTrigger from "gsap/ScrollTrigger";
@@ -11,187 +11,93 @@ import { WELCOME_TO } from "@/constant/data";
 // import SplitType from "split-type";
 import Button from "@/components/button";
 import Image from "next/image";
+import { useGSAP } from "@gsap/react";
 // import Image from "next/image";
 gsap.registerPlugin(ScrollTrigger);
 const Mission = () => {
   const animatedRef = useRef<HTMLDivElement>(null);
   const itemRefs = useRef<(HTMLDivElement | null)[]>([]);
   const imageRefs = useRef<(HTMLDivElement | null)[]>([]); // NEW for images
-  useLayoutEffect(() => {
-    // let ctx = gsap.context(() => {}, animatedRef);
-    const timeout = setTimeout(() => {
-      // const tl = gsap.timeline({
-      //   scrollTrigger: {
-      //     trigger: animatedRef.current,
-      //     scroller: "[data-scroll-container]", // required for LocomotiveScroll
-      //     start: "top 90%",
-      //     end: "top 40%",
-      //   },
-      // });
-      // const splitUpperMenu = new SplitType("#upper-para", {
-      //   types: "words,chars",
-      // });
-      // const splitHeadingTwo = new SplitType("#heading-two-span", {
-      //   types: "words,chars",
-      // });
-      // tl.to("#span-id", {
-      //   scaleY: 1,
-      //   zIndex: 0,
-      // });
-      // tl.to("#para-id", {
-      //   color: "white",
-      //   zIndex: 1,
-      // });
-      // tl.from(splitUpperMenu.words, {
-      //   opacity: 0,
-      //   y: 10,
-      //   stagger: 0.2,
-      // });
-      // tl.to(splitHeadingTwo.chars, {
-      //   color: "#987F51",
-      //   stagger: 0.1,
-      // });
-      // Animate each item in the map individually
-      itemRefs.current.forEach((ref) => {
-        if (!ref) return;
+  useGSAP(() => {
+    // Animate each item in the map individually
+    itemRefs.current.forEach((ref) => {
+      if (!ref) return;
 
-        const textOutline = ref.querySelector(".text-outline");
-        if (!textOutline) return;
-        const dataDiv = ref.querySelector(".data-welcome");
-        gsap.from(dataDiv, {
-          y: 30,
-          opacity: 0,
-          duration: 0.5,
+      const textOutline = ref.querySelector(".text-outline");
+      if (!textOutline) return;
+      const dataDiv = ref.querySelector(".data-welcome");
+      gsap.from(dataDiv, {
+        y: 30,
+        opacity: 0,
+        duration: 0.5,
+        scrollTrigger: {
+          trigger: dataDiv,
+          start: "top 60%",
+          end: "top 0%",
+        },
+      });
+      gsap.fromTo(
+        ref.querySelector(".text-outline"),
+        { x: 60 },
+        {
+          x: 0,
+          ease: "power2.out",
           scrollTrigger: {
-            trigger: dataDiv,
-            scroller: "[data-scroll-container]",
-            start: "top 60%",
+            trigger: textOutline,
+            scrub: 2,
+            start: "top 80%",
             end: "top 0%",
           },
-        });
-        gsap.fromTo(
-          ref.querySelector(".text-outline"),
-          { x: 60 },
-          {
-            x: 0,
-            ease: "power2.out",
-            scrollTrigger: {
-              trigger: textOutline,
-              scroller: "[data-scroll-container]",
-              scrub: 2,
-              start: "top 80%",
-              end: "top 0%",
-            },
-          }
-        );
-      });
-      imageRefs.current.forEach((imgWrapper) => {
-        if (!imgWrapper) return;
+        }
+      );
+    });
+    imageRefs.current.forEach((imgWrapper, index) => {
+      if (!imgWrapper) return;
 
-        const img = imgWrapper.querySelector("img");
-        if (!img) return;
+      const img = imgWrapper.querySelector("img");
+      if (!img) return;
+      gsap.fromTo(
+        imgWrapper,
+        { x: index % 2 === 0 ? -50 : 50 },
+        {
+          x: index % 2 === 0 ? 50 : -50,
+          scrollTrigger: {
+            trigger: imgWrapper,
+            start: "top bottom",
+            end: "bottom top",
+            // onEnter: () => console.log("▶️ Entered trigger area"),
+            // onLeaveBack: () => console.log("↩️ Left going back"),
+            // markers: true,
+            scrub: true,
+          },
+        }
+      );
+      gsap.fromTo(
+        img,
+        { y: "-20%", scale: 1.1 }, // Adjust x based on index for staggered effect
+        {
+          y: "20%",
+          scale: 1,
 
-        gsap.fromTo(
-          img,
-          { y: "-20%", scale: 1.1 },
-          {
-            y: "20%",
-            scale: 1,
-            ease: "none",
-            scrollTrigger: {
-              trigger: imgWrapper,
-              scroller: "[data-scroll-container]", // or remove if you're not using locomotive-scroll
-              start: "top bottom",
-              end: "bottom top",
-              // onEnter: () => console.log("▶️ Entered trigger area"),
-              // onLeaveBack: () => console.log("↩️ Left going back"),
-              // markers: true,
-              scrub: true,
-            },
-          }
-        );
-      });
-    }, 300);
-    // imageRefs.current.forEach((imgWrapper) => {
-    //   if (!imgWrapper) return;
-
-    //   const image = imgWrapper.querySelector("img");
-    //   console.log(image);
-    //   if (!image) return;
-    //   gsap.set(image, {
-    //     objectPosition: "center 60%",
-    //   });
-
-    //   gsap.to(image, {
-    //     objectPosition: "center 30%", // animate upward
-    //     ease: "none",
-    //     scrollTrigger: {
-    //       trigger: imgWrapper,
-    //       scroller: "[data-scroll-container]",
-    //       start: "top bottom",
-    //       end: "bottom top",
-    //       scrub: true,
-    //     },
-    //   });
-
-    //   // Optional: Hover Movement
-    //   const handleMouseMove = (e: MouseEvent) => {
-    //     const rect = imgWrapper.getBoundingClientRect();
-    //     const x = e.clientX - rect.left;
-    //     const y = e.clientY - rect.top;
-    //     const moveX = ((x - rect.width / 2) / rect.width) * 10;
-    //     const moveY = ((y - rect.height / 2) / rect.height) * 10;
-
-    //     gsap.to(image, {
-    //       x: moveX,
-    //       y: moveY,
-    //       duration: 0.3,
-    //       ease: "power2.out",
-    //     });
-    //   };
-
-    //   const handleMouseEnter = () => {
-    //     gsap.to(image, {
-    //       scale: 1.02,
-    //       duration: 0.5,
-    //       ease: "power2.out",
-    //     });
-    //   };
-
-    //   const handleMouseLeave = () => {
-    //     gsap.to(image, {
-    //       scale: 1,
-    //       x: 0,
-    //       y: 0,
-    //       duration: 0.5,
-    //       ease: "power2.out",
-    //     });
-    //   };
-
-    //   imgWrapper.addEventListener("mousemove", handleMouseMove);
-    //   imgWrapper.addEventListener("mouseenter", handleMouseEnter);
-    //   imgWrapper.addEventListener("mouseleave", handleMouseLeave);
-
-    //   // Cleanup
-    //   return () => {
-    //     imgWrapper.removeEventListener("mousemove", handleMouseMove);
-    //     imgWrapper.removeEventListener("mouseenter", handleMouseEnter);
-    //     imgWrapper.removeEventListener("mouseleave", handleMouseLeave);
-    //   };
-    // });
-    // const onLoad = () => {
-    //   ScrollTrigger.refresh(); // ensures all positions are recalculated
-    // };
-
-    // window.addEventListener("load", onLoad);
-
-    // // Force refresh even if load missed
-    // setTimeout(() => ScrollTrigger.refresh(), 1000);
-    // return () => {
-    //   window.removeEventListener("load", onLoad);
-    // };
-    return () => clearTimeout(timeout);
+          ease: "none",
+          scrollTrigger: {
+            trigger: imgWrapper,
+            start: "top bottom",
+            end: "bottom top",
+            // onEnter: () => console.log("▶️ Entered trigger area"),
+            // onLeaveBack: () => console.log("↩️ Left going back"),
+            // markers: true,
+            scrub: true,
+          },
+        }
+      );
+    });
   });
+  // useLayoutEffect(() => {
+  //   // let ctx = gsap.context(() => {}, animatedRef);
+  //   const timeout = setTimeout(() => {}, 300);
+  //   return () => clearTimeout(timeout);
+  // });
   return (
     <div className="py-10 relative" ref={animatedRef}>
       <div className="absolute opacity-20 left-0 -top-8 w-[50%] h-[200px]">
@@ -264,9 +170,9 @@ const Mission = () => {
                   ref={(el) => {
                     imageRefs.current[index] = el;
                   }}
-                  data-scroll
-                  data-scroll-direction="horizontal"
-                  data-scroll-speed={item.reverse ? "-1.7" : "1.7"}
+                  // data-scroll
+                  // data-scroll-direction="horizontal"
+                  // data-scroll-speed={item.reverse ? "-1.7" : "1.7"}
                   className="relative lg:w-[35%] rounded-2xl h-[500px] overflow-hidden"
                 >
                   <img

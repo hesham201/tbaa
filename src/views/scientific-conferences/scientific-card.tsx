@@ -1,61 +1,55 @@
 "use client";
 
-import { useLayoutEffect, useRef } from "react";
+import { useRef } from "react";
 import Image from "next/image";
 import gsap from "gsap";
 import ScrollTrigger from "gsap/ScrollTrigger";
 import { SCIENTIFIC_CARDS } from "@/constant/data";
 import Container from "@/components/container";
 import Link from "next/link";
+import { useGSAP } from "@gsap/react";
 
 gsap.registerPlugin(ScrollTrigger);
 
 export default function ScientificCard() {
   const containerRefs = useRef<(HTMLDivElement | null)[]>([]);
+  useGSAP(() => {
+    containerRefs.current.forEach((container) => {
+      if (!container) return;
 
-  useLayoutEffect(() => {
-    const timeout = setTimeout(() => {
-      containerRefs.current.forEach((container) => {
-        if (!container) return;
+      gsap.from(container, {
+        yPercent: 10,
+        opacity: 0,
+        duration: 1,
+        scrollTrigger: {
+          trigger: container,
+          start: "top bottom",
+          end: "bottom top",
+        },
+      });
+      const image = container.querySelector("img");
+      if (!image) return;
 
-        gsap.from(container, {
-          yPercent: 10,
-          opacity: 0,
-          duration: 1,
+      gsap.fromTo(
+        image,
+        {
+          y: "-10%", // Start position (slightly above)
+          scale: 1.2,
+        },
+        {
+          y: "10%", // End position (slightly below)
+          scale: 1,
+          ease: "none",
           scrollTrigger: {
-            trigger: container,
-            scroller: "[data-scroll-container]",
+            trigger: image,
             start: "top bottom",
             end: "bottom top",
+            scrub: true,
           },
-        });
-        const image = container.querySelector("img");
-        if (!image) return;
-
-        gsap.fromTo(
-          image,
-          {
-            y: "-10%", // Start position (slightly above)
-            scale: 1.2,
-          },
-          {
-            y: "10%", // End position (slightly below)
-            scale: 1,
-            ease: "none",
-            scrollTrigger: {
-              trigger: image,
-              scroller: "[data-scroll-container]", // Remove if not using Locomotive Scroll
-              start: "top bottom",
-              end: "bottom top",
-              scrub: true,
-            },
-          }
-        );
-      });
-    }, 600);
-
-    return () => clearTimeout(timeout);
-  }, []);
+        }
+      );
+    });
+  });
 
   return (
     <div>
@@ -83,7 +77,6 @@ export default function ScientificCard() {
                 <p className="text-sm mt-2">{item.description}</p>
                 {item.link && (
                   <div className="mt-2">
-                    
                     <Link
                       href={item.link}
                       className="border border-white py-1 px-4"
