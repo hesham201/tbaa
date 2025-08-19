@@ -2,8 +2,8 @@ import React from "react";
 import Container from "@/components/container";
 import { PROGRAMME_DATA, LINEUP_DATA } from "@/constant/data2";
 import Image from "next/image";
-
 import Button from "@/components/button";
+import Link from "next/link";
 
 const ThePrograme = () => {
   return (
@@ -160,9 +160,9 @@ const ThePrograme = () => {
             <div className="absolute inset-x-0 bottom-0 h-1/2 bg-gradient-to-t from-midnight/70 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
           </div>
           <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 translate-y-full group-hover:translate-y-0 transition-all duration-300 ease-out opacity-0 group-hover:opacity-100 z-20">
-            <p className="bg-midnight text-white px-6 py-2 rounded-lg font-semibold shadow-lg text-lg">
+            <Link href={"/dr-marco-veneziani"} className="bg-midnight text-white px-6 py-2 rounded-lg font-semibold shadow-lg text-lg">
               Bio
-            </p>
+            </Link>
           </div>
         </div>
         <h3 className="text-xl font-bold text-center mt-2">
