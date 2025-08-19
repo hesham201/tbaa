@@ -21,7 +21,7 @@ const Banner = () => {
     });
 
     tl.to(".video-main-div", {
-      height: "450px", // ← use an exact value
+      height: "520px", // ← use an exact value
       ease: "power2.out",
       duration: 1,
     });
@@ -66,8 +66,8 @@ const Banner = () => {
       className="bg-[linear-gradient(to_bottom,#031A37_0%,#031A37_50%,transparent_50%,transparent_100%)] py-10 pt-[120px]"
     >
       <Container>
-        <div className="flex flex-row">
-          <div className="min-h-[200px] h-full w-[45%] shrink-0 overflow-hidden">
+        <div className="flex flex-row gap-7 items-center">
+          <div className="min-h-[200px] md:h-[460px] lg:h-[550px]  w-[45%] shrink-0 overflow-hidden">
             <div className="video-main-div relative scale-x-0 h-0 overflow-hidden origin-top  transition-all ">
               <div className="absolute z-10 inset-0 h-full w-full bg-primary video-bg"></div>
               <div className="video-div-main relative">
@@ -79,12 +79,12 @@ const Banner = () => {
               </div>
             </div>
           </div>
-          <div>
-            <h1 className="text-primary mb-3 text-6xl" id="home-h1">
+          <div className="flex flex-col gap-10">
+            <h1 className="text-primary mb-3 text-[50px]" id="home-h1">
               Welcome to BAAD 2026 – Where Excellence in Aesthetic Dentistry
               Meets Inspiration
             </h1>
-            <div>
+            <div className="flex flex-col gap-4">
               <p>
                 Join us on 30–31 January 2026 for the British Academy of
                 Aesthetic Dentistry’s flagship Annual Scientific Meeting – an
@@ -103,7 +103,9 @@ const Banner = () => {
                 education, inspiration, and the opportunity to be part of a
                 unique ‘dental family’ united by a passion for excellence.
               </p>
-              <Button href="/">Book Now</Button>
+              <div className="">
+                <Button href="/">Book Now</Button>
+              </div>
             </div>
           </div>
         </div>
