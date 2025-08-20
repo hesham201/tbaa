@@ -75,6 +75,10 @@ export const NAV_ITEMS: INavItem[] = [
     name: "Contact us",
     link: "/contact-us",
   },
+  {
+    name: "Book Now",
+    link: "/book-now",
+  },
 ];
 
 export const WELCOME_TO = {
