@@ -3,7 +3,7 @@ import Container from "@/components/container";
 const Main = () => {
   return (
     <>
-      <div className="py-10">
+      <div className="py-20">
         <Container>
           <h1 className="text-primary mb-3 text-6xl">TERMS AND CONDITIONS</h1>
 
