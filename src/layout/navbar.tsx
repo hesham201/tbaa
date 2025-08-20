@@ -386,7 +386,7 @@ const Header = () => {
   return (
     <>
       <header ref={galleryRef}>
-        <div className="fixed top-0 bg-white left-0 w-full shadow-2xl  z-[1000] ">
+        <div className="fixed top-0 bg-white left-0 w-full shadow-2xl z-[1000] ">
           <Container>
             <div className="flex justify-between items-center">
               <Link href={"/"}>
