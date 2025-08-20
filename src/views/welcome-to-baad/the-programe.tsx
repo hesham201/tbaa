@@ -1,9 +1,9 @@
 import React from "react";
 import Container from "@/components/container";
-import { PROGRAMME_DATA, LINEUP_DATA } from "@/constant/data2";
+import { PROGRAMME_DATA, SPEAKER_DATA } from "@/constant/data2";
 import Image from "next/image";
-
 import Button from "@/components/button";
+import Link from "next/link";
 
 const ThePrograme = () => {
   return (
@@ -113,7 +113,7 @@ const ThePrograme = () => {
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12 px-4 pb-16">
   {/* Render all except the last 2 */}
-  {LINEUP_DATA.slice(0, -2).map((speaker, index) => (
+  {SPEAKER_DATA.slice(0, -2).map((speaker, index) => (
     <div key={index} className="flex flex-col items-center w-full">
       <div className="relative w-full aspect-square mb-4 overflow-hidden group cursor-pointer">
         <div className="relative w-full h-full group-hover:scale-105 transition-transform duration-300">
@@ -125,13 +125,11 @@ const ThePrograme = () => {
           />
           <div className="absolute inset-x-0 bottom-0 h-1/2 bg-gradient-to-t from-midnight/70 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
         </div>
-        <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 translate-y-full group-hover:translate-y-0 transition-all duration-300 ease-out opacity-0 group-hover:opacity-100 z-20">
-          {speaker.name === "Dr. Marco Veneziani" ? (
-            <a href="/speaker-profile/dr-marco-veneziani">
-              <p className="bg-midnight text-white px-6 py-2 rounded-lg font-semibold shadow-lg text-lg">
+        <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 translate-y-full group-hover:translate-y-0 transition-all duration-300 ease-out opacity-0 group-hover:opacity-100 ">
+          {speaker.slug ? (
+              <Link href={`/2026-sc/${speaker.slug}`} className="bg-midnight text-white px-6 py-2 rounded-lg font-semibold shadow-lg text-lg">
                 Bio
-              </p>
-            </a>
+              </Link>
           ) : (
             <p className="bg-midnight text-white px-6 py-2 rounded-lg font-semibold shadow-lg text-lg">
               Bio
@@ -147,7 +145,7 @@ const ThePrograme = () => {
 
   {/* Render last 2 centered */}
   <div className="lg:col-span-3 flex justify-center gap-12">
-    {LINEUP_DATA.slice(-2).map((speaker, index) => (
+    {SPEAKER_DATA.slice(-2).map((speaker, index) => (
       <div key={index} className="flex flex-col items-center w-full max-w-sm">
         <div className="relative w-full aspect-square mb-4 overflow-hidden group cursor-pointer">
           <div className="relative w-full h-full group-hover:scale-105 transition-transform duration-300">
@@ -159,10 +157,16 @@ const ThePrograme = () => {
             />
             <div className="absolute inset-x-0 bottom-0 h-1/2 bg-gradient-to-t from-midnight/70 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
           </div>
-          <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 translate-y-full group-hover:translate-y-0 transition-all duration-300 ease-out opacity-0 group-hover:opacity-100 z-20">
-            <p className="bg-midnight text-white px-6 py-2 rounded-lg font-semibold shadow-lg text-lg">
-              Bio
-            </p>
+          <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 translate-y-full group-hover:translate-y-0 transition-all duration-300 ease-out opacity-0 group-hover:opacity-100">
+            {speaker.slug ? (
+              <Link href={`/2026-sc/${speaker.slug}`} className="bg-midnight text-white px-6 py-2 rounded-lg font-semibold shadow-lg text-lg">
+                Bio
+              </Link>
+            ) : (
+              <p className="bg-midnight text-white px-6 py-2 rounded-lg font-semibold shadow-lg text-lg">
+                Bio
+              </p>
+            )}
           </div>
         </div>
         <h3 className="text-xl font-bold text-center mt-2">

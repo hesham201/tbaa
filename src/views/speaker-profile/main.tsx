@@ -1,10 +1,14 @@
 import React from "react";
 import SpeakerContent from "./speaker-content";
 
-const Main = () => {
+interface MainProps {
+  speakerId?: string;
+}
+
+const Main: React.FC<MainProps> = ({ speakerId }) => {
   return (
     <div>
-      <SpeakerContent />
+      <SpeakerContent speakerId={speakerId} />
     </div>
   );
 };
