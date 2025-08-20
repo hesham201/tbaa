@@ -1,71 +1,50 @@
 "use client";
 
-import { useRef, useState } from "react";
+import { useMemo, useState } from "react";
 import Image from "next/image";
-import PhotoAlbum from "react-photo-album";
 import Lightbox from "yet-another-react-lightbox";
 import "yet-another-react-lightbox/styles.css";
 
-import gsap from "gsap";
-import ScrollTrigger from "gsap/ScrollTrigger";
-import { useGSAP } from "@gsap/react";
-gsap.registerPlugin(ScrollTrigger);
+type Props = {
+  data: string[]; // string URLs (absolute or relative)
+  prefix?: string; // optional prefix for relative paths (default "/galleries/")
+};
 
-const photos = [
-  { src: "/images/1.jpg", width: 800, height: 600 },
-  { src: "/images/2.jpg", width: 1600, height: 900 },
-  { src: "/images/3.jpg", width: 1200, height: 1200 },
-];
+function toSrc(u: string, prefix?: string) {
+  if (u.startsWith("http") || u.startsWith("/")) return u;
+  return (prefix ?? "/galleries/") + u.replace(/^\/+/, "");
+}
 
-export default function Gallery() {
-  const [index, setIndex] = useState(-1);
-  const containerRef = useRef<HTMLDivElement>(null);
-
-  // Animate each photo when it scrolls into view
-  useGSAP(() => {
-    const tiles = containerRef.current?.querySelectorAll(".photo-tile");
-    tiles?.forEach((el) => {
-      gsap.from(el, {
-        opacity: 0,
-        y: 40,
-        duration: 0.8,
-        ease: "power2.out",
-        scrollTrigger: {
-          trigger: el,
-          start: "top 90%",
-        },
-      });
-    });
-  }, []);
+export default function GalleryGrid4({ data, prefix }: Props) {
+  const urls = useMemo(() => data.map((u) => toSrc(u, prefix)), [data, prefix]);
+  const [index, setIndex] = useState<number>(-1);
 
   return (
-    <div ref={containerRef}>
-      <PhotoAlbum
-        layout="rows"
-        photos={photos}
-        onClick={({ index }) => setIndex(index)}
-        renderPhoto={({ photo, wrapperStyle }) => (
-          <div
-            className="photo-tile overflow-hidden rounded-xl"
-            style={wrapperStyle}
+    <div>
+      <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3">
+        {urls.map((src, i) => (
+          <button
+            key={src}
+            onClick={() => setIndex(i)}
+            aria-label={`Open image ${i + 1}`}
+            className="relative aspect-[4/3] overflow-hidden rounded-xl group"
           >
             <Image
-              src={photo.src}
+              src={src}
               alt=""
-              width={photo.width}
-              height={photo.height}
-              className="object-cover w-full h-full"
+              fill
+              className="object-cover transition-transform duration-300 group-hover:scale-105"
+              sizes="(max-width:640px) 50vw, (max-width:1024px) 33vw, 25vw"
             />
-          </div>
-        )}
-      />
+          </button>
+        ))}
+      </div>
 
-      {/* Lightbox for fullscreen view */}
       <Lightbox
-        slides={photos}
         open={index >= 0}
         index={index}
         close={() => setIndex(-1)}
+        slides={urls.map((src) => ({ src }))}
       />
     </div>
   );
