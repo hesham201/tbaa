@@ -12,6 +12,7 @@ const Main = ({ data }: { data: IWithLink }) => {
         venue={data.venue}
         date={data.date}
         upperPara={data.upperPara}
+        heading={data?.heading}
         speakers={data.speakers}
         speakersDateBased={data.speakersDateBased}
       />

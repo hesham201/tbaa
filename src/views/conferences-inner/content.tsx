@@ -7,7 +7,9 @@ const Content = ({
   speakers,
   speakersDateBased,
   upperPara,
+  heading,
 }: {
+  heading: string;
   venue: string;
   date: string;
   upperPara: string;
@@ -19,6 +21,7 @@ const Content = ({
       <Container>
         <div className="flex flex-row justify-between">
           <div>
+            <h3 className="text-3xl mb-5">{heading}</h3>
             <p className="text-xl mb-4">
               <b>Venue:</b> {venue}
             </p>
