@@ -242,11 +242,13 @@ export const SCIENTIFIC_CARDS = [
     image: "/baad-super-hero.png",
     learnMoreLink: "/",
     programmeLink: "/",
+    link: "super-heros-with-great-power-comes-great-responsibility",
   },
   {
     image: "/bAAD-2024-Conference-Flyer.jpg",
     description: "2024 – Scientific Meeting",
     pageHeader: "Aesthetic Wizardry: Unlocking The Chamber Of Secrets",
+    heading: "AESTHETIC WIZARDRY: UNLOCKING THE CHAMBER OF SECRETS",
     venue: "Great Fosters Hotel, Surrey, TW20 9UR",
     date: "Friday 26th & Saturday 27th January 2024",
     upperPara: "Below are the speakers for this meeting:",
@@ -262,11 +264,13 @@ export const SCIENTIFIC_CARDS = [
       "David De Franco",
       "Dr Stefano Gracis",
     ],
+    link: "aesthetic-wizardry-unlocking-the-chamber-of-secrets",
   },
   {
     image: "/bAAD-Conference-2023.png",
     description: "2023 – Scientific Meeting",
     pageHeader: "‘A’esthetic Fusion: Gnathology with a Touch of Spice",
+    heading: "‘A’esthetic Fusion: Gnathology with a Touch of Spice",
     venue: "Great Fosters Hotel, Surrey, TW20 9UR",
     date: "Friday 27th & Saturday 28th January 2023",
     upperPara: "Below are the speakers for this meeting:",
@@ -281,12 +285,13 @@ export const SCIENTIFIC_CARDS = [
       "Florian Beuer (DE)",
       "Marco Gresnigt (NL)",
     ],
-    link: "/",
+    link: "aesthetic-fusion-gnathology-with-a-touch-of-spice",
   },
   {
     image: "/baad-2022-front.png",
     description: "2022 – Scientific Meeting",
     pageHeader: "The Wonderful World of BAAD Scientific Meeting 2022",
+    heading: "The Wonderful World of BAAD",
     venue: "Ashdown Park Hotel",
     date: "Friday 28th & Saturday 29th January 2022",
     upperPara: "Below are the speakers for this meeting:",
@@ -302,12 +307,13 @@ export const SCIENTIFIC_CARDS = [
       "Danielle Rodoni – Italy",
       "Tidu Mankoo – United Kingdom",
     ],
-    link: "/",
+    link: "british-academy-of-aesthetic-dentistry-2022-annual-conference",
   },
   {
     image: "/bAAD-2020-768x223.jpeg",
     description: "2020 – Scientific Meeting",
     pageHeader: "Crystal Clear Dentistry Scientific Meeting 2020",
+    heading: "Crystal Clear Dentistry",
     venue: "Stoke Park Club, Buckinghamshire",
     date: "Friday 24th & Saturday 25th January 2020",
     upperPara: "Below are the speakers for this meeting:",
@@ -323,13 +329,14 @@ export const SCIENTIFIC_CARDS = [
       "Franck Bonnet",
       "Sandro Cortellini",
     ],
-    link: "/",
+    link: "crystal-clear-dentistry-scientific-meeting-2020",
   },
   {
     image: "/BAAD-2019-768x223.jpeg",
     description: "2019 – Scientific Meeting",
-    link: "/",
+    link: "dentistry-beyond-pure-imagination-scientific-meeting-2019",
     pageHeader: "Stoke Park Club, Buckinghamshire",
+    heading: "Dentistry Beyond Pure Imagination",
     venue: "Stoke Park Club, Buckinghamshire",
     date: "Friday 25th & Saturday 26th January 2019",
     upperPara: "Below are the speakers for this meeting:",
@@ -351,8 +358,9 @@ export const SCIENTIFIC_CARDS = [
   {
     image: "/BAAD-2018-768x220.jpeg",
     description: "2018 – Scientific Meeting",
-    link: "/",
+    link: "british-academy-of-aesthetic-dentistry-scientific-meeting-2018",
     pageHeader: "Unlocking the secrets of excellence Scientific Meeting 2018",
+    heading: "Unlocking the secrets of excellence",
     venue: "Stoke Park Club, Park Road, Stoke Poges, Buckinghamshire",
     date: "26th-27th January 2018",
     upperPara: "Below are the speakers for this meeting:",
@@ -373,9 +381,10 @@ export const SCIENTIFIC_CARDS = [
   {
     image: "/BAAD-2017-768x223.jpeg",
     description: "2017 – Scientific Meeting",
-    link: "/",
+    link: "british-academy-of-aesthetic-dentistry-scientific-meeting-2017",
     pageHeader:
       "British Academy of Aesthetic Dentistry Scientific Meeting 2017",
+    heading: "New Horizons... Fact or Fiction",
     venue: "Stoke Park Club, Buckinghamshire",
     date: "Friday 27th & Saturday 28th January 2017",
     upperPara: "Below are the speakers for this meeting:",
@@ -395,8 +404,9 @@ export const SCIENTIFIC_CARDS = [
   {
     image: "/BAAD-Early-2016-768x223.jpeg",
     description: "2016 – Gala Dinner",
-    link: "/",
+    link: "british-academy-of-aesthetic-dentistry-2016-gala-dinner",
     pageHeader: "Dentistry Beyond Pure Imagination Gala Dinner 2016",
+    heading: "Forward Thinking - Powerful Hindsight",
     venue: "Stoke Park Club, Park Road, Stoke Poges, Buckinghamshire",
     date: "29th-30th January 2016",
     upperPara: "Below are the speakers for this meeting:",
@@ -425,7 +435,7 @@ export const SCIENTIFIC_CARDS = [
   {
     image: "/BAAD-Early-2016-768x223.jpeg",
     description: "2016 – Scientific Meeting",
-    link: "/",
+    link: "british-academy-of-aesthetic-dentistry-2016-annual-conference",
     pageHeader: "Forward Thinking - Powerful Hndsight 2016 Annual Conference",
     heading: "Foward Thinking - Powerful Hindsight",
     venue: "Stoke Park Club, Buckinghamshire",
@@ -441,7 +451,7 @@ export const SCIENTIFIC_CARDS = [
   {
     image: "/BAAD-2015.jpeg",
     description: "2015 – Scientific Meeting",
-    link: "/",
+    link: "british-academy-of-aesthetic-dentistry-2015-annual-conference",
     pageHeader: "Inspire to Aspire Scientific Meeting 2015",
     heading: "Inspire to Aspire Scientific Meeting 2015",
     venue: "Stoke Park Club, Buckinghamshire",
@@ -462,7 +472,7 @@ export const SCIENTIFIC_CARDS = [
   {
     image: "/BAAD-2014.jpeg",
     description: "2014 – Scientific Meeting",
-    link: "/",
+    link: "british-academy-of-aesthetic-dentistry-2014-annual-conference",
     pageHeader: "Annual Scientific Meeting 2014",
     heading: "Annual Scientific Meeting 2014",
     venue: "Stoke Park Club, Buckinghamshire",
@@ -490,7 +500,7 @@ export const SCIENTIFIC_CARDS = [
   {
     image: "/BAAD-2012.jpeg",
     description: "2012 – Scientific Meeting",
-    link: "/",
+    link: "british-academy-of-aesthetic-dentistry-2012-annual-conference",
     pageHeader:
       "Aesthetic Choices - Point and Counterpoint Scientific Meeting 2012",
     heading: "Aesthetic Choices - Point & Counterpoint",
@@ -517,7 +527,7 @@ export const SCIENTIFIC_CARDS = [
   {
     image: "/BAAD-2010.jpeg",
     description: "2010 – Scientific Meeting",
-    link: "/",
+    link: "british-academy-of-aesthetic-dentistry-2010-annual-conference",
     pageHeader:
       "Science Guides But our Hands do the Walking Scientific Meeting 2010",
     heading: "Science Guides but or hands do the walking",
@@ -533,7 +543,7 @@ export const SCIENTIFIC_CARDS = [
   {
     image: "/7-724x1024.png",
     description: "2009 – Scientific Meeting",
-    link: "/",
+    link: "british-academy-of-aesthetic-dentistry-2009-annual-conference",
     pageHeader: "Team Aesthetics Scientific Meeting 2009",
     heading: "Team Aesthetics",
     venue:
@@ -558,7 +568,7 @@ export const SCIENTIFIC_CARDS = [
   {
     image: "/8-724x1024.png",
     description: "2008 – Scientific Meeting",
-    link: "/",
+    link: "british-academy-of-aesthetic-dentistry-2008-annual-conference",
     pageHeader: "Ultimate Dentistry is Aesthetics Scientific Meeting 2008",
     heading: "Ultimate Dentistry is Aesthetic",
     venue: "De Vere Belton Woods Hotel and Resort, Grantham, Lincolnshire",
@@ -579,7 +589,7 @@ export const SCIENTIFIC_CARDS = [
   {
     image: "/BAAD-2007-768x310.jpeg",
     description: "2007 – Scientific Meeting",
-    link: "/",
+    link: "british-academy-of-aesthetic-dentistry-2007-annual-conference",
     pageHeader:
       "From Basic Science to Aesthetic Outcome Scientific Meeting 2007",
     heading: "From Basic Science to Aesthetic Outcome",
@@ -606,7 +616,7 @@ export const SCIENTIFIC_CARDS = [
   {
     image: "/BAAD-2006.jpeg",
     description: "2006 – Scientific Meeting",
-    link: "/scientific-conferences/british-academy-of-aesthetic-dentistry-2006-annual-conference",
+    link: "british-academy-of-aesthetic-dentistry-2006-annual-conference",
     pageHeader: "Keys to Aesthetic Harmony Scientific Meeting 2006",
     heading: "Keys to Aesthetic Harmony",
     venue: "Marriott Forest of Arden Hotel & Country Club",
@@ -626,7 +636,7 @@ export const SCIENTIFIC_CARDS = [
   {
     image: "/BAAD-2005.jpeg",
     description: "2005 – Scientific Meeting",
-    link: "/scientific-conferences/british-academy-of-aesthetic-dentistry-2005-annual-conference",
+    link: "british-academy-of-aesthetic-dentistry-2005-annual-conference",
     pageHeader:
       "Aesthetic Dentistry - Past, Present and Future Scientific Meeting 2005",
     heading: "Aesthetic Dentistry - Past, Present & Future",
@@ -658,7 +668,7 @@ export const SCIENTIFIC_CARDS = [
   {
     image: "/2-e1659344441553-768x543.png",
     description: "2004 – Scientific Meeting",
-    link: "/scientific-conferences/british-academy-of-aesthetic-dentistry-2004-annual-conference",
+    link: "british-academy-of-aesthetic-dentistry-2004-annual-conference",
     pageHeader:
       "Achieving Aesthic Harmony through Team Dynamics Scientific Meeting 2004",
     heading: "Achieving Harmony through Team Dynamics",
@@ -680,7 +690,7 @@ export const SCIENTIFIC_CARDS = [
   {
     image: "/BAAD-2003.jpeg",
     description: "2003 – Scientific Meeting",
-    link: "/scientific-conferences/british-academy-of-aesthetic-dentistry-2003-annual-conference",
+    link: "british-academy-of-aesthetic-dentistry-2003-annual-conference",
     pageHeader: "Annual Scientific Meeting 2003",
     heading: "Annual Scientific Meeting 2003",
     venue: "The Hanover International Hotel",
@@ -703,7 +713,7 @@ export const SCIENTIFIC_CARDS = [
   {
     image: "/2001-768x543.png",
     description: "2001 – Scientific Meeting",
-    link: "/scientific-conferences/british-academy-of-aesthetic-dentistry-2001-annual-conference",
+    link: "british-academy-of-aesthetic-dentistry-2001-annual-conference",
     pageHeader: "Annual Scientific Meeting 2001",
     heading: "Annual Scientific Meeting 2001",
     venue: "Celtic Manor, Newport, Gwent, Wales",
@@ -731,7 +741,7 @@ export const SCIENTIFIC_CARDS = [
   {
     image: "/2000-768x543.png",
     description: "2000 – Scientific Meeting",
-    link: "/scientific-conferences/british-academy-of-aesthetic-dentistry-2000-annual-conference",
+    link: "british-academy-of-aesthetic-dentistry-2000-annual-conference",
     pageHeader: "Annual Scientific Meeting 2000",
     heading: "Annual Scientific Meeting 2000",
     venue: "Celtic Manor, Newport, Gwent, Wales",
@@ -770,7 +780,7 @@ export const SCIENTIFIC_CARDS = [
   {
     image: "/1999-e1663334503826-768x543.png",
     description: "1999 – Scientific Meeting",
-    link: "/scientific-conferences/british-academy-of-aesthetic-dentistry-1999-annual-conference",
+    link: "british-academy-of-aesthetic-dentistry-1999-annual-conference",
     pageHeader: "Annual Scientific Meeting 1999",
     heading: "Annual Scientific Meeting 1999",
     venue: "Celtic Manor, Newport, Gwent, Wales",
@@ -799,7 +809,7 @@ export const SCIENTIFIC_CARDS = [
   {
     image: "/WhatsApp-Image-2022-09-21-at-4.41.05-PM-768x536.jpeg",
     description: "1998 – Scientific Meeting",
-    link: "/scientific-conferences/british-academy-of-aesthetic-dentistry-1998-annual-conference",
+    link: "british-academy-of-aesthetic-dentistry-1998-annual-conference",
     pageHeader: "Annual Scientific Meeting 1998",
     heading: "Annual Scientific Meeting 1998",
     venue: "Carden Park, Hotel, Golf Resort & Spa, Chester, Cheshire",
@@ -827,7 +837,7 @@ export const SCIENTIFIC_CARDS = [
   {
     image: "/5-e1663334455410.png",
     description: "1997 – Scientific Meeting",
-    link: "/scientific-conferences/",
+    link: "british-academy-of-aesthetic-dentistry-1997-annual-conference",
     pageHeader: "Annual Scientific Meeting 1997",
     heading: "Annual Scientific Meeting 1997",
     venue: "Carden Park, Hotel, Golf Resort & Spa, Chester, Cheshire",
