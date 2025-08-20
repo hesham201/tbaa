@@ -249,7 +249,7 @@ export const SCIENTIFIC_CARDS: IScientificCard[] = [
   {
     image: "/bAAD-2024-Conference-Flyer.jpg",
     description: "2024 – Scientific Meeting",
-    pageHeader: "Aesthetic Wizardry: Unlocking The Chamber Of Secrets",
+    pageHeader: "Aesthetic Wizardry:  Unlocking The Chamber Of Secrets",
     heading: "AESTHETIC WIZARDRY: UNLOCKING THE CHAMBER OF SECRETS",
     venue: "Great Fosters Hotel, Surrey, TW20 9UR",
     date: "Friday 26th & Saturday 27th January 2024",
