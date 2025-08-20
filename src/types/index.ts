@@ -60,6 +60,7 @@ export interface IWithLink extends IBaseCard {
   speakersDateBased?: { date: string; speak: string[] }[];
   learnMoreLink?: string;
   programmeLink?: string;
+  imageArray?: string[];
 }
 
 export type IScientificCard = IBaseCard | IWithLink;

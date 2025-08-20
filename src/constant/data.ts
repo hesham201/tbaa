@@ -267,6 +267,7 @@ export const SCIENTIFIC_CARDS: IScientificCard[] = [
       "Dr Stefano Gracis",
     ],
     link: "aesthetic-wizardry-unlocking-the-chamber-of-secrets",
+    
   },
   {
     image: "/bAAD-Conference-2023.png",
