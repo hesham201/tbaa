@@ -118,7 +118,9 @@ const TestimonialMain = () => {
                         width={600}
                         height={600}
                         quality={100}
-                        className="w-full h-full object-cover rounded-full"
+                        className={`w-full  ${
+                          item.lion ? "object-contain" : "object-cover"
+                        } h-full  rounded-full`}
                         alt={item.name}
                       />
                     </div>
@@ -134,7 +136,9 @@ const TestimonialMain = () => {
                     width={600}
                     height={600}
                     quality={100}
-                    className="w-full h-full object-cover rounded-full"
+                    className={`w-full h-full ${
+                      item.lion ? "object-contain" : "object-cover"
+                    } rounded-full`}
                     alt={item.name}
                   />
                 </div>
