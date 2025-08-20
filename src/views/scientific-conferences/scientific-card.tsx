@@ -8,7 +8,8 @@ import { SCIENTIFIC_CARDS } from "@/constant/data";
 import Container from "@/components/container";
 import Link from "next/link";
 import { useGSAP } from "@gsap/react";
-
+import { isRoutable } from "@/types";
+import { IScientificCard } from "@/types";
 gsap.registerPlugin(ScrollTrigger);
 
 export default function ScientificCard() {
@@ -55,7 +56,7 @@ export default function ScientificCard() {
     <div>
       <Container>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 px-6 py-10">
-          {SCIENTIFIC_CARDS.map((item, i) => (
+          {SCIENTIFIC_CARDS.map((item: IScientificCard, i) => (
             <div
               key={i}
               ref={(el) => {
@@ -75,7 +76,7 @@ export default function ScientificCard() {
               <div className="absolute inset-0 bg-black/60 z-10" />
               <div className="absolute bottom-6 left-6 right-6 text-white z-20">
                 <p className="text-sm mt-2">{item.description}</p>
-                {item.link && (
+                {isRoutable(item) && (
                   <div className="mt-2">
                     <Link
                       href={`/scientific-conferences/${item.link}`}

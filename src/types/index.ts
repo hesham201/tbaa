@@ -42,16 +42,34 @@ export interface IBanner {
   image: string;
   heading: string;
 }
-export type ScientificCard = {
-  image?: string;
+export type SpeakerGroup = { date: string; speak: string[] };
+
+export interface IBaseCard {
   description: string;
+  image: string;
+}
+
+export interface IWithLink extends IBaseCard {
+  link: string;
   pageHeader: string;
-  heading?: string;
-  venue?: string;
-  date?: string;
-  upperPara?: string;
-  speakers: string[];
+  heading: string;
+  venue: string;
+  date: string;
+  upperPara: string;
+  speakers?: string[];
+  speakersDateBased?: { date: string; speak: string[] }[];
   learnMoreLink?: string;
   programmeLink?: string;
-  link: string; // <— slug
-};
+}
+
+export type IScientificCard = IBaseCard | IWithLink;
+
+// Type guard
+export function isRoutable(card: IScientificCard): card is IWithLink {
+  return (
+    "link" in card &&
+    typeof card.link === "string" &&
+    "pageHeader" in card &&
+    typeof card.pageHeader === "string"
+  );
+}
