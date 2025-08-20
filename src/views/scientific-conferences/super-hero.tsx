@@ -112,8 +112,10 @@ const SuperHero = () => {
                 className="flex flex-wrap items-center flex-row gap-3 justify-center lg:justify-start"
                 id="buttons-events"
               >
-                <Button href="/">Learn More</Button>
-                <Button href="/">View BAAD programme</Button>
+                <Button href="/2026-sc">Learn More</Button>
+                <Button href="/BAAD-2025-Conference-Flyer-2.pdf">
+                  View BAAD programme
+                </Button>
               </div>
             </div>
             <div className="relative w-full hidden lg:block lg:w-[35%] overflow-hidden rounded-2xl shrink-0 h-[600px]">
