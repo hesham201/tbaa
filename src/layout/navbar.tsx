@@ -386,7 +386,7 @@ const Header = () => {
   return (
     <>
       <header ref={galleryRef}>
-        <div className="fixed top-0 bg-white left-0 w-full z-[10] ">
+        <div className="fixed top-0 bg-white left-0 w-full shadow-2xl  z-[1000] ">
           <Container>
             <div className="flex justify-between items-center">
               <Link href={"/"}>
@@ -450,12 +450,12 @@ const Header = () => {
           id="menu-fixed"
           // data-scroll-target
           // data-scroll-section
-          className={`fixed bg-dark top-[100vh] left-0 w-full h-full z-[1000000] ${
+          className={`fixed bg-dark top-[100vh] left-0 w-full h-full z-[10001] ${
             openMenu ? "" : ""
           }`}
         >
           <nav className="h-[100vh] bg-[url(/menu-bg.webp)] bg-cover w-full">
-            <div className="absolute top-0 w-full" id="main-menu-nav">
+            <div className="absolute top-0 w-full z-[10001]" id="main-menu-nav">
               <Container>
                 <div className="flex justify-between">
                   <Link href={"/"}>

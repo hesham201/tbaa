@@ -1,4 +1,5 @@
-import { INavItem } from "@/types";
+import { INavItem, IScientificCard, IWithLink } from "@/types";
+import { isRoutable } from "@/types";
 export const NAV_ITEMS: INavItem[] = [
   {
     name: "Home",
@@ -219,10 +220,11 @@ export const MASTER_CLASSES = [
     link: "/BAAD-E2014-pdf.jpg",
   },
 ];
-export const SCIENTIFIC_CARDS = [
+export const SCIENTIFIC_CARDS: IScientificCard[] = [
   {
     description: "2025 – Super Hero's",
     pageHeader: "Super Hero’s: With great power comes great responsibility",
+    heading: "AESTHETIC WIZARDRY: UNLOCKING THE CHAMBER OF SECRETS",
     venue: "The Hilton Syon Park, Park Road, Islesworth, TW8 8JF",
     date: "Friday 24th & Saturday 25th January 2025",
     upperPara: "Below are the speakers for this meeting:",
@@ -865,6 +867,7 @@ export const SCIENTIFIC_CARDS = [
     ],
   },
 ];
+export const ROUTABLE_CARDS: IWithLink[] = SCIENTIFIC_CARDS.filter(isRoutable);
 export const MASTER_CLASSES_BANNER = {
   image: "/our-mission.jpg",
   heading: "Masterclasses",
