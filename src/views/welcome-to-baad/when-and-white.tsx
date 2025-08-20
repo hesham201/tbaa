@@ -57,13 +57,12 @@ const WhenAndWhite = () => {
               TW8 8JF
             </p>
             <div>
-              <Button href="/">Book Now</Button>
+              <Button href="/book-nows">Book Now</Button>
             </div>
           </div>
           <div
             ref={imageRef}
-            className="h-[350px] w-[45%] shrink-0 overflow-hidden rounded-lg"
-          >
+            className="h-[350px] w-[45%] shrink-0 overflow-hidden rounded-lg">
             <img src="/when-and-white.jpg" alt="image" />
           </div>
         </div>

@@ -71,6 +71,9 @@ const Banner = ({ data }: { data: IBanner }) => {
             <h1 className="text-primary  text-6xl" id="home-h1">
               {data.heading}
             </h1>
+            {data.para && (
+              <p className="text-white mt-5 text-2xl">{data.para}</p>
+            )}
           </div>
         </Container>
       </div>
