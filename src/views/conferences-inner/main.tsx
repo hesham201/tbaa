@@ -2,6 +2,7 @@ import { IWithLink } from "@/types";
 import React from "react";
 import Banner from "./banner";
 import Content from "./content";
+import Gallery from "./gallery";
 
 const Main = ({ data }: { data: IWithLink }) => {
   return (
@@ -14,6 +15,7 @@ const Main = ({ data }: { data: IWithLink }) => {
         speakers={data.speakers}
         speakersDateBased={data.speakersDateBased}
       />
+      <Gallery />
     </>
   );
 };
