@@ -9,7 +9,7 @@ const Main = () => {
 
           <div className="mb-4">
             <h2 className="mb-3 text-2xl font-two font-bold text-primary">  
-              Last updated: 16th August 2025
+              Last updated: 16th  August 2025
             </h2>
             <p className="mb-2 text-midnight">
               Welcome to the website of the British Academy of Aesthetic Dentistry (BAAD). By accessing and using this website, you agree to comply with the following terms and conditions. Please read them carefully before using the site.
