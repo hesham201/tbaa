@@ -57,7 +57,7 @@ const WhenAndWhite = () => {
               TW8 8JF
             </p>
             <div>
-              <Button href="/book-nows">Book Now</Button>
+              <Button href="/book-now">Book Now</Button>
             </div>
           </div>
           <div

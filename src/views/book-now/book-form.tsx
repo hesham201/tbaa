@@ -21,7 +21,41 @@ const STEP_ORDER: { key: StepKey; label: string }[] = [
   { key: "accommodation", label: "ACCOMMODATION" },
   { key: "billingDetails", label: "BILLING DETAILS" },
 ];
-
+const STEP_FIELDS: Record<StepKey, (keyof FormValues)[]> = {
+  yourDetails: [
+    "bookingCategory",
+    "title",
+    "firstName",
+    "surname",
+    "gdcNumber",
+    "address1",
+    "address2",
+    "city",
+    "postcode",
+    "country",
+    "telephone",
+    "email",
+  ],
+  bookingDetails: [
+    "conferenceBooking",
+    "notAttendingNote",
+    "dietaryRequirements",
+  ],
+  dinnerBooking: [
+    "additionalGuests",
+    "welcomeDinnerPlaces",
+    "themedDinnerPlaces",
+    "galaDinnerPlaces",
+    "dinnerDietaryRequirements",
+  ],
+  accommodation: [
+    "accommodationDates",
+    "accommodationRoomType",
+    "accommodationOccupancy",
+    "accommodationNights",
+  ],
+  billingDetails: ["billingNameOnCard", "billingAddress", "billingCardNumber"],
+};
 type FormValues = {
   // Step 1
   bookingCategory: string;
@@ -99,8 +133,6 @@ const initialValues: FormValues = {
   billingCardNumber: "",
 };
 
-/* --------------------------- Yup step schemas --------------------------- */
-
 // Step 1 schema
 const yourDetailsSchema = Yup.object({
   bookingCategory: Yup.string().required("Please select a category."),
@@ -140,7 +172,6 @@ const dinnerBookingSchema = Yup.object({
   dinnerDietaryRequirements: Yup.string().trim().optional(),
 });
 
-// Step 4 schema
 const accommodationSchema = Yup.object({
   accommodationDates: Yup.array()
     .of(Yup.string())
@@ -337,8 +368,6 @@ function CheckboxField({
   );
 }
 
-/* ------------------------------ Component ------------------------------ */
-
 export default function BaadBookingForm() {
   const [stepIndex, setStepIndex] = useState(0);
   const current = STEP_ORDER[stepIndex];
@@ -352,29 +381,32 @@ export default function BaadBookingForm() {
     validateForm: FormikHelpers<FormValues>["validateForm"],
     setTouched: FormikHelpers<FormValues>["setTouched"]
   ) => {
-    const errors = await validateForm();
-    if (Object.keys(errors).length === 0) {
+    const allErrors = await validateForm();
+    const currentKeys = new Set(STEP_FIELDS[current.key]);
+    const stepErrors = Object.fromEntries(
+      Object.entries(allErrors).filter(([k]) =>
+        currentKeys.has(k as keyof FormValues)
+      )
+    );
+
+    if (Object.keys(stepErrors).length === 0) {
       goNext();
     } else {
-      setTouched(
-        Object.keys(errors).reduce<Record<string, boolean>>((acc, k) => {
-          acc[k] = true;
-          return acc;
-        }, {}),
-        false
-      );
+      const touchedMap = Array.from(currentKeys).reduce<
+        Record<string, boolean>
+      >((acc, key) => {
+        if (stepErrors[key as string]) acc[key as string] = true;
+        return acc;
+      }, {});
+      setTouched(touchedMap, false);
     }
   };
-
-  // simple total calculator based on dinners + accommodation
   const calcTotal = (v: FormValues) => {
     const toInt = (s: string) => (s ? parseInt(s, 10) || 0 : 0);
 
     const welcome = toInt(v.welcomeDinnerPlaces) * 100;
     const themed = toInt(v.themedDinnerPlaces) * 125;
     const gala = toInt(v.galaDinnerPlaces) * 115;
-
-    // nights: parse from your current labels
     let nights = 0;
     if (v.accommodationNights.includes("(2 nights)")) nights = 2;
     else if (v.accommodationNights.includes("(3 nights)")) nights = 3;
