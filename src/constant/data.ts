@@ -1255,7 +1255,7 @@ export const SCIENTIFIC_CARDS: IScientificCard[] = [
     image: "/BAAD-2019-768x223.jpeg",
     description: "2019 – Scientific Meeting",
     link: "dentistry-beyond-pure-imagination-scientific-meeting-2019",
-    pageHeader: "Stoke Park Club, Buckinghamshire",
+    pageHeader: "Dentistry Beyond Pure Imagination Scientific Meeting 2019",
     heading: "Dentistry Beyond Pure Imagination",
     venue: "Stoke Park Club, Buckinghamshire",
     date: "Friday 25th & Saturday 26th January 2019",
