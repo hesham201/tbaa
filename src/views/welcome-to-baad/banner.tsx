@@ -102,7 +102,7 @@ const Banner = () => {
                 education, inspiration, and the opportunity to be part of a
                 unique ‘dental family’ united by a passion for excellence.
               </p>
-              <div className="">
+              <div className=" ">
                 <Button href="/book-now">Book Now</Button>
               </div>
             </div>
