@@ -78,7 +78,7 @@ export default function ScientificCard() {
                 {item.link && (
                   <div className="mt-2">
                     <Link
-                      href={item.link}
+                      href={`/scientific-conferences/${item.link}`}
                       className="border border-white py-1 px-4"
                     >
                       Learn More

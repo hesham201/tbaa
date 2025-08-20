@@ -42,3 +42,16 @@ export interface IBanner {
   image: string;
   heading: string;
 }
+export type ScientificCard = {
+  image?: string;
+  description: string;
+  pageHeader: string;
+  heading?: string;
+  venue?: string;
+  date?: string;
+  upperPara?: string;
+  speakers: string[];
+  learnMoreLink?: string;
+  programmeLink?: string;
+  link: string; // <— slug
+};
