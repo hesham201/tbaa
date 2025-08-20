@@ -16,7 +16,9 @@ export default function GalleryGrid4({ data }: Props) {
   return (
     <div className="py-10">
       <div>
-        <h2 className="text-5xl bg-primary text-midnight">Gallery</h2>
+        <h2 className="text-5xl bg-primary text-midnight py-5 text-center font-headings">
+          Gallery
+        </h2>
       </div>
       <div>
         <Container>
