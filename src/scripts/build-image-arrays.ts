@@ -5,7 +5,8 @@ import path from "node:path";
 const ALLOWED: string[] = [".jpg", ".jpeg", ".png", ".webp", ".gif", ".avif"];
 // If you load a JSON map, give it a type:
 const MAP: Record<string, string> = {
-  "aesthetic-wizardry-unlocking-the-chamber-of-secrets": "meeting-2014",
+  "aesthetic-wizardry-unlocking-the-chamber-of-secrets":
+    "powerful-hndsight-2016",
 };
 
 async function listFolder(folder: string): Promise<string[]> {
