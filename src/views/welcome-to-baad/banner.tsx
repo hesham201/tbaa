@@ -63,8 +63,7 @@ const Banner = () => {
   return (
     <div
       ref={headerRef}
-      className="bg-[linear-gradient(to_bottom,#031A37_0%,#031A37_50%,transparent_50%,transparent_100%)] py-10 pt-[120px]"
-    >
+      className="bg-[linear-gradient(to_bottom,#031A37_0%,#031A37_50%,transparent_50%,transparent_100%)] py-10 pt-[120px]">
       <Container>
         <div className="flex flex-row gap-7 items-center">
           <div className="min-h-[200px] md:h-[460px] lg:h-[550px]  w-[45%] shrink-0 overflow-hidden">
@@ -104,7 +103,7 @@ const Banner = () => {
                 unique ‘dental family’ united by a passion for excellence.
               </p>
               <div className="">
-                <Button href="/">Book Now</Button>
+                <Button href="/book-now">Book Now</Button>
               </div>
             </div>
           </div>

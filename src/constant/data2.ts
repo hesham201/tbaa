@@ -900,3 +900,8 @@ export const WELCOME_TO_LINEUP = {
   heading: "The",
   headingTwo: "Line Up",
 };
+export const BOOK_ONLINE = {
+  image: "/aboutus-header.jpg",
+  heading: "Book Your Place",
+  para:"BAAD Annual Scientific Meeting 2026",
+};

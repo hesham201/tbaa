@@ -41,6 +41,7 @@ export type INavItem = ISimpleDropdownItem | IRegularNavItem;
 export interface IBanner {
   image: string;
   heading: string;
+  para?: string;
 }
 export type SpeakerGroup = { date: string; speak: string[] };
 
