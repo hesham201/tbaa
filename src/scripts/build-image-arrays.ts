@@ -5,8 +5,7 @@ import path from "node:path";
 const ALLOWED: string[] = [".jpg", ".jpeg", ".png", ".webp", ".gif", ".avif"];
 // If you load a JSON map, give it a type:
 const MAP: Record<string, string> = {
-  "aesthetic-wizardry-unlocking-the-chamber-of-secrets":
-    "annual-conference-2012",
+  "aesthetic-wizardry-unlocking-the-chamber-of-secrets": "wonderful-world-2022",
 };
 
 async function listFolder(folder: string): Promise<string[]> {
@@ -25,7 +24,7 @@ async function listFolder(folder: string): Promise<string[]> {
       numeric: true,
       sensitivity: "base",
     });
-  }); 
+  });
 
   return files.map((f) => `${folder}/${f}`);
 }
