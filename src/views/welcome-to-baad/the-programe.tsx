@@ -169,7 +169,7 @@ const ThePrograme = () => {
                     ref={(el) => {
                       containerRefs.current[index] = el;
                     }}
-                    className="relative h-[350px] overflow-hidden rounded-xl">
+                    className="relative h-[400px] overflow-hidden rounded-xl">
                     <img
                       src={speaker.image}
                       alt={speaker.name}
