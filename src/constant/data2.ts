@@ -27,7 +27,7 @@ export const SPEAKER_DATA = [
     date: "FRIDAY 30TH JANUARY",
     time: "10:00 - 11:00",
     sessionSummary:
-      "A beautiful smile is more than an arrangement of teeth. It is a powerful expression of identity and emotion. In modern aesthetic dentistry, the creation of a natural smile demands more than technical expertise, it requires the seamless integration of artistic vision, scientific precision and communication. The lecture explores the multifaceted nature of smile design, focusing on three core pillars: The art of visual harmony and facial aesthetics, The science of colour analysis, dental materials and manufacturing techniques, and Communication between the lab, the dentist and the patient for more predictable and personalized outcomes.",
+      "A beautiful smile is more than an arrangement of teeth. It is a powerful expression of identity and emotion. In modern aesthetic dentistry, the creation of a natural smile demands more than technical expertise, it requires the seamless integration of artistic vision, scientific precision and communication. The lecture explores the multifaceted nature of smile design, focusing on three core pillars:<br> The art of visual harmony and facial aesthetics, The science of colour analysis, dental materials and manufacturing techniques, and Communication between the lab, the dentist and the patient for more predictable and personalized outcomes.",
     learningObjectives: [
       'Explain the significance of the "Smile Design" and all the important information that provides us',
       "Apply an interdisciplinary approach to smile design that blends dental science with artistic aesthetics and empathetic patient communication",
