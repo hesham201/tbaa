@@ -21,41 +21,7 @@ const STEP_ORDER: { key: StepKey; label: string }[] = [
   { key: "accommodation", label: "ACCOMMODATION" },
   { key: "billingDetails", label: "BILLING DETAILS" },
 ];
-const STEP_FIELDS: Record<StepKey, (keyof FormValues)[]> = {
-  yourDetails: [
-    "bookingCategory",
-    "title",
-    "firstName",
-    "surname",
-    "gdcNumber",
-    "address1",
-    "address2",
-    "city",
-    "postcode",
-    "country",
-    "telephone",
-    "email",
-  ],
-  bookingDetails: [
-    "conferenceBooking",
-    "notAttendingNote",
-    "dietaryRequirements",
-  ],
-  dinnerBooking: [
-    "additionalGuests",
-    "welcomeDinnerPlaces",
-    "themedDinnerPlaces",
-    "galaDinnerPlaces",
-    "dinnerDietaryRequirements",
-  ],
-  accommodation: [
-    "accommodationDates",
-    "accommodationRoomType",
-    "accommodationOccupancy",
-    "accommodationNights",
-  ],
-  billingDetails: ["billingNameOnCard", "billingAddress", "billingCardNumber"],
-};
+
 type FormValues = {
   // Step 1
   bookingCategory: string;
@@ -93,6 +59,42 @@ type FormValues = {
   billingNameOnCard: string;
   billingAddress: string;
   billingCardNumber: string;
+};
+
+const STEP_FIELDS: Record<StepKey, (keyof FormValues)[]> = {
+  yourDetails: [
+    "bookingCategory",
+    "title",
+    "firstName",
+    "surname",
+    "gdcNumber",
+    "address1",
+    "address2",
+    "city",
+    "postcode",
+    "country",
+    "telephone",
+    "email",
+  ],
+  bookingDetails: [
+    "conferenceBooking",
+    "notAttendingNote",
+    "dietaryRequirements",
+  ],
+  dinnerBooking: [
+    "additionalGuests",
+    "welcomeDinnerPlaces",
+    "themedDinnerPlaces",
+    "galaDinnerPlaces",
+    "dinnerDietaryRequirements",
+  ],
+  accommodation: [
+    "accommodationDates",
+    "accommodationRoomType",
+    "accommodationOccupancy",
+    "accommodationNights",
+  ],
+  billingDetails: ["billingNameOnCard", "billingAddress", "billingCardNumber"],
 };
 
 const initialValues: FormValues = {
@@ -133,6 +135,8 @@ const initialValues: FormValues = {
   billingCardNumber: "",
 };
 
+/* --------------------------- Yup step schemas --------------------------- */
+
 // Step 1 schema
 const yourDetailsSchema = Yup.object({
   bookingCategory: Yup.string().required("Please select a category."),
@@ -172,6 +176,7 @@ const dinnerBookingSchema = Yup.object({
   dinnerDietaryRequirements: Yup.string().trim().optional(),
 });
 
+// Step 4 schema
 const accommodationSchema = Yup.object({
   accommodationDates: Yup.array()
     .of(Yup.string())
@@ -190,11 +195,11 @@ const accommodationSchema = Yup.object({
   }),
 });
 
-// Step 5 schema (only name + address required)
+// Step 5 schema
 const billingDetailsSchema = Yup.object({
   billingNameOnCard: Yup.string().trim().required("Name on card is required."),
   billingAddress: Yup.string().trim().required("Billing address is required."),
-  billingCardNumber: Yup.string().trim().optional(), // mock input – no real processing
+  billingCardNumber: Yup.string().trim().optional(), // mock
 });
 
 function schemaFor(step: StepKey) {
@@ -368,6 +373,8 @@ function CheckboxField({
   );
 }
 
+/* ------------------------------ Component ------------------------------ */
+
 export default function BaadBookingForm() {
   const [stepIndex, setStepIndex] = useState(0);
   const current = STEP_ORDER[stepIndex];
@@ -401,12 +408,14 @@ export default function BaadBookingForm() {
       setTouched(touchedMap, false);
     }
   };
+
+  // simple total calculator based on dinners + accommodation
   const calcTotal = (v: FormValues) => {
     const toInt = (s: string) => (s ? parseInt(s, 10) || 0 : 0);
-
     const welcome = toInt(v.welcomeDinnerPlaces) * 100;
     const themed = toInt(v.themedDinnerPlaces) * 125;
     const gala = toInt(v.galaDinnerPlaces) * 115;
+
     let nights = 0;
     if (v.accommodationNights.includes("(2 nights)")) nights = 2;
     else if (v.accommodationNights.includes("(3 nights)")) nights = 3;
@@ -418,52 +427,14 @@ export default function BaadBookingForm() {
         : v.accommodationOccupancy
         ? 215
         : 0;
-
     const accom = nights * nightly;
 
     return welcome + themed + gala + accom;
   };
-
+  const countOptions = Array.from({ length: 6 }, (_, n) => n.toString());
   return (
     <div className="py-10">
       <Container>
-        {/* Stepper */}
-        <div className="mb-6 flex justify-center flex-wrap items-start gap-4">
-          {STEP_ORDER.map((s, idx) => {
-            const active = idx === stepIndex;
-            const done = idx < stepIndex;
-            return (
-              <div
-                key={s.key}
-                className="flex flex-col items-center text-center gap-2">
-                <div
-                  className={[
-                    "grid h-10 w-10 place-items-center rounded-md text-sm font-semibold",
-                    active
-                      ? "bg-midnight text-white"
-                      : done
-                      ? "bg-transparent text-black border-midnight border-2"
-                      : "bg-gray-200 text-gray-700",
-                  ].join(" ")}>
-                  {idx + 1}
-                </div>
-                <div
-                  className={[
-                    "text-xs font-semibold uppercase tracking-wide",
-                    active ? "text-midnight" : "text-gray-500",
-                  ].join(" ")}>
-                  {s.label}
-                </div>
-              </div>
-            );
-          })}
-        </div>
-
-        {/* Step Title */}
-        <h3 className="mb-4 text-lg font-semibold">
-          {current.label.charAt(0) + current.label.slice(1).toLowerCase()}
-        </h3>
-
         <Formik
           initialValues={initialValues}
           validationSchema={validationSchema}
@@ -473,448 +444,498 @@ export default function BaadBookingForm() {
             console.log("SUBMIT", values);
             alert("Form submitted (mock). Hook up your API.");
           }}>
-          {({
-            validateForm,
-            setTouched,
-            isSubmitting,
-            values,
-            errors,
-            touched,
-          }) => (
-            <Form className="space-y-6">
-              {/* ------------------------ Step 1 ------------------------ */}
-              {current.key === "yourDetails" && (
-                <div className="space-y-5">
-                  <SelectField
-                    label="Booking Category"
-                    name="bookingCategory"
-                    requiredMark>
-                    <option value="">Select category…</option>
-                    <option>Hononary Member</option>
-                    <option>Life Member</option>
-                    <option>Full Member</option>
-                    <option>Associate Member</option>
-                    <option>Non-Member</option>
-                    <option>Non-Member (IFED)</option>
-                    <option>Young BAAD</option>
-                  </SelectField>
+          {({ validateForm, setTouched, isSubmitting, values }) => {
+            // NEW: clickable stepper with validation on forward jumps
+            const tryGoToStep = async (targetIdx: number) => {
+              if (targetIdx <= stepIndex) {
+                setStepIndex(targetIdx); // going back is always allowed
+                return;
+              }
+              // validate CURRENT step before jumping forward
+              const allErrors = await validateForm();
+              const currentKeys = new Set(STEP_FIELDS[current.key]);
+              const stepErrors = Object.fromEntries(
+                Object.entries(allErrors).filter(([k]) =>
+                  currentKeys.has(k as keyof FormValues)
+                )
+              );
 
-                  <p className="text-xs leading-relaxed text-gray-600">
-                    Important: Day Rate, Price on Application. Please contact
-                    Penny Sykes at The Conference Shop for more details. Please
-                    email{" "}
-                    <span className="font-semibold">
-                      info@conferenceshop.com
-                    </span>{" "}
-                    or call Tel:{" "}
-                    <span className="font-semibold">0345 873 6299</span>
-                  </p>
+              if (Object.keys(stepErrors).length === 0) {
+                setStepIndex(targetIdx);
+              } else {
+                const touchedMap = Array.from(currentKeys).reduce<
+                  Record<string, boolean>
+                >((acc, key) => {
+                  if (stepErrors[key as string]) acc[key as string] = true;
+                  return acc;
+                }, {});
+                setTouched(touchedMap, false);
+              }
+            };
 
-                  <SelectField label="Title" name="title" requiredMark>
-                    <option value="">Select title…</option>
-                    <option>Dr</option>
-                    <option>Mr</option>
-                    <option>Ms</option>
-                    <option>Miss</option>
-                    <option>Mrs</option>
-                    <option>Prof</option>
-                  </SelectField>
-
-                  <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
-                    <TextField
-                      label="Firstname"
-                      name="firstName"
-                      requiredMark
-                    />
-                    <TextField label="Surname" name="surname" requiredMark />
-                  </div>
-
-                  <TextField label="GDC Number" name="gdcNumber" requiredMark />
-                  <TextField
-                    label="Address Line 1"
-                    name="address1"
-                    requiredMark
-                  />
-                  <TextField label="Address Line 2" name="address2" />
-
-                  <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
-                    <TextField label="City / Town" name="city" requiredMark />
-                    <TextField label="Postcode" name="postcode" requiredMark />
-                  </div>
-
-                  <TextField label="Country" name="country" requiredMark />
-
-                  <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
-                    <TextField
-                      label="Telephone"
-                      name="telephone"
-                      requiredMark
-                    />
-                    <TextField
-                      label="Email"
-                      name="email"
-                      type="email"
-                      requiredMark
-                    />
-                  </div>
+            return (
+              <>
+                {/* Stepper (now clickable) */}
+                <div className="mb-6 flex justify-center flex-wrap items-start gap-4">
+                  {STEP_ORDER.map((s, idx) => {
+                    const active = idx === stepIndex;
+                    const done = idx < stepIndex;
+                    return (
+                      <button
+                        type="button"
+                        key={s.key}
+                        onClick={() => tryGoToStep(idx)}
+                        className="flex flex-col items-center text-center gap-2 focus:outline-none">
+                        <div
+                          className={[
+                            "grid h-10 w-10 place-items-center rounded-md text-sm font-semibold cursor-pointer",
+                            active
+                              ? "bg-midnight text-white"
+                              : done
+                              ? "bg-transparent text-black border-midnight border-2"
+                              : "bg-gray-200 text-gray-700",
+                          ].join(" ")}>
+                          {idx + 1}
+                        </div>
+                        <div
+                          className={[
+                            "text-xs font-semibold uppercase tracking-wide",
+                            active ? "text-midnight" : "text-gray-500",
+                          ].join(" ")}>
+                          {s.label}
+                        </div>
+                      </button>
+                    );
+                  })}
                 </div>
-              )}
 
-              {/* ------------------------ Step 2 ------------------------ */}
-              {current.key === "bookingDetails" && (
-                <div className="space-y-6">
-                  <div>
-                    <FieldLabel required>Conference Booking</FieldLabel>
-                    <div className="-mt-1 mb-2 text-xs italic text-gray-500">
-                      {values.bookingCategory || "No category selected"}
-                    </div>
-                    <SelectField label="" name="conferenceBooking">
-                      <option value="">Select An Option</option>
-                      <option>Friday 30th & Saturday 31st</option>
-                    </SelectField>
-                  </div>
+                {/* Step Title */}
+                <h3 className="mb-4 text-lg font-semibold">
+                  {current.label.charAt(0) +
+                    current.label.slice(1).toLowerCase()}
+                </h3>
 
-                  {values.bookingCategory === "Hononary Member" && (
-                    <p className="text-sm leading-relaxed text-gray-700">
-                      <span className="font-semibold">Important:</span> As an
-                      Honorary BAAD member, All 3 Dinners have already been
-                      included FREE of charge within your price for a single
-                      person.
-                    </p>
-                  )}
+                <Form className="space-y-6">
+                  {/* ------------------------ Step 1 ------------------------ */}
+                  {current.key === "yourDetails" && (
+                    <div className="space-y-5">
+                      <SelectField
+                        label="Booking Category"
+                        name="bookingCategory"
+                        requiredMark>
+                        <option value="">Select category…</option>
+                        <option>Hononary Member</option>
+                        <option>Life Member</option>
+                        <option>Full Member</option>
+                        <option>Associate Member</option>
+                        <option>Non-Member</option>
+                        <option>Non-Member (IFED)</option>
+                        <option>Young BAAD</option>
+                      </SelectField>
 
-                  <TextAreaField
-                    label="If you aren’t attending either of the dinners please state below"
-                    name="notAttendingNote"
-                    rows={3}
-                  />
-
-                  <TextAreaField
-                    label="Do you have any special dietary requirements?"
-                    name="dietaryRequirements"
-                    rows={3}
-                  />
-                </div>
-              )}
-
-              {/* ------------------------ Step 3 ------------------------ */}
-              {current.key === "dinnerBooking" && (
-                <div className="space-y-6">
-                  <p className="text-base text-gray-800">
-                    To book your place or any additional places please specify
-                    below
-                  </p>
-
-                  {(values.bookingCategory === "Full Member" ||
-                    values.bookingCategory === "Life Member" ||
-                    values.bookingCategory === "Associate Member" ||
-                    values.bookingCategory === "Young BAAD") && (
-                    <p className="text-sm leading-relaxed text-gray-700">
-                      <span className="font-semibold">Important:</span> If you
-                      are a BAAD member / Associate Member / Young BAAD then
-                      your themed gala dinner is included in the price.
-                    </p>
-                  )}
-
-                  {values.bookingCategory === "Hononary Member" && (
-                    <p className="text-sm leading-relaxed text-gray-700">
-                      <span className="font-semibold">Important:</span> As an
-                      Honorary BAAD member, All 3 Dinners have already been
-                      included FREE of charge within your price for a single
-                      person.
-                    </p>
-                  )}
-
-                  <div>
-                    <FieldLabel>Will there be additional guests?</FieldLabel>
-                    <div className="mt-2">
-                      <RadioField
-                        name="additionalGuests"
-                        value="yes"
-                        label="yes"
-                      />
-                      <RadioField
-                        name="additionalGuests"
-                        value="no"
-                        label="no"
-                      />
-                    </div>
-                    {touched.additionalGuests && errors.additionalGuests && (
-                      <p className="mt-1 text-xs text-red-600">
-                        {errors.additionalGuests as string}
+                      <p className="text-xs leading-relaxed text-gray-600">
+                        Important: Day Rate, Price on Application. Please
+                        contact Penny Sykes at The Conference Shop for more
+                        details. Please email{" "}
+                        <span className="font-semibold">
+                          info@conferenceshop.com
+                        </span>{" "}
+                        or call Tel:{" "}
+                        <span className="font-semibold">0345 873 6299</span>
                       </p>
+
+                      <SelectField label="Title" name="title" requiredMark>
+                        <option value="">Select title…</option>
+                        <option>Dr</option>
+                        <option>Mr</option>
+                        <option>Ms</option>
+                        <option>Miss</option>
+                        <option>Mrs</option>
+                        <option>Prof</option>
+                      </SelectField>
+
+                      <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
+                        <TextField
+                          label="Firstname"
+                          name="firstName"
+                          requiredMark
+                        />
+                        <TextField
+                          label="Surname"
+                          name="surname"
+                          requiredMark
+                        />
+                      </div>
+
+                      <TextField
+                        label="GDC Number"
+                        name="gdcNumber"
+                        requiredMark
+                      />
+                      <TextField
+                        label="Address Line 1"
+                        name="address1"
+                        requiredMark
+                      />
+                      <TextField label="Address Line 2" name="address2" />
+
+                      <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
+                        <TextField
+                          label="City / Town"
+                          name="city"
+                          requiredMark
+                        />
+                        <TextField
+                          label="Postcode"
+                          name="postcode"
+                          requiredMark
+                        />
+                      </div>
+
+                      <TextField label="Country" name="country" requiredMark />
+
+                      <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
+                        <TextField
+                          label="Telephone"
+                          name="telephone"
+                          requiredMark
+                        />
+                        <TextField
+                          label="Email"
+                          name="email"
+                          type="email"
+                          requiredMark
+                        />
+                      </div>
+                    </div>
+                  )}
+
+                  {/* ------------------------ Step 2 ------------------------ */}
+                  {current.key === "bookingDetails" && (
+                    <div className="space-y-6">
+                      <div>
+                        <FieldLabel required>Conference Booking</FieldLabel>
+                        <div className="-mt-1 mb-2 text-xs italic text-gray-500">
+                          {values.bookingCategory || "No category selected"}
+                        </div>
+                        <SelectField label="" name="conferenceBooking">
+                          <option value="">Select An Option</option>
+                          <option>Friday 30th & Saturday 31st</option>
+                        </SelectField>
+                      </div>
+
+                      {values.bookingCategory === "Hononary Member" && (
+                        <p className="text-sm leading-relaxed text-gray-700">
+                          <span className="font-semibold">Important:</span> As
+                          an Honorary BAAD member, All 3 Dinners have already
+                          been included FREE of charge within your price for a
+                          single person.
+                        </p>
+                      )}
+
+                      <TextAreaField
+                        label="If you aren’t attending either of the dinners please state below"
+                        name="notAttendingNote"
+                        rows={3}
+                      />
+
+                      <TextAreaField
+                        label="Do you have any special dietary requirements?"
+                        name="dietaryRequirements"
+                        rows={3}
+                      />
+                    </div>
+                  )}
+
+                  {/* ------------------------ Step 3 ------------------------ */}
+                  {current.key === "dinnerBooking" && (
+                    <div className="space-y-6">
+                      <p className="text-base text-gray-800">
+                        To book your place or any additional places please
+                        specify below
+                      </p>
+
+                      {(values.bookingCategory === "Full Member" ||
+                        values.bookingCategory === "Life Member" ||
+                        values.bookingCategory === "Associate Member" ||
+                        values.bookingCategory === "Young BAAD") && (
+                        <p className="text-sm leading-relaxed text-gray-700">
+                          <span className="font-semibold">Important:</span> If
+                          you are a BAAD member / Associate Member / Young BAAD
+                          then your themed gala dinner is included in the price.
+                        </p>
+                      )}
+
+                      {values.bookingCategory === "Hononary Member" && (
+                        <p className="text-sm leading-relaxed text-gray-700">
+                          <span className="font-semibold">Important:</span> As
+                          an Honorary BAAD member, All 3 Dinners have already
+                          been included FREE of charge within your price for a
+                          single person.
+                        </p>
+                      )}
+
+                      <div>
+                        <FieldLabel>
+                          Will there be additional guests?
+                        </FieldLabel>
+                        <div className="mt-2">
+                          <RadioField
+                            name="additionalGuests"
+                            value="yes"
+                            label="yes"
+                          />
+                          <RadioField
+                            name="additionalGuests"
+                            value="no"
+                            label="no"
+                          />
+                        </div>
+                      </div>
+                      <div>
+                        <div className="mb-2 text-sm font-semibold text-gray-800">
+                          Welcome Dinner (Thursday 29th) Number of Places:
+                          £100.00 each
+                        </div>
+                        <SelectField label="" name="welcomeDinnerPlaces">
+                          <option value="">Select Number of Places</option>
+                          {countOptions.map((n) => (
+                            <option key={"w" + n} value={n}>
+                              {n}
+                            </option>
+                          ))}
+                        </SelectField>
+                      </div>
+                      {values.additionalGuests === "yes" && (
+                        <>
+                          <div>
+                            <div className="mb-2 text-sm font-semibold text-gray-800">
+                              Annual Themed Dinner (Friday 30th) Number of
+                              Places: £125.00 each
+                            </div>
+                            <SelectField label="" name="themedDinnerPlaces">
+                              <option value="">Select Number of Places</option>
+                              {countOptions.map((n) => (
+                                <option key={"t" + n} value={n}>
+                                  {n}
+                                </option>
+                              ))}
+                            </SelectField>
+                          </div>
+
+                          <div>
+                            <div className="mb-2 text-sm font-semibold text-gray-800">
+                              Gala Dinner (Saturday 31st) Number of Places:
+                              £115.00 each
+                            </div>
+                            <SelectField label="" name="galaDinnerPlaces">
+                              <option value="">Select Number of Places</option>
+                              {countOptions.map((n) => (
+                                <option key={"g" + n} value={n}>
+                                  {n}
+                                </option>
+                              ))}
+                            </SelectField>
+                          </div>
+                        </>
+                      )}
+
+                      <TextAreaField
+                        label="Do you have any special dietary requirements?"
+                        name="dinnerDietaryRequirements"
+                        rows={3}
+                      />
+                    </div>
+                  )}
+
+                  {/* ------------------------ Step 4 ------------------------ */}
+                  {current.key === "accommodation" && (
+                    <div className="space-y-6">
+                      <h4 className="text-xl font-semibold text-gray-800">
+                        HOTEL ACCOMMODATION REQUIREMENT
+                      </h4>
+
+                      <p className="text-sm leading-relaxed text-gray-700">
+                        The Conference Shop Ltd. in conjunction with BAAD, has
+                        negotiated special rates and allocations with the Hilton
+                        Syon Park Hotel (4 star) for delegates attending this
+                        event.
+                      </p>
+
+                      <p className="text-sm font-semibold text-gray-700 underline underline-offset-2">
+                        Minimum 2 night stay (30th & 31st January)
+                      </p>
+
+                      <div>
+                        <FieldLabel required>
+                          Which dates are you looking to book accommodation for?
+                        </FieldLabel>
+                        <div className="mt-2 flex flex-wrap items-center gap-4">
+                          <CheckboxField
+                            name="accommodationDates"
+                            value="thu29"
+                            label="Thursday 29th January"
+                          />
+                          <CheckboxField
+                            name="accommodationDates"
+                            value="fri30"
+                            label="Friday 30th January"
+                          />
+                          <CheckboxField
+                            name="accommodationDates"
+                            value="sat31"
+                            label="Saturday 31st January"
+                          />
+                        </div>
+                      </div>
+
+                      <div>
+                        <FieldLabel required>
+                          Would you like a standard room or upgraded Room?
+                        </FieldLabel>
+                        <div className="mt-2">
+                          <RadioField
+                            name="accommodationRoomType"
+                            value="standard"
+                            label="Standard Room"
+                          />
+                          <RadioField
+                            name="accommodationRoomType"
+                            value="upgraded"
+                            label="Upgraded Room"
+                          />
+                        </div>
+                      </div>
+
+                      <div>
+                        <FieldLabel required>
+                          Single, Double or Twin Occupancy?
+                        </FieldLabel>
+                        <div className="mt-2">
+                          <RadioField
+                            name="accommodationOccupancy"
+                            value="single"
+                            label="Single Occupancy"
+                          />
+                          <RadioField
+                            name="accommodationOccupancy"
+                            value="double"
+                            label="Double Occupancy"
+                          />
+                          <RadioField
+                            name="accommodationOccupancy"
+                            value="twin"
+                            label="Twin Occupancy"
+                          />
+                        </div>
+                      </div>
+
+                      {values.accommodationOccupancy && (
+                        <div>
+                          <div className="mb-1 text-sm font-semibold text-midnight">
+                            {values.accommodationOccupancy === "single"
+                              ? "Single Occupancy = £205.00/Night"
+                              : "Double or Twin Occupancy = £215.00/Night"}
+                          </div>
+                          <div className="-mt-1 mb-2 text-xs italic text-gray-500">
+                            THIS IS REQUIRED, DO NOT LEAVE BLANK
+                          </div>
+                          <SelectField
+                            label=""
+                            name="accommodationNights"
+                            requiredMark>
+                            <option value="">Select number of nights</option>
+                            <option>0</option>
+                            <option>
+                              Friday 30th Jan - Saturday 1st Feb (2 nights)
+                            </option>
+                            <option>
+                              Thursday 29th Jan - Saturday 1st Feb (3 nights)
+                            </option>
+                          </SelectField>
+                        </div>
+                      )}
+                    </div>
+                  )}
+
+                  {/* ------------------------ Step 5: Billing Details ------------------------ */}
+                  {current.key === "billingDetails" && (
+                    <div className="space-y-6">
+                      <div className="flex items-center justify-between">
+                        <h4 className="text-xl font-semibold text-gray-800">
+                          Billing Details
+                        </h4>
+                        <div className="rounded-r-md bg-blue-500 px-4 py-2 text-white font-semibold shadow">
+                          £ {calcTotal(values)}
+                        </div>
+                      </div>
+
+                      <TextField
+                        label="Name on Card"
+                        name="billingNameOnCard"
+                        requiredMark
+                      />
+                      <TextField
+                        label="Address"
+                        name="billingAddress"
+                        requiredMark
+                      />
+
+                      <div>
+                        <label className="mb-1 block text-sm font-semibold text-midnight">
+                          Card number
+                        </label>
+                        <input
+                          type="text"
+                          name="billingCardNumber"
+                          value={values.billingCardNumber}
+                          onChange={() => {}}
+                          placeholder="Card number"
+                          className="w-full rounded-md border border-gray-300 px-3 py-2 text-sm text-midnight outline-none"
+                        />
+                        <p className="mt-1 text-xs text-gray-500">
+                          (Mock field – integrate your payment processor later)
+                        </p>
+                      </div>
+
+                      <button
+                        type="submit"
+                        className="w-full rounded-md bg-midnight px-5 py-3 text-sm font-semibold text-white cursor-pointer">
+                        Confirm Booking
+                      </button>
+                    </div>
+                  )}
+
+                  {/* Actions */}
+                  <div className="flex items-center justify-between pt-2">
+                    <button
+                      type="button"
+                      onClick={goPrev}
+                      disabled={stepIndex === 0 || isSubmitting}
+                      className="rounded-md border border-gray-300 px-4 py-2 text-sm font-medium text-gray-700 disabled:opacity-50 cursor-pointer">
+                      Previous
+                    </button>
+
+                    {stepIndex < STEP_ORDER.length - 1 ? (
+                      <button
+                        type="button"
+                        onClick={() => tryNext(validateForm, setTouched)}
+                        className="rounded-md bg-midnight px-5 py-2 text-sm font-semibold text-white cursor-pointer">
+                        Next
+                      </button>
+                    ) : (
+                      <button
+                        type="submit"
+                        disabled
+                        className="rounded-md bg-midnight px-5 py-2 text-sm font-semibold text-white disabled:opacity-50 disabled:cursor-not-allowed">
+                        Next
+                      </button>
                     )}
                   </div>
-
-                  <div>
-                    <div className="mb-2 text-sm font-semibold text-gray-800">
-                      Welcome Dinner (Thursday 29th) Number of Places: £100.00
-                      each
-                    </div>
-                    <SelectField label="" name="welcomeDinnerPlaces">
-                      <option value="">Select Number of Places</option>
-                      {Array.from({ length: 11 }, (_, n) => n.toString()).map(
-                        (n) => (
-                          <option key={"w" + n} value={n}>
-                            {n}
-                          </option>
-                        )
-                      )}
-                    </SelectField>
-                  </div>
-
-                  <div>
-                    <div className="mb-2 text-sm font-semibold text-gray-800">
-                      Annual Themed Dinner (Friday 30th) Number of Places:
-                      £125.00 each
-                    </div>
-                    <SelectField label="" name="themedDinnerPlaces">
-                      <option value="">Select Number of Places</option>
-                      {Array.from({ length: 11 }, (_, n) => n.toString()).map(
-                        (n) => (
-                          <option key={"t" + n} value={n}>
-                            {n}
-                          </option>
-                        )
-                      )}
-                    </SelectField>
-                  </div>
-
-                  <div>
-                    <div className="mb-2 text-sm font-semibold text-gray-800">
-                      Gala Dinner (Saturday 31st) Number of Places: £115.00 each
-                    </div>
-                    <SelectField label="" name="galaDinnerPlaces">
-                      <option value="">Select Number of Places</option>
-                      {Array.from({ length: 11 }, (_, n) => n.toString()).map(
-                        (n) => (
-                          <option key={"g" + n} value={n}>
-                            {n}
-                          </option>
-                        )
-                      )}
-                    </SelectField>
-                  </div>
-
-                  <TextAreaField
-                    label="Do you have any special dietary requirements?"
-                    name="dinnerDietaryRequirements"
-                    rows={3}
-                  />
-                </div>
-              )}
-
-              {/* ------------------------ Step 4 ------------------------ */}
-              {current.key === "accommodation" && (
-                <div className="space-y-6">
-                  <h4 className="text-xl font-semibold text-gray-800">
-                    HOTEL ACCOMMODATION REQUIREMENT
-                  </h4>
-
-                  <p className="text-sm leading-relaxed text-gray-700">
-                    The Conference Shop Ltd. in conjunction with BAAD, has
-                    negotiated special rates and allocations with the Hilton
-                    Syon Park Hotel (4 star) for delegates attending this event.
-                  </p>
-
-                  <p className="text-sm font-semibold text-gray-700 underline underline-offset-2">
-                    Minimum 2 night stay (30th & 31st January)
-                  </p>
-
-                  {/* Dates (checkbox group) */}
-                  <div>
-                    <FieldLabel required>
-                      Which dates are you looking to book accommodation for?
-                    </FieldLabel>
-                    <div className="mt-2 flex flex-wrap items-center gap-4">
-                      <CheckboxField
-                        name="accommodationDates"
-                        value="thu29"
-                        label="Thursday 29th January"
-                      />
-                      <CheckboxField
-                        name="accommodationDates"
-                        value="fri30"
-                        label="Friday 30th January"
-                      />
-                      <CheckboxField
-                        name="accommodationDates"
-                        value="sat31"
-                        label="Saturday 31st January"
-                      />
-                    </div>
-                    {touched.accommodationDates &&
-                      typeof errors.accommodationDates === "string" && (
-                        <p className="mt-1 text-xs text-red-600">
-                          {errors.accommodationDates}
-                        </p>
-                      )}
-                  </div>
-
-                  {/* Room type (radio) */}
-                  <div>
-                    <FieldLabel required>
-                      Would you like a standard room or upgraded Room?
-                    </FieldLabel>
-                    <div className="mt-2">
-                      <RadioField
-                        name="accommodationRoomType"
-                        value="standard"
-                        label="Standard Room"
-                      />
-                      <RadioField
-                        name="accommodationRoomType"
-                        value="upgraded"
-                        label="Upgraded Room"
-                      />
-                    </div>
-                    {touched.accommodationRoomType &&
-                      errors.accommodationRoomType && (
-                        <p className="mt-1 text-xs text-red-600">
-                          {errors.accommodationRoomType as string}
-                        </p>
-                      )}
-                  </div>
-
-                  {/* Occupancy (radio) */}
-                  <div>
-                    <FieldLabel required>
-                      Single, Double or Twin Occupancy?
-                    </FieldLabel>
-                    <div className="mt-2">
-                      <RadioField
-                        name="accommodationOccupancy"
-                        value="single"
-                        label="Single Occupancy"
-                      />
-                      <RadioField
-                        name="accommodationOccupancy"
-                        value="double"
-                        label="Double Occupancy"
-                      />
-                      <RadioField
-                        name="accommodationOccupancy"
-                        value="twin"
-                        label="Twin Occupancy"
-                      />
-                    </div>
-                    {touched.accommodationOccupancy &&
-                      errors.accommodationOccupancy && (
-                        <p className="mt-1 text-xs text-red-600">
-                          {errors.accommodationOccupancy as string}
-                        </p>
-                      )}
-                  </div>
-
-                  {/* Dynamic nights dropdown with pricing text */}
-                  {values.accommodationOccupancy && (
-                    <div>
-                      <div className="mb-1 text-sm font-semibold text-midnight">
-                        {values.accommodationOccupancy === "single"
-                          ? "Single Occupancy = £205.00/Night"
-                          : "Double or Twin Occupancy = £215.00/Night"}
-                      </div>
-                      <div className="-mt-1 mb-2 text-xs italic text-gray-500">
-                        THIS IS REQUIRED, DO NOT LEAVE BLANK
-                      </div>
-                      <SelectField
-                        label=""
-                        name="accommodationNights"
-                        requiredMark>
-                        <option value="">Select number of nights</option>
-                        <option>0</option>
-                        <option>
-                          Friday 30th Jan - Saturday 1st Feb (2 nights)
-                        </option>
-                        <option>
-                          Thursday 29th Jan - Saturday 1st Feb (3 nights)
-                        </option>
-                      </SelectField>
-                    </div>
-                  )}
-                </div>
-              )}
-
-              {/* ------------------------ Step 5: Billing Details ------------------------ */}
-              {current.key === "billingDetails" && (
-                <div className="space-y-6">
-                  <div className="flex items-center justify-between">
-                    <h4 className="text-xl font-semibold text-gray-800">
-                      Billing Details
-                    </h4>
-                    <div className="rounded-r-md bg-blue-500 px-4 py-2 text-white font-semibold shadow">
-                      £ {calcTotal(values)}
-                    </div>
-                  </div>
-
-                  <TextField
-                    label="Name on Card"
-                    name="billingNameOnCard"
-                    requiredMark
-                    placeholder=""
-                  />
-
-                  <TextField
-                    label="Address"
-                    name="billingAddress"
-                    requiredMark
-                    placeholder=""
-                  />
-
-                  {/* Mock card input (non-functional) */}
-                  <div>
-                    <label className="mb-1 block text-sm font-semibold text-midnight">
-                      Card number
-                    </label>
-                    <input
-                      type="text"
-                      name="billingCardNumber"
-                      value={values.billingCardNumber}
-                      onChange={() => {}}
-                      placeholder="Card number"
-                      className="w-full rounded-md border border-gray-300 px-3 py-2 text-sm text-midnight outline-none"
-                    />
-                    <p className="mt-1 text-xs text-gray-500">
-                      (Mock field – integrate your payment processor later)
-                    </p>
-                  </div>
-
-                  <button
-                    type="submit"
-                    className="w-full rounded-md bg-midnight px-5 py-3 text-sm font-semibold text-white cursor-pointer">
-                    Confirm Booking
-                  </button>
-                </div>
-              )}
-
-              {/* Actions */}
-              <div className="flex items-center justify-between pt-2">
-                <button
-                  type="button"
-                  onClick={goPrev}
-                  disabled={stepIndex === 0 || isSubmitting}
-                  className="rounded-md border border-gray-300 px-4 py-2 text-sm font-medium text-gray-700 disabled:opacity-50 cursor-pointer">
-                  Previous
-                </button>
-
-                {stepIndex < STEP_ORDER.length - 1 ? (
-                  <button
-                    type="button"
-                    onClick={() => tryNext(validateForm, setTouched)}
-                    className="rounded-md bg-midnight px-5 py-2 text-sm font-semibold text-white cursor-pointer">
-                    Next
-                  </button>
-                ) : (
-                  <button
-                    type="submit"
-                    disabled // ⬅ disables submit
-                    className="rounded-md bg-midnight px-5 py-2 text-sm font-semibold text-white disabled:opacity-50 disabled:cursor-not-allowed">
-                    Next
-                  </button>
-                )}
-              </div>
-            </Form>
-          )}
+                </Form>
+              </>
+            );
+          }}
         </Formik>
       </Container>
     </div>
