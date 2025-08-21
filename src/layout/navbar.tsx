@@ -403,8 +403,7 @@ const Header = () => {
                 className="flex h-[50px] gap-2 cursor-pointer items-center"
                 onMouseEnter={hoveredOpen}
                 onMouseLeave={hoveredClose}
-                onClick={openMenuFunct}
-              >
+                onClick={openMenuFunct}>
                 <div className="h-[20px] w-[30px] text-midnight relative">
                   {/* first line  */}
                   <div
@@ -412,24 +411,21 @@ const Header = () => {
                       isHovered
                         ? "top-1/2 -translate-y-1/2 w-[4px] h-[4px] rounded-full"
                         : ""
-                    }`}
-                  ></div>
+                    }`}></div>
                   {/* second line  */}
                   <div
                     className={`w-full h-[2px] top-1/2 -translate-y-1/2 absolute bg-black transition-all duration-300 ${
                       isHovered
                         ? "!w-[4px] h-[4px] rounded-full left-1/2 -translate-1/2"
                         : ""
-                    }`}
-                  ></div>
+                    }`}></div>
                   {/* Third line  */}
                   <div
                     className={`w-1/2 h-[2px] bottom-0 right-0 absolute bg-black transition-all duration-300 ${
                       isHovered
                         ? "w-[4px] h-[4px] rounded-full top-1/2 -translate-y-1/2"
                         : ""
-                    }`}
-                  ></div>
+                    }`}></div>
                 </div>
                 <div className="relative text-lg overflow-hidden">
                   <p className={`relative text-midnight`} id="menu">
@@ -437,8 +433,7 @@ const Header = () => {
                   </p>
                   <p
                     id="open"
-                    className={`absolute left-0 bottom-0 text-midnight translate-y-full duration-300`}
-                  >
+                    className={`absolute left-0 bottom-0 text-midnight translate-y-full duration-300`}>
                     Open
                   </p>
                 </div>
@@ -447,8 +442,7 @@ const Header = () => {
           </Container>
           <Link
             href={"/2026-sc"}
-            className="p-3 block text-center bg-red-600 text-white"
-          >
+            className="p-1 md:p-3 block text-center bg-red-600 text-[15px] md:text-lg text-white">
             CLICK HERE TO BOOK YOUR PLACE ON OUR ANNUAL BAAD CONFERENCE 2026
           </Link>
         </div>
@@ -458,8 +452,7 @@ const Header = () => {
           // data-scroll-section
           className={`fixed bg-dark top-[100vh] left-0 w-full h-full z-[10001] ${
             openMenu ? "" : ""
-          }`}
-        >
+          }`}>
           <nav className="h-[100vh] bg-[url(/menu-bg.webp)] bg-cover w-full">
             <div className="absolute top-0 w-full z-[10001]" id="main-menu-nav">
               <Container>
@@ -478,17 +471,14 @@ const Header = () => {
                     className="flex gap-2 cursor-pointer items-center"
                     onMouseEnter={hoveredOpenOne}
                     onMouseLeave={hoveredCloseOne}
-                    onClick={CloseMenuFunct}
-                  >
+                    onClick={CloseMenuFunct}>
                     <div className="h-[30px] w-[20px] text-midnight relative">
                       {/* first line  */}
                       <div
-                        className={`h-full w-[2px] absolute top-0 right-[9px] rotate-45 bg-midnight transition-all duration-300 `}
-                      ></div>
+                        className={`h-full w-[2px] absolute top-0 right-[9px] rotate-45 bg-midnight transition-all duration-300 `}></div>
                       {/* Third line  */}
                       <div
-                        className={`h-full w-[2px] -rotate-45 bottom-0 left-[9px] absolute bg-midnight transition-all duration-300 `}
-                      ></div>
+                        className={`h-full w-[2px] -rotate-45 bottom-0 left-[9px] absolute bg-midnight transition-all duration-300 `}></div>
                     </div>
                     <div className="relative text-lg overflow-hidden">
                       <p className={`relative text-midnight`} id="menu-inner">
@@ -496,8 +486,7 @@ const Header = () => {
                       </p>
                       <p
                         id="close"
-                        className={`absolute bottom-0 translate-y-full text-midnight duration-300`}
-                      >
+                        className={`absolute bottom-0 translate-y-full text-midnight duration-300`}>
                         Close
                       </p>
                     </div>
@@ -514,8 +503,7 @@ const Header = () => {
                         {nav.isDropdown ? (
                           <button
                             className="text-4xl cursor-pointer text-midnight transition-all duration-300 tracking-normal origin-top-left hover:tracking-wider hover:skew-1 inline-block"
-                            onClick={() => dropdownOpen(index)}
-                          >
+                            onClick={() => dropdownOpen(index)}>
                             <span className="text-lg">0{index + 1}</span>{" "}
                             {nav.name}
                           </button>
@@ -524,8 +512,7 @@ const Header = () => {
                             className="text-4xl transition-all text-midnight duration-300 tracking-normal origin-top-left hover:tracking-wider hover:skew-[1deg] inline-block"
                             onClick={() => {
                               handleDropdownLinkClick(nav.link);
-                            }}
-                          >
+                            }}>
                             <span className="text-lg">0{index + 1}</span>{" "}
                             {nav.name}
                           </button>
@@ -536,13 +523,11 @@ const Header = () => {
                   {dropdown !== null && NAV_ITEMS[dropdown].isDropdown && (
                     <ul
                       className="absolute top-1/2 -translate-y-1/2 flex flex-col gap-4"
-                      id="dropdown-nav"
-                    >
+                      id="dropdown-nav">
                       <li>
                         <button
                           className="cursor-pointer text-midnight transition-all duration-300 "
-                          onClick={backMainMenu}
-                        >
+                          onClick={backMainMenu}>
                           Back
                         </button>
                       </li>
@@ -552,8 +537,7 @@ const Header = () => {
                             className="text-4xl lg:text-nowrap text-midnight cursor-pointer transition-all duration-300 tracking-normal origin-top-left hover:tracking-wider hover:skew-1 inline-block"
                             onClick={() => {
                               handleDropdownLinkClick(nav.link);
-                            }}
-                          >
+                            }}>
                             <span className="text-lg">0{index + 1}</span>{" "}
                             {nav.name}
                           </button>
@@ -564,8 +548,7 @@ const Header = () => {
                 </div>
                 <div
                   className="hidden lg:flex flex-col gap-2 w-[25%] ps-6 border-l text-midnight border-midnight"
-                  id="address"
-                >
+                  id="address">
                   <div>
                     <p>
                       Gower House, 18 Ashmere Lane, Felpham, West Sussex, PO22
@@ -589,8 +572,7 @@ const Header = () => {
                       <div>
                         <a
                           href="https://www.facebook.com/BAADacademy/"
-                          target="_blank"
-                        >
+                          target="_blank">
                           <Image
                             src={"/facebook.svg"}
                             width={100}
@@ -603,8 +585,7 @@ const Header = () => {
                       <div>
                         <a
                           href="https://www.linkedin.com/company/british-academy-of-aesthetic-dentistry/about/"
-                          target="_blank"
-                        >
+                          target="_blank">
                           <Image
                             src={"/linkedin.svg"}
                             width={100}
@@ -617,8 +598,7 @@ const Header = () => {
                       <div>
                         <a
                           href="https://www.instagram.com/baadaestheticdentistry/"
-                          target="_blank"
-                        >
+                          target="_blank">
                           <Image
                             src={"/instagram.svg"}
                             width={100}
@@ -636,13 +616,11 @@ const Header = () => {
             <div
               id="overlay"
               ref={overlayRef}
-              className="fixed left-0 right-0 top-[-10vh] h-[130vh] z-[1000001] pointer-events-none opacity-0"
-            >
+              className="fixed left-0 right-0 top-[-10vh] h-[130vh] z-[1000001] pointer-events-none opacity-0">
               <svg
                 className="absolute inset-0 w-full h-full text-midnight"
                 viewBox="0 0 100 100"
-                preserveAspectRatio="none"
-              >
+                preserveAspectRatio="none">
                 <path ref={pathRef} fill="currentColor" d={PATH_THIN_BOTTOM} />
               </svg>
             </div>

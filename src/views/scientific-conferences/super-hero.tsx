@@ -15,7 +15,7 @@ const SuperHero = () => {
   const bgWrapperRef = useRef<HTMLDivElement>(null);
   const bgWrapperRef2 = useRef<HTMLDivElement>(null);
   const bgImageRef = useRef<HTMLImageElement>(null);
-  const bgImageRef2 = useRef<HTMLImageElement>(null);
+  const bgImageRef2 = useRef<HTMLDivElement>(null);
   useGSAP(() => {
     gsap.fromTo(
       bgImageRef.current,
@@ -35,24 +35,43 @@ const SuperHero = () => {
         },
       }
     );
-    // gsap.fromTo(
-    //   bgImageRef2.current,
-    //   {
-    //     y: "-10%", // Start position (slightly above)
-    //     scale: 1.2,
-    //   },
-    //   {
-    //     y: "10%", // End position (slightly below)
-    //     scale: 1,
-    //     ease: "none",
-    //     scrollTrigger: {
-    //       trigger: bgWrapperRef2.current,
-    //       start: "top bottom",
-    //       end: "bottom top",
-    //       scrub: true,
-    //     },
-    //   }
-    // );
+    gsap.fromTo(
+      bgImageRef2.current,
+      {
+        x: "200px", // Start position (slightly above
+      },
+      {
+        x: "0",
+
+        ease: "none",
+        scrollTrigger: {
+          trigger: bgWrapperRef2.current,
+          start: "top bottom",
+          end: "bottom top",
+          scrub: true,
+        },
+      }
+    );
+    const img = bgImageRef2.current?.querySelector("img");
+    if (!img || !bgWrapperRef2.current) return;
+    gsap.fromTo(
+      img,
+      {
+        y: "-10%", // Start position (slightly above)
+        scale: 1.2,
+      },
+      {
+        y: "10%", // End position (slightly below)
+        scale: 1,
+        ease: "none",
+        scrollTrigger: {
+          trigger: bgWrapperRef2.current,
+          start: "top bottom",
+          end: "bottom top",
+          scrub: true,
+        },
+      }
+    );
     gsap.from("#our-events-heading", {
       y: 50,
       opacity: 1,
@@ -116,9 +135,10 @@ const SuperHero = () => {
                 </Button>
               </div>
             </div>
-            <div className="relative w-full hidden lg:block lg:w-[35%] overflow-hidden rounded-2xl shrink-0 h-[600px]">
+            <div
+              ref={bgImageRef2}
+              className="relative w-full hidden lg:block lg:w-[35%] overflow-hidden rounded-2xl shrink-0 h-[600px]">
               <img
-                ref={bgImageRef2}
                 src="/poster-one.png"
                 className="absolute top-0 left-0 w-full h-full object-cover will-change-transform pointer-events-none"
                 alt=""
