@@ -139,7 +139,7 @@ export const SPEAKER_DATA = [
   },
   {
     name: "Dr. Ute Schneider",
-    image: "/sc-2026/dr-ute-schneider.jpg",
+    image: "/sc-2026/dr-ute-schneider.jpg", 
     slug: "dr-ute-schneider",
     title: "The Ongoing Dilemma of the Missing Upper Incisor",
     date: "SATURDAY 31ST JANUARY",
