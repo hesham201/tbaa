@@ -446,7 +446,7 @@ const Header = () => {
             </div>
           </Container>
           <Link
-            href={"//scientific-conferences"}
+            href={"/2026-sc"}
             className="p-3 block text-center bg-red-600 text-white"
           >
             CLICK HERE TO BOOK YOUR PLACE ON OUR ANNUAL BAAD CONFERENCE 2026
