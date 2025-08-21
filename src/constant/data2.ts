@@ -1,7 +1,7 @@
 export const SPEAKER_DATA = [
   {
     name: "Dr. Marco Veneziani",
-    image: "/sc-2026/dr-marco-veneziani.jpg",
+    image: "/sc-2026/dr-marco-veneziani.webp",
     slug: "dr-marco-veneziani",
     title:
       'Injection Moulding Technique: The "Customised Hybrid Index" And Updated Clinical Procedures.',
@@ -20,7 +20,7 @@ export const SPEAKER_DATA = [
   },
   {
     name: "MDT. Maria Spanopoulou",
-    image: "/sc-2026/maria-spanopoulou.png",
+    image: "/sc-2026/maria-spanopoulou.webp",
     slug: "mdt-maria-spanopoulou",
     title: "The Art of the Smile. Blending Art, Science and Human Connection",
     date: "FRIDAY 30TH JANUARY",
@@ -43,7 +43,7 @@ export const SPEAKER_DATA = [
   },
   {
     name: "Dr. Massimo Giovarruscio",
-    image: "/sc-2026/dr-massimo-giovarruscio.jpg",
+    image: "/sc-2026/dr-massimo-giovarruscio.webp",
     slug: "dr-massimo-giovarruscio",
     title:
       "Thrill of the Fill: Mastering Complex Canals and Restoration with Minimally Invasive Approach",
@@ -81,7 +81,7 @@ export const SPEAKER_DATA = [
   },
   {
     name: "Dr. Diana Boangar",
-    image: "/sc-2026/dr-diana-boangar.jpg",
+    image: "/sc-2026/dr-diana-boangar.webp",
     slug: "dr-diana-boangar",
     title: "WHO'S BAAD: An Interdisciplinary Ortho-Prosthetic Thriller Story",
     date: "FRIDAY 30TH JANUARY",
@@ -99,7 +99,7 @@ export const SPEAKER_DATA = [
   },
   {
     name: "Dr. Nelson Leon",
-    image: "/sc-2026/dr-nelson-leon.jpeg",
+    image: "/sc-2026/dr-nelson-leon.webp",
     slug: "dr-nelson-leon",
     title:
       "Surgical Strategies to Achieve Esthetics in Minimally Invasive Orthognathic Surgery (MIOS)",
@@ -119,7 +119,7 @@ export const SPEAKER_DATA = [
   },
   {
     name: "Dr. Tif Qureshi",
-    image: "/sc-2026/dr-tif-qureshi.png",
+    image: "/sc-2026/dr-tif-qureshi.webp",
     slug: "dr-tif-qureshi",
     title: "25 Years of Reflections",
     date: "SATURDAY 31ST JANUARY",
@@ -173,7 +173,7 @@ export const SPEAKER_DATA = [
   },
   {
     name: "Dr. Gustavo Giordani",
-    image: "/sc-2026/dr-gustavo-giordani.jpg",
+    image: "/sc-2026/dr-gustavo-giordani.webp",
     slug: "dr-gustavo-giordani",
     title:
       "Digital Interdisciplinary Treatment - How to Combine Biology with Technology to Achieve Predictability in Aesthetic Zone",
@@ -197,7 +197,7 @@ export const SPEAKER_DATA = [
   },
   {
     name: "Dr. Ramon Gomez Meda",
-    image: "/sc-2026/dr-ramon-gomez-meda.jpeg",
+    image: "/sc-2026/dr-ramon-gomez-meda.webp",
     slug: "dr-ramon-gomez-meda",
     title:
       "Hard & Soft Tissue Management in the Esthetic Area to Achieve Predictable Results: From Class I to Class III",
