@@ -45,7 +45,7 @@ const WhenAndWhite = () => {
   return (
     <div className="py-5 mt-28 bg-primary text-white">
       <Container>
-        <div className="flex flex-row justify-between gap-9">
+        <div className="flex flex-col lg:flex-row justify-between gap-9">
           <div>
             <h2 className="text-[50px] text-midnight mb-3">When And Where</h2>
             <div className="w-fit bg-white text-black p-2 mb-4">
@@ -63,8 +63,7 @@ const WhenAndWhite = () => {
           </div>
           <div
             ref={imageRef}
-            className="h-[350px] w-[45%] shrink-0 overflow-hidden rounded-lg"
-          >
+            className="w-full h-auto lg:h-[350px] lg:w-[45%] shrink-0 overflow-hidden rounded-lg">
             <img src="/extracted.webp" alt="image" />
           </div>
         </div>

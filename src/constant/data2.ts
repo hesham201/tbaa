@@ -825,7 +825,7 @@ export const PROGRAMME_DATA = {
       },
       {
         time: "1415 - 1515 hrs",
-        event: "Dr. Ionut Branzan & Dr. Diana Boangar",
+        event: "<a href='/2026-sc/dr-ionut-branzan'>Dr. Ionut Branzan</a> & <a href='/2026-sc/dr-diana-boangar'>Dr. Diana Boangar</a>",
         description:
           "WHO'S BAAD: an interdisciplinary ortho-prosthetic thriller story",
       },
@@ -873,7 +873,7 @@ export const PROGRAMME_DATA = {
       },
       {
         time: "1030 - 1100 hrs",
-        event: "Coffee Break",
+        event: "<p class='mt-3.5'>Coffee Break</p>",
       },
       {
         time: "1100 - 1145 hrs",
@@ -890,21 +890,21 @@ export const PROGRAMME_DATA = {
       },
       {
         time: "1230 - 1315 hrs",
-        event: "Debate",
+        event: "<p class='mt-3.5'>Debate</p>",
       },
       {
         time: "1315 - 1415 hrs",
-        event: "Lunch",
+        event: "<p class='mt-3.5'>Lunch</p>",
       },
       {
         time: "1415 - 1515 hrs",
-        event: "BAAD MEMORIAL LECTURE - Dr. Ramón Gomez-Meda",
+        event: "<p class='bg-primary p-3 text-white' >BAAD MEMORIAL LECTURE</p> Dr. Ramón Gomez-Meda",
         description:
           "Hard & Soft tissue management in the esthetic area to achieve predictable results: from Class I to Class III",
       },
       {
         time: "1515 - 1545 hrs",
-        event: "Tea Break",
+        event: "<p class='mt-3.5'>Tea Break</p>",
       },
       {
         time: "1545 - 1645 hrs",
@@ -915,11 +915,11 @@ export const PROGRAMME_DATA = {
       },
       {
         time: "1645 - 1715 hrs",
-        event: "Debate",
+        event: "<p class='mt-3.5'>Debate</p>",
       },
       {
         time: "1900 hrs Onwards",
-        event: "Gala Dinner",
+        event: "<p class='mt-3.5'>Gala Dinner</p>",
       },
     ],
   },

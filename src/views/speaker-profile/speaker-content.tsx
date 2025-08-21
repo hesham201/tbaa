@@ -65,10 +65,10 @@ const SpeakerContent: React.FC<SpeakerContentProps> = ({ speakerId = "0" }) => {
         {/* Session Summary */}
         <div className="py-8">
           <h3 className="text-5xl mb-4">
-            <span className="text-outline">Session</span>
-            <span className="ml-2 text-midnight">Summary</span>
+            <span className="text-outline">About</span>
+            <span className="ml-2 text-midnight">The Speaker</span>
           </h3>
-          <p className="text-base mb-6">{speaker.sessionSummary}</p>
+          <p className="text-base mb-6">{speaker.aboutSpeaker}</p>
         </div>
       </Container>
 
@@ -76,14 +76,10 @@ const SpeakerContent: React.FC<SpeakerContentProps> = ({ speakerId = "0" }) => {
       <div className="py-8 bg-primary w-full">
         <Container>
           <h3 className="text-5xl mb-4">
-            <span className="text-outline">Learning</span>
-            <span className="ml-2 text-midnight">Aims & Objectives</span>
+            <span className=" text-midnight">Abstract</span>
           </h3>
-          <ul className="space-y-4 pl-6">
-            {speaker.learningObjectives.map((objective, index) => (
-              <li key={index}>• {objective}</li>
-            ))}
-          </ul>
+          <p className="text-base mb-6 text-left">{speaker.sessionSummary}</p>
+
           <div className="mt-6">
             <Button href="#booking">BOOK NOW</Button>
           </div>
@@ -92,13 +88,17 @@ const SpeakerContent: React.FC<SpeakerContentProps> = ({ speakerId = "0" }) => {
 
       <Container>
         {/* About The Speaker */}
-        <div className="py-8 text-center">
-          <h3 className="text-5xl mb-4">
-            <span className="text-outline">About</span>
-            <span className="ml-2 text-midnight">The Speaker</span>
+        <div className="py-8 ">
+          <h3 className="text-5xl mb-4 text-center">
+            <span className="text-outline">Learning</span>
+            <span className="ml-2 text-midnight">Aims & Objectives</span>
           </h3>
-          <p className="text-base mb-6 text-left">{speaker.aboutSpeaker}</p>
-          <div className="mb-6">
+          <ul className="space-y-4 pl-6">
+            {speaker.learningObjectives.map((objective, index) => (
+              <li key={index}>• {objective}</li>
+            ))}
+          </ul>
+          <div className="mb-6 text-center mt-5">
             <Button href="#booking">BOOK NOW</Button>
           </div>
         </div>
