@@ -14,6 +14,25 @@ const Banner = ({ data }: { data: IBanner }) => {
     const split = new SplitType("#home-h1", { types: "words,chars" });
     const splitPara = new SplitType("#video-para", { types: "words,chars" });
     const tl: GSAPTimeline = gsap.timeline();
+    gsap.fromTo(
+      ".video-div-main img",
+      { y: "20%", scale: 1.1 }, // Adjust x based on index for staggered effect
+      {
+        y: "-20%",
+        scale: 1,
+
+        ease: "none",
+        scrollTrigger: {
+          trigger: ".video-div-main",
+          start: "top bottom",
+          end: "bottom top",
+          // onEnter: () => console.log("▶️ Entered trigger area"),
+          // onLeaveBack: () => console.log("↩️ Left going back"),
+          // markers: true,
+          scrub: true,
+        },
+      }
+    );
     gsap.to(".logo-faded", {
       clipPath: "inset(0% 0% 0% 0%)",
       duration: 0.5,
@@ -27,7 +46,7 @@ const Banner = ({ data }: { data: IBanner }) => {
     });
 
     tl.to(".video-main-div", {
-      height: "520px", // ← use an exact value
+      height: "600px", // ← use an exact value
       ease: "power2.out",
       duration: 1,
     });
@@ -45,18 +64,20 @@ const Banner = ({ data }: { data: IBanner }) => {
   return (
     <div
       ref={headerRef}
-      className="relative bg-[linear-gradient(to_bottom,#031A37_0%,#031A37_60%,transparent_60%,transparent_100%)] py-10 pt-[120px]">
+      className="relative bg-[linear-gradient(to_bottom,#031A37_0%,#031A37_60%,transparent_60%,transparent_100%)] py-10 pt-[150px]"
+    >
       <Container>
         <div className="relative flex flex-col lg:flex-row gap-7">
           <div className="flex flex-col gap-10">
             <h1
               className="text-primary mb-3 text-[40px] lg:text-[50px]"
-              id="home-h1">
+              id="home-h1"
+            >
               {data.heading}
             </h1>
           </div>
 
-          <div className="min-h-[200px] md:h:[460px] lg:h-[550px] w-full lg:w-[45%] shrink-0 overflow-hidden">
+          <div className="min-h-[200px] md:h:[460px] lg:h-[600px] w-full lg:w-[45%] shrink-0 overflow-hidden">
             <div className="video-main-div relative scale-x-0 h-0 overflow-hidden origin-top transition-all">
               <div className="absolute z-10 inset-0 h-full w-full bg-primary video-bg"></div>
               <div className="video-div-main relative">

@@ -50,20 +50,20 @@ const SpeakerContent: React.FC<SpeakerContentProps> = ({ speakerId = "0" }) => {
 
       <Container>
         {/* Added baad-lion image - positioned on right side below gradient */}
-        <div className="flex justify-end mb-4 -mt-16 relative">
-          <div className="w-32 h-16">
-            <Image
-              src="/baad-lion.webp"
-              alt="BAAD Lion"
-              width={128}
-              height={64}
-              className="object-contain"
-            />
-          </div>
-        </div>
 
         {/* Session Summary */}
-        <div className="py-8">
+        <div className="py-8 relative">
+          <div className="absolute flex justify-end mb-4 -mt-16 top-4 right-4">
+            <div className="">
+              <Image
+                src="/baad-lion.webp"
+                alt="BAAD Lion"
+                width={128}
+                height={64}
+                className="w-32 h-36 opacity-60 object-contain"
+              />
+            </div>
+          </div>
           <h3 className="text-5xl mb-4">
             <span className="text-outline">About</span>
             <span className="ml-2 text-midnight">The Speaker</span>
