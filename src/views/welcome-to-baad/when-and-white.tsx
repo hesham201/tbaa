@@ -28,9 +28,10 @@ const WhenAndWhite = () => {
     );
     gsap.fromTo(
       el.querySelector("img"),
-      { y: "-20%" }, // Adjust x based on index for staggered effect
+      { y: "-20%", scale: 1.2 }, // Adjust x based on index for staggered effect
       {
         y: "20%",
+        scale: 1,
         ease: "none", // with scrub, keep it linear
         scrollTrigger: {
           trigger: el,
@@ -62,8 +63,9 @@ const WhenAndWhite = () => {
           </div>
           <div
             ref={imageRef}
-            className="h-[350px] w-[45%] shrink-0 overflow-hidden rounded-lg">
-            <img src="/when-and-white.jpg" alt="image" />
+            className="h-[350px] w-[45%] shrink-0 overflow-hidden rounded-lg"
+          >
+            <img src="/extracted.webp" alt="image" />
           </div>
         </div>
       </Container>

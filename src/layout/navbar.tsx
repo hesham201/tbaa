@@ -445,6 +445,12 @@ const Header = () => {
               </button>
             </div>
           </Container>
+          <Link
+            href={"/book-now"}
+            className="p-3 block text-center bg-red-600 text-white"
+          >
+            CLICK HERE TO BOOK YOUR PLACE ON OUR ANNUAL BAAD CONFERENCE 2026
+          </Link>
         </div>
         <div
           id="menu-fixed"

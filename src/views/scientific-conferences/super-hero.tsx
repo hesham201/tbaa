@@ -102,11 +102,12 @@ const SuperHero = () => {
             >
               <h3>2026</h3>
               <HeadingTwo className="mb-3">
-                Super Hero’s: With great power comes great responsibility
+                Who’s BAAD: The Thrill Of The Drill
               </HeadingTwo>
               <p className="text-lg">
-                Venue: The Hilton Syon Park, Park Road, Islesworth, TW8 8JF
-                Date: Friday 24th & Saturday 25th January 2025
+                Venue: The Hilton Syon Park, Park Road, Islesworth, TW8 8JF{" "}
+                <br />
+                Date: Friday 30th & Saturday 31st January 2026
               </p>
               <div
                 className="flex flex-wrap items-center flex-row gap-3 justify-center lg:justify-start"
@@ -114,7 +115,7 @@ const SuperHero = () => {
               >
                 <Button href="/2026-sc">Learn More</Button>
                 <Button href="/BAAD-2025-Conference-Flyer-2.pdf">
-                  View BAAD programme
+                  Download the BAAD Programme
                 </Button>
               </div>
             </div>

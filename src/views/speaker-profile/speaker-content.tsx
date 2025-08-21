@@ -11,15 +11,16 @@ interface SpeakerContentProps {
 const SpeakerContent: React.FC<SpeakerContentProps> = ({ speakerId = "0" }) => {
   // Get speaker data based on speakerId or default to first speaker
   const speakerIndex = parseInt(speakerId);
-  const speaker = SPEAKER_DATA[speakerIndex < SPEAKER_DATA.length ? speakerIndex : 0];
+  const speaker =
+    SPEAKER_DATA[speakerIndex < SPEAKER_DATA.length ? speakerIndex : 0];
   return (
     <div id="speaker-content">
       {/* Speaker Header Section with Image */}
       <div className="relative">
         {/* Background section */}
-        <div className="bg-[linear-gradient(to_bottom,#031A37_0%,#031A37_80%,transparent_50%,transparent_100%)] text-white w-screen py-10 pb-0 mt-20">
+        <div className="pt-[70px] bg-[linear-gradient(to_bottom,#031A37_0%,#031A37_90%,transparent_90%,transparent_100%)] text-white w-screen py-10 pb-0 mt-20">
           <Container>
-            <div className="flex flex-row justify-between">
+            <div className="flex flex-row items-center justify-between">
               <div className="md:w-[40%] h-[500px] relative">
                 {/* Image positioned with 25% above the background but below navbar */}
                 <div className="w-full h-[500px] rounded relative overflow-hidden md:absolute md:left-0 md:-top-2">
@@ -31,14 +32,12 @@ const SpeakerContent: React.FC<SpeakerContentProps> = ({ speakerId = "0" }) => {
                   />
                 </div>
               </div>
-              <div className="md:w-[55%] px-6 flex flex-col justify-start mt-5 md:mt-40 md:pl-0">
-                <h2 className="text-4xl font-bold text-primary mb-4">
-                  {speaker.name}
-                </h2>
+              <div className="md:w-[55%] px-6 flex flex-col justify-start md:pl-0">
+                <p className="mb-4 text-primary text-2xl"> {speaker.name}</p>
                 <div className="bg-midnight mb-6 max-w-full">
-                  <p className="mb-4 text-primary text-2xl">
+                  <h2 className="text-4xl font-bold text-primary mb-4">
                     {speaker.title}
-                  </p>
+                  </h2>
                   <div className="bg-white text-black px-6 py-2 inline-block">
                     {speaker.date} TIME: {speaker.time}
                   </div>
@@ -62,16 +61,14 @@ const SpeakerContent: React.FC<SpeakerContentProps> = ({ speakerId = "0" }) => {
             />
           </div>
         </div>
-        
+
         {/* Session Summary */}
         <div className="py-8">
           <h3 className="text-5xl mb-4">
             <span className="text-outline">Session</span>
             <span className="ml-2 text-midnight">Summary</span>
           </h3>
-          <p className="text-base mb-6">
-            {speaker.sessionSummary}
-          </p>
+          <p className="text-base mb-6">{speaker.sessionSummary}</p>
         </div>
       </Container>
 
@@ -100,9 +97,7 @@ const SpeakerContent: React.FC<SpeakerContentProps> = ({ speakerId = "0" }) => {
             <span className="text-outline">About</span>
             <span className="ml-2 text-midnight">The Speaker</span>
           </h3>
-          <p className="text-base mb-6 text-left">
-            {speaker.aboutSpeaker}
-          </p>
+          <p className="text-base mb-6 text-left">{speaker.aboutSpeaker}</p>
           <div className="mb-6">
             <Button href="#booking">BOOK NOW</Button>
           </div>

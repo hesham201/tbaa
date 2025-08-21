@@ -2267,7 +2267,7 @@ export const LAM_BANNER = {
   heading: "Lambert Fick Memorial",
 };
 export const SCIENTIFIC_BANNER = {
-  image: "/our-mission.jpg",
+  image: "/baad-2026.png",
   heading: "Scientific Conferences",
 };
 export const ABOUT_US_BANNER = {
