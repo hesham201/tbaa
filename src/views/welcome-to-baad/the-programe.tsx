@@ -31,11 +31,11 @@ const ThePrograme = () => {
       gsap.fromTo(
         image,
         {
-          y: "-10%", // Start position (slightly above)
+          y: "-10%",
           scale: 1.2,
         },
         {
-          y: "10%", // End position (slightly below)
+          y: "10%",
           scale: 1,
           ease: "none",
           scrollTrigger: {
@@ -52,20 +52,16 @@ const ThePrograme = () => {
     <div>
       <div className="pt-16">
         <Container>
-          {/* The Programme Section */}
           <div className="mb-20">
             <h2 className="text-center text-5xl mb-10">
               <span className="text-6xl text-outline">The</span>
               <span className="text-6xl ml-2 text-midnight">Programme</span>
             </h2>
-
-            {/* Friday Programme */}
             <div className="mb-10">
               <div className="bg-midnight text-white rounded py-6 text-center text-3xl font-bold">
                 {PROGRAMME_DATA.friday.date}
               </div>
               <div className="">
-                {/* Header row */}
                 <div className="grid grid-cols-4 bg-[#D5B78C] text-white">
                   <div className="col-span-1 border-r border-black flex items-center justify-center">
                     <span className="py-4 text-3xl">TIME</span>
@@ -75,19 +71,25 @@ const ThePrograme = () => {
                   </div>
                 </div>
 
-                {/* Schedule rows */}
                 {PROGRAMME_DATA.friday.schedule.map((item, index) => (
                   <div
                     key={index}
-                    className="grid grid-cols-4 border-t border-black"
-                  >
+                    className="grid grid-cols-4 border-t border-black">
                     <div className="col-span-1 border-l border-r border-b bg-[#f3f3f3] border-black flex items-center justify-center">
                       <span className="py-4 font-midnight">{item.time}</span>
                     </div>
                     <div className="col-span-3 border-r border-b bg-[#f3f3f3] border-black py-4 px-6 text-center">
-                      <div className="font-bold font-midnight">
-                        {item.event}
-                      </div>
+                      {item.link ? (
+                        <Link
+                          href={item.link || "#"}
+                          className="font-bold font-midnight">
+                          {item.event}
+                        </Link>
+                      ) : (
+                        <div className="font-bold font-midnight">
+                          {item.event}
+                        </div>
+                      )}
                       {item.description && (
                         <div className="text-sm font-midnight">
                           {item.description}
@@ -98,14 +100,11 @@ const ThePrograme = () => {
                 ))}
               </div>
             </div>
-
-            {/* Saturday Programme */}
             <div>
               <div className="bg-midnight text-white rounded py-6 mx-auto text-center text-3xl font-bold">
                 {PROGRAMME_DATA.saturday.date}
               </div>
               <div className="">
-                {/* Header row */}
                 <div className="grid grid-cols-4 bg-[#D5B78C] text-white">
                   <div className="col-span-1 border-r border-black flex items-center justify-center">
                     <span className="py-4 text-3xl">TIME</span>
@@ -114,20 +113,25 @@ const ThePrograme = () => {
                     <span className="py-4 text-3xl">EVENT</span>
                   </div>
                 </div>
-
-                {/* Schedule rows */}
                 {PROGRAMME_DATA.saturday.schedule.map((item, index) => (
                   <div
                     key={index}
-                    className="grid grid-cols-4 border-t border-black"
-                  >
+                    className="grid grid-cols-4 border-t border-black">
                     <div className="col-span-1 border-l border-r bg-[#f3f3f3] border-b border-black flex items-center justify-center">
                       <span className="py-4 font-midnight">{item.time}</span>
                     </div>
                     <div className="col-span-3 border-r bg-[#f3f3f3] border-b border-black py-4 px-6 text-center">
-                      <div className="font-bold font-midnight">
-                        {item.event}
-                      </div>
+                      {item.link ? (
+                        <Link
+                          href={item.link || "#"}
+                          className="font-bold font-midnight">
+                          {item.event}
+                        </Link>
+                      ) : (
+                        <div className="font-bold font-midnight">
+                          {item.event}
+                        </div>
+                      )}
                       {item.description && (
                         <div className="text-sm font-midnight">
                           {item.description}
@@ -147,8 +151,6 @@ const ThePrograme = () => {
           </div>
         </Container>
       </div>
-
-      {/* BAAD LINE UP Section - moved outside Container for full-width background */}
       <div className="bg-[#f3f3f3] pt-16">
         <Container>
           <h2 className="text-center text-5xl mb-10">
@@ -161,15 +163,13 @@ const ThePrograme = () => {
             {SPEAKER_DATA.map((speaker, index) => (
               <div
                 key={index}
-                className="flex md:w-[calc(50%-24px)] lg:w-[calc(33.3%-34px)] flex-col items-center w-full"
-              >
+                className="flex md:w-[calc(50%-24px)] lg:w-[calc(33.3%-34px)] flex-col items-center w-full">
                 <div className="relative w-full  mb-4 overflow-hidden group cursor-pointer">
                   <div
                     ref={(el) => {
                       containerRefs.current[index] = el;
                     }}
-                    className="relative h-[350px] overflow-hidden rounded-xl"
-                  >
+                    className="relative h-[350px] overflow-hidden rounded-xl">
                     <img
                       src={speaker.image}
                       alt={speaker.name}
@@ -181,8 +181,7 @@ const ThePrograme = () => {
                     {speaker.slug ? (
                       <Link
                         href={`/2026-sc/${speaker.slug}`}
-                        className="bg-midnight text-white px-6 py-2 rounded-lg font-semibold shadow-lg text-lg"
-                      >
+                        className="bg-midnight text-white px-6 py-2 rounded-lg font-semibold shadow-lg text-lg">
                         Bio
                       </Link>
                     ) : (

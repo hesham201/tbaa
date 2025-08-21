@@ -793,12 +793,14 @@ export const PROGRAMME_DATA = {
       {
         time: "0900 - 1000 hrs",
         event: "Dr. Marco Venezani",
+        link:"/2026-sc/dr-marco-venezani",
         description:
           "Injection moulding technique: the 'Customised Hybrid Index' and updated clinical procedures",
       },
       {
         time: "1000 - 1100 hrs",
         event: "MDT. Maria Spanopoulou",
+        link:"/2026-sc/mdt-maria-spanopoulou",
         description:
           "The art of the smile. Blending art, science and human connection",
       },
@@ -809,6 +811,7 @@ export const PROGRAMME_DATA = {
       {
         time: "1130 - 1230 hrs",
         event: "Dr. Massimo Giovarruscio",
+        link:"/2026-sc/dr-massimo-giovarruscio",
         description:
           "Thrill of the fill: mastering complex canals and restoration with minimally invasive approach",
       },
@@ -833,6 +836,7 @@ export const PROGRAMME_DATA = {
       {
         time: "1545 - 1700 hrs",
         event: "Dr. Nelson Leon",
+        link:"/2026-sc/dr-nelson-leon",
         description:
           "Surgical strategies to achieve esthetics in minimally invasive orthognathic surgery (MIOS)",
       },
@@ -858,11 +862,13 @@ export const PROGRAMME_DATA = {
       {
         time: "0900 - 0945 hrs",
         event: "Dr. Tif Qureshi",
+        link:"/2026-sc/dr-tif-qureshi",
         description: "25 years of Reflections",
       },
       {
         time: "0945 - 1030 hrs",
         event: "Dr. Ute Schneider",
+        link:"/2026-sc/dr-ute-schneider",
         description: "The ongoing dilemma of the missing upper incisor",
       },
       {
@@ -872,11 +878,13 @@ export const PROGRAMME_DATA = {
       {
         time: "1100 - 1145 hrs",
         event: "Dr. Giulio Rasperini",
+        link:"/2026-sc/dr-giulio-rasperini",
         description: "Nightmare periodontal cases - is there a solution?",
       },
       {
         time: "1145 - 1230 hrs",
         event: "Dr. Gustavo Giordani",
+        link:"/2026-sc/dr-gustavo-giordani",
         description:
           "Digital interdisciplinary treatment - How to combine biology with technology to achieve predictability in aesthetic zone",
       },
@@ -901,6 +909,7 @@ export const PROGRAMME_DATA = {
       {
         time: "1545 - 1645 hrs",
         event: "Dr. Ramón Gomez-Meda",
+        link:"/2026-sc/dr-ramon-gomez-meda",
         description:
           "Hard & Soft tissue management in the esthetic area to achieve predictable results: from Class I to Class III",
       },
