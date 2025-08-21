@@ -25,7 +25,7 @@ async function listFolder(folder: string): Promise<string[]> {
       numeric: true,
       sensitivity: "base",
     });
-  });
+  }); 
 
   return files.map((f) => `${folder}/${f}`);
 }
