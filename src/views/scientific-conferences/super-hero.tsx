@@ -113,10 +113,12 @@ const SuperHero = () => {
         <Container>
           <div
             className="flex flex-col lg:flex-row grow gap-12 items-center lg:min-h-[70vh]"
-            ref={bgWrapperRef2}>
+            ref={bgWrapperRef2}
+          >
             <div
               className="flex flex-col justify-center gap-6 text-white"
-              id="our-events-heading">
+              id="our-events-heading"
+            >
               <h3>2026</h3>
               <HeadingTwo className="mb-3">
                 Who’s BAAD: The Thrill Of The Drill
@@ -128,16 +130,18 @@ const SuperHero = () => {
               </p>
               <div
                 className="flex flex-wrap items-center flex-row gap-3 justify-center lg:justify-start"
-                id="buttons-events">
+                id="buttons-events"
+              >
                 <Button href="/2026-sc">Learn More</Button>
-                <Button href="/BAAD-2025-Conference-Flyer-2.pdf">
+                <Button href="/baad-2026-Programme.pdf">
                   Download the BAAD Programme
                 </Button>
               </div>
             </div>
             <div
               ref={bgImageRef2}
-              className="relative w-full hidden lg:block lg:w-[35%] overflow-hidden rounded-2xl shrink-0 h-[600px]">
+              className="relative w-full hidden lg:block lg:w-[35%] overflow-hidden rounded-2xl shrink-0 h-[600px]"
+            >
               <img
                 src="/poster-one.png"
                 className="absolute top-0 left-0 w-full h-full object-cover will-change-transform pointer-events-none"
