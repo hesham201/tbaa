@@ -51,7 +51,7 @@ export const SPEAKER_DATA = [
     date: "FRIDAY 30TH JANUARY",
     time: "11:30 - 12:30",
     sessionSummary:
-      'In an era where saving teeth once deemed “unsalvageable” is becoming increasingly achievable, endodontists are challenged to push clinical boundaries with both skill and strategy. This presentation delves into the heart of complex endodontic treatment - highlighting the thrill, the challenges, and the precision required to navigate intricate root canal systems while preserving tooth structure. Focusing on a minimally invasive approach, this session will explore contemporary methods for managing anatomically and structurally compromised teeth through advanced diagnostics, canal negotiation techniques, and restorative integration. Participants will gain practical insights into decision-making, the use of modern tools and materials, and restorative techniques that support long-term success. Join us as we uncover how the synergy between endodontic expertise and thoughtful restoration can redefine what’s possible in tooth preservation - because sometimes, the most difficult cases bring out the best in clinical skill.',
+      "In an era where saving teeth once deemed “unsalvageable” is becoming increasingly achievable, endodontists are challenged to push clinical boundaries with both skill and strategy. This presentation delves into the heart of complex endodontic treatment - highlighting the thrill, the challenges, and the precision required to navigate intricate root canal systems while preserving tooth structure. Focusing on a minimally invasive approach, this session will explore contemporary methods for managing anatomically and structurally compromised teeth through advanced diagnostics, canal negotiation techniques, and restorative integration. Participants will gain practical insights into decision-making, the use of modern tools and materials, and restorative techniques that support long-term success. Join us as we uncover how the synergy between endodontic expertise and thoughtful restoration can redefine what’s possible in tooth preservation - because sometimes, the most difficult cases bring out the best in clinical skill.",
     learningObjectives: [
       "Identify diagnostic criteria and decision-making frameworks for managing structurally and anatomically compromised teeth.",
       "Understand the principles of minimally invasive endodontics (MIE) and their application in complex canal systems.",
@@ -139,7 +139,7 @@ export const SPEAKER_DATA = [
   },
   {
     name: "Dr. Ute Schneider",
-    image: "/sc-2026/dr-ute-schneider.jpg", 
+    image: "/sc-2026/dr-ute-schneider.jpg",
     slug: "dr-ute-schneider",
     title: "The Ongoing Dilemma of the Missing Upper Incisor",
     date: "SATURDAY 31ST JANUARY",
@@ -794,14 +794,14 @@ export const PROGRAMME_DATA = {
       {
         time: "0900 - 1000 hrs",
         event: "Dr. Marco Venezani",
-        link:"/2026-sc/dr-marco-venezani",
+        link: "/2026-sc/dr-marco-venezani",
         description:
           "Injection moulding technique: the 'Customised Hybrid Index' and updated clinical procedures",
       },
       {
         time: "1000 - 1100 hrs",
         event: "MDT. Maria Spanopoulou",
-        link:"/2026-sc/mdt-maria-spanopoulou",
+        link: "/2026-sc/mdt-maria-spanopoulou",
         description:
           "The art of the smile. Blending art, science and human connection",
       },
@@ -812,7 +812,7 @@ export const PROGRAMME_DATA = {
       {
         time: "1130 - 1230 hrs",
         event: "Dr. Massimo Giovarruscio",
-        link:"/2026-sc/dr-massimo-giovarruscio",
+        link: "/2026-sc/dr-massimo-giovarruscio",
         description:
           "Thrill of the fill: mastering complex canals and restoration with minimally invasive approach",
       },
@@ -826,7 +826,8 @@ export const PROGRAMME_DATA = {
       },
       {
         time: "1415 - 1515 hrs",
-        event: "<a href='/2026-sc/dr-ionut-branzan'>Dr. Ionut Branzan</a> & <a href='/2026-sc/dr-diana-boangar'>Dr. Diana Boangar</a>",
+        event:
+          "<a href='/2026-sc/dr-ionut-branzan'>Dr. Ionut Branzan</a> & <a href='/2026-sc/dr-diana-boangar'>Dr. Diana Boangar</a>",
         description:
           "WHO'S BAAD: an interdisciplinary ortho-prosthetic thriller story",
       },
@@ -837,7 +838,7 @@ export const PROGRAMME_DATA = {
       {
         time: "1545 - 1700 hrs",
         event: "Dr. Nelson Leon",
-        link:"/2026-sc/dr-nelson-leon",
+        link: "/2026-sc/dr-nelson-leon",
         description:
           "Surgical strategies to achieve esthetics in minimally invasive orthognathic surgery (MIOS)",
       },
@@ -863,13 +864,13 @@ export const PROGRAMME_DATA = {
       {
         time: "0900 - 0945 hrs",
         event: "Dr. Tif Qureshi",
-        link:"/2026-sc/dr-tif-qureshi",
+        link: "/2026-sc/dr-tif-qureshi",
         description: "25 years of Reflections",
       },
       {
         time: "0945 - 1030 hrs",
         event: "Dr. Ute Schneider",
-        link:"/2026-sc/dr-ute-schneider",
+        link: "/2026-sc/dr-ute-schneider",
         description: "The ongoing dilemma of the missing upper incisor",
       },
       {
@@ -879,13 +880,13 @@ export const PROGRAMME_DATA = {
       {
         time: "1100 - 1145 hrs",
         event: "Dr. Giulio Rasperini",
-        link:"/2026-sc/dr-giulio-rasperini",
+        link: "/2026-sc/dr-giulio-rasperini",
         description: "Nightmare periodontal cases - is there a solution?",
       },
       {
         time: "1145 - 1230 hrs",
         event: "Dr. Gustavo Giordani",
-        link:"/2026-sc/dr-gustavo-giordani",
+        link: "/2026-sc/dr-gustavo-giordani",
         description:
           "Digital interdisciplinary treatment - How to combine biology with technology to achieve predictability in aesthetic zone",
       },
@@ -899,7 +900,8 @@ export const PROGRAMME_DATA = {
       },
       {
         time: "1415 - 1515 hrs",
-        event: "<p class='bg-primary p-3 text-white' >BAAD MEMORIAL LECTURE</p> Dr. Ramón Gomez-Meda",
+        event:
+          "<p class='bg-primary p-3 text-white' >BAAD MEMORIAL LECTURE</p> <a href='/2026-sc/dr-ramon-gomez-meda'>Dr. Ramón Gomez-Meda</a>",
         description:
           "Hard & Soft tissue management in the esthetic area to achieve predictable results: from Class I to Class III",
       },
@@ -910,7 +912,7 @@ export const PROGRAMME_DATA = {
       {
         time: "1545 - 1645 hrs",
         event: "Dr. Ramón Gomez-Meda",
-        link:"/2026-sc/dr-ramon-gomez-meda",
+        link: "/2026-sc/dr-ramon-gomez-meda",
         description:
           "Hard & Soft tissue management in the esthetic area to achieve predictable results: from Class I to Class III",
       },
