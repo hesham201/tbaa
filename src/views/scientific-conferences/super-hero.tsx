@@ -47,8 +47,9 @@ const SuperHero = () => {
         scrollTrigger: {
           trigger: bgWrapperRef2.current,
           start: "top bottom",
-          end: "bottom top",
+          end: "top 50%",
           scrub: true,
+          markers: true, // Disable markers for cleaner output
         },
       }
     );
