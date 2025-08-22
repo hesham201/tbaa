@@ -125,7 +125,7 @@ const SpeakerContent: React.FC<SpeakerContentProps> = ({ speakerId = "0" }) => {
           <h3 className="text-5xl mb-4 text-center">
   <span className="text-outline">Learning</span>
   <span className="ml-2 text-midnight">
-    {speaker.learningAims || speaker.learningIntro ? "Aims & Objectives" : "Objectives"}
+    {speaker.learningAims || speaker.learningIntro ? "Aims & Objectives" : "Aims & Objectives"}
   </span>
 </h3>
 
