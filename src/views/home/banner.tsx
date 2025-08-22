@@ -126,7 +126,7 @@ const Banner = () => {
 
             <img
               src="baad-2026.png"
-              className="h-[300px] w-full object-contain object-top"
+              className="h-[290px] w-full object-cover lg:object-contain object-top"
               alt=""
             />
             <div className="flex flex-row justify-center gap-6 py-5">
