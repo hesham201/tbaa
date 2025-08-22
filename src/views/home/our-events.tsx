@@ -90,7 +90,7 @@ const OurEvents = () => {
                 className="flex flex-wrap items-center flex-row gap-3 justify-center lg:justify-start"
                 id="buttons-events"
               >
-                <Button href="/">Book Now</Button>
+                <Button href="/book-now">Book Now</Button>
                 <Button href="/masterclasses">Masterclasses Page</Button>
                 <Button href="/scientific-conferences">
                   Scientific Conferences Page
