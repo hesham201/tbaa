@@ -124,7 +124,9 @@ const SpeakerContent: React.FC<SpeakerContentProps> = ({ speakerId = "0" }) => {
         <div className="py-8 ">
           <h3 className="text-5xl mb-4 text-center">
   <span className="text-outline">Learning</span>
-  <span className="ml-2 text-midnight">Aims & Objectives</span>
+  <span className="ml-2 text-midnight">
+    {speaker.learningAims || speaker.learningIntro ? "Aims & Objectives" : "Objectives"}
+  </span>
 </h3>
 
 {/* Case: Special intro paragraph (Massimo style) */}
@@ -135,7 +137,7 @@ const SpeakerContent: React.FC<SpeakerContentProps> = ({ speakerId = "0" }) => {
 {/* Case: Aims list (Nelson style) */}
 {speaker.learningAims && speaker.learningAims.length > 0 && (
   <>
-    <h4 className="text-2xl mb-3 font-medium">Aims</h4>
+    <h4 className="text-2xl mb-3 text-midnight font-medium">Aims</h4>
     <ul className="space-y-4 pl-6 mb-6 list-disc">
       {speaker.learningAims.map((aim, index) => (
         <li key={index}>{aim}</li>
@@ -147,6 +149,16 @@ const SpeakerContent: React.FC<SpeakerContentProps> = ({ speakerId = "0" }) => {
 {/* Case: Objectives (only render if they exist) */}
 {speaker.learningObjectives && speaker.learningObjectives.length > 0 && (
   <>
+    {/* Only show 'Objectives' heading for speakers with special formatting */}
+    {(speaker.learningAims || speaker.learningIntro) && (
+      <h4 className="text-2xl mb-3 text-midnight font-medium">Objectives</h4>
+    )}
+    
+    {/* Add description text for Dr. Massimo's objectives */}
+    {speaker.learningIntro && (
+      <p className="mb-4">By the end of this presentation, participants will be able to:</p>
+    )}
+    
     <ul className="space-y-4 pl-6 list-disc">
       {speaker.learningObjectives.map((objective, index) => (
         <li key={index}>{objective}</li>
@@ -159,7 +171,7 @@ const SpeakerContent: React.FC<SpeakerContentProps> = ({ speakerId = "0" }) => {
 {/* Case: Key Learning Points (Massimo style) */}
 {speaker.keyLearningPoints && speaker.keyLearningPoints.length > 0 && (
   <>
-    <h4 className="text-2xl mb-3 font-medium mt-6">Key Learning Points</h4>
+    <h4 className="text-2xl mb-3 text-midnight font-medium mt-6">Key Learning Points</h4>
     <ul className="space-y-4 pl-6 list-disc">
       {speaker.keyLearningPoints.map((point, index) => (
         <li key={index}>{point}</li>
