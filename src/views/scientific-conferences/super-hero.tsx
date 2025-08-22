@@ -49,7 +49,6 @@ const SuperHero = () => {
           start: "top bottom",
           end: "top 50%",
           scrub: true,
-          markers: true, // Disable markers for cleaner output
         },
       }
     );

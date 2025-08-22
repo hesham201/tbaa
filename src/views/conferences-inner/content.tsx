@@ -51,7 +51,7 @@ const Content = ({
               </div>
             )}
           </div>
-          <div className="w-[40%]">
+          <div className="hidden lg:block w-[40%]">
             <div className="w-full h-[300px]">
               <img
                 src="/baad-lion-blue.webp"
