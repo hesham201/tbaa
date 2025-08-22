@@ -156,7 +156,7 @@ const ThePrograme = () => {
               </div>
 
               <div className="flex justify-center mt-6">
-                <Button href="#" className="rounded">
+                <Button href="/book-now">
                   BOOK NOW
                 </Button>
               </div>
@@ -251,7 +251,7 @@ const ThePrograme = () => {
             </div> */}
           </div>
           <div className="flex items-center justify-center">
-            <Button href="/contact-us">Get in Touch</Button>
+            <Button href="/book-now">BOOK NOW</Button>
           </div>
         </Container>
       </div>
