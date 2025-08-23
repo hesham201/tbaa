@@ -1,8 +1,12 @@
-import React from "react";
+"use client";
+import React, { useRef } from "react";
 import Container from "@/components/container";
 import Image from "next/image";
 import Button from "@/components/button";
 import { SPEAKER_DATA2 } from "@/constant/data2";
+import { useGSAP } from "@gsap/react";
+import gsap from "gsap";
+import SplitType from "split-type";
 
 // Update interface to include optional learningAims property
 interface SpeakerData2 {
@@ -37,8 +41,40 @@ const SpeakerContent: React.FC<SpeakerContentProps> = ({ speakerId = "0" }) => {
   const speakerIndex = parseInt(speakerId);
   const speaker: SpeakerData2 =
     SPEAKER_DATA2[speakerIndex < SPEAKER_DATA2.length ? speakerIndex : 0];
+  
+  const headerRef = useRef<HTMLDivElement | null>(null);
+
+  useGSAP(() => {
+    const splitName = new SplitType("#speaker-name", { types: "words,chars" });
+    const splitTitle = new SplitType("#speaker-title", { types: "words,chars" });
+    const tl = gsap.timeline();
+    
+    // Image animation similar to banner.tsx
+    tl.to(".speaker-image-container", {
+      scaleX: 1,
+      height: "10px",
+      transformOrigin: "top",
+      ease: "power2.out",
+      duration: 0.8,
+    });
+
+    tl.to(".speaker-image-container", {
+      height: "500px",
+      ease: "power2.out",
+      duration: 1,
+    });
+    
+    tl.to(".speaker-image-bg", { opacity: 0 });
+    tl.from(".speaker-image-main", { opacity: 1, scale: 1.2 }, ">");
+    
+    // Text animations
+    tl.from(splitName.words, { y: 20, opacity: 0, stagger: 0.1 });
+    tl.from(splitTitle.words, { y: 20, opacity: 0, stagger: 0.1 });
+    tl.from(".speaker-datetime", { y: 20, opacity: 0, duration: 0.5 });
+  }, []);
+  
   return (
-    <div id="speaker-content">
+    <div id="speaker-content" ref={headerRef}>
       {/* Speaker Header Section with Image */}
       <div className="relative">
         {/* Background section */}
@@ -47,22 +83,25 @@ const SpeakerContent: React.FC<SpeakerContentProps> = ({ speakerId = "0" }) => {
             <div className="flex flex-row items-center justify-between">
               <div className="md:w-[40%] h-[500px] relative">
                 {/* Image positioned with 25% above the background but below navbar */}
-                <div className="w-full h-[500px] rounded relative overflow-hidden md:absolute md:left-0 md:-top-2">
-                  <Image
-                    src={speaker.image}
-                    alt={speaker.name}
-                    fill
-                    className="object-cover"
-                  />
+                <div className="speaker-image-container w-full h-[500px] rounded relative  overflow-hidden md:absolute md:left-0 md:-top-2 scale-x-0  origin-top transition-all">
+                  <div className="absolute z-10 inset-0 h-full w-full bg-primary speaker-image-bg"></div>
+                  <div className="speaker-image-main relative h-full">
+                    <Image
+                      src={speaker.image}
+                      alt={speaker.name}
+                      fill
+                      className="object-cover h-full"
+                    />
+                  </div>
                 </div>
               </div>
               <div className="md:w-[55%] px-6 flex flex-col justify-start md:pl-0">
-                <p className="mb-4 text-primary text-2xl"> {speaker.name}</p>
+                <p id="speaker-name" className="mb-4 text-primary text-2xl"> {speaker.name}</p>
                 <div className="bg-midnight mb-6 max-w-full">
-                  <h2 className="text-4xl font-bold text-primary mb-4">
+                  <h2 id="speaker-title" className="text-4xl font-bold text-primary mb-4">
                     {speaker.title}
                   </h2>
-                  <div className="bg-white text-black px-6 py-2 inline-block">
+                  <div className="speaker-datetime bg-white text-black px-6 py-2 inline-block">
                     {speaker.date} TIME: {speaker.time}
                   </div>
                 </div>
