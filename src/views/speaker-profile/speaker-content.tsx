@@ -1,12 +1,16 @@
 "use client";
-import React, { useRef } from "react";
+import React, { useRef} from "react";
 import Container from "@/components/container";
 import Image from "next/image";
 import Button from "@/components/button";
 import { SPEAKER_DATA2 } from "@/constant/data2";
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 import SplitType from "split-type";
+
+// Register ScrollTrigger plugin
+gsap.registerPlugin(ScrollTrigger);
 
 // Update interface to include optional learningAims property
 interface SpeakerData2 {
@@ -29,8 +33,6 @@ interface SpeakerData2 {
   learningIntro?: string;
   keyLearningPoints?: string[];
 }
-
-
 
 interface SpeakerContentProps {
   speakerId?: string;
@@ -71,6 +73,32 @@ const SpeakerContent: React.FC<SpeakerContentProps> = ({ speakerId = "0" }) => {
     tl.from(splitName.words, { y: 20, opacity: 0, stagger: 0.1 });
     tl.from(splitTitle.words, { y: 20, opacity: 0, stagger: 0.1 });
     tl.from(".speaker-datetime", { y: 20, opacity: 0, duration: 0.5 });
+
+    // Scroll-triggered animations for text sections
+    // Replay mode - fade in/out on scroll up/down
+    const fadeInUpElements = gsap.utils.toArray(".fade-in-up");
+    
+    fadeInUpElements.forEach((element) => {
+      gsap.fromTo(element as Element, 
+        {
+          opacity: 0,
+          y: 30
+        },
+        {
+          opacity: 1,
+          y: 0,
+          duration: 1,
+          ease: "power2.out",
+          scrollTrigger: {
+            trigger: element as Element,
+            start: "top 80%",
+            end: "bottom 20%",
+            toggleActions: "play none none reverse"
+          }
+        }
+      );
+    });
+
   }, []);
   
   return (
@@ -127,32 +155,32 @@ const SpeakerContent: React.FC<SpeakerContentProps> = ({ speakerId = "0" }) => {
               />
             </div>
           </div>
-          <h3 className="text-5xl mb-4">
-  <span className="text-outline">About</span>
-  <span className="ml-2 text-midnight">The Speaker</span>
-</h3>
+          <h3 className="text-5xl mb-4 fade-in-up">
+            <span className="text-outline">About</span>
+            <span className="ml-2 text-midnight">The Speaker</span>
+          </h3>
 
-<div className=" text-base mb-6" dangerouslySetInnerHTML={{__html:speaker.aboutSpeaker}}/>
+          <div className="text-base mb-6 fade-in-up" dangerouslySetInnerHTML={{__html:speaker.aboutSpeaker}}/>
 
-{speaker.careerHighlights && speaker.careerHighlights.length > 0 && (
-  <ul className="space-y-3 pl-6 list-disc">
-    {speaker.careerHighlights.map((point, index) => (
-      <li key={index}>{point}</li>
-    ))}
-  </ul>
-)}
-</div>
+          {speaker.careerHighlights && speaker.careerHighlights.length > 0 && (
+            <ul className="space-y-3 pl-6 list-disc fade-in-up">
+              {speaker.careerHighlights.map((point, index) => (
+                <li key={index}>{point}</li>
+              ))}
+            </ul>
+          )}
+        </div>
       </Container>
 
       {/* Learning Aims & Objectives - Full Width Background */}
       <div className="py-8 bg-primary w-full">
         <Container>
-          <h3 className="text-5xl mb-4">
+          <h3 className="text-5xl mb-4 fade-in-up">
             <span className=" text-midnight">Abstract</span>
           </h3>
-          <div className="text-base mb-6 text-left" dangerouslySetInnerHTML={{ __html: speaker.sessionSummary }}/>
+          <div className="text-base mb-6 text-left fade-in-up" dangerouslySetInnerHTML={{ __html: speaker.sessionSummary }}/>
 
-          <div className="mt-6">
+          <div className="mt-6 fade-in-up">
             <Button href="/book-now">BOOK NOW</Button>
           </div>
         </Container>
@@ -161,66 +189,64 @@ const SpeakerContent: React.FC<SpeakerContentProps> = ({ speakerId = "0" }) => {
       <Container>
         {/* About The Speaker */}
         <div className="py-8 ">
-          <h3 className="text-5xl mb-4 text-center">
-  <span className="text-outline">Learning</span>
-  <span className="ml-2 text-midnight">
-    {speaker.learningAims || speaker.learningIntro ? "Aims & Objectives" : "Aims & Objectives"}
-  </span>
-</h3>
+          <h3 className="text-5xl mb-4 text-center fade-in-up">
+            <span className="text-outline">Learning</span>
+            <span className="ml-2 text-midnight">
+              {speaker.learningAims || speaker.learningIntro ? "Aims & Objectives" : "Aims & Objectives"}
+            </span>
+          </h3>
 
-{/* Case: Special intro paragraph (Massimo style) */}
-{speaker.learningIntro && (
-  <p className="text-base mb-6">{speaker.learningIntro}</p>
-)}
+          {/* Case: Special intro paragraph (Massimo style) */}
+          {speaker.learningIntro && (
+            <p className="text-base mb-6 fade-in-up">{speaker.learningIntro}</p>
+          )}
 
-{/* Case: Aims list (Nelson style) */}
-{speaker.learningAims && speaker.learningAims.length > 0 && (
-  <>
-    <h4 className="text-2xl mb-3 text-midnight font-medium">Aims</h4>
-    <ul className="space-y-4 pl-6 mb-6 list-disc">
-      {speaker.learningAims.map((aim, index) => (
-        <li key={index}>{aim}</li>
-      ))}
-    </ul>
-  </>
-)}
+          {/* Case: Aims list (Nelson style) */}
+          {speaker.learningAims && speaker.learningAims.length > 0 && (
+            <>
+              <h4 className="text-2xl mb-3 text-midnight font-medium fade-in-up">Aims</h4>
+              <ul className="space-y-4 pl-6 mb-6 list-disc fade-in-up">
+                {speaker.learningAims.map((aim, index) => (
+                  <li key={index}>{aim}</li>
+                ))}
+              </ul>
+            </>
+          )}
 
-{/* Case: Objectives (only render if they exist) */}
-{speaker.learningObjectives && speaker.learningObjectives.length > 0 && (
-  <>
-    {/* Only show 'Objectives' heading for speakers with special formatting */}
-    {(speaker.learningAims || speaker.learningIntro) && (
-      <h4 className="text-2xl mb-3 text-midnight font-medium">Objectives</h4>
-    )}
-    
-    {/* Add description text for Dr. Massimo's objectives */}
-    {speaker.learningIntro && (
-      <p className="mb-4">By the end of this presentation, participants will be able to:</p>
-    )}
-    
-    <ul className="space-y-4 pl-6 list-disc">
-      {speaker.learningObjectives.map((objective, index) => (
-        <li key={index}>{objective}</li>
-      ))}
-    </ul>
-  </>
-)}
+          {/* Case: Objectives (only render if they exist) */}
+          {speaker.learningObjectives && speaker.learningObjectives.length > 0 && (
+            <>
+              {/* Only show 'Objectives' heading for speakers with special formatting */}
+              {(speaker.learningAims || speaker.learningIntro) && (
+                <h4 className="text-2xl mb-3 text-midnight font-medium fade-in-up">Objectives</h4>
+              )}
+              
+              {/* Add description text for Dr. Massimo's objectives */}
+              {speaker.learningIntro && (
+                <p className="mb-4 fade-in-up">By the end of this presentation, participants will be able to:</p>
+              )}
+              
+              <ul className="space-y-4 pl-6 list-disc fade-in-up">
+                {speaker.learningObjectives.map((objective, index) => (
+                  <li key={index}>{objective}</li>
+                ))}
+              </ul>
+            </>
+          )}
 
+          {/* Case: Key Learning Points (Massimo style) */}
+          {speaker.keyLearningPoints && speaker.keyLearningPoints.length > 0 && (
+            <>
+              <h4 className="text-2xl mb-3 text-midnight font-medium mt-6 fade-in-up">Key Learning Points</h4>
+              <ul className="space-y-4 pl-6 list-disc fade-in-up">
+                {speaker.keyLearningPoints.map((point, index) => (
+                  <li key={index}>{point}</li>
+                ))}
+              </ul>
+            </>
+          )}
 
-{/* Case: Key Learning Points (Massimo style) */}
-{speaker.keyLearningPoints && speaker.keyLearningPoints.length > 0 && (
-  <>
-    <h4 className="text-2xl mb-3 text-midnight font-medium mt-6">Key Learning Points</h4>
-    <ul className="space-y-4 pl-6 list-disc">
-      {speaker.keyLearningPoints.map((point, index) => (
-        <li key={index}>{point}</li>
-      ))}
-    </ul>
-  </>
-)}
-
-          
-          <div className="mb-6 text-center mt-5">
+          <div className="mb-6 text-center mt-5 fade-in-up">
             <Button href="/book-now">BOOK NOW</Button>
           </div>
         </div>
