@@ -61,19 +61,23 @@ const SpeakerContent: React.FC<SpeakerContentProps> = ({ speakerId = "0" }) => {
     });
 
     tl.to(".speaker-image-container", {
-      height: "500px",
+      height: "520px",
       ease: "power2.out",
       duration: 1,
     });
     
     tl.to(".speaker-image-bg", { opacity: 0 });
-    tl.from(".speaker-image-main", { opacity: 1, scale: 1.2 }, ">");
+    tl.from(".speaker-image-main", { opacity: 1, scale: 1 }, ">");
     
     // Text animations
     tl.from(splitName.words, { y: 20, opacity: 0, stagger: 0.1 });
     tl.from(splitTitle.words, { y: 20, opacity: 0, stagger: 0.1 });
     tl.from(".speaker-datetime", { y: 20, opacity: 0, duration: 0.5 });
-
+    tl.to(
+      ".upper",
+      { scaleY: 1, transformOrigin: "bottom", duration: 1, ease: "power2.out" },
+      ">-2"
+    );
     // Scroll-triggered animations for text sections
     // Replay mode - fade in/out on scroll up/down
     const fadeInUpElements = gsap.utils.toArray(".fade-in-up");
@@ -111,7 +115,7 @@ const SpeakerContent: React.FC<SpeakerContentProps> = ({ speakerId = "0" }) => {
             <div className="flex flex-row items-center justify-between">
               <div className="md:w-[40%] h-[500px] relative">
                 {/* Image positioned with 25% above the background but below navbar */}
-                <div className="speaker-image-container w-full h-[500px] rounded relative  overflow-hidden md:absolute md:left-0 md:-top-2 scale-x-0  origin-top transition-all">
+                <div className="speaker-image-container w-full h-0 rounded relative  overflow-hidden md:absolute md:left-0 md:-top-2 scale-x-0  origin-top transition-all">
                   <div className="absolute z-10 inset-0 h-full w-full bg-primary speaker-image-bg"></div>
                   <div className="speaker-image-main relative h-full">
                     <Image
