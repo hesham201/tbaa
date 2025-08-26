@@ -101,7 +101,7 @@ export const WELCOME_TO = {
       headingTwo: "Leadership",
       para: "Meet the esteemed professionals driving BAAD’s vision forward—uniting multidisciplinary perspectives to shape the future of aesthetic dentistry.",
       reverse: true,
-      href: "/",
+      href: "/about-us",
       btn: "Get to Know Us",
     },
     {
@@ -109,7 +109,7 @@ export const WELCOME_TO = {
       heading: "Our",
       headingTwo: "Community",
       para: "Join a dynamic network of members committed to clinical excellence, continuous learning, and elevating standards in aesthetic and restorative dental care.",
-      href: "/",
+      href: "/membership",
       btn: "Start Your Journey",
     },
   ],
