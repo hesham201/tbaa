@@ -245,7 +245,7 @@ const ContactForm = () => {
           onClick={() => setIsSubmitted(false)}
         >
           <div
-            className={` relative flex-col lg:flex-row justify-between items-center bg-cover px-9 py-10 rounded-tr-3xl rounded-bl-3xl max-w-[800px] bg-primary`}
+            className={` relative flex-col lg:flex-row justify-between items-center bg-cover px-9 py-10 rounded-sm max-w-[800px] bg-primary`}
           >
             <div className="w-full">
               <p className="text-white text-center text-xl ">{submission}</p>
