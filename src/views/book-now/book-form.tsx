@@ -296,8 +296,7 @@ function SelectField({
         className={[
           "w-full appearance-none rounded-md border bg-white px-3 py-2 text-sm text-gray-900 outline-none",
           hasError ? "border-red-500" : "border-gray-300 focus:border-blue-500",
-        ].join(" ")}
-      >
+        ].join(" ")}>
         {children}
       </select>
       {hasError && <p className="mt-1 text-xs text-red-600">{meta.error}</p>}
@@ -411,8 +410,7 @@ function ConfirmAndPay({ clientSecret }: { clientSecret: string }) {
       type="button"
       onClick={handlePay}
       disabled={!stripe || loading}
-      className="w-full rounded-md bg-midnight px-5 py-3 text-sm font-semibold text-white"
-    >
+      className="w-full rounded-md bg-midnight px-5 py-3 text-sm font-semibold text-white">
       {loading ? "Processing…" : "Confirm & Pay"}
     </button>
   );
@@ -488,12 +486,19 @@ export default function BaadBookingForm() {
     else if (v.accommodationNights.includes("(3 nights)")) nights = 3;
     else if (v.accommodationNights === "0") nights = 0;
 
+    // ▼ NEW: rate depends on room type + occupancy
+    const isUpgraded = v.accommodationRoomType === "upgraded";
     const nightly =
-      v.accommodationOccupancy === "single"
-        ? 205
-        : v.accommodationOccupancy
+      v.accommodationOccupancy === ""
+        ? 0
+        : v.accommodationOccupancy === "single"
+        ? isUpgraded
+          ? 205
+          : 189
+        : isUpgraded
         ? 215
-        : 0;
+        : 199;
+
     const accom = nights * nightly;
 
     return welcome + themed + gala + accom;
@@ -511,8 +516,7 @@ export default function BaadBookingForm() {
           onSubmit={(values) => {
             console.log("SUBMIT", values);
             alert("Form submitted (mock). Hook up your API.");
-          }}
-        >
+          }}>
           {({ validateForm, setTouched, isSubmitting, values }) => {
             // NEW: clickable stepper with validation on forward jumps
             const tryGoToStep = async (targetIdx: number) => {
@@ -554,8 +558,7 @@ export default function BaadBookingForm() {
                         type="button"
                         key={s.key}
                         onClick={() => tryGoToStep(idx)}
-                        className="flex flex-col items-center text-center gap-2 focus:outline-none"
-                      >
+                        className="flex flex-col items-center text-center gap-2 focus:outline-none">
                         <div
                           className={[
                             "grid h-10 w-10 place-items-center rounded-md text-sm font-semibold cursor-pointer",
@@ -564,16 +567,14 @@ export default function BaadBookingForm() {
                               : done
                               ? "bg-transparent text-black border-midnight border-2"
                               : "bg-gray-200 text-gray-700",
-                          ].join(" ")}
-                        >
+                          ].join(" ")}>
                           {idx + 1}
                         </div>
                         <div
                           className={[
                             "text-xs font-semibold uppercase tracking-wide",
                             active ? "text-midnight" : "text-gray-500",
-                          ].join(" ")}
-                        >
+                          ].join(" ")}>
                           {s.label}
                         </div>
                       </button>
@@ -583,9 +584,9 @@ export default function BaadBookingForm() {
 
                 {/* Step Title */}
                 <h3 className="mb-4 text-lg font-semibold  max-w-2xl mx-auto">
-                  {current.label.charAt(0) + current.label.slice(1).toLowerCase()}
+                  {current.label.charAt(0) +
+                    current.label.slice(1).toLowerCase()}
                 </h3>
-
 
                 <Form className="space-y-6 max-w-2xl mx-auto">
                   {/* ------------------------ Step 1 ------------------------ */}
@@ -594,8 +595,7 @@ export default function BaadBookingForm() {
                       <SelectField
                         label="Booking Category"
                         name="bookingCategory"
-                        requiredMark
-                      >
+                        requiredMark>
                         <option value="">Select category…</option>
                         <option>Hononary Member</option>
                         <option>Life Member</option>
@@ -765,20 +765,22 @@ export default function BaadBookingForm() {
                           />
                         </div>
                       </div>
-                      <div>
-                        <div className="mb-2 text-sm font-semibold text-gray-800">
-                          Welcome Dinner (Thursday 29th) Number of Places:
-                          £100.00 each
+                      {values.additionalGuests === "yes" && (
+                        <div>
+                          <div className="mb-2 text-sm font-semibold text-gray-800">
+                            Welcome Dinner (Thursday 29th) Number of Places:
+                            £100.00 each
+                          </div>
+                          <SelectField label="" name="welcomeDinnerPlaces">
+                            <option value="">Select Number of Places</option>
+                            {countOptions.map((n) => (
+                              <option key={"w" + n} value={n}>
+                                {n}
+                              </option>
+                            ))}
+                          </SelectField>
                         </div>
-                        <SelectField label="" name="welcomeDinnerPlaces">
-                          <option value="">Select Number of Places</option>
-                          {countOptions.map((n) => (
-                            <option key={"w" + n} value={n}>
-                              {n}
-                            </option>
-                          ))}
-                        </SelectField>
-                      </div>
+                      )}
                       {values.additionalGuests === "yes" && (
                         <>
                           <div>
@@ -905,19 +907,35 @@ export default function BaadBookingForm() {
 
                       {values.accommodationOccupancy && (
                         <div>
-                          <div className="mb-1 text-sm font-semibold text-midnight">
-                            {values.accommodationOccupancy === "single"
-                              ? "Single Occupancy = £205.00/Night"
-                              : "Double or Twin Occupancy = £215.00/Night"}
-                          </div>
-                          <div className="-mt-1 mb-2 text-xs italic text-gray-500">
-                            THIS IS REQUIRED, DO NOT LEAVE BLANK
-                          </div>
+                          {/* ▼ NEW: compute rates based on room type */}
+                          {(() => {
+                            const rateSingle =
+                              values.accommodationRoomType === "upgraded"
+                                ? 205
+                                : 189;
+                            const rateDoubleTwin =
+                              values.accommodationRoomType === "upgraded"
+                                ? 215
+                                : 199;
+
+                            return (
+                              <>
+                                <div className="mb-1 text-sm font-semibold text-midnight">
+                                  {values.accommodationOccupancy === "single"
+                                    ? `Single Occupancy = £${rateSingle}.00/Night`
+                                    : `Double or Twin Occupancy = £${rateDoubleTwin}.00/Night`}
+                                </div>
+                                <div className="-mt-1 mb-2 text-xs italic text-gray-500">
+                                  THIS IS REQUIRED, DO NOT LEAVE BLANK
+                                </div>
+                              </>
+                            );
+                          })()}
+
                           <SelectField
                             label=""
                             name="accommodationNights"
-                            requiredMark
-                          >
+                            requiredMark>
                             <option value="">Select number of nights</option>
                             <option>0</option>
                             <option>
@@ -1009,8 +1027,7 @@ export default function BaadBookingForm() {
                           options={{
                             clientSecret,
                             appearance: { theme: "stripe" },
-                          }}
-                        >
+                          }}>
                           <PaymentElement />
                           <ConfirmAndPay clientSecret={clientSecret} />
                         </Elements>
@@ -1029,8 +1046,7 @@ export default function BaadBookingForm() {
                       type="button"
                       onClick={goPrev}
                       disabled={stepIndex === 0 || isSubmitting}
-                      className="rounded-md border border-gray-300 px-4 py-2 text-sm font-medium text-gray-700 disabled:opacity-50 cursor-pointer"
-                    >
+                      className="rounded-md border border-gray-300 px-4 py-2 text-sm font-medium text-gray-700 disabled:opacity-50 cursor-pointer">
                       Previous
                     </button>
 
@@ -1038,8 +1054,7 @@ export default function BaadBookingForm() {
                       <button
                         type="button"
                         onClick={() => tryNext(validateForm, setTouched)}
-                        className="rounded-md bg-midnight px-5 py-2 text-sm font-semibold text-white cursor-pointer"
-                      >
+                        className="rounded-md bg-midnight px-5 py-2 text-sm font-semibold text-white cursor-pointer">
                         Next
                       </button>
                     ) : (
