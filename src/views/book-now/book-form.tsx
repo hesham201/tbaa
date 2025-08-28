@@ -215,8 +215,8 @@ const accommodationSchema = Yup.object({
 
 // Step 5 schema
 const billingDetailsSchema = Yup.object({
-  billingNameOnCard: Yup.string().trim().required("Name on card is required."),
-  billingAddress: Yup.string().trim().required("Billing address is required."),
+  billingNameOnCard: Yup.string().trim().optional(),
+  billingAddress: Yup.string().trim().optional(),
   billingCardNumber: Yup.string().trim().optional(), // mock
 });
 
@@ -1120,7 +1120,7 @@ export default function BaadBookingForm() {
                         </div>
                       </div>
 
-                      <TextField
+                      {/* <TextField
                         label="Name on Card"
                         name="billingNameOnCard"
                         requiredMark
@@ -1129,7 +1129,7 @@ export default function BaadBookingForm() {
                         label="Address"
                         name="billingAddress"
                         requiredMark
-                      />
+                      /> */}
 
                       {/* Stripe Payment Element mounts here */}
                       {clientSecret ? (
