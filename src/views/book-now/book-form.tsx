@@ -1,5 +1,5 @@
 "use client";
-
+import emailjs from "emailjs-com";
 import React, { useMemo, useState, useEffect, useRef } from "react";
 import { Formik, Form, useField, FormikHelpers } from "formik";
 import * as Yup from "yup";
@@ -296,7 +296,8 @@ function SelectField({
         className={[
           "w-full appearance-none rounded-md border bg-white px-3 py-2 text-sm text-gray-900 outline-none",
           hasError ? "border-red-500" : "border-gray-300 focus:border-blue-500",
-        ].join(" ")}>
+        ].join(" ")}
+      >
         {children}
       </select>
       {hasError && <p className="mt-1 text-xs text-red-600">{meta.error}</p>}
@@ -380,7 +381,14 @@ function CheckboxField({
     </label>
   );
 }
-function ConfirmAndPay({ clientSecret }: { clientSecret: string }) {
+
+function ConfirmAndPay({
+  clientSecret,
+  values,
+}: {
+  clientSecret: string;
+  values: FormValues;
+}) {
   const stripe = useStripe();
   const elements = useElements();
   const [loading, setLoading] = React.useState(false);
@@ -389,10 +397,12 @@ function ConfirmAndPay({ clientSecret }: { clientSecret: string }) {
     if (!stripe || !elements) return;
     setLoading(true);
 
-    const { error } = await stripe.confirmPayment({
+    // 1) Confirm the payment
+    const { error, paymentIntent } = await stripe.confirmPayment({
       elements,
-      clientSecret, // ✅ now used
+      clientSecret,
       confirmParams: {
+        // if you still want a success page, keep this; otherwise remove and stay on-page
         return_url: `${window.location.origin}/success`,
       },
       redirect: "if_required",
@@ -400,6 +410,76 @@ function ConfirmAndPay({ clientSecret }: { clientSecret: string }) {
 
     if (error) {
       alert(error.message ?? "Payment failed");
+      setLoading(false);
+      return;
+    }
+
+    // Some payments won’t return the PI here; if so, retrieve it with the clientSecret
+    let pi = paymentIntent;
+    if (!pi) {
+      const { paymentIntent: fetchedPI, error: fetchErr } =
+        await stripe.retrievePaymentIntent(clientSecret);
+      if (fetchErr || !fetchedPI) {
+        alert(fetchErr?.message ?? "Could not verify payment.");
+        setLoading(false);
+        return;
+      }
+      pi = fetchedPI;
+    }
+
+    // 2) Only send email if succeeded
+    if (pi.status === "succeeded") {
+      try {
+        // Map your Formik values to EmailJS template fields
+        const templateParams = {
+          bookingCategory: values.bookingCategory,
+          title: values.title,
+          firstName: values.firstName,
+          surname: values.surname,
+          gdcNumber: values.gdcNumber,
+          address1: values.address1,
+          address2: values.address2,
+          city: values.city,
+          postcode: values.postcode,
+          country: values.country,
+          telephone: values.telephone,
+          email: values.email,
+
+          conferenceBooking: values.conferenceBooking,
+          notAttendingNote: values.notAttendingNote,
+          dietaryRequirements: values.dietaryRequirements,
+
+          additionalGuests: values.additionalGuests,
+          welcomeDinnerPlaces: values.welcomeDinnerPlaces,
+          themedDinnerPlaces: values.themedDinnerPlaces,
+          galaDinnerPlaces: values.galaDinnerPlaces,
+          dinnerDietaryRequirements: values.dinnerDietaryRequirements,
+
+          accommodationDates: (values.accommodationDates || []).join(", "),
+          accommodationRoomType: values.accommodationRoomType,
+          accommodationOccupancy: values.accommodationOccupancy,
+          accommodationNights: values.accommodationNights,
+
+          payment_intent_id: pi.id,
+          amount_gbp: (pi.amount ?? 0) / 100,
+        };
+
+        await emailjs.send(
+          // TODO: replace with your real IDs / use env vars
+          "service_2cnqd96",
+          "template_mghxu1j",
+          templateParams
+        );
+
+        // Optional UX: toast / redirect
+        alert("Payment successful. Booking details emailed.");
+        // window.location.href = "/success"; // if you want to navigate now
+      } catch (e) {
+        console.error(e);
+        alert("Payment completed, but failed to send email. We’ll follow up.");
+      }
+    } else {
+      alert(`Payment status: ${pi.status}`);
     }
 
     setLoading(false);
@@ -410,7 +490,8 @@ function ConfirmAndPay({ clientSecret }: { clientSecret: string }) {
       type="button"
       onClick={handlePay}
       disabled={!stripe || loading}
-      className="w-full rounded-md bg-midnight px-5 py-3 text-sm font-semibold text-white">
+      className="w-full rounded-md bg-midnight px-5 py-3 text-sm font-semibold text-white"
+    >
       {loading ? "Processing…" : "Confirm & Pay"}
     </button>
   );
@@ -516,7 +597,8 @@ export default function BaadBookingForm() {
           onSubmit={(values) => {
             console.log("SUBMIT", values);
             alert("Form submitted (mock). Hook up your API.");
-          }}>
+          }}
+        >
           {({ validateForm, setTouched, isSubmitting, values }) => {
             // NEW: clickable stepper with validation on forward jumps
             const tryGoToStep = async (targetIdx: number) => {
@@ -558,7 +640,8 @@ export default function BaadBookingForm() {
                         type="button"
                         key={s.key}
                         onClick={() => tryGoToStep(idx)}
-                        className="flex flex-col items-center text-center gap-2 focus:outline-none">
+                        className="flex flex-col items-center text-center gap-2 focus:outline-none"
+                      >
                         <div
                           className={[
                             "grid h-10 w-10 place-items-center rounded-md text-sm font-semibold cursor-pointer",
@@ -567,14 +650,16 @@ export default function BaadBookingForm() {
                               : done
                               ? "bg-transparent text-black border-midnight border-2"
                               : "bg-gray-200 text-gray-700",
-                          ].join(" ")}>
+                          ].join(" ")}
+                        >
                           {idx + 1}
                         </div>
                         <div
                           className={[
                             "text-xs font-semibold uppercase tracking-wide",
                             active ? "text-midnight" : "text-gray-500",
-                          ].join(" ")}>
+                          ].join(" ")}
+                        >
                           {s.label}
                         </div>
                       </button>
@@ -595,7 +680,8 @@ export default function BaadBookingForm() {
                       <SelectField
                         label="Booking Category"
                         name="bookingCategory"
-                        requiredMark>
+                        requiredMark
+                      >
                         <option value="">Select category…</option>
                         <option>Hononary Member</option>
                         <option>Life Member</option>
@@ -935,7 +1021,8 @@ export default function BaadBookingForm() {
                           <SelectField
                             label=""
                             name="accommodationNights"
-                            requiredMark>
+                            requiredMark
+                          >
                             <option value="">Select number of nights</option>
                             <option>0</option>
                             <option>
@@ -1027,7 +1114,8 @@ export default function BaadBookingForm() {
                           options={{
                             clientSecret,
                             appearance: { theme: "stripe" },
-                          }}>
+                          }}
+                        >
                           <PaymentElement />
                           <ConfirmAndPay clientSecret={clientSecret} />
                         </Elements>
@@ -1046,7 +1134,8 @@ export default function BaadBookingForm() {
                       type="button"
                       onClick={goPrev}
                       disabled={stepIndex === 0 || isSubmitting}
-                      className="rounded-md border border-gray-300 px-4 py-2 text-sm font-medium text-gray-700 disabled:opacity-50 cursor-pointer">
+                      className="rounded-md border border-gray-300 px-4 py-2 text-sm font-medium text-gray-700 disabled:opacity-50 cursor-pointer"
+                    >
                       Previous
                     </button>
 
@@ -1054,7 +1143,8 @@ export default function BaadBookingForm() {
                       <button
                         type="button"
                         onClick={() => tryNext(validateForm, setTouched)}
-                        className="rounded-md bg-midnight px-5 py-2 text-sm font-semibold text-white cursor-pointer">
+                        className="rounded-md bg-midnight px-5 py-2 text-sm font-semibold text-white cursor-pointer"
+                      >
                         Next
                       </button>
                     ) : (
