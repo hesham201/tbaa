@@ -1,9 +1,17 @@
 "use client";
 
-import React, { useMemo, useState } from "react";
+import React, { useMemo, useState, useEffect, useRef } from "react";
 import { Formik, Form, useField, FormikHelpers } from "formik";
 import * as Yup from "yup";
 import Container from "@/components/container";
+import type { FormikProps } from "formik";
+import {
+  Elements,
+  PaymentElement,
+  useStripe,
+  useElements,
+} from "@stripe/react-stripe-js";
+import { stripePromise } from "@/lib/getStripe";
 
 /* --------------------------- Types & constants --------------------------- */
 
@@ -288,7 +296,8 @@ function SelectField({
         className={[
           "w-full appearance-none rounded-md border bg-white px-3 py-2 text-sm text-gray-900 outline-none",
           hasError ? "border-red-500" : "border-gray-300 focus:border-blue-500",
-        ].join(" ")}>
+        ].join(" ")}
+      >
         {children}
       </select>
       {hasError && <p className="mt-1 text-xs text-red-600">{meta.error}</p>}
@@ -372,14 +381,68 @@ function CheckboxField({
     </label>
   );
 }
+function ConfirmAndPay({ clientSecret }: { clientSecret: string }) {
+  const stripe = useStripe();
+  const elements = useElements();
+  const [loading, setLoading] = React.useState(false);
+
+  const handlePay = async () => {
+    if (!stripe || !elements) return;
+    setLoading(true);
+    const { error } = await stripe.confirmPayment({
+      elements,
+      clientSecret,
+      confirmParams: {
+        return_url: `${window.location.origin}/booking/success`,
+      },
+    });
+    if (error) {
+      alert(error.message ?? "Payment failed");
+    }
+    setLoading(false);
+  };
+
+  return (
+    <button
+      type="button"
+      onClick={handlePay}
+      disabled={!stripe || loading}
+      className="w-full rounded-md bg-midnight px-5 py-3 text-sm font-semibold text-white disabled:opacity-50"
+    >
+      {loading ? "Processing…" : "Confirm & Pay"}
+    </button>
+  );
+}
 
 /* ------------------------------ Component ------------------------------ */
 
 export default function BaadBookingForm() {
   const [stepIndex, setStepIndex] = useState(0);
+  const formikRef = useRef<FormikProps<FormValues>>(null);
+  const [clientSecret, setClientSecret] = useState<string | null>(null);
   const current = STEP_ORDER[stepIndex];
   const validationSchema = useMemo(() => schemaFor(current.key), [current.key]);
+  useEffect(() => {
+    const isBilling = stepIndex === STEP_ORDER.length - 1;
+    if (!isBilling) return;
 
+    const values = formikRef.current?.values;
+    if (!values) return;
+
+    (async () => {
+      try {
+        const res = await fetch("/api/stripe/create-payment-intent", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(values),
+        });
+        const data = await res.json();
+        if (data?.clientSecret) setClientSecret(data.clientSecret);
+      } catch (err: unknown) {
+        console.error(err);
+      }
+    })();
+  }, [stepIndex]);
   const goPrev = () => setStepIndex((i) => Math.max(0, i - 1));
   const goNext = () =>
     setStepIndex((i) => Math.min(STEP_ORDER.length - 1, i + 1));
@@ -436,6 +499,7 @@ export default function BaadBookingForm() {
     <div className="py-10">
       <Container>
         <Formik
+          innerRef={formikRef}
           initialValues={initialValues}
           validationSchema={validationSchema}
           validateOnBlur
@@ -443,7 +507,8 @@ export default function BaadBookingForm() {
           onSubmit={(values) => {
             console.log("SUBMIT", values);
             alert("Form submitted (mock). Hook up your API.");
-          }}>
+          }}
+        >
           {({ validateForm, setTouched, isSubmitting, values }) => {
             // NEW: clickable stepper with validation on forward jumps
             const tryGoToStep = async (targetIdx: number) => {
@@ -485,7 +550,8 @@ export default function BaadBookingForm() {
                         type="button"
                         key={s.key}
                         onClick={() => tryGoToStep(idx)}
-                        className="flex flex-col items-center text-center gap-2 focus:outline-none">
+                        className="flex flex-col items-center text-center gap-2 focus:outline-none"
+                      >
                         <div
                           className={[
                             "grid h-10 w-10 place-items-center rounded-md text-sm font-semibold cursor-pointer",
@@ -494,14 +560,16 @@ export default function BaadBookingForm() {
                               : done
                               ? "bg-transparent text-black border-midnight border-2"
                               : "bg-gray-200 text-gray-700",
-                          ].join(" ")}>
+                          ].join(" ")}
+                        >
                           {idx + 1}
                         </div>
                         <div
                           className={[
                             "text-xs font-semibold uppercase tracking-wide",
                             active ? "text-midnight" : "text-gray-500",
-                          ].join(" ")}>
+                          ].join(" ")}
+                        >
                           {s.label}
                         </div>
                       </button>
@@ -522,7 +590,8 @@ export default function BaadBookingForm() {
                       <SelectField
                         label="Booking Category"
                         name="bookingCategory"
-                        requiredMark>
+                        requiredMark
+                      >
                         <option value="">Select category…</option>
                         <option>Hononary Member</option>
                         <option>Life Member</option>
@@ -843,7 +912,8 @@ export default function BaadBookingForm() {
                           <SelectField
                             label=""
                             name="accommodationNights"
-                            requiredMark>
+                            requiredMark
+                          >
                             <option value="">Select number of nights</option>
                             <option>0</option>
                             <option>
@@ -859,7 +929,7 @@ export default function BaadBookingForm() {
                   )}
 
                   {/* ------------------------ Step 5: Billing Details ------------------------ */}
-                  {current.key === "billingDetails" && (
+                  {/* {current.key === "billingDetails" && (
                     <div className="space-y-6">
                       <div className="flex items-center justify-between">
                         <h4 className="text-xl font-semibold text-gray-800">
@@ -900,19 +970,63 @@ export default function BaadBookingForm() {
 
                       <button
                         type="submit"
-                        className="w-full rounded-md bg-midnight px-5 py-3 text-sm font-semibold text-white cursor-pointer">
+                        className="w-full rounded-md bg-midnight px-5 py-3 text-sm font-semibold text-white cursor-pointer"
+                      >
                         Confirm Booking
                       </button>
                     </div>
-                  )}
+                  )} */}
+                  {current.key === "billingDetails" && (
+                    <div className="space-y-6">
+                      <div className="flex items-center justify-between">
+                        <h4 className="text-xl font-semibold text-gray-800">
+                          Billing Details
+                        </h4>
+                        <div className="rounded-r-md bg-blue-500 px-4 py-2 text-white font-semibold shadow">
+                          £ {calcTotal(values)}
+                        </div>
+                      </div>
 
+                      <TextField
+                        label="Name on Card"
+                        name="billingNameOnCard"
+                        requiredMark
+                      />
+                      <TextField
+                        label="Address"
+                        name="billingAddress"
+                        requiredMark
+                      />
+
+                      {/* Stripe Payment Element mounts here */}
+                      {clientSecret ? (
+                        <Elements
+                          stripe={stripePromise}
+                          options={{
+                            clientSecret,
+                            appearance: { theme: "stripe" },
+                          }}
+                        >
+                          <PaymentElement />
+                          <ConfirmAndPay clientSecret={clientSecret} />
+                        </Elements>
+                      ) : (
+                        <div className="text-sm text-gray-500">
+                          Preparing secure payment…
+                        </div>
+                      )}
+
+                      {/* You can keep the mock card field note or remove it */}
+                    </div>
+                  )}
                   {/* Actions */}
                   <div className="flex items-center justify-between pt-2">
                     <button
                       type="button"
                       onClick={goPrev}
                       disabled={stepIndex === 0 || isSubmitting}
-                      className="rounded-md border border-gray-300 px-4 py-2 text-sm font-medium text-gray-700 disabled:opacity-50 cursor-pointer">
+                      className="rounded-md border border-gray-300 px-4 py-2 text-sm font-medium text-gray-700 disabled:opacity-50 cursor-pointer"
+                    >
                       Previous
                     </button>
 
@@ -920,16 +1034,12 @@ export default function BaadBookingForm() {
                       <button
                         type="button"
                         onClick={() => tryNext(validateForm, setTouched)}
-                        className="rounded-md bg-midnight px-5 py-2 text-sm font-semibold text-white cursor-pointer">
+                        className="rounded-md bg-midnight px-5 py-2 text-sm font-semibold text-white cursor-pointer"
+                      >
                         Next
                       </button>
                     ) : (
-                      <button
-                        type="submit"
-                        disabled
-                        className="rounded-md bg-midnight px-5 py-2 text-sm font-semibold text-white disabled:opacity-50 disabled:cursor-not-allowed">
-                        Next
-                      </button>
+                      <span></span>
                     )}
                   </div>
                 </Form>
