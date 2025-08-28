@@ -549,7 +549,7 @@ const Header = () => {
                       {NAV_ITEMS[dropdown].subItems.map((nav, index) => (
                         <li key={nav.name}>
                           <button
-                            className="text-4xl lg:text-nowrap text-midnight cursor-pointer transition-all duration-300 tracking-normal origin-top-left hover:tracking-wider hover:skew-1 inline-block"
+                            className="text-4xl text-left lg:text-nowrap text-midnight cursor-pointer transition-all duration-300 tracking-normal origin-top-left hover:tracking-wider hover:skew-1 inline-block"
                             onClick={() => {
                               handleDropdownLinkClick(nav.link);
                             }}
