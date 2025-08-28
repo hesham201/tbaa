@@ -1117,7 +1117,10 @@ export default function BaadBookingForm() {
                           }}
                         >
                           <PaymentElement />
-                          <ConfirmAndPay clientSecret={clientSecret} />
+                          <ConfirmAndPay
+                            values={values}
+                            clientSecret={clientSecret}
+                          />
                         </Elements>
                       ) : (
                         <div className="text-sm text-gray-500">
