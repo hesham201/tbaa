@@ -132,7 +132,7 @@ const initialValues: FormValues = {
   themedDinnerPlaces: "",
   galaDinnerPlaces: "",
   dinnerDietaryRequirements: "",
-  additionalGuestNames: "", 
+  additionalGuestNames: "",
 
   // Step 4
   accommodationDates: [],
@@ -192,7 +192,6 @@ const dinnerBookingSchema = Yup.object({
     otherwise: (s) => s.optional(),
   }),
 });
-
 
 // Step 4 schema
 const accommodationSchema = Yup.object({
@@ -407,34 +406,37 @@ function ConfirmAndPay({
     if (!stripe || !elements) return;
     setLoading(true);
 
-    // 1) Confirm the payment
-    const { error, paymentIntent } = await stripe.confirmPayment({
-      elements,
-      clientSecret,
-      confirmParams: {
-        // if you still want a success page, keep this; otherwise remove and stay on-page
-        return_url: `${window.location.origin}/success`,
-      },
-      redirect: "if_required",
-    });
-
-    if (error) {
-      alert(error.message ?? "Payment failed");
+    // ✅ Submit the Payment Element first (collects Link/wallet data)
+    const submit = await elements.submit();
+    if (submit.error) {
       setLoading(false);
+      alert(submit.error.message || "Please check your payment details.");
       return;
     }
 
-    // Some payments won’t return the PI here; if so, retrieve it with the clientSecret
+    // ✅ Now confirm the payment
+    const { error, paymentIntent } = await stripe.confirmPayment({
+      elements,
+      clientSecret,
+      redirect: "if_required", // keep on-page
+      // confirmParams: { return_url: `${window.location.origin}/success` }, // optional
+    });
+
+    if (error) {
+      setLoading(false);
+      alert(error.message ?? "Payment failed");
+      return;
+    }
+
     let pi = paymentIntent;
     if (!pi) {
-      const { paymentIntent: fetchedPI, error: fetchErr } =
-        await stripe.retrievePaymentIntent(clientSecret);
-      if (fetchErr || !fetchedPI) {
-        alert(fetchErr?.message ?? "Could not verify payment.");
+      const r = await stripe.retrievePaymentIntent(clientSecret);
+      if (r.error || !r.paymentIntent) {
         setLoading(false);
+        alert(r.error?.message ?? "Could not verify payment.");
         return;
       }
-      pi = fetchedPI;
+      pi = r.paymentIntent;
     }
 
     // 2) Only send email if succeeded
@@ -469,6 +471,7 @@ function ConfirmAndPay({
           accommodationRoomType: values.accommodationRoomType,
           accommodationOccupancy: values.accommodationOccupancy,
           accommodationNights: values.accommodationNights,
+          additionalGuestNames: values.additionalGuestNames,
 
           payment_intent_id: pi.id,
           amount_gbp: (pi.amount ?? 0) / 100,
@@ -861,7 +864,8 @@ export default function BaadBookingForm() {
                           />
                         </div>
                       </div>
-                      {(values.additionalGuests === "yes" || values.additionalGuests === "no") && (
+                      {(values.additionalGuests === "yes" ||
+                        values.additionalGuests === "no") && (
                         <div>
                           <div className="mb-2 text-sm font-semibold text-gray-800">
                             Welcome Dinner (Thursday 29th) Number of Places:
@@ -877,7 +881,8 @@ export default function BaadBookingForm() {
                           </SelectField>
                         </div>
                       )}
-                      {(values.additionalGuests === "yes" || values.additionalGuests === "no")  && (
+                      {(values.additionalGuests === "yes" ||
+                        values.additionalGuests === "no") && (
                         <>
                           <div>
                             <div className="mb-2 text-sm font-semibold text-gray-800">
