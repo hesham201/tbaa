@@ -148,12 +148,12 @@ const Footer = () => {
         <Container>
           <div>
             <p className="text-center">
-              © 1996 - 2025 BAAD. All Rights Reserved{" "}
-              <span className="text-center block">
-                <a href="">Refund Policy</a> | <a href="/terms-and-conditions">Terms & Conditions</a>{" "}
-                | <a href="/privacy-policy">Privacy Policy</a>
-              </span>
-            </p>
+                © 1996 - 2025 BAAD. All Rights Reserved{" "}
+                <span className="text-center block">
+                  <a href="/refund-policy">Refund Policy</a> | <a href="/terms-and-conditions">Terms & Conditions</a>{" "}
+                  | <a href="/privacy-policy">Privacy Policy</a>
+                </span>
+              </p>
             <p className="text-center">
               <Link href={"https://www.smile-mc.co.uk/"} target="_blank">
                 site designed and maintained by smile marketing & consultancy
