@@ -5,7 +5,7 @@ const Main = () => {
     <>
       <div className="py-20 pt-39">
         <Container>
-          <h1 className="text-primary mb-3 text-6xl">REFUND & CANCELLATION POLICY</h1>
+          <h1 className="text-primary mb-3 text-5xl">REFUND & CANCELLATION POLICY</h1>
 
           <div className="mb-4">
             <p className="mb-2 text-midnight">
