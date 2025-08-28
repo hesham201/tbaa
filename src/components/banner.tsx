@@ -68,7 +68,7 @@ const Banner = ({ data }: { data: IBanner }) => {
       <div className=" upper w-full bg-midnight origin-bottom scale-y-0 ">
         <Container>
           <div className="py-16 pt-[180px] lg:w-[45%] ">
-            <h1 className="text-primary  text-6xl" id="home-h1">
+            <h1 className="text-primary text-4xl lg:text-6xl" id="home-h1">
               {data.heading}
             </h1>
             {data.para && (

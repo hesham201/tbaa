@@ -68,7 +68,7 @@ const Banner = () => {
         <Container>
           <div className="py-5 pt-[120px] ">
             <h1
-              className="text-primary py-10 justify-center text-center text-6xl"
+              className="text-primary py-10 justify-center text-center text-4xl lg:text-6xl"
               id="home-h1"
             >
               Contact Us

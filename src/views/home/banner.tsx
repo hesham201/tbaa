@@ -68,7 +68,10 @@ const Banner = () => {
         <div className=" upper w-full bg-midnight origin-bottom scale-y-0 pt-[80px]">
           <Container>
             <div className="py-16 lg:w-[45%] ">
-              <h1 className="text-primary mb-3 text-6xl" id="home-h1">
+              <h1
+                className="text-primary mb-3 text-4xl lg:text-6xl"
+                id="home-h1"
+              >
                 The{" "}
                 <span className="relative inline-block text-should-change transition-all">
                   <span className="relative z-1">British</span>{" "}
