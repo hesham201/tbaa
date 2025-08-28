@@ -389,18 +389,20 @@ function ConfirmAndPay({ clientSecret }: { clientSecret: string }) {
   const handlePay = async () => {
     if (!stripe || !elements) return;
     setLoading(true);
+
     const { error } = await stripe.confirmPayment({
       elements,
-      clientSecret, // optional if you supplied in <Elements options>, harmless to include
+      clientSecret, // ✅ now used
       confirmParams: {
-        // must be a reachable URL on YOUR domain
-        return_url: `${window.location.origin}/booking/success`,
+        return_url: `${window.location.origin}/success`,
       },
-      redirect: "if_required", // avoids double redirects for non-3DS cards
+      redirect: "if_required",
     });
+
     if (error) {
       alert(error.message ?? "Payment failed");
     }
+
     setLoading(false);
   };
 
@@ -409,7 +411,7 @@ function ConfirmAndPay({ clientSecret }: { clientSecret: string }) {
       type="button"
       onClick={handlePay}
       disabled={!stripe || loading}
-      className="w-full rounded-md bg-midnight px-5 py-3 text-sm font-semibold text-white disabled:opacity-50"
+      className="w-full rounded-md bg-midnight px-5 py-3 text-sm font-semibold text-white"
     >
       {loading ? "Processing…" : "Confirm & Pay"}
     </button>
