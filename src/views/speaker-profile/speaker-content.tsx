@@ -117,7 +117,7 @@ const SpeakerContent: React.FC<SpeakerContentProps> = ({ speakerId = "0" }) => {
             <div className="flex flex-col lg:flex-row items-center justify-between">
               <div className="w-full md:w-[40%] h-[500px] relative">
                 {/* Image positioned with 25% above the background but below navbar */}
-                <div className="speaker-image-container w-full h-0 rounded relative  overflow-hidden md:absolute md:left-0 md:-top-2 scale-x-0  origin-top transition-all">
+                <div className="speaker-image-container w-full h-0 rounded relative  overflw-hidden md:absolute md:left-0 md:-top-2 scale-x-0  origin-top transition-all">
                   <div className="absolute z-10 inset-0 h-full w-full bg-primary speaker-image-bg"></div>
                   <div className="speaker-image-main relative h-full">
                     <Image
