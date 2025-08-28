@@ -513,7 +513,7 @@ const Header = () => {
                       <li key={nav.name} className="nav-items">
                         {nav.isDropdown ? (
                           <button
-                            className="text-4xl  cursor-pointer text-midnight transition-all duration-300 tracking-normal origin-top-left hover:tracking-wider hover:skew-1 inline-block"
+                            className="text-3xl lg:text-4xl  cursor-pointer text-midnight transition-all duration-300 tracking-normal origin-top-left hover:tracking-wider hover:skew-1 inline-block"
                             onClick={() => dropdownOpen(index)}
                           >
                             <span className="text-lg">0{index + 1}</span>{" "}
@@ -521,7 +521,7 @@ const Header = () => {
                           </button>
                         ) : (
                           <button
-                            className="text-4xl text-left cursor-pointer transition-all text-midnight duration-300 tracking-normal origin-top-left hover:tracking-wider hover:skew-[1deg] inline-block"
+                            className="text-3xl lg:text-4xl text-left cursor-pointer transition-all text-midnight duration-300 tracking-normal origin-top-left hover:tracking-wider hover:skew-[1deg] inline-block"
                             onClick={() => {
                               handleDropdownLinkClick(nav.link);
                             }}
@@ -549,7 +549,7 @@ const Header = () => {
                       {NAV_ITEMS[dropdown].subItems.map((nav, index) => (
                         <li key={nav.name}>
                           <button
-                            className="text-4xl text-left lg:text-nowrap text-midnight cursor-pointer transition-all duration-300 tracking-normal origin-top-left hover:tracking-wider hover:skew-1 inline-block"
+                            className="text-3xl lg:text-4xl text-left lg:text-nowrap text-midnight cursor-pointer transition-all duration-300 tracking-normal origin-top-left hover:tracking-wider hover:skew-1 inline-block"
                             onClick={() => {
                               handleDropdownLinkClick(nav.link);
                             }}
