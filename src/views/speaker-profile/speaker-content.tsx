@@ -112,10 +112,10 @@ const SpeakerContent: React.FC<SpeakerContentProps> = ({ speakerId = "0" }) => {
         {/* Background section */}
         <div className="pt-[70px] bg-[linear-gradient(to_bottom,#031A37_0%,#031A37_90%,transparent_90%,transparent_100%)] text-white w-screen py-10 pb-0 mt-20">
           <Container>
-            <div className="flex flex-row items-center justify-between">
-              <div className="md:w-[40%] h-[500px] relative">
+            <div className="flex flex-col md:flex-row items-center md:justify-between gap-6 md:gap-0">
+              <div className="w-full md:w-[40%] h-[300px] md:h-[500px] relative">
                 {/* Image positioned with 25% above the background but below navbar */}
-                <div className="speaker-image-container w-full h-0 rounded relative  overflow-hidden md:absolute md:left-0 md:-top-2 scale-x-0  origin-top transition-all">
+                <div className="speaker-image-container w-full h-0 rounded relative overflow-hidden left-0 -top-2 scale-x-0 origin-top transition-all">
                   <div className="absolute z-10 inset-0 h-full w-full bg-primary speaker-image-bg"></div>
                   <div className="speaker-image-main relative h-full">
                     <Image
@@ -127,7 +127,7 @@ const SpeakerContent: React.FC<SpeakerContentProps> = ({ speakerId = "0" }) => {
                   </div>
                 </div>
               </div>
-              <div className="md:w-[55%] px-6 flex flex-col justify-start md:pl-0">
+              <div className="w-full md:w-[55%] px-6 flex flex-col justify-start md:pl-0">
                 <p id="speaker-name" className="mb-4 text-primary text-2xl"> {speaker.name}</p>
                 <div className="bg-midnight mb-6 max-w-full">
                   <h2 id="speaker-title" className="text-4xl font-bold text-primary mb-4">
@@ -148,14 +148,14 @@ const SpeakerContent: React.FC<SpeakerContentProps> = ({ speakerId = "0" }) => {
 
         {/* Session Summary */}
         <div className="py-8 relative">
-          <div className="absolute flex justify-end mb-4 -mt-16 top-4 right-4">
+          <div className="absolute flex justify-end mb-4 -mt-8 md:-mt-12 lg:-mt-16 top-4 right-4">
             <div className="">
               <Image
                 src="/baad-lion.webp"
                 alt="BAAD Lion"
                 width={128}
                 height={64}
-                className="w-32 h-36 opacity-60 object-contain"
+                className="w-32 h-36 opacity-60 not-only:object-contain"
               />
             </div>
           </div>
