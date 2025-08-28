@@ -148,7 +148,7 @@ const SpeakerContent: React.FC<SpeakerContentProps> = ({ speakerId = "0" }) => {
         {/* Added baad-lion image - positioned on right side below gradient */}
 
         {/* Session Summary */}
-        <div className="py-8 mt-[250px] lg:mt-0 relative">
+        <div className="py-8 mt-[250px]  lg:mt-0 relative">
           <div className="absolute flex justify-end mb-4 -mt-8 md:-mt-22 lg:-mt-16 top-4 right-4">
             <div className="">
               <Image
