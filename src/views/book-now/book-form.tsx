@@ -12,7 +12,7 @@ import {
   useElements,
 } from "@stripe/react-stripe-js";
 import { stripePromise } from "@/lib/getStripe";
-import { useRouter } from "next/router";
+import { useRouter } from "next/navigation";
 
 /* --------------------------- Types & constants --------------------------- */
 
