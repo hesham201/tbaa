@@ -12,6 +12,7 @@ import {
   useElements,
 } from "@stripe/react-stripe-js";
 import { stripePromise } from "@/lib/getStripe";
+import { useRouter } from "next/router";
 
 /* --------------------------- Types & constants --------------------------- */
 
@@ -400,13 +401,14 @@ function ConfirmAndPay({
 }) {
   const stripe = useStripe();
   const elements = useElements();
+  const router = useRouter();
   const [loading, setLoading] = React.useState(false);
 
   const handlePay = async () => {
     if (!stripe || !elements) return;
     setLoading(true);
 
-    // ✅ Submit the Payment Element first (collects Link/wallet data)
+    // 1) Submit Payment Element
     const submit = await elements.submit();
     if (submit.error) {
       setLoading(false);
@@ -414,12 +416,11 @@ function ConfirmAndPay({
       return;
     }
 
-    // ✅ Now confirm the payment
+    // 2) Confirm
     const { error, paymentIntent } = await stripe.confirmPayment({
       elements,
       clientSecret,
-      redirect: "if_required", // keep on-page
-      // confirmParams: { return_url: `${window.location.origin}/success` }, // optional
+      redirect: "if_required", // stay on page
     });
 
     if (error) {
@@ -439,11 +440,10 @@ function ConfirmAndPay({
       pi = r.paymentIntent;
     }
 
-    // 2) Only send email if succeeded
     if (pi.status === "succeeded") {
       try {
-        // Map your Formik values to EmailJS template fields
         const templateParams = {
+          // ——— map all your fields here ———
           bookingCategory: values.bookingCategory,
           title: values.title,
           firstName: values.firstName,
@@ -462,6 +462,7 @@ function ConfirmAndPay({
           dietaryRequirements: values.dietaryRequirements,
 
           additionalGuests: values.additionalGuests,
+          additionalGuestNames: values.additionalGuestNames,
           welcomeDinnerPlaces: values.welcomeDinnerPlaces,
           themedDinnerPlaces: values.themedDinnerPlaces,
           galaDinnerPlaces: values.galaDinnerPlaces,
@@ -471,25 +472,25 @@ function ConfirmAndPay({
           accommodationRoomType: values.accommodationRoomType,
           accommodationOccupancy: values.accommodationOccupancy,
           accommodationNights: values.accommodationNights,
-          additionalGuestNames: values.additionalGuestNames,
 
           payment_intent_id: pi.id,
           amount_gbp: (pi.amount ?? 0) / 100,
         };
 
         await emailjs.send(
-          // TODO: replace with your real IDs / use env vars
           "service_2cnqd96",
           "template_mghxu1j",
-          templateParams
+          templateParams, // params
+          "nQBJzdhm_0rQ4QbLv" // OR omit if you called emailjs.init()
         );
 
-        // Optional UX: toast / redirect
-        alert("Payment successful. Booking details emailed.");
-        // window.location.href = "/success"; // if you want to navigate now
+        // Navigate to your success page (you’re using redirect: "if_required")
+        router.push(`/success?pi=${pi.id}`);
       } catch (e) {
         console.error(e);
-        alert("Payment completed, but failed to send email. We’ll follow up.");
+        alert(
+          "Payment completed, but failed to send the email. We’ll follow up."
+        );
       }
     } else {
       alert(`Payment status: ${pi.status}`);
