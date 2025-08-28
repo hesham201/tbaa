@@ -391,10 +391,12 @@ function ConfirmAndPay({ clientSecret }: { clientSecret: string }) {
     setLoading(true);
     const { error } = await stripe.confirmPayment({
       elements,
-      clientSecret,
+      clientSecret, // optional if you supplied in <Elements options>, harmless to include
       confirmParams: {
+        // must be a reachable URL on YOUR domain
         return_url: `${window.location.origin}/booking/success`,
       },
+      redirect: "if_required", // avoids double redirects for non-3DS cards
     });
     if (error) {
       alert(error.message ?? "Payment failed");
