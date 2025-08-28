@@ -56,6 +56,7 @@ type FormValues = {
   themedDinnerPlaces: string;
   galaDinnerPlaces: string;
   dinnerDietaryRequirements: string;
+  additionalGuestNames: string;
 
   // Step 4
   accommodationDates: string[];
@@ -95,6 +96,7 @@ const STEP_FIELDS: Record<StepKey, (keyof FormValues)[]> = {
     "themedDinnerPlaces",
     "galaDinnerPlaces",
     "dinnerDietaryRequirements",
+    "additionalGuestNames",
   ],
   accommodation: [
     "accommodationDates",
@@ -130,6 +132,7 @@ const initialValues: FormValues = {
   themedDinnerPlaces: "",
   galaDinnerPlaces: "",
   dinnerDietaryRequirements: "",
+  additionalGuestNames: "", 
 
   // Step 4
   accommodationDates: [],
@@ -182,7 +185,14 @@ const dinnerBookingSchema = Yup.object({
   themedDinnerPlaces: Yup.string().optional(),
   galaDinnerPlaces: Yup.string().optional(),
   dinnerDietaryRequirements: Yup.string().trim().optional(),
+  additionalGuestNames: Yup.string().when("additionalGuests", {
+    is: "yes",
+    then: (s) =>
+      s.trim().required("Please enter the names of the additional guests."),
+    otherwise: (s) => s.optional(),
+  }),
 });
+
 
 // Step 4 schema
 const accommodationSchema = Yup.object({
@@ -851,7 +861,7 @@ export default function BaadBookingForm() {
                           />
                         </div>
                       </div>
-                      {values.additionalGuests === "yes" && (
+                      {(values.additionalGuests === "yes" || values.additionalGuests === "no") && (
                         <div>
                           <div className="mb-2 text-sm font-semibold text-gray-800">
                             Welcome Dinner (Thursday 29th) Number of Places:
@@ -867,7 +877,7 @@ export default function BaadBookingForm() {
                           </SelectField>
                         </div>
                       )}
-                      {values.additionalGuests === "yes" && (
+                      {(values.additionalGuests === "yes" || values.additionalGuests === "no")  && (
                         <>
                           <div>
                             <div className="mb-2 text-sm font-semibold text-gray-800">
@@ -899,6 +909,14 @@ export default function BaadBookingForm() {
                             </SelectField>
                           </div>
                         </>
+                      )}
+
+                      {values.additionalGuests === "yes" && (
+                        <TextAreaField
+                          label="Please include the names of the additional people attending the dinner below"
+                          name="additionalGuestNames"
+                          rows={3}
+                        />
                       )}
 
                       <TextAreaField
