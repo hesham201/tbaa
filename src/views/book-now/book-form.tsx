@@ -582,12 +582,12 @@ export default function BaadBookingForm() {
                 </div>
 
                 {/* Step Title */}
-                <h3 className="mb-4 text-lg font-semibold">
-                  {current.label.charAt(0) +
-                    current.label.slice(1).toLowerCase()}
+                <h3 className="mb-4 text-lg font-semibold  max-w-2xl mx-auto">
+                  {current.label.charAt(0) + current.label.slice(1).toLowerCase()}
                 </h3>
 
-                <Form className="space-y-6">
+
+                <Form className="space-y-6 max-w-2xl mx-auto">
                   {/* ------------------------ Step 1 ------------------------ */}
                   {current.key === "yourDetails" && (
                     <div className="space-y-5">
